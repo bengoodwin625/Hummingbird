@@ -12,8 +12,17 @@ from sqlalchemy.orm import Session, sessionmaker
 _DEFAULT_SQLITE = Path(__file__).resolve().parent.parent / "rapidq.db"
 
 
+def normalise_database_url(url: str) -> str:
+    """Hosts such as Render hand out `postgres://` URLs; SQLAlchemy needs the driver named."""
+    for prefix in ("postgres://", "postgresql://"):
+        if url.startswith(prefix):
+            return "postgresql+psycopg://" + url[len(prefix):]
+    return url
+
+
 def database_url() -> str:
-    return os.environ.get("DATABASE_URL", f"sqlite:///{_DEFAULT_SQLITE.as_posix()}")
+    raw = os.environ.get("DATABASE_URL", "").strip()
+    return normalise_database_url(raw) if raw else f"sqlite:///{_DEFAULT_SQLITE.as_posix()}"
 
 
 def make_engine(url: str | None = None) -> Engine:

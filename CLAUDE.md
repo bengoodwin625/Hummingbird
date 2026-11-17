@@ -312,6 +312,16 @@ npm run build        # writes frontend/dist; the backend serves it at / when it 
 
 In Claude Code, `.claude/launch.json` defines `backend` and `frontend` servers for previewing.
 
+### Deployment (Render)
+
+- `Dockerfile` builds the frontend and runs the API, which serves the built site at `/`.
+- `deploy/start.sh` runs on every boot: `alembic upgrade head`, then `scripts/load_content.py
+  content/` (days with plays are skipped), then `uvicorn` with proxy headers trusted.
+- `render.yaml` is a Render Blueprint: one Docker web service plus a Postgres database wired in
+  through `DATABASE_URL` (Render's `postgres://` URL is normalised for the psycopg driver in
+  `backend/app/db.py`). Pushing to `main` redeploys.
+- New daily questions go live by committing a file to `content/` and pushing.
+
 ---
 
 ## Out of scope for v1 (don't build unless asked)
