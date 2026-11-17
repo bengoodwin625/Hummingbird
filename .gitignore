@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.pyc
+*.egg-info/
+backend/.venv/
+backend/rapidq.db
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Node
+frontend/node_modules/
+frontend/dist/
+
+# Impeccable runtime folders (the surface briefs, config and DESIGN.md are committed)
+.impeccable/mocks/
+.impeccable/review/
+.impeccable/questions/
+.impeccable/config.local.json
+.impeccable/hook.cache.json
+
+# Claude Code personal settings
+.claude/settings.local.json

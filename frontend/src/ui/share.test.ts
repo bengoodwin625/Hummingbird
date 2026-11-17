@@ -1,0 +1,38 @@
+import { describe, expect, it } from "vitest";
+import { buildShareText } from "./share";
+
+describe("buildShareText", () => {
+  it("builds the animal row, score and average without answers", () => {
+    const text = buildShareText({
+      number: 42,
+      totalScore: 6400,
+      totalQuestions: 8,
+      answers: [
+        { band: "hummingbird", correct: true, elapsedMs: 1500 },
+        { band: "jaguar", correct: true, elapsedMs: 3000 },
+        { band: "toucan", correct: true, elapsedMs: 5000 },
+        { band: null, correct: false, elapsedMs: 4000 },
+        { band: "tree_frog", correct: true, elapsedMs: 9000 },
+        { band: "jaguar", correct: true, elapsedMs: 2500 },
+        { band: "hummingbird", correct: true, elapsedMs: 1000 },
+        { band: "sloth", correct: true, elapsedMs: 12000 },
+      ],
+    });
+    expect(text).toBe(
+      "Hummingbird #42 — 6,400 pts\n🐦🐆🦜❌🐸🐆🐦🦥\navg 4.8 s · 7/8 correct",
+    );
+  });
+
+  it("handles a day with no correct answers", () => {
+    const text = buildShareText({
+      number: 1,
+      totalScore: 0,
+      totalQuestions: 2,
+      answers: [
+        { band: null, correct: false, elapsedMs: 3000 },
+        { band: null, correct: false, elapsedMs: null },
+      ],
+    });
+    expect(text).toBe("Hummingbird #1 — 0 pts\n❌❌\navg – · 0/2 correct");
+  });
+});

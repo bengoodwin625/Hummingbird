@@ -1,0 +1,80 @@
+date: 2026-11-18
+questions:
+  - slot: 1
+    type: choice
+    category: geography
+    text: "Which is the longest river in Europe?"
+    options:
+      - { text: "Volga", correct: true }
+      - { text: "Danube" }
+      - { text: "Ural" }
+      - { text: "Dnieper" }
+      - { text: "Rhine" }
+      - { text: "Don" }
+  - slot: 2
+    type: choice
+    category: space
+    text: "Which planet has the shortest day?"
+    options:
+      - { text: "Jupiter", correct: true }
+      - { text: "Saturn" }
+      - { text: "Neptune" }
+      - { text: "Uranus" }
+      - { text: "Earth" }
+      - { text: "Mars" }
+  - slot: 3
+    type: number
+    category: science
+    text: "How many squares are there on a chessboard?"
+    answer: 64
+    tolerance: 0
+  - slot: 4
+    type: choice
+    category: literature
+    text: "Who wrote 'One Hundred Years of Solitude'?"
+    options:
+      - { text: "Gabriel García Márquez", correct: true }
+      - { text: "Jorge Luis Borges" }
+      - { text: "Isabel Allende" }
+      - { text: "Mario Vargas Llosa" }
+      - { text: "Julio Cortázar" }
+      - { text: "Pablo Neruda" }
+  - slot: 5
+    type: text
+    category: geography
+    text: "What is the capital of the Canadian province of British Columbia?"
+    answers:
+      - { canonical: "Victoria" }
+  - slot: 6
+    type: choice
+    category: food
+    text: "Saffron comes from which part of the crocus flower?"
+    options:
+      - { text: "Stigma", correct: true }
+      - { text: "Stamen" }
+      - { text: "Petal" }
+      - { text: "Sepal" }
+      - { text: "Bulb" }
+      - { text: "Pollen" }
+  - slot: 7
+    type: choice
+    category: music
+    text: "Who composed 'The Rite of Spring'?"
+    options:
+      - { text: "Igor Stravinsky", correct: true }
+      - { text: "Sergei Prokofiev" }
+      - { text: "Claude Debussy" }
+      - { text: "Maurice Ravel" }
+      - { text: "Dmitri Shostakovich" }
+      - { text: "Béla Bartók" }
+  - slot: 8
+    type: choice
+    category: film
+    text: "Which film won Best Picture at the Oscars in 2020?"
+    options:
+      - { text: "Parasite", correct: true }
+      - { text: "1917" }
+      - { text: "Joker" }
+      - { text: "Once Upon a Time in Hollywood" }
+      - { text: "The Irishman" }
+      - { text: "Little Women" }

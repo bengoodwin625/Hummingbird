@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content" />
+    <meta name="theme-color" content="#050c0b" />
+    <meta name="description" content="Hummingbird: eight hard questions a day. Answer fast and find out which rainforest animal you catch." />
+    <title>Hummingbird — the daily speed quiz</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  </head>
+  <body>
+    <div class="app" id="app">
+      <header class="bar">
+        <div class="brand">
+          <span class="brand-mark" id="brand-mark" aria-hidden="true"></span>
+          <span class="wordmark">Hummingbird</span>
+          <span class="quiz-no" id="quiz-no"></span>
+        </div>
+        <div class="score" aria-live="off">
+          <span class="score-label">Score</span>
+          <span class="score-value" id="score">0</span>
+        </div>
+      </header>
+      <div class="progress" id="progress" role="img" aria-label="Progress"></div>
+      <main class="layout" id="layout">
+        <section class="question" id="question" aria-labelledby="question-text"></section>
+        <section class="stage" id="stage">
+          <div class="stage-overlay" id="overlay"></div>
+        </section>
+        <section class="answers" id="answers"></section>
+        <section class="action" id="action"></section>
+      </main>
+      <div class="sr-only" aria-live="polite" id="live"></div>
+    </div>
+    <noscript><p class="noscript">Hummingbird needs JavaScript to run the quiz.</p></noscript>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

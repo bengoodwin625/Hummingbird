@@ -1,0 +1,80 @@
+date: 2026-11-19
+questions:
+  - slot: 1
+    type: choice
+    category: geography
+    text: "Which country has the most natural lakes?"
+    options:
+      - { text: "Canada", correct: true }
+      - { text: "Finland" }
+      - { text: "Russia" }
+      - { text: "Sweden" }
+      - { text: "United States" }
+      - { text: "Brazil" }
+  - slot: 2
+    type: choice
+    category: science
+    text: "Which element is the most abundant in the Earth's crust by mass?"
+    options:
+      - { text: "Oxygen", correct: true }
+      - { text: "Silicon" }
+      - { text: "Aluminium" }
+      - { text: "Iron" }
+      - { text: "Calcium" }
+      - { text: "Carbon" }
+  - slot: 3
+    type: number
+    category: history
+    text: "In what year did the Great Fire of London break out?"
+    answer: 1666
+    tolerance: 0
+  - slot: 4
+    type: choice
+    category: music
+    text: "How many symphonies did Beethoven complete?"
+    options:
+      - { text: "9", correct: true }
+      - { text: "5" }
+      - { text: "7" }
+      - { text: "12" }
+      - { text: "32" }
+      - { text: "104" }
+  - slot: 5
+    type: text
+    category: geography
+    text: "What is the capital of Australia's Northern Territory?"
+    answers:
+      - { canonical: "Darwin" }
+  - slot: 6
+    type: choice
+    category: history
+    text: "Which Roman emperor ordered the wall begun in AD 122 across northern England?"
+    options:
+      - { text: "Hadrian", correct: true }
+      - { text: "Trajan" }
+      - { text: "Claudius" }
+      - { text: "Antoninus Pius" }
+      - { text: "Septimius Severus" }
+      - { text: "Vespasian" }
+  - slot: 7
+    type: choice
+    category: science
+    text: "Which organ in the human body produces insulin?"
+    options:
+      - { text: "Pancreas", correct: true }
+      - { text: "Liver" }
+      - { text: "Kidney" }
+      - { text: "Spleen" }
+      - { text: "Gallbladder" }
+      - { text: "Thyroid" }
+  - slot: 8
+    type: choice
+    category: nature
+    text: "What is the collective noun for a group of crows?"
+    options:
+      - { text: "A murder", correct: true }
+      - { text: "A parliament" }
+      - { text: "A murmuration" }
+      - { text: "A charm" }
+      - { text: "An unkindness" }
+      - { text: "A colony" }

@@ -1,0 +1,69 @@
+import type { Band } from "../art/sprites";
+
+export interface BandInfo {
+  name: string;
+  points: number;
+  emoji: string;
+  range: string;
+}
+
+export const BAND_INFO: Record<Band, BandInfo> = {
+  hummingbird: { name: "Hummingbird", points: 1000, emoji: "🐦", range: "0.5 s or less · rare" },
+  jaguar: { name: "Jaguar", points: 700, emoji: "🐆", range: "0.5–1.2 s" },
+  toucan: { name: "Toucan", points: 450, emoji: "🦜", range: "1.2–2.5 s" },
+  tree_frog: { name: "Tree frog", points: 250, emoji: "🐸", range: "2.5–4.5 s" },
+  sloth: { name: "Sloth", points: 100, emoji: "🦥", range: "over 4.5 s" },
+};
+
+/** Typed answers get this much time off before banding (mirrors backend/app/scoring.py). */
+export const TYPING_ALLOWANCE_S = { number: 1.5, text: 2.5 } as const;
+
+export const MISSED_EMOJI = "❌";
+
+const numberFormat = new Intl.NumberFormat("en-GB");
+
+export function formatPoints(points: number): string {
+  return numberFormat.format(points);
+}
+
+/** "3.4 s" — one decimal place, rounded down so 1.99 s never shows as 2.0 s. */
+export function formatSeconds(ms: number): string {
+  const tenths = Math.floor(Math.max(0, ms) / 100);
+  return `${(tenths / 10).toFixed(1)} s`;
+}
+
+/** "14 h 32 m" or "8 m" until a time. */
+export function formatCountdown(untilMs: number, nowMs: number): string {
+  const minutes = Math.max(0, Math.ceil((untilMs - nowMs) / 60000));
+  const h = Math.floor(minutes / 60);
+  const m = minutes % 60;
+  return h > 0 ? `${h} h ${m} m` : `${m} m`;
+}
+
+const ordinalRules = new Intl.PluralRules("en-GB", { type: "ordinal" });
+const ORDINAL_SUFFIX: Record<string, string> = { one: "st", two: "nd", few: "rd", other: "th" };
+
+/** "1st", "2nd", "3rd", "11th", "22nd". */
+export function formatOrdinal(n: number): string {
+  return `${n}${ORDINAL_SUFFIX[ordinalRules.select(n)] ?? "th"}`;
+}
+
+/** Where a time sits on the results speed track, as a percentage (0 s to 5 s). */
+export const SPEED_TRACK_MAX_MS = 5000;
+export function speedTrackPercent(ms: number): number {
+  return Math.round((Math.min(Math.max(ms, 0), SPEED_TRACK_MAX_MS) / SPEED_TRACK_MAX_MS) * 1000) / 10;
+}
+
+const quizDateFormat = new Intl.DateTimeFormat("en-GB", {
+  weekday: "long",
+  day: "numeric",
+  month: "long",
+  timeZone: "UTC",
+});
+
+/** "Tuesday 17 November" for a quiz date like "2026-11-17". */
+export function formatQuizDate(isoDate: string): string {
+  const parsed = new Date(`${isoDate}T12:00:00Z`);
+  if (Number.isNaN(parsed.getTime())) return isoDate;
+  return quizDateFormat.format(parsed).replace(",", "");
+}

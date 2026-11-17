@@ -1,0 +1,80 @@
+date: 2026-11-17
+questions:
+  - slot: 1
+    type: choice
+    category: geography
+    text: "What is the capital of Kazakhstan?"
+    options:
+      - { text: "Astana", correct: true }
+      - { text: "Almaty" }
+      - { text: "Tashkent" }
+      - { text: "Bishkek" }
+      - { text: "Ashgabat" }
+      - { text: "Dushanbe" }
+  - slot: 2
+    type: choice
+    category: science
+    text: "Which element has the chemical symbol W?"
+    options:
+      - { text: "Tungsten", correct: true }
+      - { text: "Tin" }
+      - { text: "Titanium" }
+      - { text: "Vanadium" }
+      - { text: "Xenon" }
+      - { text: "Zinc" }
+  - slot: 3
+    type: number
+    category: history
+    text: "In what year was Magna Carta first sealed?"
+    answer: 1215
+    tolerance: 0
+  - slot: 4
+    type: choice
+    category: history
+    text: "Which monarch broke with Rome and founded the Church of England?"
+    options:
+      - { text: "Henry VIII", correct: true }
+      - { text: "Henry VII" }
+      - { text: "Edward VI" }
+      - { text: "Mary I" }
+      - { text: "Elizabeth I" }
+      - { text: "James I" }
+  - slot: 5
+    type: choice
+    category: art
+    text: "Who painted 'The Garden of Earthly Delights'?"
+    options:
+      - { text: "Hieronymus Bosch", correct: true }
+      - { text: "Pieter Bruegel the Elder" }
+      - { text: "Jan van Eyck" }
+      - { text: "Albrecht Dürer" }
+      - { text: "Matthias Grünewald" }
+      - { text: "Rogier van der Weyden" }
+  - slot: 6
+    type: text
+    category: space
+    text: "What is the largest moon of Saturn?"
+    answers:
+      - { canonical: "Titan" }
+  - slot: 7
+    type: choice
+    category: sport
+    text: "Which country won the first FIFA World Cup, in 1930?"
+    options:
+      - { text: "Uruguay", correct: true }
+      - { text: "Argentina" }
+      - { text: "Brazil" }
+      - { text: "Italy" }
+      - { text: "Hungary" }
+      - { text: "Czechoslovakia" }
+  - slot: 8
+    type: choice
+    category: nature
+    text: "What is the largest species of shark?"
+    options:
+      - { text: "Whale shark", correct: true }
+      - { text: "Great white shark" }
+      - { text: "Basking shark" }
+      - { text: "Tiger shark" }
+      - { text: "Hammerhead shark" }
+      - { text: "Bull shark" }

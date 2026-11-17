@@ -1,0 +1,868 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-17T23:00:00Z",
+  "title": "Design System: Hummingbird",
+  "extensions": {
+    "colorMeta": {
+      "night": {
+        "role": "neutral",
+        "displayName": "Canopy Night",
+        "canonical": "#06110d",
+        "tonalRamp": [
+          "#06110d",
+          "#0b1b16",
+          "#163828",
+          "#2a6243",
+          "#4a8a68",
+          "#7bb294",
+          "#b2d6c1",
+          "#e6f3ea"
+        ]
+      },
+      "sky1": {
+        "role": "neutral",
+        "displayName": "Dusk Sky 1",
+        "canonical": "#0a1913",
+        "tonalRamp": [
+          "#050d0a",
+          "#0a1913",
+          "#152e23",
+          "#25483a",
+          "#3f6a58",
+          "#6a9483",
+          "#a3c4b6",
+          "#e1eee8"
+        ]
+      },
+      "sky2": {
+        "role": "neutral",
+        "displayName": "Dusk Sky 2",
+        "canonical": "#0b1b16",
+        "tonalRamp": [
+          "#050e0b",
+          "#0b1b16",
+          "#163027",
+          "#264a3e",
+          "#3f6b5d",
+          "#6a9587",
+          "#a3c5ba",
+          "#e1efea"
+        ]
+      },
+      "sky3": {
+        "role": "neutral",
+        "displayName": "Dusk Sky 3",
+        "canonical": "#10261e",
+        "tonalRamp": [
+          "#071510",
+          "#10261e",
+          "#1d3b30",
+          "#2f5547",
+          "#497566",
+          "#739d8e",
+          "#a9c9bd",
+          "#e3f0eb"
+        ]
+      },
+      "sky4": {
+        "role": "neutral",
+        "displayName": "Dusk Sky 4",
+        "canonical": "#183427",
+        "tonalRamp": [
+          "#0b1d14",
+          "#183427",
+          "#264a3a",
+          "#386351",
+          "#538270",
+          "#7ca898",
+          "#afcfc3",
+          "#e5f1ec"
+        ]
+      },
+      "mid0": {
+        "role": "neutral",
+        "displayName": "Undergrowth 0",
+        "canonical": "#163828",
+        "tonalRamp": [
+          "#0a1f15",
+          "#163828",
+          "#22503a",
+          "#356a50",
+          "#518a6d",
+          "#7aae93",
+          "#afd2bf",
+          "#e5f3eb"
+        ]
+      },
+      "mid1": {
+        "role": "neutral",
+        "displayName": "Undergrowth 1",
+        "canonical": "#1d4a33",
+        "tonalRamp": [
+          "#0d2618",
+          "#1d4a33",
+          "#2a6243",
+          "#3d7c58",
+          "#599a75",
+          "#82b99a",
+          "#b5d9c4",
+          "#e7f5ec"
+        ]
+      },
+      "mid2": {
+        "role": "neutral",
+        "displayName": "Undergrowth 2",
+        "canonical": "#2a6243",
+        "tonalRamp": [
+          "#0f2a1b",
+          "#1d4a33",
+          "#2a6243",
+          "#3c7f52",
+          "#5a9c74",
+          "#83bb9a",
+          "#b6dac5",
+          "#e7f5ed"
+        ]
+      },
+      "near0": {
+        "role": "neutral",
+        "displayName": "Foreground Silhouette",
+        "canonical": "#08130e",
+        "tonalRamp": [
+          "#08130e",
+          "#0f2219",
+          "#1a3528",
+          "#2b4d3d",
+          "#456d5b",
+          "#6f9684",
+          "#a8c5b8",
+          "#e2eee8"
+        ]
+      },
+      "near1": {
+        "role": "neutral",
+        "displayName": "Foreground Silhouette 2",
+        "canonical": "#0f2219",
+        "tonalRamp": [
+          "#08130e",
+          "#0f2219",
+          "#1a3528",
+          "#2b4d3d",
+          "#456d5b",
+          "#6f9684",
+          "#a8c5b8",
+          "#e2eee8"
+        ]
+      },
+      "fill": {
+        "role": "neutral",
+        "displayName": "Tone Fill",
+        "canonical": "rgb(16 38 30 / 0.72)",
+        "tonalRamp": [
+          "#071510",
+          "#10261e",
+          "#1d3b30",
+          "#2f5547",
+          "#497566",
+          "#739d8e",
+          "#a9c9bd",
+          "#e3f0eb"
+        ]
+      },
+      "fill-hover": {
+        "role": "neutral",
+        "displayName": "Tone Fill Hover",
+        "canonical": "rgb(29 74 51 / 0.85)",
+        "tonalRamp": [
+          "#0d2618",
+          "#1d4a33",
+          "#2a6243",
+          "#3d7c58",
+          "#599a75",
+          "#82b99a",
+          "#b5d9c4",
+          "#e7f5ec"
+        ]
+      },
+      "hairline": {
+        "role": "neutral",
+        "displayName": "Hairline",
+        "canonical": "rgb(29 74 51 / 0.45)",
+        "tonalRamp": [
+          "#0d2618",
+          "#1d4a33",
+          "#2a6243",
+          "#3d7c58",
+          "#599a75",
+          "#82b99a",
+          "#b5d9c4",
+          "#e7f5ec"
+        ]
+      },
+      "gold": {
+        "role": "primary",
+        "displayName": "Firefly Gold",
+        "canonical": "#e8b04a",
+        "tonalRamp": [
+          "#3a2a0e",
+          "#5e4518",
+          "#8c6626",
+          "#bb8a36",
+          "#e8b04a",
+          "#f0c878",
+          "#f6dc96",
+          "#fcf3dc"
+        ]
+      },
+      "gold-hi": {
+        "role": "primary",
+        "displayName": "Lantern Cream",
+        "canonical": "#f6dc96",
+        "tonalRamp": [
+          "#3a2a0e",
+          "#5e4518",
+          "#8c6626",
+          "#bb8a36",
+          "#e8b04a",
+          "#f0c878",
+          "#f6dc96",
+          "#fcf3dc"
+        ]
+      },
+      "jade": {
+        "role": "secondary",
+        "displayName": "Jade Glow",
+        "canonical": "#3fd0b0",
+        "tonalRamp": [
+          "#0b3229",
+          "#145244",
+          "#1f7562",
+          "#2b9c83",
+          "#3fd0b0",
+          "#76dfc7",
+          "#ade9dc",
+          "#e2f8f2"
+        ]
+      },
+      "ivory": {
+        "role": "neutral",
+        "displayName": "Moon Ivory",
+        "canonical": "#eef0e2",
+        "tonalRamp": [
+          "#2a2c22",
+          "#4a4d3e",
+          "#6d705f",
+          "#939684",
+          "#b9bcaa",
+          "#d7d9c8",
+          "#eef0e2",
+          "#fafbf5"
+        ]
+      },
+      "sage": {
+        "role": "neutral",
+        "displayName": "Sage",
+        "canonical": "#9fb5a6",
+        "tonalRamp": [
+          "#1e2a22",
+          "#34463a",
+          "#4f6556",
+          "#6f8777",
+          "#9fb5a6",
+          "#bccbc0",
+          "#d8e2db",
+          "#f2f6f3"
+        ]
+      },
+      "ruby": {
+        "role": "tertiary",
+        "displayName": "Throat Ruby",
+        "canonical": "#b8324a",
+        "tonalRamp": [
+          "#2e0a12",
+          "#5a2430",
+          "#86243a",
+          "#b8324a",
+          "#d45a70",
+          "#f08a9b",
+          "#f7bcc6",
+          "#fde8ec"
+        ]
+      },
+      "ruby-text": {
+        "role": "tertiary",
+        "displayName": "Soft Ruby",
+        "canonical": "#f08a9b",
+        "tonalRamp": [
+          "#2e0a12",
+          "#5a2430",
+          "#86243a",
+          "#b8324a",
+          "#d45a70",
+          "#f08a9b",
+          "#f7bcc6",
+          "#fde8ec"
+        ]
+      },
+      "miss-dim": {
+        "role": "tertiary",
+        "displayName": "Miss Dim",
+        "canonical": "#5a2430",
+        "tonalRamp": [
+          "#2e0a12",
+          "#5a2430",
+          "#86243a",
+          "#b8324a",
+          "#d45a70",
+          "#f08a9b",
+          "#f7bcc6",
+          "#fde8ec"
+        ]
+      },
+      "placeholder": {
+        "role": "neutral",
+        "displayName": "Placeholder Moss",
+        "canonical": "#7f978a",
+        "tonalRamp": [
+          "#1b2620",
+          "#304038",
+          "#495d52",
+          "#647a6e",
+          "#7f978a",
+          "#a3b6ab",
+          "#c9d6ce",
+          "#eef3f0"
+        ]
+      },
+      "band-hummingbird": {
+        "role": "band",
+        "displayName": "Hummingbird",
+        "canonical": "#3fd0b0",
+        "tonalRamp": [
+          "#0b3229",
+          "#145244",
+          "#1f7562",
+          "#2b9c83",
+          "#3fd0b0",
+          "#76dfc7",
+          "#ade9dc",
+          "#e2f8f2"
+        ]
+      },
+      "band-jaguar": {
+        "role": "band",
+        "displayName": "Jaguar",
+        "canonical": "#e8b04a",
+        "tonalRamp": [
+          "#3a2a0e",
+          "#5e4518",
+          "#8c6626",
+          "#bb8a36",
+          "#e8b04a",
+          "#f0c878",
+          "#f6dc96",
+          "#fcf3dc"
+        ]
+      },
+      "band-toucan": {
+        "role": "band",
+        "displayName": "Toucan",
+        "canonical": "#e0894a",
+        "tonalRamp": [
+          "#381e0c",
+          "#5c3216",
+          "#874a22",
+          "#b56834",
+          "#e0894a",
+          "#eaa877",
+          "#f3cbad",
+          "#fcefe5"
+        ]
+      },
+      "band-tree-frog": {
+        "role": "band",
+        "displayName": "Tree frog",
+        "canonical": "#7cc46a",
+        "tonalRamp": [
+          "#1a3214",
+          "#2b5022",
+          "#3f7232",
+          "#5a9a4b",
+          "#7cc46a",
+          "#a0d692",
+          "#c6e7bd",
+          "#edf8ea"
+        ]
+      },
+      "band-sloth": {
+        "role": "band",
+        "displayName": "Sloth",
+        "canonical": "#c9b089",
+        "tonalRamp": [
+          "#2f281c",
+          "#4d4230",
+          "#6f6047",
+          "#998563",
+          "#c9b089",
+          "#d9c6a8",
+          "#e8dcc8",
+          "#f8f3eb"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "hero": {
+        "displayName": "Hero",
+        "purpose": "The home headline, set low in the forest over the upward scrim."
+      },
+      "reveal-time": {
+        "displayName": "Reveal time",
+        "purpose": "The measured time in the reveal, counting up from 0. The largest type during play."
+      },
+      "reveal-band": {
+        "displayName": "Reveal band",
+        "purpose": "The speed animal's name in its band colour, uppercase Silkscreen with a soft glow."
+      },
+      "display": {
+        "displayName": "Display",
+        "purpose": "The results score in gold; the standing line, big average time and stat values sit beneath it."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Question text, centred; max 26ch, balanced wrapping."
+      },
+      "answer": {
+        "displayName": "Answer",
+        "purpose": "Answer tiles, result questions and ladder names, at weight 500 so C never reads as O."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Ledes, result details, notes and fine print."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Uppercase letterspaced Silkscreen for functional labels; buttons, section titles, the date and the wordmark use the same face larger."
+      }
+    },
+    "shadows": [
+      {
+        "name": "scene-text",
+        "value": "0 2px 0 rgb(0 0 0 / 0.55), 0 0 22px rgb(0 0 0 / 0.75)",
+        "purpose": "Text shadow for the reveal time set directly on the scene."
+      },
+      {
+        "name": "scene-text-drop",
+        "value": "0 2px 0 rgb(0 0 0 / 0.55)",
+        "purpose": "Reveal detail and miss label on the scene."
+      },
+      {
+        "name": "hero-text",
+        "value": "0 3px 0 rgb(0 0 0 / 0.5), 0 0 30px rgb(0 0 0 / 0.7)",
+        "purpose": "The home headline in the forest."
+      },
+      {
+        "name": "band-glow",
+        "value": "0 2px 0 rgb(0 0 0 / 0.55), 0 0 24px color-mix(in srgb, var(--band-colour) 45%, transparent)",
+        "purpose": "Text glow on the reveal band name."
+      },
+      {
+        "name": "reveal-scrim",
+        "value": "linear-gradient(180deg, rgb(6 17 13 / 0.92) 0, rgb(6 17 13 / 0.7) 60%, rgb(6 17 13 / 0) 100%)",
+        "purpose": "Stage overlay behind a reveal; darkens the top of the forest."
+      },
+      {
+        "name": "hero-scrim",
+        "value": "linear-gradient(0deg, rgb(6 17 13 / 0.85) 0, rgb(6 17 13 / 0.55) 55%, rgb(6 17 13 / 0) 100%)",
+        "purpose": "Stage overlay behind the home headline; darkens the bottom of the forest."
+      },
+      {
+        "name": "pill-bevel-halo",
+        "value": "inset 0 -3px 0 rgb(0 0 0 / 0.2), 0 8px 24px rgb(232 176 74 / 0.18)",
+        "purpose": "Primary gold pill only."
+      },
+      {
+        "name": "ladder-rare-glow",
+        "value": "text-shadow 0 0 14px rgb(63 208 176 / 0.55); sprite filter drop-shadow(0 0 10px rgb(63 208 176 / 0.45))",
+        "purpose": "The Hummingbird rung of the speed ladder."
+      },
+      {
+        "name": "stat-rare-glow",
+        "value": "0 0 14px rgb(63 208 176 / 0.45)",
+        "purpose": "The Hummingbirds stat on results when above 0."
+      },
+      {
+        "name": "marker-ring",
+        "value": "border: 3px solid #06110d",
+        "purpose": "Cuts the speed-track markers out of the band strip."
+      },
+      {
+        "name": "rare-line-glow",
+        "value": "0 0 16px rgb(232 176 74 / 0.45)",
+        "purpose": "The rare line under the scene."
+      },
+      {
+        "name": "tile-sheen",
+        "value": "inset 0 1px 0 rgb(255 255 255 / 0.04)",
+        "purpose": "Faint top highlight on resting tiles and inputs."
+      },
+      {
+        "name": "state-ring-correct",
+        "value": "inset 0 0 0 2px rgb(63 208 176 / 0.55)",
+        "purpose": "Correct answer tile."
+      },
+      {
+        "name": "state-ring-wrong",
+        "value": "inset 0 0 0 2px rgb(184 50 74 / 0.5)",
+        "purpose": "Wrong answer tile."
+      },
+      {
+        "name": "state-ring-go",
+        "value": "inset 0 0 0 2px #e8b04a",
+        "purpose": "Typed input during the GO beat."
+      },
+      {
+        "name": "go-pip-glow",
+        "value": "0 0 10px rgb(232 176 74 / 0.5)",
+        "purpose": "Read pips at the GO moment."
+      },
+      {
+        "name": "rare-time-glow",
+        "value": "0 2px 0 rgb(0 0 0 / 0.55), 0 0 28px rgb(232 176 74 / 0.55)",
+        "purpose": "Rare Catch reveal time."
+      },
+      {
+        "name": "rare-band-glow",
+        "value": "0 2px 0 rgb(0 0 0 / 0.55), 0 0 30px rgb(63 208 176 / 0.7)",
+        "purpose": "Rare Catch band name."
+      },
+      {
+        "name": "hummingbird-step-glow",
+        "value": "0 0 8px rgb(63 208 176 / 0.6)",
+        "purpose": "A Hummingbird segment in the progress strip."
+      },
+      {
+        "name": "stage-mask",
+        "value": "linear-gradient(180deg, transparent 0, #000 14%, #000 76%, transparent 100%)",
+        "purpose": "Fades the full-width forest band into the page at top and bottom, at every size."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-out",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Default easing for stage height, reveal fade-in, tile opening and the GO brighten."
+      },
+      {
+        "name": "state",
+        "value": "0.15s; tiles lift 1px on hover, press 1px on active",
+        "purpose": "Hover, fill and press transitions on tiles and buttons."
+      },
+      {
+        "name": "stage-height",
+        "value": "0.4s ease-out",
+        "purpose": "The forest band resizing between home, play, typing and results."
+      },
+      {
+        "name": "ready-lands",
+        "value": "quiet wash → gold when the reveal lands",
+        "purpose": "The next-question button never outshouts the reveal."
+      },
+      {
+        "name": "count-up",
+        "value": "700ms, quadratic ease-out",
+        "purpose": "Reveal time counting from 0 to the measured time."
+      },
+      {
+        "name": "reveal-later",
+        "value": "0.4s ease-out, rise 6px",
+        "purpose": "Band name and points landing after the count-up."
+      },
+      {
+        "name": "read-pips",
+        "value": "three steps at readMs × i / 3",
+        "purpose": "Pips light in turn across the read beat."
+      },
+      {
+        "name": "go-cue",
+        "value": "0.5s ease-out; label from 1.35× and gold-hi, pips from 1.6× and gold-hi",
+        "purpose": "The read cue flipping to \"Answer now!\"."
+      },
+      {
+        "name": "go-brighten",
+        "value": "filter brightness(1.35) saturate(1.15); in 0.12s, out 0.5s ease-out; held 0.9s",
+        "purpose": "The whole forest brightens at GO instead of a frame flash."
+      },
+      {
+        "name": "tile-open",
+        "value": "0.7s ease-out, rise 10px from 40% opacity, gold wash 32% then 22%, 40ms stagger",
+        "purpose": "Answer tiles opening together at GO."
+      },
+      {
+        "name": "rare-flash",
+        "value": "0.9s steps(1, end) ×2: gold-hi → jade → gold",
+        "purpose": "The band name on a Rare Catch reveal flashes in hard steps, no easing."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "transitions 0.01ms; no count-up; still animals; no cue or pip flare; no tile rise; no rare flash, trail, burst or vibration",
+        "purpose": "prefers-reduced-motion behaviour."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "narrow-phone",
+        "value": "max-width: 440px"
+      },
+      {
+        "name": "tablet",
+        "value": "min-width: 640px"
+      },
+      {
+        "name": "phone",
+        "value": "max-width: 899px"
+      },
+      {
+        "name": "desktop",
+        "value": "min-width: 900px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Centred gold pill for the one action on screen: start, ready, lock in, share. Full width up to 420px as a block.",
+      "html": "<button class=\"ds-button\">Start today's quiz</button>",
+      "css": ".ds-button { display: inline-flex; align-items: center; justify-content: center; min-height: 56px; padding: 0 32px; border: 0; border-radius: 999px; font-family: Silkscreen, monospace; font-size: 0.9375rem; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; width: 100%; max-width: 420px; background: var(--gold, #e8b04a); color: var(--near0, #08130e); box-shadow: inset 0 -3px 0 rgb(0 0 0 / 0.2), 0 8px 24px rgb(232 176 74 / 0.18); transition: background-color 0.15s, transform 0.15s cubic-bezier(0.16, 1, 0.3, 1); } .ds-button:hover { background: var(--gold-hi, #f6dc96); } .ds-button:active { transform: translateY(1px); } .ds-button:focus-visible { outline: 2px solid var(--jade, #3fd0b0); outline-offset: 3px; } .ds-button:disabled { background: var(--mid0, #163828); color: var(--sage, #9fb5a6); box-shadow: none; cursor: progress; }"
+    },
+    {
+      "name": "Quiet Button",
+      "kind": "button",
+      "refersTo": "button-quiet",
+      "description": "Soft gold-wash pill. The next-question button starts quiet and turns gold once the reveal lands.",
+      "html": "<button class=\"ds-button-quiet\">Ready for question 2</button>",
+      "css": ".ds-button-quiet { display: inline-flex; align-items: center; justify-content: center; min-height: 56px; padding: 0 32px; border: 0; border-radius: 999px; font-family: Silkscreen, monospace; font-size: 0.9375rem; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; width: 100%; max-width: 420px; background: rgb(232 176 74 / 0.12); color: var(--gold-hi, #f6dc96); transition: background-color 0.15s; } .ds-button-quiet:hover { background: rgb(232 176 74 / 0.2); } .ds-button-quiet:focus-visible { outline: 2px solid var(--jade, #3fd0b0); outline-offset: 3px; }"
+    },
+    {
+      "name": "Answer Tiles",
+      "kind": "custom",
+      "refersTo": "answer-tile",
+      "description": "Six soft tone fills, 2×3 on phones and 3×2 from 640px, weight 500, no outlines; sealed tiles are faint fills; state is a tint plus a 2px inset ring. Key badges 1–6 on fine pointers.",
+      "html": "<div class=\"ds-choices\"><button class=\"ds-choice\"><span class=\"ds-key\">1</span>Copper</button><button class=\"ds-choice ds-choice--correct\"><span class=\"ds-key\">2</span>Cobalt</button><button class=\"ds-choice\"><span class=\"ds-key\">3</span>Chromium</button><button class=\"ds-choice ds-choice--wrong\"><span class=\"ds-key\">4</span>Cadmium</button><button class=\"ds-choice ds-choice--locked\" disabled></button><button class=\"ds-choice ds-choice--locked\" disabled></button></div>",
+      "css": ".ds-choices { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; } @media (min-width: 640px) { .ds-choices { grid-template-columns: repeat(3, minmax(0, 1fr)); } .ds-choice { min-height: 76px; font-size: 1.125rem; } } .ds-choice { position: relative; min-height: 64px; padding: 8px 44px; display: flex; align-items: center; justify-content: center; text-align: center; font-family: 'Pixelify Sans', sans-serif; font-weight: 500; font-size: 1.0625rem; line-height: 1.2; color: var(--ivory, #eef0e2); background: rgb(16 38 30 / 0.72); border: 0; border-radius: 14px; box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.04); cursor: pointer; transition: background-color 0.15s, transform 0.15s cubic-bezier(0.16, 1, 0.3, 1); } .ds-choice:hover:not(:disabled) { background: rgb(29 74 51 / 0.85); transform: translateY(-1px); } .ds-choice:active:not(:disabled) { transform: translateY(1px); } .ds-choice:focus-visible { outline: 2px solid var(--jade, #3fd0b0); outline-offset: 3px; } .ds-key { position: absolute; top: 50%; left: 12px; translate: 0 -50%; width: 22px; height: 22px; border-radius: 999px; background: rgb(6 17 13 / 0.6); line-height: 22px; text-align: center; font-family: Silkscreen, monospace; font-size: 0.75rem; color: var(--sage, #9fb5a6); } .ds-choice--locked { color: transparent; background: rgb(16 38 30 / 0.3); box-shadow: none; cursor: default; } .ds-choice--correct { background: rgb(63 208 176 / 0.2); box-shadow: inset 0 0 0 2px rgb(63 208 176 / 0.55); } .ds-choice--wrong { color: var(--ruby-text, #f08a9b); background: rgb(184 50 74 / 0.18); box-shadow: inset 0 0 0 2px rgb(184 50 74 / 0.5); }"
+    },
+    {
+      "name": "Typed Answer Input",
+      "kind": "input",
+      "refersTo": "typed-input",
+      "description": "Rounded tone fill in a centred 520px row, with the Lock in pill beside it.",
+      "html": "<form class=\"ds-typed\"><input class=\"ds-input\" placeholder=\"Type your answer\"><button class=\"ds-lock\" type=\"button\">Lock in</button></form>",
+      "css": ".ds-typed { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px; max-width: 520px; margin-inline: auto; } .ds-input { width: 100%; min-height: 56px; padding: 0 16px; background: rgb(16 38 30 / 0.72); border: 0; border-radius: 14px; box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.04); color: var(--ivory, #eef0e2); caret-color: var(--gold, #e8b04a); font-family: 'Pixelify Sans', sans-serif; font-size: 1.125rem; font-weight: 500; } .ds-input::placeholder { color: var(--placeholder, #7f978a); } .ds-input:focus-visible { outline: 2px solid var(--jade, #3fd0b0); outline-offset: 3px; } .ds-lock { display: inline-flex; align-items: center; justify-content: center; min-height: 56px; padding: 0 32px; border: 0; border-radius: 999px; font-family: Silkscreen, monospace; font-size: 0.9375rem; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; background: var(--gold, #e8b04a); color: var(--near0, #08130e); } .ds-lock:hover { background: var(--gold-hi, #f6dc96); } .ds-lock:focus-visible { outline: 2px solid var(--jade, #3fd0b0); outline-offset: 3px; }"
+    },
+    {
+      "name": "Top Bar",
+      "kind": "nav",
+      "refersTo": "header-bar",
+      "description": "Transparent bar floating on the night: Hummingbird wordmark, quiz number, running score in gold (hidden on home).",
+      "html": "<header class=\"ds-bar\"><span class=\"ds-brand\"><span class=\"ds-wordmark\">Hummingbird</span><span class=\"ds-quiz-no\">#1</span></span><span class=\"ds-score\"><span class=\"ds-score-label\">Score</span><span class=\"ds-score-value\">1,000</span></span></header>",
+      "css": ".ds-bar { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 12px 16px 8px; background: transparent; color: var(--ivory, #eef0e2); } .ds-brand { display: flex; align-items: center; gap: 8px; min-width: 0; } .ds-wordmark { font-family: Silkscreen, monospace; font-size: 1rem; letter-spacing: 0.12em; text-transform: uppercase; } .ds-quiz-no, .ds-score-label { font-family: Silkscreen, monospace; font-size: 0.75rem; letter-spacing: 0.08em; color: var(--sage, #9fb5a6); } .ds-score-label { text-transform: uppercase; } .ds-score { display: flex; align-items: baseline; gap: 8px; } .ds-score-value { font-family: 'RQ Digits', Silkscreen, 'Pixelify Sans', sans-serif; font-weight: 700; font-size: 1.375rem; color: var(--gold, #e8b04a); font-variant-numeric: tabular-nums; } @media (max-width: 440px) { .ds-score-label { display: none; } .ds-wordmark { font-size: 0.9375rem; letter-spacing: 0.08em; } }"
+    },
+    {
+      "name": "Progress Strip",
+      "kind": "custom",
+      "refersTo": "progress-step",
+      "description": "Eight 4px pills: upcoming, current (ivory), answered (band colour; a Hummingbird glows), missed (miss-dim). Hidden on home.",
+      "html": "<div class=\"ds-progress\"><i class=\"ds-hummingbird\"></i><i class=\"ds-jaguar\"></i><i class=\"ds-missed\"></i><i class=\"ds-current\"></i><i></i><i></i><i></i><i></i></div>",
+      "css": ".ds-progress { display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); gap: 6px; padding: 0 16px 8px; } .ds-progress i { display: block; height: 4px; border-radius: 999px; background: var(--mid0, #163828); } .ds-progress i.ds-current { background: var(--ivory, #eef0e2); } .ds-progress i.ds-missed { background: var(--miss-dim, #5a2430); } .ds-progress i.ds-jaguar { background: var(--band-jaguar, #e8b04a); } .ds-progress i.ds-hummingbird { background: var(--band-hummingbird, #3fd0b0); box-shadow: 0 0 8px rgb(63 208 176 / 0.6); }"
+    },
+    {
+      "name": "Read Cue",
+      "kind": "custom",
+      "refersTo": "read-pip",
+      "description": "The read-the-question beat, centred: a label and three round pips that light gold in turn; at GO it flips to \"Answer now!\". Never a countdown.",
+      "html": "<div class=\"ds-read-cue\"><span class=\"ds-label\">Read the question</span><span class=\"ds-pips\"><i class=\"ds-on\"></i><i class=\"ds-on\"></i><i></i></span></div><div class=\"ds-read-cue\"><span class=\"ds-label ds-go\">Answer now!</span><span class=\"ds-pips\"><i class=\"ds-on ds-flare\"></i><i class=\"ds-on ds-flare\"></i><i class=\"ds-on ds-flare\"></i></span></div>",
+      "css": ".ds-read-cue { display: flex; align-items: center; justify-content: center; gap: 12px; min-height: 28px; margin-bottom: 12px; } .ds-label { font-family: Silkscreen, monospace; font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--sage, #9fb5a6); } .ds-label.ds-go { color: var(--gold, #e8b04a); font-size: 1.125rem; letter-spacing: 0.1em; } .ds-pips { display: flex; gap: 6px; } .ds-pips i { width: 12px; height: 12px; border-radius: 999px; background: var(--mid0, #163828); } .ds-pips i.ds-on { background: var(--gold, #e8b04a); } .ds-pips i.ds-flare { box-shadow: 0 0 10px rgb(232 176 74 / 0.5); }"
+    },
+    {
+      "name": "Home Hero",
+      "kind": "custom",
+      "refersTo": "button-primary",
+      "description": "The forest as hero: headline low in the scene over an upward scrim, quiz number and date in gold-hi Silkscreen, then the lede, the CTA pill and a note.",
+      "html": "<div class=\"ds-hero-scene\"><div class=\"ds-hero\"><h1 class=\"ds-hero-title\">How fast is your brain?</h1><p class=\"ds-hero-date\">Quiz #42 · Tuesday 17 November</p></div></div><div class=\"ds-hero-below\"><p class=\"ds-hero-lede\">8 questions. The faster you answer, the faster your animal, and the more points you score.</p><button class=\"ds-cta\">Start today's quiz</button><p class=\"ds-cta-note\">New questions every day at midnight UK time.</p></div>",
+      "css": ".ds-hero-scene { min-height: 280px; display: flex; align-items: flex-end; justify-content: center; padding: 24px 16px 32px; text-align: center; background: linear-gradient(0deg, rgb(6 17 13 / 0.85) 0, rgb(6 17 13 / 0.55) 55%, rgb(6 17 13 / 0) 100%), linear-gradient(180deg, #0a1913, #183427 45%, #8c7444 70%, #163828); } .ds-hero-title { margin: 0; font-family: 'RQ Digits', Silkscreen, 'Pixelify Sans', sans-serif; font-size: clamp(2.25rem, 9vw, 4.25rem); font-weight: 700; line-height: 1.02; letter-spacing: -0.01em; color: var(--ivory, #eef0e2); text-wrap: balance; text-shadow: 0 3px 0 rgb(0 0 0 / 0.5), 0 0 30px rgb(0 0 0 / 0.7); } .ds-hero-date { margin: 12px 0 0; font-family: Silkscreen, monospace; font-size: 0.8125rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold-hi, #f6dc96); text-shadow: 0 2px 0 rgb(0 0 0 / 0.5); } .ds-hero-below { display: grid; justify-items: center; gap: 16px; padding: 16px; text-align: center; font-family: 'Pixelify Sans', sans-serif; } .ds-hero-lede { margin: 0; max-width: 44ch; color: var(--sage, #9fb5a6); font-size: 1.0625rem; } .ds-cta { display: inline-flex; align-items: center; justify-content: center; min-height: 56px; padding: 0 32px; border: 0; border-radius: 999px; font-family: Silkscreen, monospace; font-size: 0.9375rem; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; width: 100%; max-width: 420px; background: var(--gold, #e8b04a); color: var(--near0, #08130e); box-shadow: inset 0 -3px 0 rgb(0 0 0 / 0.2), 0 8px 24px rgb(232 176 74 / 0.18); } .ds-cta:hover { background: var(--gold-hi, #f6dc96); } .ds-cta:focus-visible { outline: 2px solid var(--jade, #3fd0b0); outline-offset: 3px; } .ds-cta-note { margin: -8px 0 0; color: var(--sage, #9fb5a6); font-size: 0.875rem; }"
+    },
+    {
+      "name": "Speed Ladder",
+      "kind": "custom",
+      "refersTo": "ladder-step",
+      "description": "The five animals fastest first: rows on phones, five centred columns from 640px; names in band colour at weight 500; the Hummingbird rung glows jade with no box.",
+      "html": "<section class=\"ds-ladder-wrap\"><h2 class=\"ds-section-title\">The speed ladder</h2><ol class=\"ds-ladder\"><li class=\"ds-rung ds-rung--rare\" style=\"--band-colour:#3fd0b0\"><span class=\"ds-sprite\"></span><span class=\"ds-rung-text\"><span class=\"ds-rung-name\">Hummingbird</span><span class=\"ds-rung-range\">0.5 s or less · rare</span></span><span class=\"ds-rung-points\">1,000</span></li><li class=\"ds-rung\" style=\"--band-colour:#e8b04a\"><span class=\"ds-sprite\"></span><span class=\"ds-rung-text\"><span class=\"ds-rung-name\">Jaguar</span><span class=\"ds-rung-range\">0.5–1.2 s</span></span><span class=\"ds-rung-points\">700</span></li><li class=\"ds-rung\" style=\"--band-colour:#e0894a\"><span class=\"ds-sprite\"></span><span class=\"ds-rung-text\"><span class=\"ds-rung-name\">Toucan</span><span class=\"ds-rung-range\">1.2–2.5 s</span></span><span class=\"ds-rung-points\">450</span></li><li class=\"ds-rung\" style=\"--band-colour:#7cc46a\"><span class=\"ds-sprite\"></span><span class=\"ds-rung-text\"><span class=\"ds-rung-name\">Tree frog</span><span class=\"ds-rung-range\">2.5–4.5 s</span></span><span class=\"ds-rung-points\">250</span></li><li class=\"ds-rung\" style=\"--band-colour:#c9b089\"><span class=\"ds-sprite\"></span><span class=\"ds-rung-text\"><span class=\"ds-rung-name\">Sloth</span><span class=\"ds-rung-range\">over 4.5 s</span></span><span class=\"ds-rung-points\">100</span></li></ol></section>",
+      "css": ".ds-ladder-wrap { display: grid; gap: 16px; text-align: center; font-family: 'Pixelify Sans', sans-serif; color: var(--ivory, #eef0e2); } .ds-section-title { margin: 0; font-family: Silkscreen, monospace; font-size: 0.875rem; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold-hi, #f6dc96); } .ds-ladder { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; text-align: left; } .ds-rung { display: grid; grid-template-columns: 104px minmax(0, 1fr) auto; align-items: center; gap: 12px; padding: 8px 12px; border-radius: 14px; } .ds-sprite { justify-self: center; width: 32px; height: 32px; background: var(--band-colour); } .ds-rung--rare .ds-sprite { filter: drop-shadow(0 0 10px rgb(63 208 176 / 0.45)); } .ds-rung-text { display: grid; } .ds-rung-name { font-weight: 500; color: var(--band-colour); } .ds-rung--rare .ds-rung-name { text-shadow: 0 0 14px rgb(63 208 176 / 0.55); } .ds-rung-range { color: var(--sage, #9fb5a6); font-size: 0.875rem; } .ds-rung-points { font-family: 'RQ Digits', Silkscreen, 'Pixelify Sans', sans-serif; font-weight: 700; color: var(--gold, #e8b04a); font-variant-numeric: tabular-nums; } @media (min-width: 640px) { .ds-ladder { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; text-align: center; } .ds-rung { grid-template-columns: 1fr; justify-items: center; align-content: start; gap: 8px; padding: 16px 8px; } }"
+    },
+    {
+      "name": "How to Play",
+      "kind": "custom",
+      "refersTo": "howto-step",
+      "description": "Eight numbered steps at the bottom of home: gold Silkscreen numbers, a 500-weight title, a sage sentence; left-aligned in a centred 560px column, no cells.",
+      "html": "<section class=\"ds-howto-wrap\"><h2 class=\"ds-section-title\">How to play</h2><ol class=\"ds-howto\"><li class=\"ds-howto-step\"><strong>Start when you're ready</strong><span>Nothing is timed until you press the button, and you choose when to begin every question.</span></li><li class=\"ds-howto-step\"><strong>Read the question</strong><span>You get three seconds to read it. The answers stay sealed while the three lights fill.</span></li><li class=\"ds-howto-step\"><strong>Answer now!</strong><span>The six answers open together. Tap one, or type a number or a word when asked. You only get one go.</span></li></ol></section>",
+      "css": ".ds-howto-wrap { display: grid; gap: 16px; text-align: center; font-family: 'Pixelify Sans', sans-serif; color: var(--ivory, #eef0e2); } .ds-section-title { margin: 0; font-family: Silkscreen, monospace; font-size: 0.875rem; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold-hi, #f6dc96); } .ds-howto { list-style: none; margin: 0 auto; padding: 0; display: grid; gap: 16px; max-width: 560px; text-align: left; counter-reset: ds-howto; } .ds-howto-step { display: grid; grid-template-columns: 32px minmax(0, 1fr); column-gap: 12px; counter-increment: ds-howto; } .ds-howto-step::before { content: counter(ds-howto); grid-row: span 2; font-family: Silkscreen, monospace; font-size: 1rem; line-height: 1.5; color: var(--gold, #e8b04a); } .ds-howto-step strong { font-weight: 500; } .ds-howto-step span { color: var(--sage, #9fb5a6); }"
+    },
+    {
+      "name": "Reveal",
+      "kind": "custom",
+      "refersTo": "reveal-time",
+      "description": "The one loud moment, with no card: time, animal name and points written on the forest over the top scrim.",
+      "html": "<div class=\"ds-reveal-scene\" style=\"--band-colour:#e8b04a\"><div class=\"ds-reveal\"><p class=\"ds-reveal-time\">1.4 s</p><p class=\"ds-reveal-band\">Jaguar!</p><p class=\"ds-reveal-detail\">Correct · <strong>+700</strong> points</p></div></div>",
+      "css": ".ds-reveal-scene { padding: 32px 16px 56px; background: linear-gradient(180deg, rgb(6 17 13 / 0.92) 0, rgb(6 17 13 / 0.7) 60%, rgb(6 17 13 / 0) 100%), linear-gradient(180deg, #183427, #2a4430 70%, #8c7444); display: flex; justify-content: center; text-align: center; } .ds-reveal { max-width: 34rem; } .ds-reveal p { margin: 0; } .ds-reveal-time { font-family: 'RQ Digits', Silkscreen, 'Pixelify Sans', sans-serif; font-weight: 700; font-size: clamp(3.5rem, 19vw, 6rem); line-height: 0.95; letter-spacing: -0.02em; color: var(--ivory, #eef0e2); font-variant-numeric: tabular-nums; text-shadow: 0 2px 0 rgb(0 0 0 / 0.55), 0 0 22px rgb(0 0 0 / 0.75); } .ds-reveal-band { margin-top: 12px; font-family: Silkscreen, monospace; font-size: clamp(1.5rem, 7vw, 2.25rem); line-height: 1.05; letter-spacing: 0.06em; text-transform: uppercase; color: var(--band-colour, #e8b04a); text-shadow: 0 2px 0 rgb(0 0 0 / 0.55), 0 0 24px color-mix(in srgb, var(--band-colour, #e8b04a) 45%, transparent); } .ds-reveal-detail { margin-top: 8px; color: var(--sage, #9fb5a6); font-family: 'Pixelify Sans', sans-serif; font-size: 1.0625rem; text-shadow: 0 2px 0 rgb(0 0 0 / 0.55); } .ds-reveal-detail strong { color: var(--ivory, #eef0e2); font-weight: 600; }"
+    },
+    {
+      "name": "Rare Catch Reveal",
+      "kind": "custom",
+      "refersTo": "reveal-time",
+      "description": "The Hummingbird reveal (0.5 s or less): gold-hi time with a gold glow and a jade-glowing band name that flashes in hard steps; the rare line sits under the scene, above the ready button.",
+      "html": "<div class=\"ds-rare-scene\"><div class=\"ds-rare\"><p class=\"ds-rr-time\">0.4 s</p><p class=\"ds-rr-band\">Hummingbird!</p><p class=\"ds-rr-detail\">Correct · <strong>+1,000</strong> points</p></div></div><div class=\"ds-rr-action\"><p class=\"ds-rr-line\">Lightning reflexes. The rarest catch in the forest.</p><button class=\"ds-rr-ready\">Ready for question 3</button></div>",
+      "css": ".ds-rare-scene { padding: 32px 16px 56px; background: linear-gradient(180deg, rgb(6 17 13 / 0.92) 0, rgb(6 17 13 / 0.7) 60%, rgb(6 17 13 / 0) 100%), linear-gradient(180deg, #183427, #2a4430 70%, #8c7444); display: flex; justify-content: center; text-align: center; } .ds-rare { max-width: 34rem; } .ds-rare p { margin: 0; } .ds-rr-time { font-family: 'RQ Digits', Silkscreen, 'Pixelify Sans', sans-serif; font-weight: 700; font-size: clamp(3.5rem, 19vw, 6rem); line-height: 0.95; letter-spacing: -0.02em; color: var(--gold-hi, #f6dc96); font-variant-numeric: tabular-nums; text-shadow: 0 2px 0 rgb(0 0 0 / 0.55), 0 0 28px rgb(232 176 74 / 0.55); } .ds-rr-band { margin-top: 12px; font-family: Silkscreen, monospace; font-size: clamp(1.5rem, 7vw, 2.25rem); line-height: 1.05; letter-spacing: 0.06em; text-transform: uppercase; color: var(--band-hummingbird, #3fd0b0); text-shadow: 0 2px 0 rgb(0 0 0 / 0.55), 0 0 30px rgb(63 208 176 / 0.7); animation: ds-rare-flash 0.9s steps(1, end) 2; } @keyframes ds-rare-flash { 0% { color: var(--gold-hi, #f6dc96); } 33% { color: var(--band-hummingbird, #3fd0b0); } 66% { color: var(--gold, #e8b04a); } } .ds-rr-detail { margin-top: 8px; color: var(--sage, #9fb5a6); font-family: 'Pixelify Sans', sans-serif; font-size: 1.0625rem; text-shadow: 0 2px 0 rgb(0 0 0 / 0.55); } .ds-rr-detail strong { color: var(--ivory, #eef0e2); font-weight: 600; } .ds-rr-action { display: grid; justify-items: center; gap: 8px; padding: 16px; } .ds-rr-line { margin: 0; font-family: Silkscreen, monospace; font-size: 0.8125rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold-hi, #f6dc96); text-shadow: 0 0 16px rgb(232 176 74 / 0.45); text-align: center; } .ds-rr-ready { display: inline-flex; align-items: center; justify-content: center; min-height: 56px; padding: 0 32px; border: 0; border-radius: 999px; font-family: Silkscreen, monospace; font-size: 0.9375rem; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; width: 100%; max-width: 420px; background: var(--gold, #e8b04a); color: var(--near0, #08130e); box-shadow: inset 0 -3px 0 rgb(0 0 0 / 0.2), 0 8px 24px rgb(232 176 74 / 0.18); } .ds-rr-ready:focus-visible { outline: 2px solid var(--jade, #3fd0b0); outline-offset: 3px; } @media (prefers-reduced-motion: reduce) { .ds-rr-band { animation: none; } }"
+    },
+    {
+      "name": "Results Summary",
+      "kind": "custom",
+      "refersTo": "compare-track",
+      "description": "Score and standing first, then You against the average on one scale, then your average answer on the five animal bands, then three stats. Gold or ivory is you; sage is the average.",
+      "html": "<div class=\"ds-summary\"><p class=\"ds-score\"><strong>5,150</strong><span>points</span></p><p class=\"ds-standing\">2nd of 5 players today · ahead of 50%</p><section class=\"ds-compare\"><div class=\"ds-crow ds-crow--mine\"><span class=\"ds-clabel\">You</span><span class=\"ds-ctrack\"><span class=\"ds-cfill\" style=\"width:100%\"></span></span><span class=\"ds-cvalue\">5,150</span></div><div class=\"ds-crow\"><span class=\"ds-clabel\">Average</span><span class=\"ds-ctrack\"><span class=\"ds-cfill\" style=\"width:71%\"></span></span><span class=\"ds-cvalue\">3,640</span></div></section><section class=\"ds-speed\"><h2 class=\"ds-section-title\">Your speed</h2><p class=\"ds-speed-big\"><strong>0.9 s</strong><span>average answer</span></p><div class=\"ds-track\"><span class=\"ds-zone\" style=\"left:0%;width:10%;background:var(--band-hummingbird)\"></span><span class=\"ds-zone\" style=\"left:10%;width:14%;background:var(--band-jaguar)\"></span><span class=\"ds-zone\" style=\"left:24%;width:26%;background:var(--band-toucan)\"></span><span class=\"ds-zone\" style=\"left:50%;width:40%;background:var(--band-tree_frog)\"></span><span class=\"ds-zone\" style=\"left:90%;width:10%;background:var(--band-sloth)\"></span><span class=\"ds-marker ds-marker--avg\" style=\"left:26%\"><span class=\"ds-mlabel\">Average 1.3 s</span></span><span class=\"ds-marker ds-marker--you\" style=\"left:18%\"><span class=\"ds-mlabel\">You 0.9 s</span></span></div><div class=\"ds-scale\"><span>0 s</span><span>5 s+</span></div><p class=\"ds-speed-line\">Faster than 75% of today's players. You beat today's average by 0.4 s.</p></section><dl class=\"ds-stats\"><div class=\"ds-stat\"><dt>Correct</dt><dd>7/8</dd></div><div class=\"ds-stat\"><dt>Fastest</dt><dd>0.4 s</dd></div><div class=\"ds-stat ds-stat--rare\"><dt>Hummingbirds</dt><dd>2</dd></div></dl></div>",
+      "css": ".ds-summary { display: grid; justify-items: center; gap: 12px; max-width: 760px; text-align: center; font-family: 'Pixelify Sans', sans-serif; color: var(--ivory, #eef0e2); } .ds-summary p { margin: 0; } .ds-score { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: center; gap: 8px; } .ds-score strong { font-family: 'RQ Digits', Silkscreen, 'Pixelify Sans', sans-serif; font-size: clamp(3rem, 14vw, 4.5rem); font-weight: 700; line-height: 1; color: var(--gold, #e8b04a); font-variant-numeric: tabular-nums; } .ds-score span { color: var(--sage, #9fb5a6); } .ds-standing { font-size: 1.125rem; font-weight: 500; } .ds-compare { display: grid; gap: 8px; width: 100%; max-width: 520px; margin-top: 8px; } .ds-crow { display: grid; grid-template-columns: 76px minmax(0, 1fr) 64px; align-items: center; gap: 12px; } .ds-clabel { font-family: Silkscreen, monospace; font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--sage, #9fb5a6); text-align: left; } .ds-ctrack { height: 10px; border-radius: 999px; background: var(--mid0, #163828); overflow: hidden; } .ds-cfill { display: block; height: 100%; border-radius: 999px; background: var(--sage, #9fb5a6); } .ds-crow--mine .ds-cfill { background: var(--gold, #e8b04a); } .ds-cvalue { text-align: right; font-family: 'RQ Digits', Silkscreen, 'Pixelify Sans', sans-serif; font-variant-numeric: tabular-nums; color: var(--sage, #9fb5a6); } .ds-crow--mine .ds-cvalue, .ds-crow--mine .ds-clabel { color: var(--gold, #e8b04a); } .ds-speed { display: grid; justify-items: center; gap: 12px; width: 100%; max-width: 560px; margin-top: 24px; } .ds-section-title { margin: 0; font-family: Silkscreen, monospace; font-size: 0.875rem; font-weight: 400; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold-hi, #f6dc96); } .ds-speed-big { display: flex; align-items: baseline; gap: 8px; } .ds-speed-big strong { font-family: 'RQ Digits', Silkscreen, 'Pixelify Sans', sans-serif; font-size: clamp(2rem, 8vw, 2.75rem); font-weight: 700; line-height: 1; } .ds-speed-big span { color: var(--sage, #9fb5a6); } .ds-track { position: relative; width: 100%; height: 8px; margin-block: 32px 24px; } .ds-zone { position: absolute; top: 0; height: 100%; opacity: 0.8; } .ds-zone:first-child { border-radius: 999px 0 0 999px; } .ds-zone:nth-child(5) { border-radius: 0 999px 999px 0; } .ds-marker { position: absolute; top: 50%; width: 16px; height: 16px; translate: -50% -50%; border: 3px solid var(--night, #06110d); border-radius: 999px; } .ds-marker--you { background: var(--ivory, #eef0e2); z-index: 1; } .ds-marker--avg { background: var(--sage, #9fb5a6); } .ds-mlabel { position: absolute; left: 50%; translate: -50% 0; white-space: nowrap; font-family: Silkscreen, monospace; font-size: 0.75rem; letter-spacing: 0.06em; } .ds-marker--you .ds-mlabel { bottom: 18px; color: var(--ivory, #eef0e2); } .ds-marker--avg .ds-mlabel { top: 18px; color: var(--sage, #9fb5a6); } .ds-scale { display: flex; justify-content: space-between; width: 100%; margin-top: -8px; font-family: 'RQ Digits', Silkscreen, 'Pixelify Sans', sans-serif; font-size: 0.75rem; color: var(--sage, #9fb5a6); opacity: 0.7; } .ds-speed-line { max-width: 44ch; color: var(--sage, #9fb5a6); } .ds-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); width: 100%; max-width: 520px; margin: 16px 0 0; } .ds-stat { display: grid; gap: 2px; } .ds-stat dt { font-family: Silkscreen, monospace; font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--sage, #9fb5a6); } .ds-stat dd { margin: 0; font-family: 'RQ Digits', Silkscreen, 'Pixelify Sans', sans-serif; font-size: 1.5rem; font-weight: 700; font-variant-numeric: tabular-nums; } .ds-stat--rare dd { color: var(--jade, #3fd0b0); text-shadow: 0 0 14px rgb(63 208 176 / 0.45); }"
+    },
+    {
+      "name": "Answers Toggle",
+      "kind": "custom",
+      "refersTo": "answers-toggle",
+      "description": "Open \"Your answers · Show/Hide\" toggle with a chevron and a hairline above; opened, result items separated by hairlines.",
+      "html": "<details class=\"ds-toggle\"><summary><span>Your answers</span><span class=\"ds-hint ds-closed\">Show</span><span class=\"ds-hint ds-open\">Hide</span></summary><ol class=\"ds-results\"><li class=\"ds-result\"><span class=\"ds-icon\"></span><div><p class=\"ds-result-q\">1. Which element has the symbol Co?</p><p class=\"ds-result-a\">You: <b>Cobalt</b></p><p class=\"ds-result-stats\"><span class=\"ds-band\">Hummingbird</span><span>0.4 s</span><span>1,000 pts</span><span class=\"ds-muted\">41% of players got this right</span></p></div></li><li class=\"ds-result\"><span class=\"ds-icon ds-miss\"></span><div><p class=\"ds-result-q\">3. Which river flows through Vienna?</p><p class=\"ds-result-a\">You: <b>Vltava</b> · Answer: <b>Danube</b></p><p class=\"ds-result-stats\"><span class=\"ds-missed\">Missed</span><span>0 pts</span></p></div></li></ol></details>",
+      "css": ".ds-toggle { width: 100%; max-width: 600px; margin: 16px auto 0; text-align: left; font-family: 'Pixelify Sans', sans-serif; color: var(--ivory, #eef0e2); } .ds-toggle p { margin: 0; } .ds-toggle summary { display: flex; align-items: baseline; justify-content: center; gap: 12px; padding: 16px 8px; border-top: 1px solid rgb(29 74 51 / 0.45); font-weight: 500; cursor: pointer; list-style: none; } .ds-toggle summary::-webkit-details-marker { display: none; } .ds-hint { font-family: Silkscreen, monospace; font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--sage, #9fb5a6); } .ds-hint::after { content: \"\"; display: inline-block; width: 6px; height: 6px; margin-left: 8px; border-right: 2px solid currentColor; border-bottom: 2px solid currentColor; transform: translateY(-3px) rotate(45deg); } .ds-toggle summary:hover .ds-hint { color: var(--gold-hi, #f6dc96); } .ds-open, .ds-toggle[open] .ds-closed { display: none; } .ds-toggle[open] .ds-open { display: inline; } .ds-toggle[open] .ds-open::after { transform: translateY(1px) rotate(-135deg); } .ds-results { list-style: none; margin: 8px 0 0; padding: 0; } .ds-result { display: grid; grid-template-columns: 52px minmax(0, 1fr); gap: 12px; padding: 16px 8px; } .ds-result + .ds-result { border-top: 1px solid rgb(29 74 51 / 0.45); } .ds-icon { width: 16px; height: 16px; margin: 4px auto 0; background: var(--jade, #3fd0b0); } .ds-icon.ds-miss { background: var(--ruby-text, #f08a9b); } .ds-result-q { font-size: 1.0625rem; font-weight: 500; } .ds-result-a { margin-top: 4px; color: var(--sage, #9fb5a6); font-size: 0.9375rem; } .ds-result-a b { color: var(--ivory, #eef0e2); font-weight: 500; } .ds-result-stats { display: flex; flex-wrap: wrap; gap: 4px 12px; margin-top: 8px; font-size: 0.9375rem; } .ds-band { color: var(--band-hummingbird, #3fd0b0); font-weight: 600; } .ds-missed { color: var(--ruby-text, #f08a9b); font-weight: 600; } .ds-muted { color: var(--sage, #9fb5a6); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Dusk Clearing",
+    "overview": "Hummingbird is a rainforest clearing at the last light of day. The canopy is near-black green, mist hangs in bands between the trunks, a low sun glows gold behind the far trees, and fireflies drift in the foreground. The interface lives in that same air rather than in boxes laid over it: the forest runs as a full-width band across the top of the window and dissolves into the night, the top bar floats, and everything below sits in one centred column of soft tone shapes with no outlines. Gold and jade are the only light sources. Nothing is bright for its own sake. The owner asked for darker, richer colour over basic brights, then for a site that is \"less boxy\" with the game \"in the centre\", so the premium feel comes from restraint, depth, centring and open space, not saturation or framing.\n\nThe quiz is quiet while you think and theatrical when you answer. While a question is open there is no countdown, no ticking bar and no colour change: the forest breathes and the player reads. The reveal is the single loud moment of each question: the measured time counts up in large pixel numerals written straight onto the scene, the speed animal runs its own path through the forest, then its name lands in its own colour with the points. The game shares its name with the rarest speed band, so the Hummingbird is the catch everyone chases. The results screen is about speed and standing: the score, where it ranks today, how it compares with the average, and where your average answer falls on the five animal bands, before the row of animals you share.\n\nThere are two materials. The scene is fine-grained, original pixel art at a fixed 2 CSS px per art pixel, drawn from one indexed palette, crisp and square. The UI around it is soft: 14px rounded tone fills, gold pills, round pips and dots, hairline dividers at most, and no 1px boxes.",
+    "keyCharacteristics": [
+      "Dusk rainforest grounds: every dark is green-tinted, with green above blue.",
+      "Gold and jade are the only light; ruby only marks a miss.",
+      "Each speed animal owns a colour, used for its name, its reveal glow and its progress segment.",
+      "Pixel art scales by whole numbers only (2 CSS px per art pixel); bigger stages get more forest, not bigger pixels.",
+      "The forest is a frameless full-width band that fades into the page at top and bottom.",
+      "One centred column (760px) holds the question, the six answers and the action.",
+      "No visible timer while answering; time is a surprise.",
+      "The reveal is the one loud moment, written on the scene, not in a card.",
+      "Crisp square pixels in the scene; soft rounded tone shapes in the UI; no outlined boxes.",
+      "Silkscreen digits for every numeral; ligatures off."
+    ],
+    "rules": [
+      {
+        "name": "The Green-Over-Blue Rule",
+        "body": "Every dark ground has its green channel above its blue channel (`night` is #06110d, not a navy). A neutral that drifts blue or grey leaves the forest.",
+        "section": "colors"
+      },
+      {
+        "name": "The Two Lights Rule",
+        "body": "Gold and jade are the only emissive colours in the UI. Gold means \"act / your score\"; jade means \"focus / correct\". Ruby is never a light; it only marks a miss.",
+        "section": "colors"
+      },
+      {
+        "name": "The Animal Owns Its Colour Rule",
+        "body": "A band colour appears only where that animal is named or stands for a result: the reveal, the progress segment, the speed ladder, the zones of the speed track, the results list name. Never use a band colour as general decoration.",
+        "section": "colors"
+      },
+      {
+        "name": "The You-Versus-Average Rule",
+        "body": "Wherever the player is compared with everyone else, the player is the light and the average is sage: a gold \"You\" score bar against a sage \"Average\" bar, an ivory \"You\" marker against a sage \"Average\" marker.",
+        "section": "colors"
+      },
+      {
+        "name": "The One Palette Rule",
+        "body": "Scene art and sprites draw only from the indexed palette in `frontend/src/art/palette.ts`; the UI reads the same values through the CSS custom properties.",
+        "section": "colors"
+      },
+      {
+        "name": "The Silkscreen Digits Rule",
+        "body": "Every numeral rendered in the UI face uses Silkscreen digits (\"RQ Digits\", U+0030–0039, 400 for weights up to 500 and 700 for 600–900). Pixelify Sans's 2 and 5 read as 8 and S at small sizes, and a speed quiz lives on numbers. Never set a digit in raw Pixelify Sans.",
+        "section": "typography"
+      },
+      {
+        "name": "The No Ligatures Rule",
+        "body": "Ligatures are off on the body (`font-variant-ligatures: none; font-feature-settings: \"liga\" 0, \"clig\" 0`). Pixelify's fi and fl ligatures read as a capital A at small sizes.",
+        "section": "typography"
+      },
+      {
+        "name": "The Weight 500 Rule",
+        "body": "Answer tiles, result questions and ladder names use Pixelify weight 500, never 600: at body sizes the 600 capital C reads as an O. Weight 600 is kept for the question headline and short emphasis.",
+        "section": "typography"
+      },
+      {
+        "name": "The Tabular Score Rule",
+        "body": "Scores, times and points use tabular figures so counting numbers do not jitter.",
+        "section": "typography"
+      },
+      {
+        "name": "The Whole Pixel Rule",
+        "body": "One art pixel is always 2 CSS px. Canvases render with `image-rendering: pixelated` and smoothing off. A larger stage gets more art pixels (more forest), never larger or fractional ones.",
+        "section": "layout"
+      },
+      {
+        "name": "The Open Forest Rule",
+        "body": "The scene never sits in a frame. It has no border, outline, drop shadow or vignette; it runs the full width of the window and meets the page through masks that fade it into `night`.",
+        "section": "layout"
+      },
+      {
+        "name": "The Centre Stage Rule",
+        "body": "The game sits in one centred column under the forest: question, answers and action are centred, and the play block is centred vertically in the space that remains. There is no side column.",
+        "section": "layout"
+      },
+      {
+        "name": "The No Frame Rule",
+        "body": "Nothing in the UI is a box: no 1px outlines around panels, tiles, inputs, lists or the scene, and no drop shadows under surfaces. Shapes are defined by tone fill, soft rounding and space. A 2px inset ring is allowed only to mark a state (correct, wrong, GO). The one line is the hairline above the answers toggle and between result items. The Rare Catch is the single exception for glow strength (see below), and it too is expressed as light on text, never as a frame.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** keep every dark ground green-tinted with green above blue, from the ramp `night` → `sky1`–`sky4` → `mid0`–`mid2` → `near0`/`near1`.",
+      "**Do** keep gold for actions and score, jade for focus and correctness, ruby for misses only.",
+      "**Do** set a band colour through `--band-colour: var(--band-<animal>)` wherever an animal stands for a result.",
+      "**Do** render pixel art at exactly 2 CSS px per art pixel with `image-rendering: pixelated` and smoothing off.",
+      "**Do** run the forest as a full-width band that fades into the page through masks.",
+      "**Do** keep the game in one centred column under the forest, with the play block centred vertically.",
+      "**Do** build UI surfaces from translucent tone fills, 14px rounding and pills, separated by space.",
+      "**Do** keep the pixel layer (scene, sprites, icons) square and crisp; round only the UI around it.",
+      "**Do** set every numeral in the UI face with Silkscreen digits, with ligatures off and tabular figures for scores and times.",
+      "**Do** use Pixelify weight 500 for answer tiles, result questions and ladder names.",
+      "**Do** give each question a read beat (three gold pips, sealed tiles) before the six answers open together.",
+      "**Do** give text set over the scene a scrim and the dark scene-text shadow so it reads on any part of the forest.",
+      "**Do** write user-facing copy in British English (\"colour\", \"Out of time\", \"midnight UK time\").",
+      "**Do** respect `prefers-reduced-motion`: no count-up, still animals, instant tiles."
+    ],
+    "donts": [
+      "**Don't** show a timer, countdown number or draining bar while the player is answering; time is revealed only after.",
+      "**Don't** make anything else as loud as the reveal: no confetti, flashing or big colour on question or results chrome. The Rare Catch is the only place the reveal itself may flash.",
+      "**Don't** frame the scene: no border, outline, drop shadow or vignette around the forest.",
+      "**Don't** split the game into side columns; the forest goes above, the game goes centred below.",
+      "**Don't** draw 1px outlines around tiles, inputs, panels or lists, or build lists as bordered tables or cells.",
+      "**Don't** put the reveal, or any other message over the scene, in a card.",
+      "**Don't** cover the hummingbird with text; rare-catch words go under the scene, above the action.",
+      "**Don't** add drop shadows under UI surfaces; use tone, glow and the state ring instead.",
+      "**Don't** round, smooth or vector-stroke pixel art, or scale it by a non-integer factor.",
+      "**Don't** add colours to scene art or sprites outside `frontend/src/art/palette.ts`.",
+      "**Don't** use band colours as decoration where no animal is meant.",
+      "**Don't** set digits in raw Pixelify Sans, set answers in weight 600, or re-enable ligatures.",
+      "**Don't** fill sealed answer tiles with placeholder bars or loading shimmer."
+    ],
+    "sections": [
+      {
+        "heading": "The Rare Catch",
+        "body": "A Hummingbird (a correct answer in 0.5 s or less) is the rarest result in the game and the catch the game is named after, and its reveal is the one moment allowed to be louder than the standard reveal. It is expressed as light on the text, not a frame: the time turns gold-hi with a strong gold glow (28px at 55%), and the band name carries a strong jade glow (30px at 70%). The band name flashes gold-hi, jade and gold twice in hard steps, with no easing. In the scene, the hummingbird leaves a jade-and-gold trail and hovers low by the heliconia, below the text, landing to a three-ring burst lasting 1.4 s while every firefly flares at once. The line \"Lightning reflexes. The rarest catch in the forest.\" sits under the scene, above the ready button, in uppercase Silkscreen at 0.8125rem in gold-hi with a soft gold glow, so nothing covers the bird. Phones get a short vibration, and the bird's progress segment glows. On the home ladder the Hummingbird rung glows jade, and on the results screen the Hummingbirds stat turns jade with a glow. With reduced motion, the flash, trail, burst and vibration are all skipped. No other band may borrow these devices."
+      },
+      {
+        "heading": "The GO Moment",
+        "body": "When the three read pips complete, the six answers open as a single unmistakable beat. The read cue flips to a gold \"Answer now!\" at 1.125rem (0.1em), settling from 1.35× scale and gold-hi, and the pips flare from 1.6× and gold-hi to gold with a gold glow. For 0.9 s the whole forest brightens (brightness 1.35, saturate 1.15), rising in 0.12 s and easing back over 0.5 s; there is no frame flash. The tiles rise 10px from 40% opacity through a warm gold wash (32%, then 22%) that settles back to their tone over 0.7 s, staggered 40 ms apart. Typed inputs take a 2px gold inset ring, and phones give a 15 ms tick. With reduced motion, the cue and pip flare, the tile rise and the vibration are skipped, but the colour change still marks the moment."
+      }
+    ]
+  }
+}

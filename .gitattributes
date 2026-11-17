@@ -1,0 +1,5 @@
+# Keep Unix line endings everywhere (shell scripts and servers need them).
+* text=auto eol=lf
+*.png binary
+*.woff binary
+*.woff2 binary
