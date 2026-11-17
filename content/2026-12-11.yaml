@@ -1,0 +1,80 @@
+date: 2026-12-11
+questions:
+  - slot: 1
+    type: choice
+    category: geography
+    text: "The River Seine flows through which capital city?"
+    options:
+      - { text: "Paris", correct: true }
+      - { text: "Brussels" }
+      - { text: "Amsterdam" }
+      - { text: "Bern" }
+      - { text: "Luxembourg" }
+      - { text: "Vienna" }
+  - slot: 2
+    type: choice
+    category: space
+    text: "Which planet is famous for its Great Red Spot?"
+    options:
+      - { text: "Jupiter", correct: true }
+      - { text: "Mars" }
+      - { text: "Saturn" }
+      - { text: "Neptune" }
+      - { text: "Venus" }
+      - { text: "Uranus" }
+  - slot: 3
+    type: number
+    category: general
+    text: "How many days are there in a leap year?"
+    answer: 366
+    tolerance: 0
+  - slot: 4
+    type: choice
+    category: history
+    text: "Who was the UK's first female Prime Minister?"
+    options:
+      - { text: "Margaret Thatcher", correct: true }
+      - { text: "Theresa May" }
+      - { text: "Liz Truss" }
+      - { text: "Barbara Castle" }
+      - { text: "Shirley Williams" }
+      - { text: "Harriet Harman" }
+  - slot: 5
+    type: text
+    category: geography
+    text: "What is the capital of Italy?"
+    answers:
+      - { canonical: "Rome", aliases: [] }
+  - slot: 6
+    type: choice
+    category: film
+    text: "Who is the headmaster of Hogwarts in the first Harry Potter film?"
+    options:
+      - { text: "Albus Dumbledore", correct: true }
+      - { text: "Severus Snape" }
+      - { text: "Minerva McGonagall" }
+      - { text: "Gellert Grindelwald" }
+      - { text: "Horace Slughorn" }
+      - { text: "Remus Lupin" }
+  - slot: 7
+    type: choice
+    category: music
+    text: "Which instrument is Yo-Yo Ma famous for playing?"
+    options:
+      - { text: "Cello", correct: true }
+      - { text: "Violin" }
+      - { text: "Viola" }
+      - { text: "Double bass" }
+      - { text: "Piano" }
+      - { text: "Guitar" }
+  - slot: 8
+    type: choice
+    category: nature
+    text: "How many arms does a common starfish have?"
+    options:
+      - { text: "5", correct: true }
+      - { text: "6" }
+      - { text: "4" }
+      - { text: "7" }
+      - { text: "8" }
+      - { text: "10" }

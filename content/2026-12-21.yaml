@@ -1,0 +1,80 @@
+date: 2026-12-21
+questions:
+  - slot: 1
+    type: choice
+    category: christmas
+    text: "Which country is usually credited with starting the Christmas tree tradition?"
+    options:
+      - { text: "Germany", correct: true }
+      - { text: "Norway" }
+      - { text: "Sweden" }
+      - { text: "England" }
+      - { text: "Austria" }
+      - { text: "Finland" }
+  - slot: 2
+    type: choice
+    category: science
+    text: "What is the shortest day of the year called?"
+    options:
+      - { text: "Winter solstice", correct: true }
+      - { text: "Spring equinox" }
+      - { text: "Perihelion" }
+      - { text: "Aphelion" }
+      - { text: "Summer solstice" }
+      - { text: "Autumn equinox" }
+  - slot: 3
+    type: number
+    category: christmas
+    text: "In 'The Twelve Days of Christmas', how many gifts are given in total?"
+    answer: 364
+    tolerance: 0
+  - slot: 4
+    type: choice
+    category: history
+    text: "The 1914 Christmas truce happened during which war?"
+    options:
+      - { text: "First World War", correct: true }
+      - { text: "Second World War" }
+      - { text: "Boer War" }
+      - { text: "Crimean War" }
+      - { text: "Korean War" }
+      - { text: "Napoleonic Wars" }
+  - slot: 5
+    type: text
+    category: christmas
+    text: "Which of Santa's reindeer has a red nose?"
+    answers:
+      - { canonical: "Rudolph", aliases: [] }
+  - slot: 6
+    type: choice
+    category: literature
+    text: "In 'A Christmas Carol', what is Scrooge's first name?"
+    options:
+      - { text: "Ebenezer", correct: true }
+      - { text: "Jacob" }
+      - { text: "Bob" }
+      - { text: "Fred" }
+      - { text: "Tim" }
+      - { text: "Edmund" }
+  - slot: 7
+    type: choice
+    category: music
+    text: "Who sang 'All I Want for Christmas Is You'?"
+    options:
+      - { text: "Mariah Carey", correct: true }
+      - { text: "Whitney Houston" }
+      - { text: "Celine Dion" }
+      - { text: "Kylie Minogue" }
+      - { text: "Michael Bublé" }
+      - { text: "Ariana Grande" }
+  - slot: 8
+    type: choice
+    category: food
+    text: "Which country does panettone come from?"
+    options:
+      - { text: "Italy", correct: true }
+      - { text: "Germany" }
+      - { text: "Spain" }
+      - { text: "France" }
+      - { text: "Austria" }
+      - { text: "Switzerland" }

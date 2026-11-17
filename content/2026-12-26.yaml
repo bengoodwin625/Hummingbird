@@ -1,0 +1,80 @@
+date: 2026-12-26
+questions:
+  - slot: 1
+    type: choice
+    category: geography
+    text: "What is the capital of Finland?"
+    options:
+      - { text: "Helsinki", correct: true }
+      - { text: "Tampere" }
+      - { text: "Turku" }
+      - { text: "Oslo" }
+      - { text: "Tallinn" }
+      - { text: "Stockholm" }
+  - slot: 2
+    type: choice
+    category: science
+    text: "How many valves does the human heart have?"
+    options:
+      - { text: "4", correct: true }
+      - { text: "2" }
+      - { text: "3" }
+      - { text: "5" }
+      - { text: "6" }
+      - { text: "8" }
+  - slot: 3
+    type: number
+    category: maths
+    text: "How many dots are there in total on a standard six-sided die?"
+    answer: 21
+    tolerance: 0
+  - slot: 4
+    type: choice
+    category: history
+    text: "Boxing Day is the feast day of which saint?"
+    options:
+      - { text: "Saint Stephen", correct: true }
+      - { text: "Saint Nicholas" }
+      - { text: "Saint Andrew" }
+      - { text: "Saint George" }
+      - { text: "Saint Patrick" }
+      - { text: "Saint David" }
+  - slot: 5
+    type: text
+    category: geography
+    text: "What is the capital of Scotland?"
+    answers:
+      - { canonical: "Edinburgh", aliases: [] }
+  - slot: 6
+    type: choice
+    category: film
+    text: "Which actor voices Woody in the 'Toy Story' films?"
+    options:
+      - { text: "Tom Hanks", correct: true }
+      - { text: "Tim Allen" }
+      - { text: "Billy Crystal" }
+      - { text: "Robin Williams" }
+      - { text: "Tom Cruise" }
+      - { text: "Steve Martin" }
+  - slot: 7
+    type: choice
+    category: sport
+    text: "In which city does Australia's Boxing Day cricket Test traditionally begin?"
+    options:
+      - { text: "Melbourne", correct: true }
+      - { text: "Sydney" }
+      - { text: "Perth" }
+      - { text: "Adelaide" }
+      - { text: "Brisbane" }
+      - { text: "Hobart" }
+  - slot: 8
+    type: choice
+    category: nature
+    text: "What is the largest species of deer?"
+    options:
+      - { text: "Moose", correct: true }
+      - { text: "Red deer" }
+      - { text: "Reindeer" }
+      - { text: "Sambar" }
+      - { text: "Fallow deer" }
+      - { text: "Roe deer" }

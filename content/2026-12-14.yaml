@@ -1,0 +1,80 @@
+date: 2026-12-14
+questions:
+  - slot: 1
+    type: choice
+    category: geography
+    text: "What is the largest lake in Africa?"
+    options:
+      - { text: "Lake Victoria", correct: true }
+      - { text: "Lake Tanganyika" }
+      - { text: "Lake Malawi" }
+      - { text: "Lake Chad" }
+      - { text: "Lake Turkana" }
+      - { text: "Lake Volta" }
+  - slot: 2
+    type: choice
+    category: space
+    text: "Who was the first person to travel into space?"
+    options:
+      - { text: "Yuri Gagarin", correct: true }
+      - { text: "Neil Armstrong" }
+      - { text: "Alan Shepard" }
+      - { text: "John Glenn" }
+      - { text: "Valentina Tereshkova" }
+      - { text: "Buzz Aldrin" }
+  - slot: 3
+    type: number
+    category: history
+    text: "In what year was Queen Elizabeth II crowned?"
+    answer: 1953
+    tolerance: 0
+  - slot: 4
+    type: choice
+    category: history
+    text: "Which wars were fought between the Houses of Lancaster and York?"
+    options:
+      - { text: "The Wars of the Roses", correct: true }
+      - { text: "The Hundred Years' War" }
+      - { text: "The English Civil War" }
+      - { text: "The Thirty Years' War" }
+      - { text: "The Seven Years' War" }
+      - { text: "The Barons' Wars" }
+  - slot: 5
+    type: text
+    category: geography
+    text: "What is the capital of Greece?"
+    answers:
+      - { canonical: "Athens", aliases: [] }
+  - slot: 6
+    type: choice
+    category: film
+    text: "Which film series follows the agent Ethan Hunt?"
+    options:
+      - { text: "Mission: Impossible", correct: true }
+      - { text: "James Bond" }
+      - { text: "The Bourne films" }
+      - { text: "Jack Ryan" }
+      - { text: "Die Hard" }
+      - { text: "Fast & Furious" }
+  - slot: 7
+    type: choice
+    category: sport
+    text: "How many players does an ice hockey team have on the ice, including the goalie?"
+    options:
+      - { text: "6", correct: true }
+      - { text: "5" }
+      - { text: "7" }
+      - { text: "8" }
+      - { text: "9" }
+      - { text: "11" }
+  - slot: 8
+    type: choice
+    category: food
+    text: "What kind of fruit is a Granny Smith?"
+    options:
+      - { text: "Apple", correct: true }
+      - { text: "Pear" }
+      - { text: "Plum" }
+      - { text: "Grape" }
+      - { text: "Peach" }
+      - { text: "Quince" }

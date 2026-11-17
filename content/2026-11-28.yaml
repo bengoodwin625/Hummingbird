@@ -1,0 +1,80 @@
+date: 2026-11-28
+questions:
+  - slot: 1
+    type: choice
+    category: geography
+    text: "Which ocean lies between Africa and Australia?"
+    options:
+      - { text: "Indian Ocean", correct: true }
+      - { text: "Pacific Ocean" }
+      - { text: "Atlantic Ocean" }
+      - { text: "Southern Ocean" }
+      - { text: "Arctic Ocean" }
+      - { text: "Arabian Sea" }
+  - slot: 2
+    type: choice
+    category: science
+    text: "At what temperature in Fahrenheit does water freeze?"
+    options:
+      - { text: "32", correct: true }
+      - { text: "0" }
+      - { text: "10" }
+      - { text: "100" }
+      - { text: "212" }
+      - { text: "-40" }
+  - slot: 3
+    type: number
+    category: geography
+    text: "How many countries make up the United Kingdom?"
+    answer: 4
+    tolerance: 0
+  - slot: 4
+    type: choice
+    category: history
+    text: "Which Tudor queen was known as 'Bloody Mary'?"
+    options:
+      - { text: "Mary I", correct: true }
+      - { text: "Mary, Queen of Scots" }
+      - { text: "Elizabeth I" }
+      - { text: "Anne Boleyn" }
+      - { text: "Catherine of Aragon" }
+      - { text: "Lady Jane Grey" }
+  - slot: 5
+    type: text
+    category: science
+    text: "What is the hardest natural mineral?"
+    answers:
+      - { canonical: "Diamond", aliases: [] }
+  - slot: 6
+    type: choice
+    category: art
+    text: "Who painted 'Girl with a Pearl Earring'?"
+    options:
+      - { text: "Johannes Vermeer", correct: true }
+      - { text: "Rembrandt" }
+      - { text: "Frans Hals" }
+      - { text: "Jan Steen" }
+      - { text: "Pieter de Hooch" }
+      - { text: "Peter Paul Rubens" }
+  - slot: 7
+    type: choice
+    category: sport
+    text: "In golf, what is a score of one under par on a hole called?"
+    options:
+      - { text: "Birdie", correct: true }
+      - { text: "Eagle" }
+      - { text: "Bogey" }
+      - { text: "Albatross" }
+      - { text: "Par" }
+      - { text: "Condor" }
+  - slot: 8
+    type: choice
+    category: food
+    text: "Which country does feta cheese come from?"
+    options:
+      - { text: "Greece", correct: true }
+      - { text: "Italy" }
+      - { text: "Turkey" }
+      - { text: "Cyprus" }
+      - { text: "Bulgaria" }
+      - { text: "France" }

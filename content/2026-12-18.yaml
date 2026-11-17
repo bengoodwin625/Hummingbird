@@ -1,0 +1,80 @@
+date: 2026-12-18
+questions:
+  - slot: 1
+    type: choice
+    category: geography
+    text: "In which city is the Golden Gate Bridge?"
+    options:
+      - { text: "San Francisco", correct: true }
+      - { text: "Los Angeles" }
+      - { text: "Seattle" }
+      - { text: "San Diego" }
+      - { text: "Portland" }
+      - { text: "Oakland" }
+  - slot: 2
+    type: choice
+    category: science
+    text: "Which metal is a liquid at room temperature?"
+    options:
+      - { text: "Mercury", correct: true }
+      - { text: "Lead" }
+      - { text: "Tin" }
+      - { text: "Zinc" }
+      - { text: "Sodium" }
+      - { text: "Copper" }
+  - slot: 3
+    type: number
+    category: sport
+    text: "How many players does a volleyball team have on court?"
+    answer: 6
+    tolerance: 0
+  - slot: 4
+    type: choice
+    category: history
+    text: "At which battle in 1805 was Admiral Nelson killed?"
+    options:
+      - { text: "Trafalgar", correct: true }
+      - { text: "The Nile" }
+      - { text: "Waterloo" }
+      - { text: "Copenhagen" }
+      - { text: "Jutland" }
+      - { text: "Austerlitz" }
+  - slot: 5
+    type: text
+    category: geography
+    text: "What is the capital of the Netherlands?"
+    answers:
+      - { canonical: "Amsterdam", aliases: [] }
+  - slot: 6
+    type: choice
+    category: literature
+    text: "Who wrote the poem 'The Raven'?"
+    options:
+      - { text: "Edgar Allan Poe", correct: true }
+      - { text: "Walt Whitman" }
+      - { text: "Emily Dickinson" }
+      - { text: "Robert Frost" }
+      - { text: "Lord Byron" }
+      - { text: "John Keats" }
+  - slot: 7
+    type: choice
+    category: sport
+    text: "What colour jersey does the leader of the Tour de France wear?"
+    options:
+      - { text: "Yellow", correct: true }
+      - { text: "Green" }
+      - { text: "Pink" }
+      - { text: "Red" }
+      - { text: "White" }
+      - { text: "Polka dot" }
+  - slot: 8
+    type: choice
+    category: food
+    text: "Which vegetable gives borscht its deep red colour?"
+    options:
+      - { text: "Beetroot", correct: true }
+      - { text: "Red cabbage" }
+      - { text: "Carrot" }
+      - { text: "Tomato" }
+      - { text: "Red pepper" }
+      - { text: "Radish" }

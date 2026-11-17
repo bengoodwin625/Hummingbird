@@ -1,0 +1,80 @@
+date: 2026-11-23
+questions:
+  - slot: 1
+    type: choice
+    category: geography
+    text: "Which river flows through Baghdad?"
+    options:
+      - { text: "Tigris", correct: true }
+      - { text: "Euphrates" }
+      - { text: "Jordan" }
+      - { text: "Nile" }
+      - { text: "Indus" }
+      - { text: "Karun" }
+  - slot: 2
+    type: choice
+    category: science
+    text: "How many chromosomes does a typical human cell have?"
+    options:
+      - { text: "46", correct: true }
+      - { text: "23" }
+      - { text: "44" }
+      - { text: "48" }
+      - { text: "42" }
+      - { text: "92" }
+  - slot: 3
+    type: number
+    category: science
+    text: "At what temperature in Fahrenheit does water boil at sea level?"
+    answer: 212
+    tolerance: 0
+  - slot: 4
+    type: choice
+    category: history
+    text: "Who was British Prime Minister when the Second World War began?"
+    options:
+      - { text: "Neville Chamberlain", correct: true }
+      - { text: "Winston Churchill" }
+      - { text: "Stanley Baldwin" }
+      - { text: "Clement Attlee" }
+      - { text: "Ramsay MacDonald" }
+      - { text: "Anthony Eden" }
+  - slot: 5
+    type: text
+    category: space
+    text: "What is the largest planet in the Solar System?"
+    answers:
+      - { canonical: "Jupiter", aliases: [] }
+  - slot: 6
+    type: choice
+    category: literature
+    text: "Which Brontë sister wrote 'Wuthering Heights'?"
+    options:
+      - { text: "Emily Brontë", correct: true }
+      - { text: "Charlotte Brontë" }
+      - { text: "Anne Brontë" }
+      - { text: "Branwell Brontë" }
+      - { text: "Jane Austen" }
+      - { text: "George Eliot" }
+  - slot: 7
+    type: choice
+    category: music
+    text: "How many strings does a standard guitar have?"
+    options:
+      - { text: "6", correct: true }
+      - { text: "4" }
+      - { text: "5" }
+      - { text: "7" }
+      - { text: "8" }
+      - { text: "12" }
+  - slot: 8
+    type: choice
+    category: film
+    text: "What is the name of the cowboy toy in 'Toy Story'?"
+    options:
+      - { text: "Woody", correct: true }
+      - { text: "Buzz" }
+      - { text: "Jessie" }
+      - { text: "Bullseye" }
+      - { text: "Rex" }
+      - { text: "Slinky" }

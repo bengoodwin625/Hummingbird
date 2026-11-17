@@ -1,0 +1,80 @@
+date: 2026-12-01
+questions:
+  - slot: 1
+    type: choice
+    category: geography
+    text: "What is the capital of Norway?"
+    options:
+      - { text: "Oslo", correct: true }
+      - { text: "Bergen" }
+      - { text: "Stockholm" }
+      - { text: "Copenhagen" }
+      - { text: "Helsinki" }
+      - { text: "Trondheim" }
+  - slot: 2
+    type: choice
+    category: science
+    text: "Which vitamin does your skin make in sunlight?"
+    options:
+      - { text: "Vitamin D", correct: true }
+      - { text: "Vitamin C" }
+      - { text: "Vitamin A" }
+      - { text: "Vitamin B12" }
+      - { text: "Vitamin K" }
+      - { text: "Vitamin E" }
+  - slot: 3
+    type: number
+    category: history
+    text: "In what year did the Second World War end?"
+    answer: 1945
+    tolerance: 0
+  - slot: 4
+    type: choice
+    category: history
+    text: "Who was the first Roman emperor?"
+    options:
+      - { text: "Augustus", correct: true }
+      - { text: "Julius Caesar" }
+      - { text: "Nero" }
+      - { text: "Caligula" }
+      - { text: "Tiberius" }
+      - { text: "Claudius" }
+  - slot: 5
+    type: text
+    category: general
+    text: "What is the currency of Japan?"
+    answers:
+      - { canonical: "Yen", aliases: ["Japanese yen"] }
+  - slot: 6
+    type: choice
+    category: art
+    text: "Which art movement is Salvador Dalí best known for?"
+    options:
+      - { text: "Surrealism", correct: true }
+      - { text: "Cubism" }
+      - { text: "Impressionism" }
+      - { text: "Expressionism" }
+      - { text: "Pop art" }
+      - { text: "Dadaism" }
+  - slot: 7
+    type: choice
+    category: music
+    text: "Who composed 'The Four Seasons'?"
+    options:
+      - { text: "Antonio Vivaldi", correct: true }
+      - { text: "Johann Sebastian Bach" }
+      - { text: "George Frideric Handel" }
+      - { text: "Wolfgang Amadeus Mozart" }
+      - { text: "Joseph Haydn" }
+      - { text: "Claudio Monteverdi" }
+  - slot: 8
+    type: choice
+    category: nature
+    text: "What is the largest mammal on Earth?"
+    options:
+      - { text: "Blue whale", correct: true }
+      - { text: "Sperm whale" }
+      - { text: "African elephant" }
+      - { text: "Fin whale" }
+      - { text: "Whale shark" }
+      - { text: "Giraffe" }

@@ -1,0 +1,80 @@
+date: 2026-12-10
+questions:
+  - slot: 1
+    type: choice
+    category: geography
+    text: "What is the capital of South Korea?"
+    options:
+      - { text: "Seoul", correct: true }
+      - { text: "Busan" }
+      - { text: "Pyongyang" }
+      - { text: "Incheon" }
+      - { text: "Daegu" }
+      - { text: "Gwangju" }
+  - slot: 2
+    type: choice
+    category: science
+    text: "Which blood cells help fight infection?"
+    options:
+      - { text: "White blood cells", correct: true }
+      - { text: "Red blood cells" }
+      - { text: "Platelets" }
+      - { text: "Plasma" }
+      - { text: "Haemoglobin" }
+      - { text: "Stem cells" }
+  - slot: 3
+    type: number
+    category: sport
+    text: "How many minutes does a football match last, not counting added time?"
+    answer: 90
+    tolerance: 0
+  - slot: 4
+    type: choice
+    category: history
+    text: "Which boy pharaoh's tomb was discovered in 1922?"
+    options:
+      - { text: "Tutankhamun", correct: true }
+      - { text: "Ramesses II" }
+      - { text: "Akhenaten" }
+      - { text: "Khufu" }
+      - { text: "Thutmose III" }
+      - { text: "Cleopatra" }
+  - slot: 5
+    type: text
+    category: general
+    text: "What is the currency of the United Kingdom?"
+    answers:
+      - { canonical: "Pound", aliases: ["Pound sterling", "Sterling", "Pounds", "British pound"] }
+  - slot: 6
+    type: choice
+    category: art
+    text: "Which Dutch painter created 'The Night Watch'?"
+    options:
+      - { text: "Rembrandt", correct: true }
+      - { text: "Johannes Vermeer" }
+      - { text: "Vincent van Gogh" }
+      - { text: "Frans Hals" }
+      - { text: "Piet Mondrian" }
+      - { text: "Hieronymus Bosch" }
+  - slot: 7
+    type: choice
+    category: sport
+    text: "How many holes are there on a standard golf course?"
+    options:
+      - { text: "18", correct: true }
+      - { text: "9" }
+      - { text: "12" }
+      - { text: "16" }
+      - { text: "21" }
+      - { text: "24" }
+  - slot: 8
+    type: choice
+    category: food
+    text: "Which country does pad thai come from?"
+    options:
+      - { text: "Thailand", correct: true }
+      - { text: "Vietnam" }
+      - { text: "China" }
+      - { text: "Malaysia" }
+      - { text: "Indonesia" }
+      - { text: "Cambodia" }

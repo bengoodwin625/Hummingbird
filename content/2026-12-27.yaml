@@ -1,0 +1,80 @@
+date: 2026-12-27
+questions:
+  - slot: 1
+    type: choice
+    category: geography
+    text: "Which country has the most islands in the world?"
+    options:
+      - { text: "Sweden", correct: true }
+      - { text: "Norway" }
+      - { text: "Finland" }
+      - { text: "Indonesia" }
+      - { text: "Philippines" }
+      - { text: "Canada" }
+  - slot: 2
+    type: choice
+    category: science
+    text: "What is the main component of natural gas?"
+    options:
+      - { text: "Methane", correct: true }
+      - { text: "Ethane" }
+      - { text: "Propane" }
+      - { text: "Butane" }
+      - { text: "Hydrogen" }
+      - { text: "Carbon monoxide" }
+  - slot: 3
+    type: number
+    category: history
+    text: "In what year was the NHS founded?"
+    answer: 1948
+    tolerance: 0
+  - slot: 4
+    type: choice
+    category: history
+    text: "Which Roman general famously crossed the Rubicon?"
+    options:
+      - { text: "Julius Caesar", correct: true }
+      - { text: "Pompey" }
+      - { text: "Mark Antony" }
+      - { text: "Augustus" }
+      - { text: "Crassus" }
+      - { text: "Scipio Africanus" }
+  - slot: 5
+    type: text
+    category: space
+    text: "Which planet has a moon called Phobos?"
+    answers:
+      - { canonical: "Mars", aliases: [] }
+  - slot: 6
+    type: choice
+    category: art
+    text: "Which artist made 'Campbell's Soup Cans'?"
+    options:
+      - { text: "Andy Warhol", correct: true }
+      - { text: "Roy Lichtenstein" }
+      - { text: "Jasper Johns" }
+      - { text: "Keith Haring" }
+      - { text: "Jean-Michel Basquiat" }
+      - { text: "David Hockney" }
+  - slot: 7
+    type: choice
+    category: music
+    text: "What is the title of the French national anthem?"
+    options:
+      - { text: "La Marseillaise", correct: true }
+      - { text: "Ode to Joy" }
+      - { text: "La Vie en rose" }
+      - { text: "Le Chant du départ" }
+      - { text: "Frère Jacques" }
+      - { text: "Ça ira" }
+  - slot: 8
+    type: choice
+    category: nature
+    text: "Which of these mammals can truly fly?"
+    options:
+      - { text: "Bat", correct: true }
+      - { text: "Flying squirrel" }
+      - { text: "Sugar glider" }
+      - { text: "Colugo" }
+      - { text: "Lemur" }
+      - { text: "Pangolin" }

@@ -1,0 +1,80 @@
+date: 2026-11-25
+questions:
+  - slot: 1
+    type: choice
+    category: geography
+    text: "What is the longest river in Africa?"
+    options:
+      - { text: "Nile", correct: true }
+      - { text: "Congo" }
+      - { text: "Niger" }
+      - { text: "Zambezi" }
+      - { text: "Orange" }
+      - { text: "Limpopo" }
+  - slot: 2
+    type: choice
+    category: science
+    text: "What is the SI unit of electrical resistance?"
+    options:
+      - { text: "Ohm", correct: true }
+      - { text: "Volt" }
+      - { text: "Ampere" }
+      - { text: "Watt" }
+      - { text: "Coulomb" }
+      - { text: "Farad" }
+  - slot: 3
+    type: number
+    category: sport
+    text: "How many minutes does a rugby union match last, not counting stoppages?"
+    answer: 80
+    tolerance: 0
+  - slot: 4
+    type: choice
+    category: art
+    text: "Who painted the ceiling of the Sistine Chapel?"
+    options:
+      - { text: "Michelangelo", correct: true }
+      - { text: "Raphael" }
+      - { text: "Leonardo da Vinci" }
+      - { text: "Sandro Botticelli" }
+      - { text: "Titian" }
+      - { text: "Caravaggio" }
+  - slot: 5
+    type: text
+    category: geography
+    text: "What is the capital of Turkey?"
+    answers:
+      - { canonical: "Ankara", aliases: [] }
+  - slot: 6
+    type: choice
+    category: literature
+    text: "Who created Sherlock Holmes?"
+    options:
+      - { text: "Arthur Conan Doyle", correct: true }
+      - { text: "Agatha Christie" }
+      - { text: "Charles Dickens" }
+      - { text: "Wilkie Collins" }
+      - { text: "G. K. Chesterton" }
+      - { text: "Edgar Allan Poe" }
+  - slot: 7
+    type: choice
+    category: music
+    text: "Freddie Mercury was the lead singer of which band?"
+    options:
+      - { text: "Queen", correct: true }
+      - { text: "Genesis" }
+      - { text: "The Who" }
+      - { text: "Led Zeppelin" }
+      - { text: "Deep Purple" }
+      - { text: "Pink Floyd" }
+  - slot: 8
+    type: choice
+    category: nature
+    text: "How many legs does a spider have?"
+    options:
+      - { text: "8", correct: true }
+      - { text: "6" }
+      - { text: "10" }
+      - { text: "12" }
+      - { text: "4" }
+      - { text: "7" }

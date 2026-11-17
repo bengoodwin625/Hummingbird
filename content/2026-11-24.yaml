@@ -1,0 +1,80 @@
+date: 2026-11-24
+questions:
+  - slot: 1
+    type: choice
+    category: geography
+    text: "Mount Kilimanjaro is in which country?"
+    options:
+      - { text: "Tanzania", correct: true }
+      - { text: "Kenya" }
+      - { text: "Uganda" }
+      - { text: "Ethiopia" }
+      - { text: "Rwanda" }
+      - { text: "Malawi" }
+  - slot: 2
+    type: choice
+    category: science
+    text: "Which part of a cell contains most of its genetic material?"
+    options:
+      - { text: "Nucleus", correct: true }
+      - { text: "Mitochondrion" }
+      - { text: "Ribosome" }
+      - { text: "Cytoplasm" }
+      - { text: "Cell membrane" }
+      - { text: "Vacuole" }
+  - slot: 3
+    type: number
+    category: maths
+    text: "How many sides does a dodecagon have?"
+    answer: 12
+    tolerance: 0
+  - slot: 4
+    type: choice
+    category: history
+    text: "Which city was the capital of the Byzantine Empire?"
+    options:
+      - { text: "Constantinople", correct: true }
+      - { text: "Rome" }
+      - { text: "Athens" }
+      - { text: "Antioch" }
+      - { text: "Alexandria" }
+      - { text: "Ravenna" }
+  - slot: 5
+    type: text
+    category: geography
+    text: "In which country would you find Machu Picchu?"
+    answers:
+      - { canonical: "Peru", aliases: [] }
+  - slot: 6
+    type: choice
+    category: art
+    text: "Which artist cut off part of his own ear?"
+    options:
+      - { text: "Vincent van Gogh", correct: true }
+      - { text: "Paul Gauguin" }
+      - { text: "Edvard Munch" }
+      - { text: "Salvador Dalí" }
+      - { text: "Pablo Picasso" }
+      - { text: "Claude Monet" }
+  - slot: 7
+    type: choice
+    category: sport
+    text: "Which country hosted the 2016 Summer Olympics?"
+    options:
+      - { text: "Brazil", correct: true }
+      - { text: "China" }
+      - { text: "United Kingdom" }
+      - { text: "Japan" }
+      - { text: "Greece" }
+      - { text: "Australia" }
+  - slot: 8
+    type: choice
+    category: food
+    text: "What is the main ingredient of guacamole?"
+    options:
+      - { text: "Avocado", correct: true }
+      - { text: "Tomato" }
+      - { text: "Lime" }
+      - { text: "Pea" }
+      - { text: "Courgette" }
+      - { text: "Chickpea" }

@@ -1,0 +1,80 @@
+date: 2026-12-20
+questions:
+  - slot: 1
+    type: choice
+    category: geography
+    text: "In which country is the ancient city of Petra?"
+    options:
+      - { text: "Jordan", correct: true }
+      - { text: "Egypt" }
+      - { text: "Israel" }
+      - { text: "Syria" }
+      - { text: "Lebanon" }
+      - { text: "Saudi Arabia" }
+  - slot: 2
+    type: choice
+    category: science
+    text: "What does a seismograph measure?"
+    options:
+      - { text: "Earthquakes", correct: true }
+      - { text: "Wind speed" }
+      - { text: "Rainfall" }
+      - { text: "Air pressure" }
+      - { text: "Humidity" }
+      - { text: "Temperature" }
+  - slot: 3
+    type: number
+    category: general
+    text: "How many inches are there in a foot?"
+    answer: 12
+    tolerance: 0
+  - slot: 4
+    type: choice
+    category: history
+    text: "Who was the British monarch during the First World War?"
+    options:
+      - { text: "George V", correct: true }
+      - { text: "Edward VII" }
+      - { text: "George VI" }
+      - { text: "Edward VIII" }
+      - { text: "Victoria" }
+      - { text: "William IV" }
+  - slot: 5
+    type: text
+    category: general
+    text: "What is the nickname of the Great Bell in the clock tower at Westminster?"
+    answers:
+      - { canonical: "Big Ben", aliases: [] }
+  - slot: 6
+    type: choice
+    category: art
+    text: "Who painted 'The Scream'?"
+    options:
+      - { text: "Edvard Munch", correct: true }
+      - { text: "Vincent van Gogh" }
+      - { text: "Gustav Klimt" }
+      - { text: "Egon Schiele" }
+      - { text: "Paul Gauguin" }
+      - { text: "Wassily Kandinsky" }
+  - slot: 7
+    type: choice
+    category: sport
+    text: "Which city hosted the 2012 Summer Olympics?"
+    options:
+      - { text: "London", correct: true }
+      - { text: "Beijing" }
+      - { text: "Rio de Janeiro" }
+      - { text: "Athens" }
+      - { text: "Tokyo" }
+      - { text: "Sydney" }
+  - slot: 8
+    type: choice
+    category: food
+    text: "Which fizzy drink is made by fermenting sweet tea?"
+    options:
+      - { text: "Kombucha", correct: true }
+      - { text: "Kefir" }
+      - { text: "Kvass" }
+      - { text: "Matcha" }
+      - { text: "Chai" }
+      - { text: "Sake" }

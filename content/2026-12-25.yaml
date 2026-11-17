@@ -1,0 +1,80 @@
+date: 2026-12-25
+questions:
+  - slot: 1
+    type: choice
+    category: christmas
+    text: "In which country is a KFC meal a popular Christmas tradition?"
+    options:
+      - { text: "Japan", correct: true }
+      - { text: "South Korea" }
+      - { text: "China" }
+      - { text: "Philippines" }
+      - { text: "Thailand" }
+      - { text: "Vietnam" }
+  - slot: 2
+    type: choice
+    category: nature
+    text: "Frankincense comes from which part of a tree?"
+    options:
+      - { text: "Resin", correct: true }
+      - { text: "Bark" }
+      - { text: "Leaves" }
+      - { text: "Seeds" }
+      - { text: "Roots" }
+      - { text: "Flowers" }
+  - slot: 3
+    type: number
+    category: christmas
+    text: "In 'The Twelve Days of Christmas', how many lords are a-leaping?"
+    answer: 10
+    tolerance: 0
+  - slot: 4
+    type: choice
+    category: history
+    text: "Who was crowned King of England on Christmas Day 1066?"
+    options:
+      - { text: "William the Conqueror", correct: true }
+      - { text: "Harold Godwinson" }
+      - { text: "Edward the Confessor" }
+      - { text: "Henry I" }
+      - { text: "William II" }
+      - { text: "Edgar Ætheling" }
+  - slot: 5
+    type: text
+    category: literature
+    text: "What is the name of Scrooge's dead business partner in 'A Christmas Carol'?"
+    answers:
+      - { canonical: "Jacob Marley", aliases: ["Marley"] }
+  - slot: 6
+    type: choice
+    category: literature
+    text: "Who wrote 'How the Grinch Stole Christmas!'?"
+    options:
+      - { text: "Dr. Seuss", correct: true }
+      - { text: "Roald Dahl" }
+      - { text: "Maurice Sendak" }
+      - { text: "Shel Silverstein" }
+      - { text: "Raymond Briggs" }
+      - { text: "Eric Carle" }
+  - slot: 7
+    type: choice
+    category: music
+    text: "In which country was the carol 'Silent Night' first performed?"
+    options:
+      - { text: "Austria", correct: true }
+      - { text: "Germany" }
+      - { text: "Switzerland" }
+      - { text: "England" }
+      - { text: "France" }
+      - { text: "Italy" }
+  - slot: 8
+    type: choice
+    category: food
+    text: "Besides eggs, what is the main ingredient of eggnog?"
+    options:
+      - { text: "Milk", correct: true }
+      - { text: "Orange juice" }
+      - { text: "Coffee" }
+      - { text: "Tea" }
+      - { text: "Coconut water" }
+      - { text: "Apple juice" }

@@ -1,0 +1,80 @@
+date: 2026-12-07
+questions:
+  - slot: 1
+    type: choice
+    category: geography
+    text: "What is the capital of Canada?"
+    options:
+      - { text: "Ottawa", correct: true }
+      - { text: "Toronto" }
+      - { text: "Montreal" }
+      - { text: "Vancouver" }
+      - { text: "Calgary" }
+      - { text: "Quebec City" }
+  - slot: 2
+    type: choice
+    category: science
+    text: "What is the chemical formula for table salt?"
+    options:
+      - { text: "NaCl", correct: true }
+      - { text: "KCl" }
+      - { text: "NaOH" }
+      - { text: "CaCl2" }
+      - { text: "HCl" }
+      - { text: "Na2CO3" }
+  - slot: 3
+    type: number
+    category: science
+    text: "How many bones are there in the adult human body?"
+    answer: 206
+    tolerance: 0
+  - slot: 4
+    type: choice
+    category: history
+    text: "Which document did the American colonies adopt in 1776?"
+    options:
+      - { text: "The Declaration of Independence", correct: true }
+      - { text: "The US Constitution" }
+      - { text: "The Bill of Rights" }
+      - { text: "Magna Carta" }
+      - { text: "The Treaty of Paris" }
+      - { text: "The Emancipation Proclamation" }
+  - slot: 5
+    type: text
+    category: music
+    text: "Which band released the album 'OK Computer'?"
+    answers:
+      - { canonical: "Radiohead", aliases: ["Radio head"] }
+  - slot: 6
+    type: choice
+    category: art
+    text: "Which Spanish artist co-founded Cubism?"
+    options:
+      - { text: "Pablo Picasso", correct: true }
+      - { text: "Salvador Dalí" }
+      - { text: "Joan Miró" }
+      - { text: "Francisco Goya" }
+      - { text: "Diego Velázquez" }
+      - { text: "El Greco" }
+  - slot: 7
+    type: choice
+    category: music
+    text: "How many lines are there on a musical stave?"
+    options:
+      - { text: "5", correct: true }
+      - { text: "4" }
+      - { text: "6" }
+      - { text: "7" }
+      - { text: "8" }
+      - { text: "3" }
+  - slot: 8
+    type: choice
+    category: nature
+    text: "Which bird is the national symbol of the United States?"
+    options:
+      - { text: "Bald eagle", correct: true }
+      - { text: "Golden eagle" }
+      - { text: "Wild turkey" }
+      - { text: "Osprey" }
+      - { text: "Red-tailed hawk" }
+      - { text: "Peregrine falcon" }

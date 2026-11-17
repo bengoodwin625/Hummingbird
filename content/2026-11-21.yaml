@@ -1,0 +1,80 @@
+date: 2026-11-21
+questions:
+  - slot: 1
+    type: choice
+    category: geography
+    text: "What is the largest desert in the world by area?"
+    options:
+      - { text: "Antarctic", correct: true }
+      - { text: "Sahara" }
+      - { text: "Arctic" }
+      - { text: "Gobi" }
+      - { text: "Arabian" }
+      - { text: "Kalahari" }
+  - slot: 2
+    type: choice
+    category: science
+    text: "Which gas makes up about 78% of Earth's atmosphere?"
+    options:
+      - { text: "Nitrogen", correct: true }
+      - { text: "Oxygen" }
+      - { text: "Argon" }
+      - { text: "Carbon dioxide" }
+      - { text: "Hydrogen" }
+      - { text: "Helium" }
+  - slot: 3
+    type: number
+    category: sport
+    text: "How many players does a rugby union team have on the pitch?"
+    answer: 15
+    tolerance: 0
+  - slot: 4
+    type: choice
+    category: history
+    text: "Who was the first woman to fly solo across the Atlantic?"
+    options:
+      - { text: "Amelia Earhart", correct: true }
+      - { text: "Amy Johnson" }
+      - { text: "Bessie Coleman" }
+      - { text: "Harriet Quimby" }
+      - { text: "Jean Batten" }
+      - { text: "Beryl Markham" }
+  - slot: 5
+    type: text
+    category: literature
+    text: "Who wrote 'Nineteen Eighty-Four'?"
+    answers:
+      - { canonical: "George Orwell", aliases: ["Orwell", "Eric Blair", "Eric Arthur Blair"] }
+  - slot: 6
+    type: choice
+    category: music
+    text: "Which country did ABBA come from?"
+    options:
+      - { text: "Sweden", correct: true }
+      - { text: "Norway" }
+      - { text: "Denmark" }
+      - { text: "Finland" }
+      - { text: "Netherlands" }
+      - { text: "Iceland" }
+  - slot: 7
+    type: choice
+    category: film
+    text: "Who played Jack in the 1997 film 'Titanic'?"
+    options:
+      - { text: "Leonardo DiCaprio", correct: true }
+      - { text: "Brad Pitt" }
+      - { text: "Matt Damon" }
+      - { text: "Johnny Depp" }
+      - { text: "Tom Cruise" }
+      - { text: "Ewan McGregor" }
+  - slot: 8
+    type: choice
+    category: food
+    text: "Which country does paella come from?"
+    options:
+      - { text: "Spain", correct: true }
+      - { text: "Portugal" }
+      - { text: "Italy" }
+      - { text: "Mexico" }
+      - { text: "Greece" }
+      - { text: "Morocco" }

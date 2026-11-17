@@ -1,0 +1,80 @@
+date: 2026-11-22
+questions:
+  - slot: 1
+    type: choice
+    category: geography
+    text: "What is the smallest country in the world by area?"
+    options:
+      - { text: "Vatican City", correct: true }
+      - { text: "Monaco" }
+      - { text: "San Marino" }
+      - { text: "Liechtenstein" }
+      - { text: "Malta" }
+      - { text: "Nauru" }
+  - slot: 2
+    type: choice
+    category: science
+    text: "What is the most common blood type in the world?"
+    options:
+      - { text: "O positive", correct: true }
+      - { text: "A positive" }
+      - { text: "B positive" }
+      - { text: "AB positive" }
+      - { text: "O negative" }
+      - { text: "A negative" }
+  - slot: 3
+    type: number
+    category: space
+    text: "In what year did humans first land on the Moon?"
+    answer: 1969
+    tolerance: 0
+  - slot: 4
+    type: choice
+    category: history
+    text: "Which ancient wonder stood in Alexandria?"
+    options:
+      - { text: "The Lighthouse", correct: true }
+      - { text: "The Hanging Gardens" }
+      - { text: "The Colossus" }
+      - { text: "The Mausoleum" }
+      - { text: "The Temple of Artemis" }
+      - { text: "The Statue of Zeus" }
+  - slot: 5
+    type: text
+    category: science
+    text: "Which metal has the chemical symbol Fe?"
+    answers:
+      - { canonical: "Iron", aliases: [] }
+  - slot: 6
+    type: choice
+    category: art
+    text: "Who sculpted 'The Thinker'?"
+    options:
+      - { text: "Auguste Rodin", correct: true }
+      - { text: "Michelangelo" }
+      - { text: "Donatello" }
+      - { text: "Henry Moore" }
+      - { text: "Gian Lorenzo Bernini" }
+      - { text: "Antonio Canova" }
+  - slot: 7
+    type: choice
+    category: sport
+    text: "In which event would an athlete perform a 'Fosbury Flop'?"
+    options:
+      - { text: "High jump", correct: true }
+      - { text: "Pole vault" }
+      - { text: "Long jump" }
+      - { text: "Diving" }
+      - { text: "Gymnastics" }
+      - { text: "Triple jump" }
+  - slot: 8
+    type: choice
+    category: nature
+    text: "What is the tallest living bird?"
+    options:
+      - { text: "Ostrich", correct: true }
+      - { text: "Emu" }
+      - { text: "Cassowary" }
+      - { text: "Rhea" }
+      - { text: "Emperor penguin" }
+      - { text: "Albatross" }

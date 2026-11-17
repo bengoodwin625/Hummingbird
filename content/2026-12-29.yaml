@@ -1,0 +1,80 @@
+date: 2026-12-29
+questions:
+  - slot: 1
+    type: choice
+    category: geography
+    text: "What is the capital of Thailand?"
+    options:
+      - { text: "Bangkok", correct: true }
+      - { text: "Chiang Mai" }
+      - { text: "Phuket" }
+      - { text: "Hanoi" }
+      - { text: "Phnom Penh" }
+      - { text: "Vientiane" }
+  - slot: 2
+    type: choice
+    category: space
+    text: "Which NASA rover landed on Mars in 2021?"
+    options:
+      - { text: "Perseverance", correct: true }
+      - { text: "Curiosity" }
+      - { text: "Opportunity" }
+      - { text: "Spirit" }
+      - { text: "Sojourner" }
+      - { text: "Ingenuity" }
+  - slot: 3
+    type: number
+    category: general
+    text: "How many tiles are in a standard English Scrabble set?"
+    answer: 100
+    tolerance: 0
+  - slot: 4
+    type: choice
+    category: history
+    text: "Which ship carried the Pilgrims to America in 1620?"
+    options:
+      - { text: "Mayflower", correct: true }
+      - { text: "Santa María" }
+      - { text: "Golden Hind" }
+      - { text: "Endeavour" }
+      - { text: "Bounty" }
+      - { text: "Victory" }
+  - slot: 5
+    type: text
+    category: science
+    text: "What is the longest bone in the human body?"
+    answers:
+      - { canonical: "Femur", aliases: ["Thigh bone", "Thighbone"] }
+  - slot: 6
+    type: choice
+    category: film
+    text: "Which studio made the film 'Shrek'?"
+    options:
+      - { text: "DreamWorks", correct: true }
+      - { text: "Pixar" }
+      - { text: "Disney" }
+      - { text: "Illumination" }
+      - { text: "Blue Sky" }
+      - { text: "Aardman" }
+  - slot: 7
+    type: choice
+    category: music
+    text: "Who released the album '21' in 2011?"
+    options:
+      - { text: "Adele", correct: true }
+      - { text: "Amy Winehouse" }
+      - { text: "Lady Gaga" }
+      - { text: "Rihanna" }
+      - { text: "Taylor Swift" }
+      - { text: "Duffy" }
+  - slot: 8
+    type: choice
+    category: nature
+    text: "What is a group of owls called?"
+    options:
+      - { text: "A parliament", correct: true }
+      - { text: "A murder" }
+      - { text: "A gaggle" }
+      - { text: "A flock" }
+      - { text: "A colony" }
+      - { text: "A pride" }

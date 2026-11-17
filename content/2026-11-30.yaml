@@ -1,0 +1,80 @@
+date: 2026-11-30
+questions:
+  - slot: 1
+    type: choice
+    category: geography
+    text: "Which African country has the largest population?"
+    options:
+      - { text: "Nigeria", correct: true }
+      - { text: "Ethiopia" }
+      - { text: "Egypt" }
+      - { text: "South Africa" }
+      - { text: "DR Congo" }
+      - { text: "Kenya" }
+  - slot: 2
+    type: choice
+    category: science
+    text: "Which part of the cell is known as its powerhouse?"
+    options:
+      - { text: "Mitochondrion", correct: true }
+      - { text: "Nucleus" }
+      - { text: "Ribosome" }
+      - { text: "Golgi apparatus" }
+      - { text: "Chloroplast" }
+      - { text: "Lysosome" }
+  - slot: 3
+    type: number
+    category: maths
+    text: "How many sides does a heptagon have?"
+    answer: 7
+    tolerance: 0
+  - slot: 4
+    type: choice
+    category: history
+    text: "Who wrote 'The Communist Manifesto' with Friedrich Engels?"
+    options:
+      - { text: "Karl Marx", correct: true }
+      - { text: "Vladimir Lenin" }
+      - { text: "Leon Trotsky" }
+      - { text: "Joseph Stalin" }
+      - { text: "Mao Zedong" }
+      - { text: "Rosa Luxemburg" }
+  - slot: 5
+    type: text
+    category: geography
+    text: "What is the largest ocean on Earth?"
+    answers:
+      - { canonical: "Pacific", aliases: ["Pacific Ocean"] }
+  - slot: 6
+    type: choice
+    category: literature
+    text: "Who wrote 'The Hobbit'?"
+    options:
+      - { text: "J. R. R. Tolkien", correct: true }
+      - { text: "C. S. Lewis" }
+      - { text: "Roald Dahl" }
+      - { text: "Philip Pullman" }
+      - { text: "Terry Pratchett" }
+      - { text: "J. K. Rowling" }
+  - slot: 7
+    type: choice
+    category: sport
+    text: "Which country has won the most FIFA World Cups?"
+    options:
+      - { text: "Brazil", correct: true }
+      - { text: "Germany" }
+      - { text: "Italy" }
+      - { text: "Argentina" }
+      - { text: "France" }
+      - { text: "Uruguay" }
+  - slot: 8
+    type: choice
+    category: food
+    text: "What is the main ingredient of hummus?"
+    options:
+      - { text: "Chickpeas", correct: true }
+      - { text: "Lentils" }
+      - { text: "Broad beans" }
+      - { text: "Kidney beans" }
+      - { text: "Peas" }
+      - { text: "Butter beans" }

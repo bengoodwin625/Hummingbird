@@ -1,0 +1,80 @@
+date: 2026-12-31
+questions:
+  - slot: 1
+    type: choice
+    category: geography
+    text: "Which country is the first to see in the New Year each year?"
+    options:
+      - { text: "Kiribati", correct: true }
+      - { text: "New Zealand" }
+      - { text: "Australia" }
+      - { text: "Japan" }
+      - { text: "Fiji" }
+      - { text: "Papua New Guinea" }
+  - slot: 2
+    type: choice
+    category: geography
+    text: "What is the name of the line of 0° longitude?"
+    options:
+      - { text: "Prime Meridian", correct: true }
+      - { text: "Equator" }
+      - { text: "International Date Line" }
+      - { text: "Tropic of Cancer" }
+      - { text: "Arctic Circle" }
+      - { text: "Tropic of Capricorn" }
+  - slot: 3
+    type: number
+    category: general
+    text: "How many months of the year have 31 days?"
+    answer: 7
+    tolerance: 0
+  - slot: 4
+    type: choice
+    category: history
+    text: "Who wrote the words of 'Auld Lang Syne'?"
+    options:
+      - { text: "Robert Burns", correct: true }
+      - { text: "Walter Scott" }
+      - { text: "James Hogg" }
+      - { text: "Robert Louis Stevenson" }
+      - { text: "Allan Ramsay" }
+      - { text: "William McGonagall" }
+  - slot: 5
+    type: text
+    category: general
+    text: "What is the Scottish name for New Year's Eve celebrations?"
+    answers:
+      - { canonical: "Hogmanay", aliases: [] }
+  - slot: 6
+    type: choice
+    category: film
+    text: "Which film begins with a New Year's Eve party aboard an ocean liner that capsizes?"
+    options:
+      - { text: "The Poseidon Adventure", correct: true }
+      - { text: "Titanic" }
+      - { text: "Speed 2: Cruise Control" }
+      - { text: "Overboard" }
+      - { text: "Airport" }
+      - { text: "The Towering Inferno" }
+  - slot: 7
+    type: choice
+    category: music
+    text: "Which group released 'Happy New Year' in 1980?"
+    options:
+      - { text: "ABBA", correct: true }
+      - { text: "Queen" }
+      - { text: "Bee Gees" }
+      - { text: "Wham!" }
+      - { text: "Boney M." }
+      - { text: "The Carpenters" }
+  - slot: 8
+    type: choice
+    category: nature
+    text: "Which bird has the longest annual migration?"
+    options:
+      - { text: "Arctic tern", correct: true }
+      - { text: "Albatross" }
+      - { text: "Swallow" }
+      - { text: "Osprey" }
+      - { text: "Common swift" }
+      - { text: "Barnacle goose" }

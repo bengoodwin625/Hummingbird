@@ -1,0 +1,80 @@
+date: 2026-12-03
+questions:
+  - slot: 1
+    type: choice
+    category: geography
+    text: "What is the capital of Argentina?"
+    options:
+      - { text: "Buenos Aires", correct: true }
+      - { text: "Santiago" }
+      - { text: "Montevideo" }
+      - { text: "Lima" }
+      - { text: "Córdoba" }
+      - { text: "Asunción" }
+  - slot: 2
+    type: choice
+    category: science
+    text: "What is the name for animals that eat only plants?"
+    options:
+      - { text: "Herbivores", correct: true }
+      - { text: "Carnivores" }
+      - { text: "Omnivores" }
+      - { text: "Insectivores" }
+      - { text: "Detritivores" }
+      - { text: "Scavengers" }
+  - slot: 3
+    type: number
+    category: sport
+    text: "How many players are on a cricket team?"
+    answer: 11
+    tolerance: 0
+  - slot: 4
+    type: choice
+    category: history
+    text: "Which monarch had the longest reign in British history?"
+    options:
+      - { text: "Elizabeth II", correct: true }
+      - { text: "Victoria" }
+      - { text: "Elizabeth I" }
+      - { text: "George III" }
+      - { text: "Anne" }
+      - { text: "Mary II" }
+  - slot: 5
+    type: text
+    category: geography
+    text: "What is the capital of Spain?"
+    answers:
+      - { canonical: "Madrid", aliases: [] }
+  - slot: 6
+    type: choice
+    category: literature
+    text: "Who wrote 'Frankenstein'?"
+    options:
+      - { text: "Mary Shelley", correct: true }
+      - { text: "Bram Stoker" }
+      - { text: "Percy Bysshe Shelley" }
+      - { text: "Lord Byron" }
+      - { text: "Edgar Allan Poe" }
+      - { text: "H. G. Wells" }
+  - slot: 7
+    type: choice
+    category: music
+    text: "Which band released the album 'Abbey Road'?"
+    options:
+      - { text: "The Beatles", correct: true }
+      - { text: "The Rolling Stones" }
+      - { text: "The Kinks" }
+      - { text: "The Who" }
+      - { text: "Pink Floyd" }
+      - { text: "The Beach Boys" }
+  - slot: 8
+    type: choice
+    category: nature
+    text: "What is a group of lions called?"
+    options:
+      - { text: "A pride", correct: true }
+      - { text: "A pack" }
+      - { text: "A herd" }
+      - { text: "A troop" }
+      - { text: "A colony" }
+      - { text: "A school" }

@@ -1,0 +1,80 @@
+date: 2026-12-06
+questions:
+  - slot: 1
+    type: choice
+    category: geography
+    text: "Which city is nicknamed the 'Big Apple'?"
+    options:
+      - { text: "New York", correct: true }
+      - { text: "Chicago" }
+      - { text: "Los Angeles" }
+      - { text: "Boston" }
+      - { text: "San Francisco" }
+      - { text: "Philadelphia" }
+  - slot: 2
+    type: choice
+    category: space
+    text: "Which element makes up most of the Sun?"
+    options:
+      - { text: "Hydrogen", correct: true }
+      - { text: "Helium" }
+      - { text: "Oxygen" }
+      - { text: "Carbon" }
+      - { text: "Nitrogen" }
+      - { text: "Neon" }
+  - slot: 3
+    type: number
+    category: science
+    text: "How many milligrams are there in a gram?"
+    answer: 1000
+    tolerance: 0
+  - slot: 4
+    type: choice
+    category: history
+    text: "Who was granted the first patent for the telephone?"
+    options:
+      - { text: "Alexander Graham Bell", correct: true }
+      - { text: "Thomas Edison" }
+      - { text: "Nikola Tesla" }
+      - { text: "Guglielmo Marconi" }
+      - { text: "Samuel Morse" }
+      - { text: "Michael Faraday" }
+  - slot: 5
+    type: text
+    category: geography
+    text: "What is the capital of Germany?"
+    answers:
+      - { canonical: "Berlin", aliases: [] }
+  - slot: 6
+    type: choice
+    category: literature
+    text: "Who wrote 'A Christmas Carol'?"
+    options:
+      - { text: "Charles Dickens", correct: true }
+      - { text: "Thomas Hardy" }
+      - { text: "Charlotte Brontë" }
+      - { text: "Lewis Carroll" }
+      - { text: "Oscar Wilde" }
+      - { text: "Anthony Trollope" }
+  - slot: 7
+    type: choice
+    category: sport
+    text: "In which country did the sport of judo begin?"
+    options:
+      - { text: "Japan", correct: true }
+      - { text: "China" }
+      - { text: "South Korea" }
+      - { text: "Brazil" }
+      - { text: "Russia" }
+      - { text: "Mongolia" }
+  - slot: 8
+    type: choice
+    category: food
+    text: "Which pastry are profiteroles made from?"
+    options:
+      - { text: "Choux", correct: true }
+      - { text: "Puff" }
+      - { text: "Filo" }
+      - { text: "Shortcrust" }
+      - { text: "Flaky" }
+      - { text: "Hot water crust" }

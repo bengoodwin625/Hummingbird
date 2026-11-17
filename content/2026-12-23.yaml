@@ -1,0 +1,80 @@
+date: 2026-12-23
+questions:
+  - slot: 1
+    type: choice
+    category: christmas
+    text: "Which country gives London the Trafalgar Square Christmas tree each year?"
+    options:
+      - { text: "Norway", correct: true }
+      - { text: "Sweden" }
+      - { text: "Denmark" }
+      - { text: "Finland" }
+      - { text: "Germany" }
+      - { text: "Iceland" }
+  - slot: 2
+    type: choice
+    category: nature
+    text: "Poinsettias are native to which country?"
+    options:
+      - { text: "Mexico", correct: true }
+      - { text: "Brazil" }
+      - { text: "Spain" }
+      - { text: "Peru" }
+      - { text: "India" }
+      - { text: "Chile" }
+  - slot: 3
+    type: number
+    category: history
+    text: "In what year was the first commercial Christmas card sent?"
+    answer: 1843
+    tolerance: 0
+  - slot: 4
+    type: choice
+    category: history
+    text: "Saint Nicholas was a bishop in what is now which country?"
+    options:
+      - { text: "Turkey", correct: true }
+      - { text: "Greece" }
+      - { text: "Italy" }
+      - { text: "Netherlands" }
+      - { text: "Germany" }
+      - { text: "Russia" }
+  - slot: 5
+    type: text
+    category: christmas
+    text: "What is the name of the Grinch's dog?"
+    answers:
+      - { canonical: "Max", aliases: [] }
+  - slot: 6
+    type: choice
+    category: literature
+    text: "In 'The Lion, the Witch and the Wardrobe', Narnia is always winter but never what?"
+    options:
+      - { text: "Christmas", correct: true }
+      - { text: "Spring" }
+      - { text: "Summer" }
+      - { text: "Snowing" }
+      - { text: "Night" }
+      - { text: "Easter" }
+  - slot: 7
+    type: choice
+    category: music
+    text: "Which Christmas song begins \"I'm dreaming of a…\"?"
+    options:
+      - { text: "White Christmas", correct: true }
+      - { text: "Silent Night" }
+      - { text: "Jingle Bells" }
+      - { text: "Let It Snow!" }
+      - { text: "Winter Wonderland" }
+      - { text: "Blue Christmas" }
+  - slot: 8
+    type: choice
+    category: food
+    text: "Which nuts are 'roasting on an open fire' in 'The Christmas Song'?"
+    options:
+      - { text: "Chestnuts", correct: true }
+      - { text: "Almonds" }
+      - { text: "Hazelnuts" }
+      - { text: "Walnuts" }
+      - { text: "Pecans" }
+      - { text: "Brazil nuts" }

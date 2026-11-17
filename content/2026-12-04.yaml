@@ -1,0 +1,80 @@
+date: 2026-12-04
+questions:
+  - slot: 1
+    type: choice
+    category: geography
+    text: "The Great Barrier Reef lies off which Australian state?"
+    options:
+      - { text: "Queensland", correct: true }
+      - { text: "New South Wales" }
+      - { text: "Western Australia" }
+      - { text: "Northern Territory" }
+      - { text: "Victoria" }
+      - { text: "South Australia" }
+  - slot: 2
+    type: choice
+    category: space
+    text: "How many planets are there in our Solar System?"
+    options:
+      - { text: "8", correct: true }
+      - { text: "9" }
+      - { text: "7" }
+      - { text: "10" }
+      - { text: "12" }
+      - { text: "6" }
+  - slot: 3
+    type: number
+    category: history
+    text: "In what year was the Battle of Hastings fought?"
+    answer: 1066
+    tolerance: 0
+  - slot: 4
+    type: choice
+    category: history
+    text: "Who was the last Tsar of Russia?"
+    options:
+      - { text: "Nicholas II", correct: true }
+      - { text: "Alexander III" }
+      - { text: "Peter the Great" }
+      - { text: "Alexander II" }
+      - { text: "Ivan IV" }
+      - { text: "Nicholas I" }
+  - slot: 5
+    type: text
+    category: geography
+    text: "What is the capital of Ireland?"
+    answers:
+      - { canonical: "Dublin", aliases: [] }
+  - slot: 6
+    type: choice
+    category: art
+    text: "Who painted the 'Mona Lisa'?"
+    options:
+      - { text: "Leonardo da Vinci", correct: true }
+      - { text: "Michelangelo" }
+      - { text: "Raphael" }
+      - { text: "Titian" }
+      - { text: "Sandro Botticelli" }
+      - { text: "Caravaggio" }
+  - slot: 7
+    type: choice
+    category: sport
+    text: "How many points is a try worth in rugby union?"
+    options:
+      - { text: "5", correct: true }
+      - { text: "3" }
+      - { text: "4" }
+      - { text: "6" }
+      - { text: "7" }
+      - { text: "2" }
+  - slot: 8
+    type: choice
+    category: food
+    text: "Which country does sushi come from?"
+    options:
+      - { text: "Japan", correct: true }
+      - { text: "China" }
+      - { text: "South Korea" }
+      - { text: "Thailand" }
+      - { text: "Vietnam" }
+      - { text: "Philippines" }

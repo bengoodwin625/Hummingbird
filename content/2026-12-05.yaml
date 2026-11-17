@@ -1,0 +1,80 @@
+date: 2026-12-05
+questions:
+  - slot: 1
+    type: choice
+    category: geography
+    text: "What is the largest country in South America?"
+    options:
+      - { text: "Brazil", correct: true }
+      - { text: "Argentina" }
+      - { text: "Peru" }
+      - { text: "Colombia" }
+      - { text: "Venezuela" }
+      - { text: "Bolivia" }
+  - slot: 2
+    type: choice
+    category: science
+    text: "Which gas do plants give off during photosynthesis?"
+    options:
+      - { text: "Oxygen", correct: true }
+      - { text: "Carbon dioxide" }
+      - { text: "Nitrogen" }
+      - { text: "Hydrogen" }
+      - { text: "Methane" }
+      - { text: "Helium" }
+  - slot: 3
+    type: number
+    category: general
+    text: "How many hours are there in a week?"
+    answer: 168
+    tolerance: 0
+  - slot: 4
+    type: choice
+    category: history
+    text: "In which year did the Berlin Wall fall?"
+    options:
+      - { text: "1989", correct: true }
+      - { text: "1987" }
+      - { text: "1991" }
+      - { text: "1985" }
+      - { text: "1990" }
+      - { text: "1993" }
+  - slot: 5
+    type: text
+    category: space
+    text: "Which planet is closest to the Sun?"
+    answers:
+      - { canonical: "Mercury", aliases: [] }
+  - slot: 6
+    type: choice
+    category: film
+    text: "Which animated film features the song 'Let It Go'?"
+    options:
+      - { text: "Frozen", correct: true }
+      - { text: "Tangled" }
+      - { text: "Moana" }
+      - { text: "Brave" }
+      - { text: "Encanto" }
+      - { text: "The Little Mermaid" }
+  - slot: 7
+    type: choice
+    category: music
+    text: "What is the highest female singing voice?"
+    options:
+      - { text: "Soprano", correct: true }
+      - { text: "Alto" }
+      - { text: "Mezzo-soprano" }
+      - { text: "Contralto" }
+      - { text: "Tenor" }
+      - { text: "Baritone" }
+  - slot: 8
+    type: choice
+    category: nature
+    text: "What is the largest species of big cat?"
+    options:
+      - { text: "Tiger", correct: true }
+      - { text: "Lion" }
+      - { text: "Jaguar" }
+      - { text: "Leopard" }
+      - { text: "Cougar" }
+      - { text: "Cheetah" }

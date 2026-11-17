@@ -1,0 +1,80 @@
+date: 2026-11-20
+questions:
+  - slot: 1
+    type: choice
+    category: geography
+    text: "Which country has the most time zones, counting its overseas territories?"
+    options:
+      - { text: "France", correct: true }
+      - { text: "Russia" }
+      - { text: "United States" }
+      - { text: "United Kingdom" }
+      - { text: "China" }
+      - { text: "Australia" }
+  - slot: 2
+    type: choice
+    category: science
+    text: "What is the chemical symbol for sodium?"
+    options:
+      - { text: "Na", correct: true }
+      - { text: "So" }
+      - { text: "Sd" }
+      - { text: "S" }
+      - { text: "N" }
+      - { text: "Nd" }
+  - slot: 3
+    type: number
+    category: music
+    text: "How many keys are there on a standard modern piano?"
+    answer: 88
+    tolerance: 0
+  - slot: 4
+    type: choice
+    category: history
+    text: "In which year did Queen Victoria die?"
+    options:
+      - { text: "1901", correct: true }
+      - { text: "1899" }
+      - { text: "1903" }
+      - { text: "1910" }
+      - { text: "1895" }
+      - { text: "1897" }
+  - slot: 5
+    type: text
+    category: geography
+    text: "What is the capital of New Zealand?"
+    answers:
+      - { canonical: "Wellington", aliases: [] }
+  - slot: 6
+    type: choice
+    category: music
+    text: "Which instrument did the jazz musician Miles Davis play?"
+    options:
+      - { text: "Trumpet", correct: true }
+      - { text: "Saxophone" }
+      - { text: "Piano" }
+      - { text: "Trombone" }
+      - { text: "Double bass" }
+      - { text: "Clarinet" }
+  - slot: 7
+    type: choice
+    category: film
+    text: "Who directed the 1975 film 'Jaws'?"
+    options:
+      - { text: "Steven Spielberg", correct: true }
+      - { text: "George Lucas" }
+      - { text: "Francis Ford Coppola" }
+      - { text: "Martin Scorsese" }
+      - { text: "Ridley Scott" }
+      - { text: "John Carpenter" }
+  - slot: 8
+    type: choice
+    category: nature
+    text: "What is a baby kangaroo called?"
+    options:
+      - { text: "Joey", correct: true }
+      - { text: "Kit" }
+      - { text: "Cub" }
+      - { text: "Pup" }
+      - { text: "Calf" }
+      - { text: "Kid" }

@@ -1,0 +1,80 @@
+date: 2026-11-26
+questions:
+  - slot: 1
+    type: choice
+    category: geography
+    text: "In which country is the city of Marrakesh?"
+    options:
+      - { text: "Morocco", correct: true }
+      - { text: "Algeria" }
+      - { text: "Tunisia" }
+      - { text: "Egypt" }
+      - { text: "Libya" }
+      - { text: "Mauritania" }
+  - slot: 2
+    type: choice
+    category: space
+    text: "What is the closest star to Earth?"
+    options:
+      - { text: "The Sun", correct: true }
+      - { text: "Proxima Centauri" }
+      - { text: "Sirius" }
+      - { text: "Alpha Centauri A" }
+      - { text: "Betelgeuse" }
+      - { text: "Polaris" }
+  - slot: 3
+    type: number
+    category: general
+    text: "How many weeks are there in a year, to the nearest whole number?"
+    answer: 52
+    tolerance: 0
+  - slot: 4
+    type: choice
+    category: history
+    text: "In which year was the Battle of Waterloo fought?"
+    options:
+      - { text: "1815", correct: true }
+      - { text: "1805" }
+      - { text: "1812" }
+      - { text: "1798" }
+      - { text: "1821" }
+      - { text: "1808" }
+  - slot: 5
+    type: text
+    category: science
+    text: "Which element has the chemical symbol Au?"
+    answers:
+      - { canonical: "Gold", aliases: [] }
+  - slot: 6
+    type: choice
+    category: film
+    text: "Which film series features the line \"May the Force be with you\"?"
+    options:
+      - { text: "Star Wars", correct: true }
+      - { text: "Star Trek" }
+      - { text: "Dune" }
+      - { text: "Flash Gordon" }
+      - { text: "Battlestar Galactica" }
+      - { text: "The Matrix" }
+  - slot: 7
+    type: choice
+    category: sport
+    text: "How many players does a basketball team have on court?"
+    options:
+      - { text: "5", correct: true }
+      - { text: "6" }
+      - { text: "7" }
+      - { text: "4" }
+      - { text: "9" }
+      - { text: "11" }
+  - slot: 8
+    type: choice
+    category: food
+    text: "Which nut is used to make marzipan?"
+    options:
+      - { text: "Almond", correct: true }
+      - { text: "Hazelnut" }
+      - { text: "Walnut" }
+      - { text: "Cashew" }
+      - { text: "Pistachio" }
+      - { text: "Peanut" }

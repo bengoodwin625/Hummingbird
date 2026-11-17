@@ -1,0 +1,80 @@
+date: 2026-12-24
+questions:
+  - slot: 1
+    type: choice
+    category: geography
+    text: "Christmas Island in the Indian Ocean belongs to which country?"
+    options:
+      - { text: "Australia", correct: true }
+      - { text: "Indonesia" }
+      - { text: "United Kingdom" }
+      - { text: "New Zealand" }
+      - { text: "India" }
+      - { text: "Malaysia" }
+  - slot: 2
+    type: choice
+    category: nature
+    text: "What are reindeer called in North America?"
+    options:
+      - { text: "Caribou", correct: true }
+      - { text: "Elk" }
+      - { text: "Moose" }
+      - { text: "Wapiti" }
+      - { text: "Muskox" }
+      - { text: "Pronghorn" }
+  - slot: 3
+    type: number
+    category: nature
+    text: "How many points or sides does a typical snowflake have?"
+    answer: 6
+    tolerance: 0
+  - slot: 4
+    type: choice
+    category: history
+    text: "On which date do Orthodox churches that follow the Julian calendar celebrate Christmas?"
+    options:
+      - { text: "7 January", correct: true }
+      - { text: "6 January" }
+      - { text: "25 December" }
+      - { text: "1 January" }
+      - { text: "19 December" }
+      - { text: "13 January" }
+  - slot: 5
+    type: text
+    category: christmas
+    text: "Which saint is Santa Claus based on?"
+    answers:
+      - { canonical: "Saint Nicholas", aliases: ["Nicholas", "St Nicholas", "Nicholas of Myra"] }
+  - slot: 6
+    type: choice
+    category: film
+    text: "Which film features Buddy, a human raised by elves?"
+    options:
+      - { text: "Elf", correct: true }
+      - { text: "The Santa Clause" }
+      - { text: "Jingle All the Way" }
+      - { text: "Fred Claus" }
+      - { text: "Arthur Christmas" }
+      - { text: "The Polar Express" }
+  - slot: 7
+    type: choice
+    category: music
+    text: "Who composed the ballet 'The Nutcracker'?"
+    options:
+      - { text: "Pyotr Ilyich Tchaikovsky", correct: true }
+      - { text: "Sergei Prokofiev" }
+      - { text: "Sergei Rachmaninoff" }
+      - { text: "Nikolai Rimsky-Korsakov" }
+      - { text: "Igor Stravinsky" }
+      - { text: "Modest Mussorgsky" }
+  - slot: 8
+    type: choice
+    category: food
+    text: "Stollen is a traditional Christmas bread from which country?"
+    options:
+      - { text: "Germany", correct: true }
+      - { text: "Austria" }
+      - { text: "Switzerland" }
+      - { text: "Netherlands" }
+      - { text: "Denmark" }
+      - { text: "Poland" }

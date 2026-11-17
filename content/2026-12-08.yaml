@@ -1,0 +1,80 @@
+date: 2026-12-08
+questions:
+  - slot: 1
+    type: choice
+    category: geography
+    text: "Which strait separates Europe from Africa?"
+    options:
+      - { text: "Strait of Gibraltar", correct: true }
+      - { text: "Bosporus" }
+      - { text: "Strait of Messina" }
+      - { text: "Dardanelles" }
+      - { text: "Strait of Hormuz" }
+      - { text: "Bab-el-Mandeb" }
+  - slot: 2
+    type: choice
+    category: space
+    text: "What was the name of the first artificial satellite?"
+    options:
+      - { text: "Sputnik 1", correct: true }
+      - { text: "Explorer 1" }
+      - { text: "Vostok 1" }
+      - { text: "Telstar" }
+      - { text: "Vanguard 1" }
+      - { text: "Luna 1" }
+  - slot: 3
+    type: number
+    category: general
+    text: "How many pieces does each player start with in chess?"
+    answer: 16
+    tolerance: 0
+  - slot: 4
+    type: choice
+    category: history
+    text: "Who led the Free French during the Second World War?"
+    options:
+      - { text: "Charles de Gaulle", correct: true }
+      - { text: "Philippe Pétain" }
+      - { text: "François Mitterrand" }
+      - { text: "Georges Clemenceau" }
+      - { text: "Paul Reynaud" }
+      - { text: "Jean Moulin" }
+  - slot: 5
+    type: text
+    category: geography
+    text: "What is the largest country in the world by area?"
+    answers:
+      - { canonical: "Russia", aliases: [] }
+  - slot: 6
+    type: choice
+    category: film
+    text: "Who directed 'Pulp Fiction'?"
+    options:
+      - { text: "Quentin Tarantino", correct: true }
+      - { text: "Martin Scorsese" }
+      - { text: "Guy Ritchie" }
+      - { text: "David Fincher" }
+      - { text: "Robert Rodriguez" }
+      - { text: "Paul Thomas Anderson" }
+  - slot: 7
+    type: choice
+    category: sport
+    text: "In which sport is the Ryder Cup played?"
+    options:
+      - { text: "Golf", correct: true }
+      - { text: "Tennis" }
+      - { text: "Cricket" }
+      - { text: "Sailing" }
+      - { text: "Polo" }
+      - { text: "Rugby" }
+  - slot: 8
+    type: choice
+    category: food
+    text: "Which herb is the main ingredient of pesto?"
+    options:
+      - { text: "Basil", correct: true }
+      - { text: "Parsley" }
+      - { text: "Coriander" }
+      - { text: "Oregano" }
+      - { text: "Mint" }
+      - { text: "Rocket" }

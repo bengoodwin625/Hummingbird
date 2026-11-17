@@ -1,0 +1,80 @@
+date: 2026-12-22
+questions:
+  - slot: 1
+    type: choice
+    category: christmas
+    text: "Rovaniemi, the 'official hometown of Santa Claus', is in which country?"
+    options:
+      - { text: "Finland", correct: true }
+      - { text: "Norway" }
+      - { text: "Sweden" }
+      - { text: "Iceland" }
+      - { text: "Estonia" }
+      - { text: "Denmark" }
+  - slot: 2
+    type: choice
+    category: nature
+    text: "Which plant with white berries do people kiss under at Christmas?"
+    options:
+      - { text: "Mistletoe", correct: true }
+      - { text: "Holly" }
+      - { text: "Ivy" }
+      - { text: "Poinsettia" }
+      - { text: "Yew" }
+      - { text: "Laurel" }
+  - slot: 3
+    type: number
+    category: christmas
+    text: "How many reindeer pull Santa's sleigh, including Rudolph?"
+    answer: 9
+    tolerance: 0
+  - slot: 4
+    type: choice
+    category: history
+    text: "Which monarch gave the first royal Christmas broadcast, in 1932?"
+    options:
+      - { text: "George V", correct: true }
+      - { text: "George VI" }
+      - { text: "Edward VIII" }
+      - { text: "Elizabeth II" }
+      - { text: "Edward VII" }
+      - { text: "Victoria" }
+  - slot: 5
+    type: text
+    category: nature
+    text: "What colour are holly berries?"
+    answers:
+      - { canonical: "Red", aliases: [] }
+  - slot: 6
+    type: choice
+    category: film
+    text: "In 'Home Alone', where is the McCallister family flying to?"
+    options:
+      - { text: "Paris", correct: true }
+      - { text: "London" }
+      - { text: "Rome" }
+      - { text: "New York" }
+      - { text: "Miami" }
+      - { text: "Madrid" }
+  - slot: 7
+    type: choice
+    category: music
+    text: "Which group sang 'Last Christmas'?"
+    options:
+      - { text: "Wham!", correct: true }
+      - { text: "Band Aid" }
+      - { text: "Slade" }
+      - { text: "Wizzard" }
+      - { text: "The Pogues" }
+      - { text: "Mud" }
+  - slot: 8
+    type: choice
+    category: food
+    text: "Which spirit is traditionally used to set a Christmas pudding alight?"
+    options:
+      - { text: "Brandy", correct: true }
+      - { text: "Rum" }
+      - { text: "Whisky" }
+      - { text: "Gin" }
+      - { text: "Vodka" }
+      - { text: "Sherry" }

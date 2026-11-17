@@ -1,0 +1,80 @@
+date: 2026-12-12
+questions:
+  - slot: 1
+    type: choice
+    category: geography
+    text: "Which country was formerly known as Abyssinia?"
+    options:
+      - { text: "Ethiopia", correct: true }
+      - { text: "Eritrea" }
+      - { text: "Somalia" }
+      - { text: "Sudan" }
+      - { text: "Kenya" }
+      - { text: "Djibouti" }
+  - slot: 2
+    type: choice
+    category: science
+    text: "What is the SI unit of frequency?"
+    options:
+      - { text: "Hertz", correct: true }
+      - { text: "Joule" }
+      - { text: "Newton" }
+      - { text: "Pascal" }
+      - { text: "Tesla" }
+      - { text: "Watt" }
+  - slot: 3
+    type: number
+    category: general
+    text: "What is the speed limit on UK motorways, in miles per hour?"
+    answer: 70
+    tolerance: 0
+  - slot: 4
+    type: choice
+    category: history
+    text: "In which country did the Industrial Revolution begin?"
+    options:
+      - { text: "Britain", correct: true }
+      - { text: "Germany" }
+      - { text: "France" }
+      - { text: "United States" }
+      - { text: "Belgium" }
+      - { text: "Netherlands" }
+  - slot: 5
+    type: text
+    category: geography
+    text: "What is the capital of Portugal?"
+    answers:
+      - { canonical: "Lisbon", aliases: [] }
+  - slot: 6
+    type: choice
+    category: literature
+    text: "Who wrote 'Pride and Prejudice'?"
+    options:
+      - { text: "Jane Austen", correct: true }
+      - { text: "Charlotte Brontë" }
+      - { text: "George Eliot" }
+      - { text: "Mary Shelley" }
+      - { text: "Elizabeth Gaskell" }
+      - { text: "Fanny Burney" }
+  - slot: 7
+    type: choice
+    category: sport
+    text: "Which nation won the Rugby World Cup in 2003?"
+    options:
+      - { text: "England", correct: true }
+      - { text: "Australia" }
+      - { text: "New Zealand" }
+      - { text: "South Africa" }
+      - { text: "France" }
+      - { text: "Wales" }
+  - slot: 8
+    type: choice
+    category: food
+    text: "What is the main ingredient of a risotto?"
+    options:
+      - { text: "Rice", correct: true }
+      - { text: "Pasta" }
+      - { text: "Barley" }
+      - { text: "Couscous" }
+      - { text: "Quinoa" }
+      - { text: "Bulgur wheat" }

@@ -1,0 +1,80 @@
+date: 2026-12-19
+questions:
+  - slot: 1
+    type: choice
+    category: geography
+    text: "What is the capital of Poland?"
+    options:
+      - { text: "Warsaw", correct: true }
+      - { text: "Kraków" }
+      - { text: "Gdańsk" }
+      - { text: "Wrocław" }
+      - { text: "Łódź" }
+      - { text: "Poznań" }
+  - slot: 2
+    type: choice
+    category: space
+    text: "Which is the hottest planet in the Solar System?"
+    options:
+      - { text: "Venus", correct: true }
+      - { text: "Mercury" }
+      - { text: "Mars" }
+      - { text: "Jupiter" }
+      - { text: "Earth" }
+      - { text: "Saturn" }
+  - slot: 3
+    type: number
+    category: general
+    text: "How many feet are there in a mile?"
+    answer: 5280
+    tolerance: 0
+  - slot: 4
+    type: choice
+    category: history
+    text: "Which Roman town was buried by Mount Vesuvius in AD 79?"
+    options:
+      - { text: "Pompeii", correct: true }
+      - { text: "Rome" }
+      - { text: "Carthage" }
+      - { text: "Troy" }
+      - { text: "Athens" }
+      - { text: "Ostia" }
+  - slot: 5
+    type: text
+    category: science
+    text: "Which metal is extracted from bauxite?"
+    answers:
+      - { canonical: "Aluminium", aliases: ["Aluminum"] }
+  - slot: 6
+    type: choice
+    category: film
+    text: "Which 1939 film features the song 'Over the Rainbow'?"
+    options:
+      - { text: "The Wizard of Oz", correct: true }
+      - { text: "Gone with the Wind" }
+      - { text: "Snow White and the Seven Dwarfs" }
+      - { text: "Pinocchio" }
+      - { text: "Mary Poppins" }
+      - { text: "The Sound of Music" }
+  - slot: 7
+    type: choice
+    category: music
+    text: "Which composer kept writing music after going deaf?"
+    options:
+      - { text: "Ludwig van Beethoven", correct: true }
+      - { text: "Wolfgang Amadeus Mozart" }
+      - { text: "Johann Sebastian Bach" }
+      - { text: "Joseph Haydn" }
+      - { text: "Franz Schubert" }
+      - { text: "Johannes Brahms" }
+  - slot: 8
+    type: choice
+    category: nature
+    text: "What is the largest species of penguin?"
+    options:
+      - { text: "Emperor penguin", correct: true }
+      - { text: "King penguin" }
+      - { text: "Adélie penguin" }
+      - { text: "Gentoo penguin" }
+      - { text: "Macaroni penguin" }
+      - { text: "Chinstrap penguin" }

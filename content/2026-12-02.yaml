@@ -1,0 +1,80 @@
+date: 2026-12-02
+questions:
+  - slot: 1
+    type: choice
+    category: geography
+    text: "Which US state is nicknamed the 'Sunshine State'?"
+    options:
+      - { text: "Florida", correct: true }
+      - { text: "California" }
+      - { text: "Arizona" }
+      - { text: "Hawaii" }
+      - { text: "Texas" }
+      - { text: "Nevada" }
+  - slot: 2
+    type: choice
+    category: science
+    text: "What is the atomic number of carbon?"
+    options:
+      - { text: "6", correct: true }
+      - { text: "12" }
+      - { text: "8" }
+      - { text: "4" }
+      - { text: "14" }
+      - { text: "2" }
+  - slot: 3
+    type: number
+    category: general
+    text: "How many sides does a UK fifty pence coin have?"
+    answer: 7
+    tolerance: 0
+  - slot: 4
+    type: choice
+    category: history
+    text: "In which ship did Sir Francis Drake sail around the world?"
+    options:
+      - { text: "Golden Hind", correct: true }
+      - { text: "Mary Rose" }
+      - { text: "Victory" }
+      - { text: "Endeavour" }
+      - { text: "Mayflower" }
+      - { text: "Beagle" }
+  - slot: 5
+    type: text
+    category: science
+    text: "Which gas do humans breathe out that plants take in?"
+    answers:
+      - { canonical: "Carbon dioxide", aliases: ["CO2"] }
+  - slot: 6
+    type: choice
+    category: film
+    text: "Which film won the Oscar for Best Picture at the 1998 ceremony?"
+    options:
+      - { text: "Titanic", correct: true }
+      - { text: "Good Will Hunting" }
+      - { text: "L.A. Confidential" }
+      - { text: "As Good as It Gets" }
+      - { text: "The Full Monty" }
+      - { text: "Amistad" }
+  - slot: 7
+    type: choice
+    category: sport
+    text: "Roughly how long is a marathon in miles?"
+    options:
+      - { text: "26.2", correct: true }
+      - { text: "24.6" }
+      - { text: "25.0" }
+      - { text: "27.5" }
+      - { text: "30.0" }
+      - { text: "22.4" }
+  - slot: 8
+    type: choice
+    category: food
+    text: "Cider is made from which fruit?"
+    options:
+      - { text: "Apple", correct: true }
+      - { text: "Pear" }
+      - { text: "Grape" }
+      - { text: "Plum" }
+      - { text: "Cherry" }
+      - { text: "Peach" }

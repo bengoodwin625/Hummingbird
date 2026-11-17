@@ -1,0 +1,80 @@
+date: 2026-12-15
+questions:
+  - slot: 1
+    type: choice
+    category: geography
+    text: "Reykjavík is the capital of which country?"
+    options:
+      - { text: "Iceland", correct: true }
+      - { text: "Norway" }
+      - { text: "Greenland" }
+      - { text: "Finland" }
+      - { text: "Denmark" }
+      - { text: "Faroe Islands" }
+  - slot: 2
+    type: choice
+    category: science
+    text: "Roughly what is the boiling point of water in kelvin?"
+    options:
+      - { text: "373", correct: true }
+      - { text: "273" }
+      - { text: "100" }
+      - { text: "212" }
+      - { text: "0" }
+      - { text: "473" }
+  - slot: 3
+    type: number
+    category: maths
+    text: "How many sides does an octagon have?"
+    answer: 8
+    tolerance: 0
+  - slot: 4
+    type: choice
+    category: history
+    text: "Who wrote 'On the Origin of Species'?"
+    options:
+      - { text: "Charles Darwin", correct: true }
+      - { text: "Alfred Russel Wallace" }
+      - { text: "Gregor Mendel" }
+      - { text: "Thomas Huxley" }
+      - { text: "Jean-Baptiste Lamarck" }
+      - { text: "Isaac Newton" }
+  - slot: 5
+    type: text
+    category: geography
+    text: "What is the capital of Russia?"
+    answers:
+      - { canonical: "Moscow", aliases: [] }
+  - slot: 6
+    type: choice
+    category: literature
+    text: "Who wrote 'Lord of the Flies'?"
+    options:
+      - { text: "William Golding", correct: true }
+      - { text: "George Orwell" }
+      - { text: "Aldous Huxley" }
+      - { text: "Graham Greene" }
+      - { text: "Evelyn Waugh" }
+      - { text: "Kingsley Amis" }
+  - slot: 7
+    type: choice
+    category: music
+    text: "In which country did the tango originate?"
+    options:
+      - { text: "Argentina", correct: true }
+      - { text: "Spain" }
+      - { text: "Brazil" }
+      - { text: "Cuba" }
+      - { text: "Mexico" }
+      - { text: "Portugal" }
+  - slot: 8
+    type: choice
+    category: nature
+    text: "What is a male duck called?"
+    options:
+      - { text: "Drake", correct: true }
+      - { text: "Gander" }
+      - { text: "Cob" }
+      - { text: "Cock" }
+      - { text: "Buck" }
+      - { text: "Tom" }

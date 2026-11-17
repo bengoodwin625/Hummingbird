@@ -1,0 +1,80 @@
+date: 2026-11-27
+questions:
+  - slot: 1
+    type: choice
+    category: geography
+    text: "What is the capital of Brazil?"
+    options:
+      - { text: "Brasília", correct: true }
+      - { text: "Rio de Janeiro" }
+      - { text: "São Paulo" }
+      - { text: "Salvador" }
+      - { text: "Belo Horizonte" }
+      - { text: "Recife" }
+  - slot: 2
+    type: choice
+    category: space
+    text: "Which planet has the most prominent rings?"
+    options:
+      - { text: "Saturn", correct: true }
+      - { text: "Jupiter" }
+      - { text: "Uranus" }
+      - { text: "Neptune" }
+      - { text: "Mars" }
+      - { text: "Venus" }
+  - slot: 3
+    type: number
+    category: science
+    text: "How many teeth does an adult human usually have, including wisdom teeth?"
+    answer: 32
+    tolerance: 0
+  - slot: 4
+    type: choice
+    category: history
+    text: "Who was the first person to reach the South Pole?"
+    options:
+      - { text: "Roald Amundsen", correct: true }
+      - { text: "Robert Falcon Scott" }
+      - { text: "Ernest Shackleton" }
+      - { text: "Edmund Hillary" }
+      - { text: "Richard Byrd" }
+      - { text: "Fridtjof Nansen" }
+  - slot: 5
+    type: text
+    category: general
+    text: "What is the national animal of Scotland?"
+    answers:
+      - { canonical: "Unicorn", aliases: [] }
+  - slot: 6
+    type: choice
+    category: literature
+    text: "In which city is Shakespeare's 'Romeo and Juliet' set?"
+    options:
+      - { text: "Verona", correct: true }
+      - { text: "Venice" }
+      - { text: "Florence" }
+      - { text: "Padua" }
+      - { text: "Mantua" }
+      - { text: "Milan" }
+  - slot: 7
+    type: choice
+    category: music
+    text: "What nationality was the composer Frédéric Chopin?"
+    options:
+      - { text: "Polish", correct: true }
+      - { text: "French" }
+      - { text: "Austrian" }
+      - { text: "Hungarian" }
+      - { text: "Russian" }
+      - { text: "Czech" }
+  - slot: 8
+    type: choice
+    category: nature
+    text: "What do bees collect from flowers to make honey?"
+    options:
+      - { text: "Nectar", correct: true }
+      - { text: "Pollen" }
+      - { text: "Sap" }
+      - { text: "Dew" }
+      - { text: "Resin" }
+      - { text: "Wax" }

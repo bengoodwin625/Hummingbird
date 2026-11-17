@@ -1,0 +1,80 @@
+date: 2026-12-16
+questions:
+  - slot: 1
+    type: choice
+    category: geography
+    text: "What is the capital of Kenya?"
+    options:
+      - { text: "Nairobi", correct: true }
+      - { text: "Mombasa" }
+      - { text: "Kampala" }
+      - { text: "Addis Ababa" }
+      - { text: "Dar es Salaam" }
+      - { text: "Kigali" }
+  - slot: 2
+    type: choice
+    category: science
+    text: "What is the chemical symbol for silver?"
+    options:
+      - { text: "Ag", correct: true }
+      - { text: "Si" }
+      - { text: "Sv" }
+      - { text: "Au" }
+      - { text: "Sl" }
+      - { text: "Ar" }
+  - slot: 3
+    type: number
+    category: general
+    text: "What is the maximum length of a UK Parliament, in years?"
+    answer: 5
+    tolerance: 0
+  - slot: 4
+    type: choice
+    category: history
+    text: "Who was the first President of the United States?"
+    options:
+      - { text: "George Washington", correct: true }
+      - { text: "Thomas Jefferson" }
+      - { text: "John Adams" }
+      - { text: "Abraham Lincoln" }
+      - { text: "Benjamin Franklin" }
+      - { text: "James Madison" }
+  - slot: 5
+    type: text
+    category: geography
+    text: "What is the largest hot desert in the world?"
+    answers:
+      - { canonical: "Sahara", aliases: ["Sahara Desert"] }
+  - slot: 6
+    type: choice
+    category: art
+    text: "Who designed the Sagrada Família in Barcelona?"
+    options:
+      - { text: "Antoni Gaudí", correct: true }
+      - { text: "Le Corbusier" }
+      - { text: "Frank Lloyd Wright" }
+      - { text: "Joan Miró" }
+      - { text: "Lluís Domènech i Montaner" }
+      - { text: "Santiago Calatrava" }
+  - slot: 7
+    type: choice
+    category: sport
+    text: "Which sport uses the terms 'love', 'deuce' and 'advantage'?"
+    options:
+      - { text: "Tennis", correct: true }
+      - { text: "Badminton" }
+      - { text: "Squash" }
+      - { text: "Table tennis" }
+      - { text: "Volleyball" }
+      - { text: "Cricket" }
+  - slot: 8
+    type: choice
+    category: food
+    text: "What is the main ingredient of haggis?"
+    options:
+      - { text: "Sheep's offal", correct: true }
+      - { text: "Beef mince" }
+      - { text: "Pork belly" }
+      - { text: "Venison" }
+      - { text: "Salmon" }
+      - { text: "Lamb chops" }

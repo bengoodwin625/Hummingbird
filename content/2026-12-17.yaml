@@ -1,0 +1,80 @@
+date: 2026-12-17
+questions:
+  - slot: 1
+    type: choice
+    category: geography
+    text: "Which river forms much of the border between the USA and Mexico?"
+    options:
+      - { text: "Rio Grande", correct: true }
+      - { text: "Colorado" }
+      - { text: "Mississippi" }
+      - { text: "Missouri" }
+      - { text: "Pecos" }
+      - { text: "Gila" }
+  - slot: 2
+    type: choice
+    category: space
+    text: "Which planet is closest in size to Earth?"
+    options:
+      - { text: "Venus", correct: true }
+      - { text: "Mars" }
+      - { text: "Mercury" }
+      - { text: "Neptune" }
+      - { text: "Uranus" }
+      - { text: "Saturn" }
+  - slot: 3
+    type: number
+    category: history
+    text: "In what year did the UK join the European Economic Community?"
+    answer: 1973
+    tolerance: 0
+  - slot: 4
+    type: choice
+    category: history
+    text: "Which explorer reached the Americas in 1492?"
+    options:
+      - { text: "Christopher Columbus", correct: true }
+      - { text: "Amerigo Vespucci" }
+      - { text: "Vasco da Gama" }
+      - { text: "Ferdinand Magellan" }
+      - { text: "John Cabot" }
+      - { text: "Leif Erikson" }
+  - slot: 5
+    type: text
+    category: geography
+    text: "What is the capital of Austria?"
+    answers:
+      - { canonical: "Vienna", aliases: [] }
+  - slot: 6
+    type: choice
+    category: film
+    text: "Who played James Bond in 'Casino Royale' (2006)?"
+    options:
+      - { text: "Daniel Craig", correct: true }
+      - { text: "Pierce Brosnan" }
+      - { text: "Sean Connery" }
+      - { text: "Roger Moore" }
+      - { text: "Timothy Dalton" }
+      - { text: "George Lazenby" }
+  - slot: 7
+    type: choice
+    category: music
+    text: "How many members did the Beatles have when they became famous?"
+    options:
+      - { text: "4", correct: true }
+      - { text: "3" }
+      - { text: "5" }
+      - { text: "6" }
+      - { text: "7" }
+      - { text: "2" }
+  - slot: 8
+    type: choice
+    category: nature
+    text: "Which bird is the fastest in a dive?"
+    options:
+      - { text: "Peregrine falcon", correct: true }
+      - { text: "Golden eagle" }
+      - { text: "Common swift" }
+      - { text: "Albatross" }
+      - { text: "Ostrich" }
+      - { text: "Hummingbird" }

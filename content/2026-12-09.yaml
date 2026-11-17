@@ -1,0 +1,80 @@
+date: 2026-12-09
+questions:
+  - slot: 1
+    type: choice
+    category: geography
+    text: "Which country has the longest coastline in the world?"
+    options:
+      - { text: "Canada", correct: true }
+      - { text: "Russia" }
+      - { text: "Indonesia" }
+      - { text: "Norway" }
+      - { text: "Australia" }
+      - { text: "United States" }
+  - slot: 2
+    type: choice
+    category: science
+    text: "Which part of the eye controls the size of the pupil?"
+    options:
+      - { text: "Iris", correct: true }
+      - { text: "Retina" }
+      - { text: "Cornea" }
+      - { text: "Lens" }
+      - { text: "Sclera" }
+      - { text: "Optic nerve" }
+  - slot: 3
+    type: number
+    category: sport
+    text: "How many players does each water polo team have in the water?"
+    answer: 7
+    tolerance: 0
+  - slot: 4
+    type: choice
+    category: history
+    text: "In which year did the Wall Street Crash happen?"
+    options:
+      - { text: "1929", correct: true }
+      - { text: "1926" }
+      - { text: "1931" }
+      - { text: "1933" }
+      - { text: "1919" }
+      - { text: "1937" }
+  - slot: 5
+    type: text
+    category: language
+    text: "Which language has the most native speakers in the world?"
+    answers:
+      - { canonical: "Mandarin", aliases: ["Mandarin Chinese", "Chinese"] }
+  - slot: 6
+    type: choice
+    category: literature
+    text: "Which author created the detective Hercule Poirot?"
+    options:
+      - { text: "Agatha Christie", correct: true }
+      - { text: "Dorothy L. Sayers" }
+      - { text: "Arthur Conan Doyle" }
+      - { text: "P. D. James" }
+      - { text: "Ngaio Marsh" }
+      - { text: "Ruth Rendell" }
+  - slot: 7
+    type: choice
+    category: music
+    text: "Which singer is widely known as the 'Queen of Pop'?"
+    options:
+      - { text: "Madonna", correct: true }
+      - { text: "Whitney Houston" }
+      - { text: "Kylie Minogue" }
+      - { text: "Britney Spears" }
+      - { text: "Cher" }
+      - { text: "Lady Gaga" }
+  - slot: 8
+    type: choice
+    category: nature
+    text: "Which continent has no native species of ant?"
+    options:
+      - { text: "Antarctica", correct: true }
+      - { text: "Australia" }
+      - { text: "Europe" }
+      - { text: "South America" }
+      - { text: "Asia" }
+      - { text: "Africa" }

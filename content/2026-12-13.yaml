@@ -1,0 +1,80 @@
+date: 2026-12-13
+questions:
+  - slot: 1
+    type: choice
+    category: geography
+    text: "What is the capital of Switzerland?"
+    options:
+      - { text: "Bern", correct: true }
+      - { text: "Zurich" }
+      - { text: "Geneva" }
+      - { text: "Basel" }
+      - { text: "Lausanne" }
+      - { text: "Lucerne" }
+  - slot: 2
+    type: choice
+    category: science
+    text: "What is the largest organ of the human body?"
+    options:
+      - { text: "Skin", correct: true }
+      - { text: "Liver" }
+      - { text: "Brain" }
+      - { text: "Lungs" }
+      - { text: "Heart" }
+      - { text: "Intestines" }
+  - slot: 3
+    type: number
+    category: general
+    text: "How many cards are in a standard deck, not counting jokers?"
+    answer: 52
+    tolerance: 0
+  - slot: 4
+    type: choice
+    category: history
+    text: "Which city was divided by a wall from 1961 to 1989?"
+    options:
+      - { text: "Berlin", correct: true }
+      - { text: "Vienna" }
+      - { text: "Prague" }
+      - { text: "Budapest" }
+      - { text: "Warsaw" }
+      - { text: "Bonn" }
+  - slot: 5
+    type: text
+    category: science
+    text: "Which scientist developed the theory of general relativity?"
+    answers:
+      - { canonical: "Albert Einstein", aliases: ["Einstein"] }
+  - slot: 6
+    type: choice
+    category: art
+    text: "Which artist painted a famous series of water lilies?"
+    options:
+      - { text: "Claude Monet", correct: true }
+      - { text: "Édouard Manet" }
+      - { text: "Pierre-Auguste Renoir" }
+      - { text: "Paul Cézanne" }
+      - { text: "Edgar Degas" }
+      - { text: "Camille Pissarro" }
+  - slot: 7
+    type: choice
+    category: music
+    text: "What does 'forte' mean in music?"
+    options:
+      - { text: "Loud", correct: true }
+      - { text: "Soft" }
+      - { text: "Fast" }
+      - { text: "Slow" }
+      - { text: "Smoothly" }
+      - { text: "Detached" }
+  - slot: 8
+    type: choice
+    category: nature
+    text: "Which animal is known as the 'ship of the desert'?"
+    options:
+      - { text: "Camel", correct: true }
+      - { text: "Horse" }
+      - { text: "Donkey" }
+      - { text: "Llama" }
+      - { text: "Elephant" }
+      - { text: "Ostrich" }

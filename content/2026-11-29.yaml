@@ -1,0 +1,80 @@
+date: 2026-11-29
+questions:
+  - slot: 1
+    type: choice
+    category: geography
+    text: "What is the highest mountain in the UK?"
+    options:
+      - { text: "Ben Nevis", correct: true }
+      - { text: "Snowdon" }
+      - { text: "Scafell Pike" }
+      - { text: "Ben Macdui" }
+      - { text: "Slieve Donard" }
+      - { text: "Helvellyn" }
+  - slot: 2
+    type: choice
+    category: science
+    text: "What does DNA stand for?"
+    options:
+      - { text: "Deoxyribonucleic acid", correct: true }
+      - { text: "Diribonucleic acid" }
+      - { text: "Deoxyribose nitrogen acid" }
+      - { text: "Dinucleic acid" }
+      - { text: "Deoxyribonitric acid" }
+      - { text: "Dual nucleic acid" }
+  - slot: 3
+    type: number
+    category: history
+    text: "How many years did the Hundred Years' War actually last?"
+    answer: 116
+    tolerance: 0
+  - slot: 4
+    type: choice
+    category: history
+    text: "Which civilisation built Machu Picchu?"
+    options:
+      - { text: "Inca", correct: true }
+      - { text: "Aztec" }
+      - { text: "Maya" }
+      - { text: "Olmec" }
+      - { text: "Toltec" }
+      - { text: "Moche" }
+  - slot: 5
+    type: text
+    category: geography
+    text: "What is the capital of Egypt?"
+    answers:
+      - { canonical: "Cairo", aliases: [] }
+  - slot: 6
+    type: choice
+    category: film
+    text: "Who played the Joker in 'The Dark Knight' (2008)?"
+    options:
+      - { text: "Heath Ledger", correct: true }
+      - { text: "Jack Nicholson" }
+      - { text: "Joaquin Phoenix" }
+      - { text: "Jared Leto" }
+      - { text: "Mark Hamill" }
+      - { text: "Cesar Romero" }
+  - slot: 7
+    type: choice
+    category: music
+    text: "Which instrument has 47 strings and 7 pedals?"
+    options:
+      - { text: "Harp", correct: true }
+      - { text: "Piano" }
+      - { text: "Harpsichord" }
+      - { text: "Cello" }
+      - { text: "Zither" }
+      - { text: "Lute" }
+  - slot: 8
+    type: choice
+    category: nature
+    text: "What type of animal is a Komodo dragon?"
+    options:
+      - { text: "Lizard", correct: true }
+      - { text: "Snake" }
+      - { text: "Crocodile" }
+      - { text: "Turtle" }
+      - { text: "Frog" }
+      - { text: "Salamander" }
