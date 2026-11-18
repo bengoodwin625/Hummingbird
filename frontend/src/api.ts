@@ -86,6 +86,9 @@ export interface Results {
     players: number;
     better_than_percent: number | null;
     average_score: number;
+    /** Finished totals per bucket from 0 to the daily maximum, you included. */
+    distribution: number[];
+    bucket_size: number;
   };
   next_unlock_at: string;
 }

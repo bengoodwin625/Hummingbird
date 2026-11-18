@@ -67,3 +67,29 @@ export function formatQuizDate(isoDate: string): string {
   if (Number.isNaN(parsed.getTime())) return isoDate;
   return quizDateFormat.format(parsed).replace(",", "");
 }
+
+/**
+ * A smooth curve through the day's score buckets (a Gaussian kernel over bucket centres),
+ * sampled at `samples` evenly spaced scores from 0 to counts.length × bucketSize. Heights are
+ * scaled so the tallest point is 1; an empty day gives a flat line of zeros.
+ */
+export function smoothDistribution(counts: readonly number[], samples = 81, bandwidthBuckets = 1): number[] {
+  const n = counts.length;
+  const out: number[] = [];
+  for (let i = 0; i < samples; i++) {
+    const at = samples === 1 ? 0 : (i / (samples - 1)) * n; // position in bucket units
+    let y = 0;
+    counts.forEach((count, b) => {
+      const d = (at - (b + 0.5)) / bandwidthBuckets;
+      y += count * Math.exp(-0.5 * d * d);
+    });
+    out.push(y);
+  }
+  const peak = Math.max(...out, 0);
+  return peak > 0 ? out.map((y) => y / peak) : out.map(() => 0);
+}
+
+/** Where a score sits along the distribution chart, as a percentage of its width. */
+export function scorePercent(score: number, maxScore: number): number {
+  return Math.min(100, Math.max(0, (score / maxScore) * 100));
+}

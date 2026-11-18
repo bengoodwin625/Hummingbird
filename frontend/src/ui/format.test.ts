@@ -49,3 +49,32 @@ describe("format", () => {
     expect(formatQuizDate("not-a-date")).toBe("not-a-date");
   });
 });
+
+import { scorePercent, smoothDistribution } from "./format";
+
+describe("smoothDistribution", () => {
+  it("peaks at the busiest bucket and is scaled to 1", () => {
+    const counts = [0, 1, 4, 1, 0];
+    const curve = smoothDistribution(counts, 51);
+    expect(Math.max(...curve)).toBeCloseTo(1);
+    const peakAt = curve.indexOf(Math.max(...curve));
+    expect(peakAt / 50).toBeCloseTo(0.5, 1); // the middle bucket's centre
+  });
+
+  it("is symmetric for symmetric data", () => {
+    const curve = smoothDistribution([1, 3, 1], 21);
+    curve.forEach((y, i) => expect(y).toBeCloseTo(curve[curve.length - 1 - i] ?? -1));
+  });
+
+  it("is flat zero when nobody has finished", () => {
+    expect(smoothDistribution([0, 0, 0], 5)).toEqual([0, 0, 0, 0, 0]);
+  });
+});
+
+describe("scorePercent", () => {
+  it("clamps to the chart", () => {
+    expect(scorePercent(4000, 8000)).toBe(50);
+    expect(scorePercent(-1, 8000)).toBe(0);
+    expect(scorePercent(9000, 8000)).toBe(100);
+  });
+});

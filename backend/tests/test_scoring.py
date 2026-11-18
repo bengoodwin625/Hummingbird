@@ -99,3 +99,22 @@ def test_too_early_and_timeout_edges() -> None:
     assert not is_too_early(10_000, 10_000)
     assert not is_timed_out(10_000, 10_000 + 16_000)
     assert is_timed_out(10_000, 10_000 + 16_001)
+
+
+def test_score_distribution_buckets_every_total() -> None:
+    from app.scoring import score_distribution
+
+    counts = score_distribution([0, 499, 500, 1_700, 7_999, 8_000])
+    assert len(counts) == 16
+    assert counts[0] == 2  # 0 and 499
+    assert counts[1] == 1  # exactly 500 starts the next bucket
+    assert counts[3] == 1  # 1,700
+    assert counts[15] == 2  # 7,999 and a perfect 8,000 share the top bucket
+    assert sum(counts) == 6
+
+
+def test_score_distribution_empty_and_out_of_range() -> None:
+    from app.scoring import score_distribution
+
+    assert score_distribution([]) == [0] * 16
+    assert score_distribution([-5, 9_000]) == [1] + [0] * 14 + [1]

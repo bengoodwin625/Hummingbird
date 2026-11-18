@@ -114,3 +114,20 @@ def score_answer(correct: bool, elapsed: int, question_type: str = "choice") -> 
 
 def score_timeout() -> Score:
     return Score(Outcome.TIMEOUT, None, None, 0)
+
+
+DISTRIBUTION_BUCKET = 500
+"""Width, in points, of each bucket in the day's score distribution (16 buckets up to 8,000)."""
+
+
+def score_distribution(scores: list[int], bucket: int = DISTRIBUTION_BUCKET) -> list[int]:
+    """Count of daily totals in each bucket from 0 to the daily maximum.
+
+    Bucket i covers [i * bucket, (i + 1) * bucket); a perfect 8,000 falls in the last bucket.
+    """
+    buckets = MAX_POINTS_PER_DAY // bucket
+    counts = [0] * buckets
+    for score in scores:
+        index = min(max(score, 0) // bucket, buckets - 1)
+        counts[index] += 1
+    return counts

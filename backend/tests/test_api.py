@@ -106,6 +106,8 @@ def test_full_play_scores_by_animal(client: TestClient, clock: FakeClock) -> Non
         "players": 1,
         "better_than_percent": None,
         "average_score": total,
+        "distribution": [1 if i == min(total // 500, 15) else 0 for i in range(16)],
+        "bucket_size": 500,
     }
 
 
@@ -251,3 +253,4 @@ def test_speed_comparison_between_players(client: TestClient, clock: FakeClock) 
     standing = results["standing"]
     assert standing["rank"] == 1 and standing["players"] == 2
     assert standing["better_than_percent"] == 100
+    assert sum(standing["distribution"]) == 2 and len(standing["distribution"]) == 16

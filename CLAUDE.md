@@ -37,8 +37,10 @@ UI. The art is detailed, fine-grained pixel art of a rainforest at dusk, in dark
 
 ## Core game loop
 
-1. The player opens the site. If they haven't played today, they see the rainforest scene,
-   a short explanation and an **"I'm ready — question 1"** button.
+1. The player opens the site on the **menu**: the rainforest scene, the logo, a short
+   explanation and a list of game modes (today only the daily quiz; the menu is built so more
+   modes can be added). The daily quiz card says Play, Continue or See your results. The logo
+   in the header returns to the menu (except while a question is live).
 2. **The player says when they're ready for every question.** Nothing is served until they
    press the ready button. After each reveal, the button reads "Ready for question N".
 3. Each question then has two phases:
@@ -61,7 +63,9 @@ UI. The art is detailed, fine-grained pixel art of a rainforest at dusk, in dark
    - **Timeout**: scores 0, and the correct answer is revealed.
 6. The running score is always shown.
 7. After question 8, the results screen leads with speed, score and comparison: the total
-   score with today's rank ("2nd of 5 players today"), a bar against today's average score,
+   score with today's rank ("2nd of 5 players today"), a bar against today's average score, a
+   smoothed curve of everyone's final scores today (500-point buckets from the server) with
+   the player and the average marked,
    the player's average answer time on the animal speed track beside today's average, then
    correct count, fastest answer and hummingbirds caught, the row of animals, a share button
    and an expandable list of every answer (with what % of players got each one right).
@@ -176,9 +180,12 @@ Answer checking happens on the server in `backend/app/checking.py`.
   frog, sloth). When an answer is revealed, the animal moves through the scene in its own way:
   the hummingbird darts, the jaguar sprints, the toucan flies, the frog hops, and the sloth
   creeps. Keep each run short (about 0.8–1.4 s).
-- **UI**: dark panels with thin glowing jade/gold outlines, letterspaced pixel labels, and a
-  readable pixel-style face for questions (Pixelify Sans and Silkscreen, both OFL,
-  self-hosted). **No countdown, timer bar or clock is shown while a question is live.**
+- **UI**: dark panels with thin glowing jade/gold outlines and letterspaced labels. Reading
+  text (questions, answers, labels, buttons, headlines) uses Atkinson Hyperlegible Next for
+  legibility; the pixel faces (Pixelify Sans, with Silkscreen digits) are kept for the wordmark
+  and the big display numbers. All OFL and self-hosted.
+- **Logo**: the hummingbird sprite sipping from a heliconia (`logo()` in
+  `frontend/src/art/sprites.ts`), used in the header, on the menu and as the favicon. **No countdown, timer bar or clock is shown while a question is live.**
   Answer options are large tap targets.
 - **Palette**: one fixed palette defined in `frontend/src/art/palette.ts`. All scene art and
   sprites use only these colours; the UI uses the same tokens.

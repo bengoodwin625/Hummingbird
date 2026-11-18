@@ -26,6 +26,7 @@ from .daily import next_unlock, quiz_date
 from .db import get_session
 from .scoring import (
     ANSWER_LIMIT_MS,
+    DISTRIBUTION_BUCKET,
     MAX_POINTS_PER_DAY,
     QUESTIONS_PER_DAY,
     READ_PHASE_MS,
@@ -36,6 +37,7 @@ from .scoring import (
     is_timed_out,
     is_too_early,
     score_answer,
+    score_distribution,
     score_timeout,
 )
 
@@ -246,6 +248,9 @@ class StandingOut(BaseModel):
     players: int
     better_than_percent: int | None
     average_score: int
+    distribution: list[int]
+    """Finished totals per 500-point bucket from 0 to 8,000, you included."""
+    bucket_size: int
 
 
 class ResultsOut(BaseModel):
@@ -663,6 +668,8 @@ def results(session: SessionDep, player: PlayerDep, clock: ClockDep) -> ResultsO
             players=len(all_scores),
             better_than_percent=better_than,
             average_score=round(sum(all_scores) / len(all_scores)),
+            distribution=score_distribution(all_scores),
+            bucket_size=DISTRIBUTION_BUCKET,
         ),
         next_unlock_at=next_unlock(now),
     )

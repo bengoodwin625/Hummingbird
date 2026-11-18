@@ -1,6 +1,7 @@
 /** Minimal DOM helpers. Text always goes in through textContent, never innerHTML. */
 import { packedPalette } from "../art/palette";
-import { sprite, type Band } from "../art/sprites";
+import type { Raster } from "../art/raster";
+import { logo, sprite, type Band } from "../art/sprites";
 
 type Child = Node | string | null | undefined | false;
 
@@ -32,18 +33,43 @@ export function byId<T extends HTMLElement = HTMLElement>(id: string): T {
 
 const packed = packedPalette();
 
-/** A crisp canvas of an animal's resting sprite, scaled by whole pixels. */
-export function animalIcon(band: Band, scale = 2, className?: string): HTMLCanvasElement {
-  const s = sprite(band, "rest");
+/** A crisp canvas of a raster, scaled by whole pixels. */
+function rasterCanvas(r: Raster, scale: number, className?: string): HTMLCanvasElement {
   const canvas = document.createElement("canvas");
-  canvas.width = s.width;
-  canvas.height = s.height;
-  canvas.style.width = `${s.width * scale}px`;
-  canvas.style.height = `${s.height * scale}px`;
-  canvas.getContext("2d")?.putImageData(s.toImageData(packed), 0, 0);
+  canvas.width = r.width;
+  canvas.height = r.height;
+  canvas.style.width = `${r.width * scale}px`;
+  canvas.style.height = `${r.height * scale}px`;
+  canvas.getContext("2d")?.putImageData(r.toImageData(packed), 0, 0);
   canvas.setAttribute("aria-hidden", "true");
   if (className) canvas.className = className;
   return canvas;
+}
+
+/** A crisp canvas of an animal's resting sprite, scaled by whole pixels. */
+export function animalIcon(band: Band, scale = 2, className?: string): HTMLCanvasElement {
+  return rasterCanvas(sprite(band, "rest"), scale, className);
+}
+
+/** The Hummingbird logo (the bird at a heliconia bloom), scaled by whole pixels. */
+export function logoIcon(scale = 2, className?: string): HTMLCanvasElement {
+  return rasterCanvas(logo(), scale, className);
+}
+
+/** Point the page's favicon at the hummingbird, drawn from the same sprite as the game. */
+export function setFavicon(): void {
+  const bird = sprite("hummingbird", "rest");
+  const canvas = document.createElement("canvas");
+  canvas.width = 32;
+  canvas.height = 32;
+  const ctx = canvas.getContext("2d");
+  if (!ctx) return;
+  ctx.putImageData(bird.toImageData(packed), 0, Math.floor((32 - bird.height) / 2));
+  const link = document.querySelector<HTMLLinkElement>('link[rel="icon"]');
+  if (link) {
+    link.type = "image/png";
+    link.href = canvas.toDataURL("image/png");
+  }
 }
 
 const SVG_NS = "http://www.w3.org/2000/svg";

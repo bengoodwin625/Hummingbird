@@ -1,8 +1,8 @@
-/** The quiz flow: intro → ready → read → answer → reveal (×8) → results. */
+/** The quiz flow: menu → ready → read → answer → reveal (×8) → results. */
 import { ApiError, api, rememberPlayer, type Question, type Results, type Reveal, type Today } from "../api";
 import { BANDS, type Band } from "../art/sprites";
 import { Stage } from "../scene/stage";
-import { animalIcon, byId, h, icon } from "./dom";
+import { animalIcon, byId, h, icon, logoIcon } from "./dom";
 import {
   BAND_INFO,
   TYPING_ALLOWANCE_S,
@@ -11,6 +11,8 @@ import {
   formatPoints,
   formatQuizDate,
   formatSeconds,
+  scorePercent,
+  smoothDistribution,
   speedTrackPercent,
 } from "./format";
 import { buildShareText } from "./share";
@@ -44,7 +46,15 @@ export class App {
 
   constructor() {
     this.stage = new Stage(byId("stage"));
-    byId("brand-mark").append(animalIcon("hummingbird", 1));
+    byId("brand-mark").append(logoIcon(1));
+    // The logo goes back to the menu, except while a question is live.
+    byId("brand").addEventListener("click", (event) => {
+      event.preventDefault();
+      if (this.phase === "intro" || this.phase === "closed" || this.phase === "results" || this.phase === "reveal") {
+        window.clearInterval(this.countdownTimer);
+        void this.start();
+      }
+    });
     document.addEventListener("keydown", this.onKey);
   }
 
@@ -63,9 +73,8 @@ export class App {
       );
       this.renderProgress(today.status === "finished" ? null : today.next_slot);
       if (today.status === "no_quiz") return this.renderNoQuiz();
-      if (today.status === "finished") return this.showResults();
       if (today.question_live) return this.serve();
-      this.renderIntro(today);
+      this.renderMenu(today);
     } catch (error) {
       this.renderError(error, () => void this.start());
     }
@@ -179,25 +188,27 @@ export class App {
     this.actionEl.replaceChildren();
   }
 
-  // ------------------------------------------------------------- intro
+  // ------------------------------------------------------------- menu
 
-  private renderIntro(today: Today): void {
+  /**
+   * The home page is a menu of game modes. Today there is one, the daily quiz; the list is
+   * built so new modes slot in beside it.
+   */
+  private renderMenu(today: Today): void {
     this.setPhase("intro");
+    this.stage.clearAnimal();
     this.root.classList.remove("is-results");
     this.root.classList.add("is-home");
+    const finished = today.status === "finished";
     const slot = today.next_slot ?? 1;
-    const resuming = slot > 1;
+    const resuming = !finished && slot > 1;
 
-    // The forest is the hero: the headline sits low in the scene, over its dusk fade.
     this.overlayEl.replaceChildren(
       h(
         "div",
         { class: "hero" },
-        h("h1", {
-          class: "hero-title",
-          id: "question-text",
-          text: resuming ? "Welcome back." : "How fast is your brain?",
-        }),
+        logoIcon(3, "hero-logo"),
+        h("h1", { class: "hero-title", id: "question-text", text: "How fast is your brain?" }),
         h("p", {
           class: "hero-date",
           text: today.number ? `Quiz #${today.number} · ${formatQuizDate(today.date)}` : formatQuizDate(today.date),
@@ -207,19 +218,54 @@ export class App {
     this.questionEl.replaceChildren(
       h("p", {
         class: "hero-lede",
-        text: resuming
-          ? `Question ${slot} of ${today.total_questions} is waiting. The clock starts when you're ready.`
-          : "8 questions. The faster you answer, the faster your animal, and the more points you score.",
+        text: "8 questions. The faster you answer, the faster your animal, and the more points you score.",
       }),
     );
-    this.actionEl.replaceChildren(
-      this.actionButton(resuming ? `Ready for question ${slot}` : "Start today's quiz", () => void this.serve()),
-      h("p", { class: "cta-note", text: "New questions every day at midnight UK time." }),
+
+    const daily = finished
+      ? { status: `Played today · ${formatPoints(today.total_score)} pts`, cta: "See your results", go: () => void this.showResults() }
+      : resuming
+        ? { status: `Question ${slot} of ${today.total_questions} is waiting`, cta: "Continue", go: () => void this.serve() }
+        : { status: "New questions today", cta: "Play", go: () => void this.serve() };
+
+    const card = h(
+      "button",
+      { class: `mode${finished ? " mode--done" : ""}`, type: "button" },
+      h("span", { class: "mode-art" }, animalIcon("hummingbird", 2)),
+      h(
+        "span",
+        { class: "mode-text" },
+        h("span", { class: "mode-name", text: "Daily quiz" }),
+        h("span", { class: "mode-desc", text: "Eight questions, one go a day, the same for everyone." }),
+        h("span", { class: "mode-status", text: daily.status }),
+      ),
+      h("span", { class: "mode-cta", text: daily.cta }),
     );
-    if (resuming) {
-      this.answersEl.replaceChildren();
-      return;
-    }
+    card.addEventListener("click", () => {
+      card.disabled = true;
+      daily.go();
+    });
+    const modes = h(
+      "ul",
+      { class: "modes" },
+      h("li", {}, card),
+      h("li", { class: "mode-soon" }, h("span", { text: "More game modes coming soon" })),
+    );
+
+    this.actionEl.replaceChildren(
+      h(
+        "nav",
+        { class: "menu", "aria-labelledby": "menu-title" },
+        h("h2", { class: "section-title", id: "menu-title", text: "Choose a game" }),
+        modes,
+      ),
+      h("p", {
+        class: "cta-note",
+        text: finished
+          ? `Next quiz in ${formatCountdown(Date.parse(today.next_unlock_at), Date.now())}.`
+          : "New questions every day at midnight UK time.",
+      }),
+    );
 
     const ladder = h("ol", { class: "ladder", "aria-label": "Speed animals, fastest first" });
     for (const band of BANDS) {
@@ -746,6 +792,7 @@ export class App {
         ),
         h("p", { class: "standing", text: this.standingLine(results) }),
         this.scoreCompare(results),
+        this.scoreCurve(results),
         this.speedCompare(results, avg),
         stats,
         row,
@@ -795,7 +842,15 @@ export class App {
     }
 
     this.overlayEl.replaceChildren();
-    this.actionEl.replaceChildren(shareButton, shareStatus, nextEl);
+    const menuButton = this.actionButton(
+      "Back to the menu",
+      () => {
+        window.clearInterval(this.countdownTimer);
+        void this.start();
+      },
+      true,
+    );
+    this.actionEl.replaceChildren(shareButton, shareStatus, nextEl, menuButton);
     this.answersEl.replaceChildren(
       h(
         "details",
@@ -857,6 +912,79 @@ export class App {
       bar("You", results.total_score, true),
       bar("Average", average, false),
     );
+  }
+
+  /** Everyone's final scores today as a smoothed curve, with you and the average marked. */
+  private scoreCurve(results: Results): HTMLElement {
+    const { distribution, players, average_score: average } = results.standing;
+    const max = results.max_score;
+    const section = h("section", { class: "curve", "aria-labelledby": "curve-title" });
+    section.append(h("h2", { class: "section-title", id: "curve-title", text: "Everyone's scores today" }));
+
+    const W = 320;
+    const H = 100;
+    const ys = smoothDistribution(distribution, 81);
+    const pts = ys.map((y, i) => [(i / (ys.length - 1)) * W, H - y * (H - 6)] as const);
+    const line = pts.map(([x, y], i) => `${i ? "L" : "M"}${x.toFixed(1)} ${y.toFixed(1)}`).join(" ");
+    const NS = "http://www.w3.org/2000/svg";
+    const svg = document.createElementNS(NS, "svg");
+    svg.setAttribute("viewBox", `0 0 ${W} ${H}`);
+    svg.setAttribute("preserveAspectRatio", "none");
+    svg.setAttribute("class", "curve-svg");
+    svg.setAttribute("aria-hidden", "true");
+    // Faint bars show the real counts under the smoothed curve.
+    const peak = Math.max(...distribution, 1);
+    const bw = W / Math.max(distribution.length, 1);
+    distribution.forEach((count, i) => {
+      if (!count) return;
+      const bar = document.createElementNS(NS, "rect");
+      const bh = (count / peak) * (H - 6) * 0.92;
+      bar.setAttribute("x", (i * bw + 1).toFixed(1));
+      bar.setAttribute("y", (H - bh).toFixed(1));
+      bar.setAttribute("width", (bw - 2).toFixed(1));
+      bar.setAttribute("height", bh.toFixed(1));
+      bar.setAttribute("class", "curve-bar");
+      svg.append(bar);
+    });
+    const area = document.createElementNS(NS, "path");
+    area.setAttribute("d", `${line} L${W} ${H} L0 ${H} Z`);
+    area.setAttribute("class", "curve-area");
+    const stroke = document.createElementNS(NS, "path");
+    stroke.setAttribute("d", line);
+    stroke.setAttribute("class", "curve-line");
+    svg.append(area, stroke);
+
+    const chart = h("div", { class: "curve-chart" }, svg);
+    const marker = (cls: string, score: number, label: string) => {
+      const at = scorePercent(score, max);
+      const m = h("span", { class: `curve-marker ${cls}` }, h("span", { class: "curve-marker-label", text: label }));
+      m.style.left = `${at}%`;
+      if (at < 15) m.dataset.edge = "start";
+      else if (at > 85) m.dataset.edge = "end";
+      return m;
+    };
+    if (players > 1) chart.append(marker("curve-marker--avg", average, `Average ${formatPoints(average)}`));
+    chart.append(marker("curve-marker--you", results.total_score, `You ${formatPoints(results.total_score)}`));
+
+    const scale = h("p", { class: "curve-scale", "aria-hidden": "true" });
+    for (const v of [0, max / 4, max / 2, (3 * max) / 4, max]) scale.append(h("span", { text: formatPoints(v) }));
+
+    section.append(
+      h("p", {
+        class: "sr-only",
+        text: `Your ${formatPoints(results.total_score)} points against today's average of ${formatPoints(average)}.`,
+      }),
+      chart,
+      scale,
+      h("p", {
+        class: "speed-line",
+        text:
+          players > 1
+            ? `${formatPoints(players)} players have finished today. The curve fills in as more people play.`
+            : "You're the first to finish today. The curve fills in as more people play.",
+      }),
+    );
+    return section;
   }
 
   /** Your average answer time on the animal speed bands, with today's average beside it. */

@@ -20,32 +20,78 @@ export const MOVE_FRAMES: Record<Band, number> = {
 };
 
 function hummingbird(pose: Pose, frame: number): Raster {
-  const r = new Raster(26, 18);
-  // tail
-  r.poly([[8, 10], [1, 8], [2, 10], [1, 13], [8, 12]], C.forest);
-  r.line(2, 9, 6, 10, C.emerald);
-  // body and belly
-  r.ellipse(12, 10.5, 5.5, 3.2, C.emerald);
-  r.ellipse(12.5, 12, 3.8, 1.6, C.sage);
-  r.ellipse(11, 9, 4, 1.2, C.jade, 0.45);
-  // head, gorget, eye
-  r.ellipse(17.5, 8, 2.8, 2.6, C.emerald);
-  r.ellipse(17.2, 7, 2, 1.1, C.jade, 0.6);
-  r.ellipse(18, 10.2, 1.8, 1.1, C.ruby);
-  r.set(18, 7, C.near0);
-  r.set(19, 7, C.ivory);
-  // beak
-  r.line(20, 8, 25, 9, C.near0);
-  // wing
+  const r = new Raster(32, 22);
   const wingUp = pose === "move" ? frame % 2 === 0 : true;
+  // forked tail, fanned down and back, with pale tips
+  r.poly([[11, 14], [3, 18], [4, 20], [10, 16]], C.forest);
+  r.poly([[12, 15], [6, 20], [8, 21], [13, 16]], C.forest);
+  r.line(10, 15, 5, 18, C.emerald);
+  r.line(12, 16, 8, 19, C.emerald);
+  r.set(3, 18, C.ivory);
+  r.set(6, 20, C.ivory);
+  // slim body, tilted head-up as it hovers
+  r.ellipse(14.5, 13.6, 5.5, 2.8, C.emerald);
+  r.ellipse(18.2, 11.6, 3.2, 2.5, C.emerald);
+  r.line(10, 12, 17, 10, C.leafHi);
+  r.line(12, 12, 16, 11, C.jade);
+  // pale belly
+  r.ellipse(16, 15, 3.4, 1.3, C.sage);
+  r.line(12, 15, 14, 16, C.mist1);
+  r.set(15, 17, C.near0);
+  r.set(17, 17, C.near0);
+  // head with a jade crown
+  r.ellipse(21.5, 8.4, 2.8, 2.6, C.emerald);
+  r.line(20, 6, 23, 6, C.jade);
+  r.set(21, 7, C.jade);
+  // ruby gorget with a gold glint
+  r.ellipse(21.6, 10.8, 2, 1.2, C.ruby);
+  r.set(21, 10, C.gold);
+  // eye with a glint, pale spot behind it
+  r.set(22, 8, C.near0);
+  r.set(23, 8, C.near0);
+  r.set(23, 7, C.ivory);
+  r.set(20, 9, C.sage);
+  // long, fine bill, lit along its top so it reads on the dark
+  r.line(24, 9, 31, 10, C.bark2);
+  r.line(24, 8, 28, 9, C.haze2);
+  // near wing: solid, fanned primaries and a lit leading edge
   if (wingUp) {
-    r.poly([[10, 9], [5, 1], [8, 0], [14, 8]], C.jade, 0.85);
-    r.line(10, 8, 7, 1, C.emerald);
+    r.poly([[15, 11], [9, 2], [12, 0], [15, 1], [19, 10]], C.jade);
+    r.line(15, 10, 10, 2, C.mist1);
+    r.line(16, 10, 12, 1, C.mist1);
+    r.line(17, 10, 14, 1, C.mist1);
+    r.line(19, 10, 15, 1, C.ivory);
   } else {
-    r.poly([[10, 11], [5, 17], [8, 17], [14, 11]], C.jade, 0.85);
-    r.line(10, 12, 7, 16, C.emerald);
+    r.poly([[15, 13], [9, 21], [12, 21], [15, 20], [19, 13]], C.jade);
+    r.line(15, 14, 10, 20, C.mist1);
+    r.line(16, 14, 12, 20, C.mist1);
+    r.line(19, 13, 15, 20, C.ivory);
   }
   r.outline(C.near0);
+  return r;
+}
+
+/** The logo: the hummingbird sipping from a heliconia, drawn once at art scale. */
+export function logo(): Raster {
+  const r = new Raster(46, 30);
+  // stem and a leaf at its foot
+  r.line(39, 9, 39, 29, C.forest);
+  r.line(40, 9, 40, 29, C.mid2);
+  r.poly([[39, 24], [31, 28], [33, 29], [39, 27]], C.forest);
+  r.line(38, 25, 33, 28, C.emerald);
+  // heliconia bracts zigzagging down the stem, ruby with gold lips
+  const bract = (y: number, dir: -1 | 1, len: number) => {
+    const tip = 39 + dir * len;
+    r.poly([[39, y], [tip, y + 2], [39, y + 4]], C.ruby);
+    r.line(39, y, tip, y + 2, C.gold);
+    r.set(tip, y + 2, C.goldHi);
+  };
+  bract(8, -1, 6);
+  bract(12, 1, 5);
+  bract(16, -1, 4);
+  bract(20, 1, 3);
+  r.outline(C.near0);
+  r.blit(sprite("hummingbird", "rest"), 1, 0);
   return r;
 }
 

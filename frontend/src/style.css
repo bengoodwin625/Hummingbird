@@ -36,8 +36,11 @@
   --radius: 14px;
   --radius-pill: 999px;
 
-  --font-ui: "RQ Digits", "Pixelify Sans", ui-rounded, system-ui, sans-serif;
-  --font-label: "Silkscreen", "Pixelify Sans", ui-monospace, monospace;
+  /* Reading text (questions, answers, labels, buttons) uses a face built for legibility; the
+     pixel faces are kept for the wordmark and the big display numbers. */
+  --font-ui: "Atkinson Hyperlegible Next Variable", "Atkinson Hyperlegible Next", system-ui, sans-serif;
+  --font-label: var(--font-ui);
+  --font-display: "RQ Digits", "Pixelify Sans", ui-rounded, system-ui, sans-serif;
 
   --space-1: 4px;
   --space-2: 8px;
@@ -184,7 +187,7 @@ ul {
 }
 
 .wordmark {
-  font-family: var(--font-label);
+  font-family: var(--font-display);
   font-size: 1rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -352,9 +355,9 @@ ul {
 
 .hero-title {
   font-size: clamp(2.25rem, 9vw, 4.25rem);
-  font-weight: 700;
-  line-height: 1.02;
-  letter-spacing: -0.01em;
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
   text-wrap: balance;
   text-shadow:
     0 3px 0 rgb(0 0 0 / 0.5),
@@ -766,6 +769,7 @@ ul {
 }
 
 .reveal-time {
+  font-family: var(--font-display);
   font-size: clamp(3.5rem, 19vw, 6rem);
   font-weight: 700;
   line-height: 0.95;
@@ -782,7 +786,7 @@ ul {
 
 .reveal-band {
   margin-top: var(--space-3);
-  font-family: var(--font-label);
+  font-family: var(--font-display);
   font-size: clamp(1.5rem, 7vw, 2.25rem);
   line-height: 1.05;
   letter-spacing: 0.06em;
@@ -951,6 +955,7 @@ ul {
 }
 
 .summary-score strong {
+  font-family: var(--font-display);
   font-size: clamp(3rem, 14vw, 4.5rem);
   font-weight: 700;
   line-height: 1;
@@ -1038,6 +1043,7 @@ ul {
 }
 
 .speed-big strong {
+  font-family: var(--font-display);
   font-size: clamp(2rem, 8vw, 2.75rem);
   font-weight: 700;
   line-height: 1;
@@ -1489,4 +1495,272 @@ ul {
 .noscript {
   padding: var(--space-5);
   text-align: center;
+}
+
+/* Labels are set in the reading face now, so they carry weight to stay legible when small. */
+.label,
+.quiz-no,
+.score-label,
+.hero-date,
+.howto-step::before,
+.section-title,
+.choice-key,
+.reveal-rare,
+.button,
+.compare-label,
+.speed-marker-label,
+.stat dt,
+.disclosure-hint {
+  font-weight: 700;
+}
+
+/* ---------------------------------------------------------------- logo */
+
+.brand {
+  color: inherit;
+  text-decoration: none;
+  border-radius: 8px;
+}
+
+.brand:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 4px;
+}
+
+.hero-logo {
+  display: block;
+  margin: 0 auto var(--space-3);
+  image-rendering: pixelated;
+  filter: drop-shadow(0 0 18px rgb(63 208 176 / 0.35)) drop-shadow(0 3px 0 rgb(0 0 0 / 0.5));
+}
+
+/* ---------------------------------------------------------------- menu */
+
+.menu {
+  display: grid;
+  gap: var(--space-3);
+  width: 100%;
+  max-width: 560px;
+  margin-inline: auto;
+}
+
+.modes {
+  display: grid;
+  gap: var(--space-2);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.mode {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: var(--space-4);
+  width: 100%;
+  min-height: 88px;
+  padding: var(--space-3) var(--space-4);
+  border: 0;
+  border-radius: var(--radius);
+  background: var(--fill);
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  box-shadow: inset 0 1px 0 rgb(63 208 176 / 0.18);
+  transition: background 0.2s var(--ease-out), translate 0.2s var(--ease-out);
+}
+
+.mode:hover {
+  background: var(--fill-hover);
+}
+
+.mode:active {
+  translate: 0 1px;
+}
+
+.mode:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+
+.mode:disabled {
+  cursor: progress;
+  opacity: 0.75;
+}
+
+.mode-art canvas {
+  display: block;
+  image-rendering: pixelated;
+  filter: drop-shadow(0 0 10px rgb(63 208 176 / 0.35));
+}
+
+.mode-text {
+  display: grid;
+  gap: 2px;
+}
+
+.mode-name {
+  font-size: 1.1875rem;
+  font-weight: 700;
+}
+
+.mode-desc {
+  color: var(--sage);
+  font-size: 0.9375rem;
+}
+
+.mode-status {
+  margin-top: var(--space-1);
+  color: var(--jade);
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+
+.mode--done .mode-status {
+  color: var(--gold-hi);
+}
+
+.mode-cta {
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-pill);
+  background: var(--gold);
+  color: var(--night);
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.mode--done .mode-cta {
+  background: transparent;
+  color: var(--gold);
+  box-shadow: inset 0 0 0 2px var(--gold);
+}
+
+.mode-soon {
+  padding: var(--space-3);
+  color: var(--placeholder);
+  font-size: 0.875rem;
+  text-align: center;
+}
+
+@media (max-width: 479px) {
+  .mode {
+    grid-template-columns: auto minmax(0, 1fr);
+  }
+
+  .mode-cta {
+    grid-column: 1 / -1;
+    text-align: center;
+  }
+}
+
+/* ---------------------------------------------------------------- score curve */
+
+.curve {
+  display: grid;
+  justify-items: center;
+  gap: var(--space-3);
+  width: 100%;
+  max-width: 560px;
+  margin-top: var(--space-5);
+}
+
+.curve-chart {
+  position: relative;
+  width: 100%;
+  height: 120px;
+  margin-top: var(--space-6);
+  border-bottom: 1px solid var(--hairline);
+}
+
+.curve-svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.curve-bar {
+  fill: var(--mid1);
+  opacity: 0.55;
+}
+
+.curve-area {
+  fill: rgb(63 208 176 / 0.14);
+}
+
+.curve-line {
+  fill: none;
+  stroke: var(--jade);
+  stroke-width: 2.5;
+  vector-effect: non-scaling-stroke;
+  stroke-linejoin: round;
+}
+
+.curve-marker {
+  position: absolute;
+  top: -8px;
+  bottom: 0;
+  width: 2px;
+  translate: -50% 0;
+}
+
+.curve-marker--you {
+  background: var(--gold);
+  box-shadow: 0 0 10px rgb(232 176 74 / 0.6);
+  z-index: 1;
+}
+
+.curve-marker--avg {
+  background: repeating-linear-gradient(180deg, var(--sage) 0 4px, transparent 4px 8px);
+}
+
+.curve-marker-label {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  translate: -50% -4px;
+  white-space: nowrap;
+  font-size: 0.8125rem;
+  font-weight: 700;
+}
+
+.curve-marker--you .curve-marker-label {
+  color: var(--gold-hi);
+}
+
+.curve-marker--avg .curve-marker-label {
+  bottom: auto;
+  top: 100%;
+  translate: -50% 6px;
+  color: var(--sage);
+}
+
+.curve-marker[data-edge="start"] .curve-marker-label {
+  left: -4px;
+  translate: 0 -4px;
+}
+
+.curve-marker--avg[data-edge="start"] .curve-marker-label {
+  translate: 0 6px;
+}
+
+.curve-marker[data-edge="end"] .curve-marker-label {
+  left: auto;
+  right: -4px;
+  translate: 0 -4px;
+}
+
+.curve-marker--avg[data-edge="end"] .curve-marker-label {
+  translate: 0 6px;
+}
+
+.curve-scale {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: var(--space-5);
+  font-size: 0.75rem;
+  color: var(--sage);
+  opacity: 0.75;
 }
