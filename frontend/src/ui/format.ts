@@ -135,3 +135,18 @@ export function numbersBandForTime(ms: number): Band {
   if (ms <= 17000) return "tree_frog";
   return "sloth";
 }
+
+/**
+ * Which choice (0-based) a key press picks on a Speed quiz question, or null. Only plain 1–6
+ * (up to the number of options) count, and never while the player is typing in a box.
+ */
+export function choiceKeyIndex(
+  key: string,
+  optionCount: number,
+  context: { typing: boolean; modified: boolean },
+): number | null {
+  if (context.typing || context.modified) return null;
+  if (!/^[1-9]$/.test(key)) return null;
+  const index = Number(key) - 1;
+  return index < optionCount ? index : null;
+}

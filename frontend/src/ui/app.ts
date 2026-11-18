@@ -17,6 +17,7 @@ import {
   BAND_INFO,
   TYPING_ALLOWANCE_S,
   bandForTime,
+  choiceKeyIndex,
   categoryLabel,
   formatCountdown,
   formatPoints,
@@ -178,6 +179,8 @@ export class App {
   async start(): Promise<void> {
     this.setPhase("loading");
     this.clearTimers();
+    // Leaving a Speed quiz question behind: forget it, so nothing can answer it from elsewhere.
+    this.question = null;
     this.renderStatus("Loading today's quiz…");
     try {
       this.numbers.stop();
@@ -817,11 +820,23 @@ export class App {
     this.later(TIMEOUT_CHECK_MS, () => void this.checkTimeout(question.slot));
   }
 
+  /**
+   * Keys 1–6 answer a Speed quiz choice question. Only while that question's choices are on
+   * screen, and never while typing in a box: the How Close quiz shares this page, and a digit
+   * typed into its guess box must stay a guess.
+   */
   private onKey = (event: KeyboardEvent): void => {
     if (this.phase !== "answering" || this.question?.type !== "choice") return;
-    if (event.altKey || event.ctrlKey || event.metaKey) return;
-    const index = Number.parseInt(event.key, 10) - 1;
-    const option = this.question.options[index];
+    if (!this.answersEl.querySelector(".choices")) return;
+    const target = event.target;
+    const typing =
+      target instanceof HTMLElement &&
+      (target.isContentEditable || target.tagName === "INPUT" || target.tagName === "TEXTAREA");
+    const index = choiceKeyIndex(event.key, this.question.options.length, {
+      typing,
+      modified: event.altKey || event.ctrlKey || event.metaKey,
+    });
+    const option = index === null ? undefined : this.question.options[index];
     if (option) {
       event.preventDefault();
       void this.answerChoice(option.id);

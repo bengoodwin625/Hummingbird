@@ -46,6 +46,7 @@ describe("format", () => {
 import {
   bandForTime,
   categoryLabel,
+  choiceKeyIndex,
   formatMultiplier,
   numbersBandForTime,
   scorePercent,
@@ -122,5 +123,22 @@ describe("numbersBandForTime", () => {
     expect(numbersBandForTime(11000)).toBe("toucan");
     expect(numbersBandForTime(17000)).toBe("tree_frog");
     expect(numbersBandForTime(17001)).toBe("sloth");
+  });
+});
+
+describe("choiceKeyIndex", () => {
+  const plain = { typing: false, modified: false };
+  it("maps 1-6 to the six choices", () => {
+    expect(choiceKeyIndex("1", 6, plain)).toBe(0);
+    expect(choiceKeyIndex("6", 6, plain)).toBe(5);
+    expect(choiceKeyIndex("7", 6, plain)).toBeNull();
+    expect(choiceKeyIndex("a", 6, plain)).toBeNull();
+    expect(choiceKeyIndex("0", 6, plain)).toBeNull();
+  });
+
+  it("never answers while typing in a box or with a modifier key", () => {
+    // A digit typed into the How Close guess box must stay part of the guess.
+    expect(choiceKeyIndex("3", 6, { typing: true, modified: false })).toBeNull();
+    expect(choiceKeyIndex("3", 6, { typing: false, modified: true })).toBeNull();
   });
 });
