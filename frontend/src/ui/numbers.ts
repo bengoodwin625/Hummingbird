@@ -1,5 +1,5 @@
 /**
- * The Numbers quiz on the page: five obscure-number guesses. It uses the same areas, styles
+ * The How Close quiz on the page: five obscure-number guesses. It uses the same areas, styles
  * and rhythm as the speed quiz (ready → read → answer → reveal → results), through a small
  * shell the App hands it.
  */
@@ -22,12 +22,15 @@ import {
   formatMultiplier,
   formatPoints,
   formatSeconds,
+  numbersBandForTime,
 } from "./format";
+import { disclosure, scoreCompare, scoreCurve, speedSection, standingText, stat } from "./resultparts";
 import { buildNumbersShareText } from "./share";
+import { drawShareCard, shareCard } from "./sharecard";
 
 export type ShellPhase = "serving" | "reading" | "answering" | "submitting" | "reveal" | "results";
 
-/** What the Numbers quiz needs from the App: the shared page areas and helpers. */
+/** What the How Close quiz needs from the App: the shared page areas and helpers. */
 export interface Shell {
   root: HTMLElement;
   questionEl: HTMLElement;
@@ -108,7 +111,7 @@ export class NumbersGame {
     const el = this.shell.progressEl;
     el.style.gridTemplateColumns = `repeat(${this.total}, minmax(0, 1fr))`;
     el.replaceChildren(...steps);
-    el.setAttribute("aria-label", current ? `Numbers question ${current} of ${this.total}` : "Numbers quiz");
+    el.setAttribute("aria-label", current ? `How Close question ${current} of ${this.total}` : "How Close quiz");
   }
 
   // ------------------------------------------------------------- serving
@@ -162,7 +165,7 @@ export class NumbersGame {
       h(
         "h1",
         { class: "question-text", id: "question-text" },
-        h("span", { class: "sr-only", text: `Numbers question ${q.slot} of ${q.total}: ` }),
+        h("span", { class: "sr-only", text: `How Close question ${q.slot} of ${q.total}: ` }),
         ...words,
       ),
     );
@@ -399,6 +402,10 @@ export class NumbersGame {
 
   // ------------------------------------------------------------- results
 
+  /**
+   * The results page, built from the same blocks as the Speed quiz's: score against today's
+   * average, everyone's scores, your speed and line-up, the stat row, then every guess.
+   */
   private async showResults(): Promise<void> {
     const s = this.shell;
     this.stop();
@@ -419,14 +426,50 @@ export class NumbersGame {
     this.renderProgress(null);
     s.stage.showCast(res.questions.filter((q) => q.band).map((q) => q.band as Band));
 
-    const standing =
-      res.better_than_percent === null
-        ? "You're the first to finish today's Numbers quiz."
-        : res.better_than_percent > 0
-          ? `Better than ${res.better_than_percent}% of today's players.`
-          : "Plenty of room to climb tomorrow.";
+    const average = res.others ? res.average_score : null;
+    const top = res.others && res.better_than_percent === 100;
+    const spotOn = res.questions.filter((q) => q.closeness === 100).length;
+    const caught = res.questions.filter((q) => q.band === "hummingbird").length;
 
-    const list = h("ol", { class: "guess-list" });
+    s.overlayEl.replaceChildren();
+    s.questionEl.replaceChildren(
+      h(
+        "div",
+        { class: "summary" },
+        h("h1", { class: "sr-only", id: "question-text", text: `Your How Close quiz #${res.number} results` }),
+        h(
+          "p",
+          { class: "summary-score" },
+          h("strong", { text: formatPoints(res.total_score) }),
+          h("span", { text: `of ${formatPoints(res.max_score)}` }),
+        ),
+        h("p", { class: "standing", text: standingText({ others: res.others, top, betterThan: res.better_than_percent }) }),
+        scoreCompare(res.total_score, average),
+        scoreCurve({ distribution: res.distribution, maxScore: res.max_score, score: res.total_score, average }),
+        speedSection({
+          mine: res.avg_elapsed_ms,
+          everyone: res.everyone_avg_ms,
+          paceOf: numbersBandForTime,
+          laps: res.questions.map((q) => ({
+            slot: q.slot,
+            band: q.band,
+            elapsedMs: q.elapsed_ms,
+            timedOut: q.outcome === "timeout",
+          })),
+          lapPrefix: "G",
+          emptyText: "No guesses in time today, so no pace to show. Tomorrow's another go.",
+        }),
+        h(
+          "dl",
+          { class: "stat-row" },
+          stat("Average closeness", `${res.avg_closeness}%`),
+          stat("Spot on", String(spotOn), spotOn > 0),
+          stat("Hummingbirds", String(caught), caught > 0),
+        ),
+      ),
+    );
+
+    const list = h("ol", { class: "result-list" });
     for (const q of res.questions) {
       const chips = h("p", { class: "result-stats" });
       if (q.band) {
@@ -441,7 +484,7 @@ export class NumbersGame {
       list.append(
         h(
           "li",
-          { class: "guess-item" },
+          { class: "result-item" },
           h("span", { class: "result-icon" }, q.band ? animalIcon(q.band, 1) : icon("cross", "var(--ruby-text)")),
           h(
             "div",
@@ -461,42 +504,45 @@ export class NumbersGame {
       );
     }
 
-    s.overlayEl.replaceChildren();
-    s.questionEl.replaceChildren(
-      h(
-        "div",
-        { class: "summary" },
-        h("h1", { class: "sr-only", id: "question-text", text: `Your Numbers quiz #${res.number} results` }),
-        h(
-          "p",
-          { class: "summary-score" },
-          h("strong", { text: formatPoints(res.total_score) }),
-          h("span", { text: `of ${formatPoints(res.max_score)}` }),
-        ),
-        h("p", { class: "standing", text: standing }),
-        h(
-          "dl",
-          { class: "stat-row" },
-          this.stat("Average closeness", `${res.avg_closeness}%`),
-          this.stat("Spot on (100%)", String(res.questions.filter((q) => q.closeness === 100).length)),
-          this.stat("Hummingbirds", String(res.questions.filter((q) => q.band === "hummingbird").length)),
-        ),
-        h("section", { class: "guess-section", "aria-labelledby": "guess-title" }, h("h2", { class: "section-title", id: "guess-title", text: "Your guesses" }), list),
-      ),
-    );
-
     const status = h("p", { class: "share-status", role: "status" });
     const share = s.actionButton("Share your result", () => void this.share(res, status));
     share.prepend(icon("share", "currentColor"));
-    const next = h("p", { class: "cta-note", text: `Next Numbers quiz in ${formatCountdown(Date.parse(res.next_unlock_at), Date.now())}.` });
+    const picture = s.actionButton("Share a picture", () => void this.sharePicture(res, status, picture), true);
+    const next = h("p", {
+      class: "cta-note",
+      text: `Next How Close quiz in ${formatCountdown(Date.parse(res.next_unlock_at), Date.now())}.`,
+    });
     const menu = s.actionButton("Back to the menu", () => s.backToMenu(), true);
-    s.actionEl.replaceChildren(share, status, next, menu);
-    s.answersEl.replaceChildren();
+    s.actionEl.replaceChildren(share, picture, status, next, menu);
+    s.answersEl.replaceChildren(disclosure("Your guesses", list));
     s.announce(`You scored ${res.total_score} of ${res.max_score}, ${res.avg_closeness}% close on average.`);
   }
 
-  private stat(label: string, value: string): HTMLElement {
-    return h("div", { class: "stat" }, h("dt", { text: label }), h("dd", { text: value }));
+  private async sharePicture(res: NumbersResults, status: HTMLElement, button: HTMLButtonElement): Promise<void> {
+    button.disabled = true;
+    status.textContent = "Painting your forest…";
+    try {
+      const stats = [`${res.avg_closeness}% close on average`];
+      if (res.avg_elapsed_ms !== null) stats.push(`${BAND_INFO[numbersBandForTime(res.avg_elapsed_ms)].name} pace`);
+      const canvas = await drawShareCard({
+        number: res.number,
+        totalScore: res.total_score,
+        correct: res.questions.filter((q) => q.band).length,
+        total: res.questions.length,
+        avgMs: res.avg_elapsed_ms,
+        bands: res.questions.filter((q) => q.band).map((q) => q.band as Band),
+        host: window.location.host,
+        title: `HOW CLOSE #${res.number}`,
+        stats,
+      });
+      const how = await shareCard(canvas, `How close can you get? Hummingbird How Close #${res.number}: ${window.location.origin}`);
+      status.textContent = how === "saved" ? "Saved. Post it wherever you like." : "";
+    } catch (error) {
+      status.textContent =
+        error instanceof DOMException && error.name === "AbortError" ? "" : "Couldn't make the picture. Please try again.";
+    } finally {
+      button.disabled = false;
+    }
   }
 
   private async share(res: NumbersResults, status: HTMLElement): Promise<void> {

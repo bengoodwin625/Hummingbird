@@ -47,6 +47,7 @@ import {
   bandForTime,
   categoryLabel,
   formatMultiplier,
+  numbersBandForTime,
   scorePercent,
   smoothDistribution,
   speedGapLine,
@@ -111,5 +112,15 @@ describe("formatMultiplier", () => {
     expect(formatMultiplier(2)).toBe("×2");
     expect(formatMultiplier(1.45)).toBe("×1.45");
     expect(formatMultiplier(1.7)).toBe("×1.7");
+  });
+});
+
+describe("numbersBandForTime", () => {
+  it("uses the How Close limits, each limit belonging to the faster animal", () => {
+    expect(numbersBandForTime(4000)).toBe("hummingbird");
+    expect(numbersBandForTime(4001)).toBe("jaguar");
+    expect(numbersBandForTime(11000)).toBe("toucan");
+    expect(numbersBandForTime(17000)).toBe("tree_frog");
+    expect(numbersBandForTime(17001)).toBe("sloth");
   });
 });

@@ -22,6 +22,10 @@ export interface CardInput {
   avgMs: number | null;
   bands: Band[];
   host: string;
+  /** The card's heading; defaults to "HUMMINGBIRD #n". */
+  title?: string;
+  /** The stats line; defaults to correct count, average time and pace. */
+  stats?: string[];
 }
 
 function forest(bands: Band[]): Raster {
@@ -73,7 +77,7 @@ export async function drawShareCard(input: CardInput): Promise<HTMLCanvasElement
   ctx.textBaseline = "alphabetic";
   ctx.fillStyle = "#f6dc96";
   ctx.font = "700 34px 'Pixelify Sans', sans-serif";
-  ctx.fillText(`HUMMINGBIRD #${input.number}`, x, 120);
+  ctx.fillText(input.title ?? `HUMMINGBIRD #${input.number}`, x, 120);
 
   ctx.fillStyle = "#e8b04a";
   ctx.font = "400 190px 'Jersey 10', 'Pixelify Sans', sans-serif";
@@ -82,8 +86,8 @@ export async function drawShareCard(input: CardInput): Promise<HTMLCanvasElement
   ctx.font = "600 34px 'Atkinson Hyperlegible Next Variable', sans-serif";
   ctx.fillText("points", x + 6, 340);
 
-  const stats = [`${input.correct}/${input.total} correct`];
-  if (input.avgMs !== null) {
+  const stats = input.stats ? [...input.stats] : [`${input.correct}/${input.total} correct`];
+  if (!input.stats && input.avgMs !== null) {
     stats.push(`avg ${formatSeconds(input.avgMs)}`, `${BAND_INFO[bandForTime(input.avgMs)].name} pace`);
   }
   ctx.fillStyle = "#9fb5a6";

@@ -207,6 +207,12 @@ export interface NumbersResults {
   }>;
   better_than_percent: number | null;
   average_score: number | null;
+  /** Whether anyone else has finished today (never how many). */
+  others: boolean;
+  distribution: number[];
+  bucket_size: number;
+  avg_elapsed_ms: number | null;
+  everyone_avg_ms: number | null;
   next_unlock_at: string;
 }
 

@@ -60,7 +60,7 @@ describe("buildNumbersShareText", () => {
       url: "https://example.test",
     });
     expect(text).toBe(
-      "Hummingbird Numbers #2 — 567/1,000\n🐦🐆❌🦥🦜\n74% close on average\nhttps://example.test",
+      "Hummingbird How Close #2 — 567/1,000\n🐦🐆❌🦥🦜\n74% close on average\nhttps://example.test",
     );
   });
 });

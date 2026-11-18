@@ -169,3 +169,13 @@ def test_numbers_limits_use_the_longer_window() -> None:
     assert elapsed_ms(0, 60_000, NUMBERS_ANSWER_LIMIT_MS) == NUMBERS_ANSWER_LIMIT_MS
     assert not is_timed_out(0, 30_500, NUMBERS_ANSWER_LIMIT_MS)
     assert is_timed_out(0, 31_001, NUMBERS_ANSWER_LIMIT_MS)
+
+
+def test_score_distribution_for_the_how_close_quiz() -> None:
+    from app.scoring import NUMBERS_DISTRIBUTION_BUCKET, NUMBERS_MAX_PER_DAY, score_distribution
+
+    counts = score_distribution(
+        [0, 49, 50, 567, 1_000], NUMBERS_DISTRIBUTION_BUCKET, NUMBERS_MAX_PER_DAY
+    )
+    assert len(counts) == 20
+    assert counts[0] == 2 and counts[1] == 1 and counts[11] == 1 and counts[19] == 1

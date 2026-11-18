@@ -121,12 +121,14 @@ DISTRIBUTION_BUCKET = 500
 """Width, in points, of each bucket in the day's score distribution (16 buckets up to 8,000)."""
 
 
-def score_distribution(scores: list[int], bucket: int = DISTRIBUTION_BUCKET) -> list[int]:
+def score_distribution(
+    scores: list[int], bucket: int = DISTRIBUTION_BUCKET, max_score: int = MAX_POINTS_PER_DAY
+) -> list[int]:
     """Count of daily totals in each bucket from 0 to the daily maximum.
 
-    Bucket i covers [i * bucket, (i + 1) * bucket); a perfect 8,000 falls in the last bucket.
+    Bucket i covers [i * bucket, (i + 1) * bucket); a perfect score falls in the last bucket.
     """
-    buckets = MAX_POINTS_PER_DAY // bucket
+    buckets = max_score // bucket
     counts = [0] * buckets
     for score in scores:
         index = min(max(score, 0) // bucket, buckets - 1)
@@ -211,3 +213,6 @@ def score_numbers(
 
 def score_numbers_timeout() -> NumbersScore:
     return NumbersScore(Outcome.TIMEOUT, None, 0, None, 0.0, 0)
+
+NUMBERS_DISTRIBUTION_BUCKET = 50
+"""Width, in points, of each bucket in the How Close quiz's score curve (20 buckets to 1,000)."""

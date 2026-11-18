@@ -35,11 +35,11 @@ export interface NumbersShareInput {
   url?: string;
 }
 
-/** The Numbers quiz result: score, the animals row and average closeness, no questions. */
+/** The How Close quiz result: score, the animals row and average closeness, no questions. */
 export function buildNumbersShareText(input: NumbersShareInput): string {
   const row = input.answers.map((a) => (a.band ? BAND_INFO[a.band].emoji : MISSED_EMOJI)).join("");
   const lines = [
-    `Hummingbird Numbers #${input.number} — ${formatPoints(input.totalScore)}/${formatPoints(input.maxScore)}`,
+    `Hummingbird How Close #${input.number} — ${formatPoints(input.totalScore)}/${formatPoints(input.maxScore)}`,
     row,
     `${input.avgCloseness}% close on average`,
   ];

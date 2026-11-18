@@ -34,6 +34,7 @@ from .scoring import (
     NUMBERS_ANSWER_LIMIT_MS,
     NUMBERS_BAND_RULES,
     NUMBERS_DEFAULT_SPREAD,
+    NUMBERS_DISTRIBUTION_BUCKET,
     NUMBERS_MAX_PER_DAY,
     NUMBERS_QUESTIONS_PER_DAY,
     READ_PHASE_MS,
@@ -44,6 +45,7 @@ from .scoring import (
     elapsed_ms,
     is_timed_out,
     is_too_early,
+    score_distribution,
     score_numbers,
     score_numbers_timeout,
 )
@@ -140,6 +142,12 @@ class NumbersResultsOut(BaseModel):
     questions: list[NumbersResultOut]
     better_than_percent: int | None
     average_score: int | None
+    others: bool
+    """Whether anyone else has finished today (never how many)."""
+    distribution: list[int]
+    bucket_size: int
+    avg_elapsed_ms: int | None
+    everyone_avg_ms: int | None
     next_unlock_at: datetime
 
 
@@ -430,18 +438,28 @@ def results(session: SessionDep, player: PlayerDep, clock: ClockDep) -> NumbersR
                 outcome=sub.outcome,  # type: ignore[arg-type]
             )
         )
-    others = [
-        score
-        for play_id, score in session.execute(
-            select(models.Play.id, models.Play.total_score).where(
+    finished = list(
+        session.scalars(
+            select(models.Play).where(
                 models.Play.date == day.date,
                 models.Play.mode == MODE,
                 models.Play.finished_at.is_not(None),
             )
         )
-        if play_id != play.id
-    ]
+    )
+    others = [p.total_score for p in finished if p.id != play.id]
     everyone = [*others, play.total_score]
+
+    def avg_time(p: models.Play) -> float | None:
+        times = [
+            s.elapsed_ms
+            for s in p.submissions
+            if s.outcome != "timeout" and s.elapsed_ms is not None
+        ]
+        return sum(times) / len(times) if times else None
+
+    mine = avg_time(play)
+    all_times = [t for t in (avg_time(p) for p in finished) if t is not None]
     return NumbersResultsOut(
         date=day.date,
         number=day.number,
@@ -455,5 +473,10 @@ def results(session: SessionDep, player: PlayerDep, clock: ClockDep) -> NumbersR
             else None
         ),
         average_score=round(sum(everyone) / len(everyone)) if others else None,
+        others=bool(others),
+        distribution=score_distribution(everyone, NUMBERS_DISTRIBUTION_BUCKET, NUMBERS_MAX_PER_DAY),
+        bucket_size=NUMBERS_DISTRIBUTION_BUCKET,
+        avg_elapsed_ms=round(mine) if mine is not None else None,
+        everyone_avg_ms=round(sum(all_times) / len(all_times)) if others and all_times else None,
         next_unlock_at=next_unlock(now),
     )

@@ -88,6 +88,11 @@ def test_full_numbers_play(numbers_client: TestClient, clock: FakeClock) -> None
     assert results["total_score"] == 567 and len(results["questions"]) == 5
     assert results["avg_closeness"] == round((100 + 93 + 0 + 100 + 75) / 5)
     assert results["better_than_percent"] is None
+    assert results["others"] is False and results["everyone_avg_ms"] is None
+    assert len(results["distribution"]) == 20 and sum(results["distribution"]) == 1
+    assert results["distribution"][567 // 50] == 1
+    # Average time over the four answered guesses: 2, 5, 1, 25 and 9 s minus 0.3 s each.
+    assert results["avg_elapsed_ms"] == round((1_700 + 4_700 + 700 + 24_700 + 8_700) / 5)
     # The speed quiz is untouched by a Numbers play.
     assert client.get("/api/today").json()["status"] == "not_started"
 

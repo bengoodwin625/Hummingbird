@@ -18,15 +18,13 @@ import {
   TYPING_ALLOWANCE_S,
   bandForTime,
   categoryLabel,
-  speedGapLine,
   formatCountdown,
   formatPoints,
   formatQuizDate,
   formatSeconds,
-  scorePercent,
-  smoothDistribution,
 } from "./format";
 import { NumbersGame, type Shell } from "./numbers";
+import { scoreCompare, scoreCurve, speedSection, standingText, stat } from "./resultparts";
 import { buildShareText } from "./share";
 import { drawShareCard, shareCard } from "./sharecard";
 import {
@@ -107,7 +105,7 @@ export class App {
   private pendingLeague = "";
   /** Refreshes the menu's progress tiles after a sheet changes something. */
   private refreshTiles: (() => void) | null = null;
-  /** The Numbers quiz: same page, same style, its own five questions. */
+  /** The How Close quiz: same page, same style, its own five questions. */
   private readonly numbers: NumbersGame;
   private numbersToday: NumbersToday | null = null;
 
@@ -128,7 +126,7 @@ export class App {
     this.readLinks();
   }
 
-  /** The page areas and helpers the Numbers quiz plays in. */
+  /** The page areas and helpers the How Close quiz plays in. */
   private shell(): Shell {
     return {
       root: this.root,
@@ -199,7 +197,7 @@ export class App {
       this.renderProgress(today.status === "finished" ? null : today.next_slot);
       if (today.status === "no_quiz") return this.renderNoQuiz();
       if (today.question_live) return this.serve();
-      // A reload in the middle of a Numbers question goes straight back to it.
+      // A reload in the middle of a How Close question goes straight back to it.
       if (numbersToday?.question_live) return this.numbers.start(numbersToday);
       this.renderMenu(today);
     } catch (error) {
@@ -319,7 +317,7 @@ export class App {
   // ------------------------------------------------------------- menu
 
   /**
-   * The home page is a menu of game modes. The speed quiz is playable and the numbers quiz is on its way; the list is
+   * The home page is a menu of game modes. The Speed quiz and the How Close quiz sit side by side; the list is
    * built so new modes slot in beside it.
    */
   private renderMenu(today: Today): void {
@@ -512,7 +510,7 @@ export class App {
     void redraw();
   }
 
-  /** The Numbers quiz card: five guesses a day, scored on closeness and speed. */
+  /** The How Close quiz card: five guesses a day, scored on closeness and speed. */
   private numbersCard(): HTMLElement {
     const t = this.numbersToday;
     const art = h("span", { class: "mode-art mode-art--numbers", "aria-hidden": "true", text: "123" });
@@ -528,9 +526,9 @@ export class App {
           h(
             "span",
             { class: "mode-text" },
-            h("span", { class: "mode-name", text: "Numbers quiz" }),
+            h("span", { class: "mode-name", text: "How Close quiz" }),
             desc,
-            h("span", { class: "mode-status", text: "No Numbers quiz today. Back tomorrow." }),
+            h("span", { class: "mode-status", text: "No How Close quiz today. Back tomorrow." }),
           ),
         ),
       );
@@ -558,7 +556,7 @@ export class App {
       h(
         "span",
         { class: "mode-text" },
-        h("span", { class: "mode-name", text: "Numbers quiz" }),
+        h("span", { class: "mode-name", text: "How Close quiz" }),
         desc,
         h("span", { class: "mode-status", text: state.status }),
         animals,
@@ -571,10 +569,10 @@ export class App {
     });
     const info = h(
       "button",
-      { class: "mode-info", type: "button", "aria-label": "How to play the Numbers quiz", "aria-haspopup": "dialog" },
+      { class: "mode-info", type: "button", "aria-label": "How to play the How Close quiz", "aria-haspopup": "dialog" },
       h("span", { "aria-hidden": "true", text: "i" }),
     );
-    info.addEventListener("click", () => this.openInfo("How to play the Numbers quiz", this.numbers.info()));
+    info.addEventListener("click", () => this.openInfo("How to play the How Close quiz", this.numbers.info()));
     return h("li", { class: "mode-item" }, card, info);
   }
 
@@ -1247,184 +1245,44 @@ export class App {
     this.announce(`You scored ${results.total_score} points with ${results.correct_count} correct answers.`);
   }
 
-  private rowLabel(results: Results): string {
-    return results.questions
-      .map((q) => (q.outcome === "correct" && q.band ? BAND_INFO[q.band].name : "missed"))
-      .join(", ");
-  }
-
   private stat(label: string, value: string, highlight = false): HTMLElement {
-    return h(
-      "div",
-      { class: `stat${highlight ? " stat--rare" : ""}` },
-      h("dt", { text: label }),
-      h("dd", { text: value }),
-    );
+    return stat(label, value, highlight);
   }
 
-  /** Where you stand today, as a share of players rather than a head count. */
   private standingLine(results: Results): string {
     const { rank, players, better_than_percent: better } = results.standing;
-    if (players <= 1) return "You're the first to finish today.";
-    if (rank === 1) return "Top score of the day so far.";
-    if (better !== null && better > 0) return `Better than ${better}% of today's players.`;
-    return "Plenty of room to climb tomorrow.";
+    return standingText({ others: players > 1, top: rank === 1, betterThan: better });
   }
 
-  /** You against today's average score, as two bars on one scale. */
   private scoreCompare(results: Results): HTMLElement | null {
     const { players, average_score: average } = results.standing;
-    if (players <= 1) return null;
-    const max = Math.max(results.total_score, average, 1);
-    const bar = (label: string, value: number, mine: boolean) => {
-      const fill = h("span", { class: "compare-fill" });
-      fill.style.width = `${Math.max(2, (value / max) * 100)}%`;
-      return h(
-        "div",
-        { class: `compare-row${mine ? " compare-row--mine" : ""}` },
-        h("span", { class: "compare-label", text: label }),
-        h("span", { class: "compare-track" }, fill),
-        h("span", { class: "compare-value", text: formatPoints(value) }),
-      );
-    };
-    return h(
-      "section",
-      { class: "compare", "aria-label": "Your score against today's average" },
-      bar("You", results.total_score, true),
-      bar("Average", average, false),
-    );
+    return scoreCompare(results.total_score, players > 1 ? average : null);
   }
 
-  /** Everyone's final scores today as a smoothed curve, with you and the average marked. */
   private scoreCurve(results: Results): HTMLElement {
-    const { distribution, players, average_score: average } = results.standing;
-    const max = results.max_score;
-    const section = h("section", { class: "curve", "aria-labelledby": "curve-title" });
-    section.append(h("h2", { class: "section-title", id: "curve-title", text: "Everyone's scores today" }));
-
-    const W = 320;
-    const H = 100;
-    const ys = smoothDistribution(distribution, 81);
-    const pts = ys.map((y, i) => [(i / (ys.length - 1)) * W, H - y * (H - 6)] as const);
-    const line = pts.map(([x, y], i) => `${i ? "L" : "M"}${x.toFixed(1)} ${y.toFixed(1)}`).join(" ");
-    const NS = "http://www.w3.org/2000/svg";
-    const svg = document.createElementNS(NS, "svg");
-    svg.setAttribute("viewBox", `0 0 ${W} ${H}`);
-    svg.setAttribute("preserveAspectRatio", "none");
-    svg.setAttribute("class", "curve-svg");
-    svg.setAttribute("aria-hidden", "true");
-    // Faint bars show the real counts under the smoothed curve.
-    const peak = Math.max(...distribution, 1);
-    const bw = W / Math.max(distribution.length, 1);
-    distribution.forEach((count, i) => {
-      if (!count) return;
-      const bar = document.createElementNS(NS, "rect");
-      const bh = (count / peak) * (H - 6) * 0.92;
-      bar.setAttribute("x", (i * bw + 1).toFixed(1));
-      bar.setAttribute("y", (H - bh).toFixed(1));
-      bar.setAttribute("width", (bw - 2).toFixed(1));
-      bar.setAttribute("height", bh.toFixed(1));
-      bar.setAttribute("class", "curve-bar");
-      svg.append(bar);
+    const { players, average_score: average, distribution } = results.standing;
+    return scoreCurve({
+      distribution,
+      maxScore: results.max_score,
+      score: results.total_score,
+      average: players > 1 ? average : null,
     });
-    const area = document.createElementNS(NS, "path");
-    area.setAttribute("d", `${line} L${W} ${H} L0 ${H} Z`);
-    area.setAttribute("class", "curve-area");
-    const stroke = document.createElementNS(NS, "path");
-    stroke.setAttribute("d", line);
-    stroke.setAttribute("class", "curve-line");
-    svg.append(area, stroke);
-
-    const chart = h("div", { class: "curve-chart" }, svg);
-    const marker = (cls: string, score: number, label: string) => {
-      const at = scorePercent(score, max);
-      const m = h("span", { class: `curve-marker ${cls}` }, h("span", { class: "curve-marker-label", text: label }));
-      m.style.left = `${at}%`;
-      if (at < 15) m.dataset.edge = "start";
-      else if (at > 85) m.dataset.edge = "end";
-      return m;
-    };
-    if (players > 1) chart.append(marker("curve-marker--avg", average, `Average ${formatPoints(average)}`));
-    chart.append(marker("curve-marker--you", results.total_score, `You ${formatPoints(results.total_score)}`));
-
-    const scale = h("p", { class: "curve-scale", "aria-hidden": "true" });
-    for (const v of [0, max / 4, max / 2, (3 * max) / 4, max]) scale.append(h("span", { text: formatPoints(v) }));
-
-    section.append(
-      h("p", {
-        class: "sr-only",
-        text: `Your ${formatPoints(results.total_score)} points against today's average of ${formatPoints(average)}.`,
-      }),
-      chart,
-      scale,
-    );
-    return section;
   }
 
-  /**
-   * Your speed, told with the animals: your pace animal and average up top with one plain line
-   * against today's average, then your eight answers lined up as the animals they earned, each
-   * with its time, and the quickest one marked.
-   */
   private speedCompare(results: Results, mine: number | null): HTMLElement {
-    const section = h("section", { class: "speed", "aria-labelledby": "speed-title" });
-    section.append(h("h2", { class: "section-title", id: "speed-title", text: "Your speed" }));
-    if (mine !== null) {
-      const pace = bandForTime(mine);
-      const hero = h(
-        "div",
-        { class: "pace" },
-        h("span", { class: "pace-sprite" }, animalIcon(pace, 3)),
-        h(
-          "div",
-          { class: "pace-text" },
-          h("p", { class: "pace-name", text: `${BAND_INFO[pace].name} pace` }),
-          h("p", { class: "pace-avg" }, h("strong", { text: formatSeconds(mine) }), " average answer"),
-        ),
-      );
-      hero.style.setProperty("--band-colour", `var(--band-${pace})`);
-      const others = results.speed.players > 1 ? results.speed.everyone_avg_ms : null;
-      section.append(hero, h("p", { class: "pace-compare", text: speedGapLine(mine, others) }));
-    } else {
-      section.append(h("p", { class: "pace-compare", text: "No correct answers today, so no pace to show. Tomorrow's another go." }));
-    }
-    section.append(this.lineUp(results));
-    return section;
-  }
-
-  /** The eight answers as a line-up of animals with their times; the quickest gets a tag. */
-  private lineUp(results: Results): HTMLElement {
-    const correctTimes = results.questions
-      .filter((q) => q.outcome === "correct" && q.elapsed_ms !== null)
-      .map((q) => q.elapsed_ms as number);
-    const best = correctTimes.length ? Math.min(...correctTimes) : null;
-    let bestTagged = false;
-    const list = h("ol", { class: "lineup", "aria-label": this.rowLabel(results) });
-    for (const q of results.questions) {
-      const correct = q.outcome === "correct" && q.band !== null;
-      const isBest = correct && !bestTagged && q.elapsed_ms === best;
-      if (isBest) bestTagged = true;
-      list.append(
-        h(
-          "li",
-          { class: `lap${correct ? "" : " lap--miss"}${isBest ? " lap--best" : ""}` },
-          isBest ? h("span", { class: "lap-tag", text: "Fastest" }) : null,
-          h(
-            "span",
-            { class: "lap-art", "aria-hidden": "true" },
-            ...(correct && q.band
-              ? [animalIcon(q.band, 1, "sprite-sm"), animalIcon(q.band, 2, "sprite-lg")]
-              : [icon("cross", "var(--ruby-text)")]),
-          ),
-          h("span", {
-            class: "lap-time",
-            text: q.outcome === "timeout" ? "Time" : q.elapsed_ms === null ? "–" : formatSeconds(q.elapsed_ms),
-          }),
-          h("span", { class: "lap-q", text: `Q${q.slot}` }),
-        ),
-      );
-    }
-    return list;
+    return speedSection({
+      mine,
+      everyone: results.speed.players > 1 ? results.speed.everyone_avg_ms : null,
+      paceOf: bandForTime,
+      laps: results.questions.map((q) => ({
+        slot: q.slot,
+        band: q.outcome === "correct" ? q.band : null,
+        elapsedMs: q.elapsed_ms,
+        timedOut: q.outcome === "timeout",
+      })),
+      lapPrefix: "Q",
+      emptyText: "No correct answers today, so no pace to show. Tomorrow's another go.",
+    });
   }
 
   private async sharePicture(results: Results, status: HTMLElement, button: HTMLButtonElement): Promise<void> {

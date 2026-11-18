@@ -38,8 +38,8 @@ UI. The art is detailed, fine-grained pixel art of a rainforest at dusk, in dark
 ## Core game loop
 
 1. The player opens the site on the **menu**: the rainforest scene, the logo, a short
-   explanation and a list of game modes: the **Speed quiz** (this game) and the **Numbers
-   quiz** (see "The Numbers quiz" below). The menu is built so more modes can be added. The Speed quiz card says Play, Continue or See your results, and once
+   explanation and a list of game modes: the **Speed quiz** (this game) and the **How Close
+   quiz** (see "The How Close quiz" below). The menu is built so more modes can be added. The Speed quiz card says Play, Continue or See your results, and once
    played shows the day's animals and a live countdown. Each game card has its own "i" button
    that opens that game's instructions (speed ladder and how to play) in a sheet; there is no
    instructions section on the page itself. The logo in the header returns to the menu (except
@@ -269,7 +269,7 @@ scripts/
   alias_normalised)`
 - `plays(id, player_id, date, mode, started_at, finished_at?, total_score, challenge_code?)` —
   unique on `(player_id, date, mode)`. `questions` also have a `mode`, unique on
-  `(date, mode, slot)`, and `number_answers` an optional `spread` (Numbers quiz).
+  `(date, mode, slot)`, and `number_answers` an optional `spread` (How Close quiz).
 - `players.sync_code?` (unique), `leagues(id, code, name, owner_id, created_at)` and
   `league_members(league_id, player_id, joined_at)`.
 - `submissions(id, play_id, slot, served_at, answer_open_at, received_at?, raw_input?,
@@ -359,9 +359,10 @@ In Claude Code, `.claude/launch.json` defines `backend` and `frontend` servers f
 
 ---
 
-## The Numbers quiz
+## The How Close quiz
 
-A second daily game: **five questions whose answers are obscure numbers**, and the player types
+Shown to players as the **How Close quiz** (in code and the API it is the "numbers" mode). A
+second daily game: **five questions whose answers are obscure numbers**, and the player types
 their best guess. Routes are under `/api/numbers/*` (`backend/app/numbers.py`), the page code is
 `frontend/src/ui/numbers.ts`, and it uses the same page areas, styles and rhythm as the speed
 quiz (ready → 3 s read → answer → reveal → results), just with "Guess n / 5".
@@ -379,11 +380,16 @@ quiz (ready → 3 s read → answer → reveal → results), just with "Guess n 
 - Plays and questions carry a `mode` ("speed" or "numbers"), so the two games never mix:
   streaks, the field guide, leagues, the weekly table and challenges are all speed-quiz only.
 - Scoring lives in `backend/app/scoring.py` (`closeness`, `score_numbers`) with tests.
+- **Results** use the same blocks as the Speed quiz (`frontend/src/ui/resultparts.ts`): score
+  out of 1,000 and standing, You vs Average, everyone's scores curve (50-point buckets), your
+  speed (pace animal on the How Close timings, gap to today's average, the five-guess line-up),
+  average closeness / spot on / hummingbirds, then every guess against its answer, and share
+  text plus a picture card titled "HOW CLOSE #n".
 - **Content**: an optional `numbers:` section in the day's file with exactly five questions
   (slots 1–5), each with a positive `answer` and optional `spread`. Answers must be
   checkable: prefer exact counts and date gaps worked out in code over loose estimates, and
   avoid years as answers (ratio scoring needs a quantity). Each game is locked separately once
-  played, so a day's Numbers questions can still be added after its speed quiz has been played.
+  played, so a day's How Close questions can still be added after its speed quiz has been played.
 
 ## Progress and friends
 

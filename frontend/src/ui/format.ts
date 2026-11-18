@@ -113,7 +113,7 @@ export function speedGapLine(mine: number, everyone: number | null): string {
     : `${formatSeconds(-gap)} slower than today's average.`;
 }
 
-/** The Numbers quiz's speed animals: longer timings, and each one multiplies closeness. */
+/** The How Close quiz's speed animals: longer timings, and each one multiplies closeness. */
 export const NUMBERS_BAND_INFO: Record<Band, { range: string; multiplier: number }> = {
   hummingbird: { range: "4 s or less", multiplier: 2 },
   jaguar: { range: "4–7 s", multiplier: 1.7 },
@@ -125,4 +125,13 @@ export const NUMBERS_BAND_INFO: Record<Band, { range: string; multiplier: number
 /** "×1.45", "×2". */
 export function formatMultiplier(m: number): string {
   return `×${Number(m.toFixed(2))}`;
+}
+
+/** The animal for a How Close answer time (the same limits the server scores with). */
+export function numbersBandForTime(ms: number): Band {
+  if (ms <= 4000) return "hummingbird";
+  if (ms <= 7000) return "jaguar";
+  if (ms <= 11000) return "toucan";
+  if (ms <= 17000) return "tree_frog";
+  return "sloth";
 }
