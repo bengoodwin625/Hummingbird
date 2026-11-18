@@ -50,7 +50,7 @@ describe("format", () => {
   });
 });
 
-import { categoryLabel, scorePercent, smoothDistribution } from "./format";
+import { bandForTime, categoryLabel, scorePercent, smoothDistribution } from "./format";
 
 describe("smoothDistribution", () => {
   it("peaks at the busiest bucket and is scaled to 1", () => {
@@ -83,5 +83,16 @@ describe("categoryLabel", () => {
   it("capitalises the first letter and handles blanks", () => {
     expect(categoryLabel("geography")).toBe("Geography");
     expect(categoryLabel("  ")).toBe("");
+  });
+});
+
+describe("bandForTime", () => {
+  it("uses the scoring limits, with each limit belonging to the faster band", () => {
+    expect(bandForTime(500)).toBe("hummingbird");
+    expect(bandForTime(501)).toBe("jaguar");
+    expect(bandForTime(1200)).toBe("jaguar");
+    expect(bandForTime(2500)).toBe("toucan");
+    expect(bandForTime(4500)).toBe("tree_frog");
+    expect(bandForTime(4501)).toBe("sloth");
   });
 });

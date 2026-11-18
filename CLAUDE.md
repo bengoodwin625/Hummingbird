@@ -66,11 +66,13 @@ UI. The art is detailed, fine-grained pixel art of a rainforest at dusk, in dark
    - **Wrong**: scores 0. The time taken and the correct answer are revealed.
    - **Timeout**: scores 0, and the correct answer is revealed.
 6. The running score is always shown.
-7. After question 8, the results screen leads with speed, score and comparison: the total
-   score with today's rank ("2nd of 5 players today"), a bar against today's average score, a
-   smoothed curve of everyone's final scores today (500-point buckets from the server) with
-   the player and the average marked,
-   the player's average answer time on the animal speed track beside today's average, then
+7. After question 8, the results screen leads with score, speed and comparison: the total
+   score with where it stands today as a share of players ("Better than 64% of today's
+   players"; **never show how many people have played**), a bar against today's average score,
+   a smoothed curve of everyone's final scores today (500-point buckets from the server) with
+   the player and the average marked, then "Your speed": the animal whose band the average
+   answer falls in ("1.8 s · Toucan pace"), a bar per question (height = time up to 5 s, colour
+   = the animal earned, hatched for a miss) and how that compares with today's players, then
    correct count, fastest answer and hummingbirds caught, the row of animals, a share button
    and an expandable list of every answer (with what % of players got each one right).
 8. One play per day per player. The new questions unlock at **00:00 Europe/London**.

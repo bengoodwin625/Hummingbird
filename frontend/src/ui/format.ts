@@ -99,3 +99,12 @@ export function categoryLabel(category: string): string {
   const c = category.trim();
   return c ? c.charAt(0).toUpperCase() + c.slice(1) : "";
 }
+
+/** The animal whose band a time falls in (the same limits the server scores with). */
+export function bandForTime(ms: number): Band {
+  if (ms <= 500) return "hummingbird";
+  if (ms <= 1200) return "jaguar";
+  if (ms <= 2500) return "toucan";
+  if (ms <= 4500) return "tree_frog";
+  return "sloth";
+}

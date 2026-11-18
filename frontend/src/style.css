@@ -1019,103 +1019,88 @@ ul {
   margin-top: var(--space-5);
 }
 
-.speed-big {
+.pace {
   display: flex;
-  align-items: baseline;
-  gap: var(--space-2);
+  align-items: center;
+  gap: var(--space-4);
 }
 
-.speed-big strong {
+.pace-sprite canvas {
+  display: block;
+  image-rendering: pixelated;
+}
+
+.pace-text {
+  display: grid;
+  margin: 0;
+  text-align: left;
+}
+
+.pace-time {
   font-family: var(--font-display);
   font-size: clamp(2rem, 8vw, 2.75rem);
   font-weight: 700;
   line-height: 1;
 }
 
-.speed-big span {
+.pace-label {
+  margin-top: var(--space-1);
   color: var(--sage);
 }
 
-.speed-track {
-  position: relative;
+.times-figure {
   width: 100%;
-  height: 8px;
-  margin-block: var(--space-6) var(--space-5);
+  margin: var(--space-2) 0 0;
 }
 
-.speed-zone {
-  position: absolute;
-  top: 0;
-  height: 100%;
-  opacity: 0.8;
+.times {
+  display: grid;
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+  gap: var(--space-2);
 }
 
-.speed-zone:first-child {
-  border-radius: var(--radius-pill) 0 0 var(--radius-pill);
+.times-col {
+  display: grid;
+  grid-template-rows: auto 96px auto;
+  justify-items: center;
+  gap: 6px;
 }
 
-.speed-zone:nth-child(5) {
-  border-radius: 0 var(--radius-pill) var(--radius-pill) 0;
+.times-value {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
 }
 
-.speed-marker {
-  position: absolute;
-  top: 50%;
-  width: 16px;
-  height: 16px;
-  translate: -50% -50%;
-  border: 3px solid var(--night);
-  border-radius: var(--radius-pill);
-}
-
-.speed-marker--you {
-  background: var(--ivory);
-  z-index: 1;
-}
-
-.speed-marker--avg {
-  background: var(--sage);
-}
-
-.speed-marker-label {
-  position: absolute;
-  left: 50%;
-  translate: -50% 0;
-  white-space: nowrap;
-  font-family: var(--font-label);
-  font-size: 0.75rem;
-  letter-spacing: 0.06em;
-}
-
-.speed-marker[data-edge="start"] .speed-marker-label {
-  left: -6px;
-  translate: 0 0;
-}
-
-.speed-marker[data-edge="end"] .speed-marker-label {
-  left: auto;
-  right: -6px;
-  translate: 0 0;
-}
-
-.speed-marker--you .speed-marker-label {
-  bottom: 18px;
-  color: var(--ivory);
-}
-
-.speed-marker--avg .speed-marker-label {
-  top: 18px;
-  color: var(--sage);
-}
-
-.speed-scale {
+.times-track {
   display: flex;
-  justify-content: space-between;
+  align-items: flex-end;
   width: 100%;
-  margin-top: calc(-1 * var(--space-2));
+  max-width: 34px;
+  height: 100%;
+  border-radius: 6px;
+  background: rgb(16 38 30 / 0.7);
+  overflow: hidden;
+}
+
+.times-bar {
+  width: 100%;
+  border-radius: 6px 6px 0 0;
+}
+
+.times-bar--miss {
+  background: repeating-linear-gradient(135deg, var(--miss-dim) 0 4px, transparent 4px 8px);
+}
+
+.times-slot {
   font-size: 0.75rem;
   color: var(--sage);
-  opacity: 0.7;
+}
+
+.times-caption {
+  margin-top: var(--space-3);
+  font-size: 0.8125rem;
+  color: var(--sage);
 }
 
 .speed-line {
@@ -1490,7 +1475,6 @@ ul {
 .reveal-rare,
 .button,
 .compare-label,
-.speed-marker-label,
 .stat dt,
 .disclosure-hint {
   font-weight: 700;

@@ -6,9 +6,9 @@ import { animalIcon, byId, h, icon, logoIcon } from "./dom";
 import {
   BAND_INFO,
   TYPING_ALLOWANCE_S,
+  bandForTime,
   categoryLabel,
   formatCountdown,
-  formatOrdinal,
   formatPoints,
   formatQuizDate,
   formatSeconds,
@@ -1029,11 +1029,13 @@ export class App {
     );
   }
 
+  /** Where you stand today, as a share of players rather than a head count. */
   private standingLine(results: Results): string {
     const { rank, players, better_than_percent: better } = results.standing;
     if (players <= 1) return "You're the first to finish today.";
-    const place = `${formatOrdinal(rank)} of ${formatPoints(players)} players today`;
-    return better !== null && better > 0 ? `${place} · ahead of ${better}%` : place;
+    if (rank === 1) return "Top score of the day so far.";
+    if (better !== null && better > 0) return `Better than ${better}% of today's players.`;
+    return "Plenty of room to climb tomorrow.";
   }
 
   /** You against today's average score, as two bars on one scale. */
@@ -1122,18 +1124,14 @@ export class App {
       }),
       chart,
       scale,
-      h("p", {
-        class: "speed-line",
-        text:
-          players > 1
-            ? `${formatPoints(players)} players have finished today. The curve fills in as more people play.`
-            : "You're the first to finish today. The curve fills in as more people play.",
-      }),
     );
     return section;
   }
 
-  /** Your average answer time on the animal speed bands, with today's average beside it. */
+  /**
+   * Your speed: the animal your average answer matches, then all eight answers as bars
+   * (height = time, colour = the animal it earned), then how that compares with everyone.
+   */
   private speedCompare(results: Results, mine: number | null): HTMLElement {
     const section = h("section", { class: "speed", "aria-labelledby": "speed-title" });
     section.append(h("h2", { class: "section-title", id: "speed-title", text: "Your speed" }));
@@ -1141,53 +1139,53 @@ export class App {
       section.append(h("p", { class: "speed-line", text: "No correct answers today, so there's no speed to show. Have another go tomorrow." }));
       return section;
     }
-    const everyone = results.speed.everyone_avg_ms;
-    const others = results.speed.players > 1 && everyone !== null;
-
-    const track = h("div", { class: "speed-track", "aria-hidden": "true" });
-    const bounds: Array<[Band, number, number]> = [
-      ["hummingbird", 0, 500],
-      ["jaguar", 500, 1200],
-      ["toucan", 1200, 2500],
-      ["tree_frog", 2500, 4500],
-      ["sloth", 4500, 5000],
-    ];
-    for (const [band, from, to] of bounds) {
-      const zone = h("span", { class: "speed-zone" });
-      zone.style.left = `${speedTrackPercent(from)}%`;
-      zone.style.width = `${speedTrackPercent(to) - speedTrackPercent(from)}%`;
-      zone.style.background = `var(--band-${band})`;
-      track.append(zone);
-    }
-    const marker = (cls: string, ms: number, label: string) => {
-      const m = h("span", { class: `speed-marker ${cls}` }, h("span", { class: "speed-marker-label", text: label }));
-      const at = speedTrackPercent(ms);
-      m.style.left = `${at}%`;
-      // Near either end the label hangs inwards, so it never runs off the screen.
-      if (at < 18) m.dataset.edge = "start";
-      else if (at > 82) m.dataset.edge = "end";
-      return m;
-    };
-    track.append(marker("speed-marker--you", mine, `You ${formatSeconds(mine)}`));
-    if (others && everyone !== null) track.append(marker("speed-marker--avg", everyone, `Average ${formatSeconds(everyone)}`));
-
-    section.append(
+    const pace = bandForTime(mine);
+    const paceEl = h(
+      "div",
+      { class: "pace" },
+      h("span", { class: "pace-sprite" }, animalIcon(pace, 2)),
       h(
         "p",
-        { class: "speed-big" },
-        h("strong", { text: formatSeconds(mine) }),
-        h("span", { text: "average answer" }),
+        { class: "pace-text" },
+        h("strong", { class: "pace-time", text: formatSeconds(mine) }),
+        h("span", { class: "pace-label", text: `average answer · ${BAND_INFO[pace].name} pace` }),
       ),
-      track,
-      h(
-        "p",
-        { class: "speed-scale", "aria-hidden": "true" },
-        h("span", { text: "0 s" }),
-        h("span", { text: "5 s+" }),
-      ),
-      h("p", { class: "speed-line", text: this.speedLine(results) }),
     );
+    paceEl.style.setProperty("--band-colour", `var(--band-${pace})`);
+    section.append(paceEl, this.answerTimes(results), h("p", { class: "speed-line", text: this.speedLine(results) }));
     return section;
+  }
+
+  /** Eight bars, one per question: taller is slower (5 s and over fills the bar). */
+  private answerTimes(results: Results): HTMLElement {
+    const labels: string[] = [];
+    const chart = h("div", { class: "times" });
+    for (const q of results.questions) {
+      const correct = q.outcome === "correct" && q.band !== null;
+      const ms = q.elapsed_ms;
+      const bar = h("span", { class: `times-bar${correct ? "" : " times-bar--miss"}` });
+      bar.style.height = `${ms === null ? 100 : Math.max(4, speedTrackPercent(ms))}%`;
+      if (correct && q.band) bar.style.background = `var(--band-${q.band})`;
+      chart.append(
+        h(
+          "span",
+          { class: "times-col" },
+          h("span", { class: "times-value", text: ms === null ? "–" : formatSeconds(ms).replace(" s", "") }),
+          h("span", { class: "times-track" }, bar),
+          h("span", { class: "times-slot", text: String(q.slot) }),
+        ),
+      );
+      const what = correct && q.band ? BAND_INFO[q.band].name : q.outcome === "timeout" ? "out of time" : "missed";
+      labels.push(`Question ${q.slot}: ${ms === null ? "no time" : formatSeconds(ms)}, ${what}`);
+    }
+    chart.setAttribute("role", "img");
+    chart.setAttribute("aria-label", labels.join(". "));
+    return h(
+      "figure",
+      { class: "times-figure" },
+      chart,
+      h("figcaption", { class: "times-caption", text: "Seconds per question, coloured by the animal you caught" }),
+    );
   }
 
   private speedLine(results: Results): string {
