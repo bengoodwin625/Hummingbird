@@ -1,0 +1,80 @@
+date: 2027-01-18
+questions:
+  - slot: 1
+    type: choice
+    category: geography
+    text: "What is the capital of Pakistan?"
+    options:
+      - { text: "Islamabad", correct: true }
+      - { text: "Karachi" }
+      - { text: "Lahore" }
+      - { text: "Peshawar" }
+      - { text: "Delhi" }
+      - { text: "Kabul" }
+  - slot: 2
+    type: choice
+    category: science
+    text: "What does a thermometer measure?"
+    options:
+      - { text: "Temperature", correct: true }
+      - { text: "Pressure" }
+      - { text: "Humidity" }
+      - { text: "Wind speed" }
+      - { text: "Rainfall" }
+      - { text: "Weight" }
+  - slot: 3
+    type: number
+    category: sport
+    text: "How many players are on each side in beach volleyball?"
+    answer: 2
+    tolerance: 0
+  - slot: 4
+    type: choice
+    category: history
+    text: "On which ship did Captain Cook first reach Australia, in 1770?"
+    options:
+      - { text: "HMS Endeavour", correct: true }
+      - { text: "HMS Beagle" }
+      - { text: "HMS Bounty" }
+      - { text: "HMS Victory" }
+      - { text: "Mayflower" }
+      - { text: "Golden Hind" }
+  - slot: 5
+    type: text
+    category: geography
+    text: "What is the capital of the Philippines?"
+    answers:
+      - { canonical: "Manila", aliases: [] }
+  - slot: 6
+    type: choice
+    category: art
+    text: "Which famous armless ancient Greek statue is in the Louvre?"
+    options:
+      - { text: "Venus de Milo", correct: true }
+      - { text: "The Discobolus" }
+      - { text: "David" }
+      - { text: "The Thinker" }
+      - { text: "Nefertiti" }
+      - { text: "The Little Mermaid" }
+  - slot: 7
+    type: choice
+    category: sport
+    text: "In which sport is the Stanley Cup awarded?"
+    options:
+      - { text: "Ice hockey", correct: true }
+      - { text: "Baseball" }
+      - { text: "American football" }
+      - { text: "Basketball" }
+      - { text: "Golf" }
+      - { text: "Tennis" }
+  - slot: 8
+    type: choice
+    category: food
+    text: "Besides eggs and milk, what is the main ingredient of Yorkshire pudding batter?"
+    options:
+      - { text: "Flour", correct: true }
+      - { text: "Oats" }
+      - { text: "Sugar" }
+      - { text: "Butter" }
+      - { text: "Rice" }
+      - { text: "Potato" }

@@ -50,7 +50,7 @@ describe("format", () => {
   });
 });
 
-import { scorePercent, smoothDistribution } from "./format";
+import { categoryLabel, scorePercent, smoothDistribution } from "./format";
 
 describe("smoothDistribution", () => {
   it("peaks at the busiest bucket and is scaled to 1", () => {
@@ -76,5 +76,12 @@ describe("scorePercent", () => {
     expect(scorePercent(4000, 8000)).toBe(50);
     expect(scorePercent(-1, 8000)).toBe(0);
     expect(scorePercent(9000, 8000)).toBe(100);
+  });
+});
+
+describe("categoryLabel", () => {
+  it("capitalises the first letter and handles blanks", () => {
+    expect(categoryLabel("geography")).toBe("Geography");
+    expect(categoryLabel("  ")).toBe("");
   });
 });

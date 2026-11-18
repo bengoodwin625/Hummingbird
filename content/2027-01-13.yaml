@@ -1,0 +1,80 @@
+date: 2027-01-13
+questions:
+  - slot: 1
+    type: choice
+    category: geography
+    text: "What is the capital of Saudi Arabia?"
+    options:
+      - { text: "Riyadh", correct: true }
+      - { text: "Jeddah" }
+      - { text: "Mecca" }
+      - { text: "Dubai" }
+      - { text: "Doha" }
+      - { text: "Medina" }
+  - slot: 2
+    type: choice
+    category: science
+    text: "Which organ does hepatitis affect?"
+    options:
+      - { text: "Liver", correct: true }
+      - { text: "Lungs" }
+      - { text: "Kidneys" }
+      - { text: "Heart" }
+      - { text: "Brain" }
+      - { text: "Stomach" }
+  - slot: 3
+    type: number
+    category: sport
+    text: "How many minutes long is each half of a football match?"
+    answer: 45
+    tolerance: 0
+  - slot: 4
+    type: choice
+    category: history
+    text: "Who was the US president during the American Civil War?"
+    options:
+      - { text: "Abraham Lincoln", correct: true }
+      - { text: "George Washington" }
+      - { text: "Ulysses S. Grant" }
+      - { text: "Andrew Johnson" }
+      - { text: "Thomas Jefferson" }
+      - { text: "Theodore Roosevelt" }
+  - slot: 5
+    type: text
+    category: geography
+    text: "What is the capital of Croatia?"
+    answers:
+      - { canonical: "Zagreb", aliases: [] }
+  - slot: 6
+    type: choice
+    category: film
+    text: "Who played Hermione Granger in the Harry Potter films?"
+    options:
+      - { text: "Emma Watson", correct: true }
+      - { text: "Emma Stone" }
+      - { text: "Keira Knightley" }
+      - { text: "Bonnie Wright" }
+      - { text: "Emma Thompson" }
+      - { text: "Evanna Lynch" }
+  - slot: 7
+    type: choice
+    category: music
+    text: "Which singer is nicknamed 'the Boss'?"
+    options:
+      - { text: "Bruce Springsteen", correct: true }
+      - { text: "Jon Bon Jovi" }
+      - { text: "Billy Joel" }
+      - { text: "Bob Dylan" }
+      - { text: "Rod Stewart" }
+      - { text: "Elton John" }
+  - slot: 8
+    type: choice
+    category: nature
+    text: "What covers a pangolin's body?"
+    options:
+      - { text: "Scales", correct: true }
+      - { text: "Fur" }
+      - { text: "Feathers" }
+      - { text: "Spines" }
+      - { text: "A shell" }
+      - { text: "Slime" }

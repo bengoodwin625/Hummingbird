@@ -1,0 +1,80 @@
+date: 2027-01-26
+questions:
+  - slot: 1
+    type: choice
+    category: geography
+    text: "In which country is Uluru?"
+    options:
+      - { text: "Australia", correct: true }
+      - { text: "New Zealand" }
+      - { text: "South Africa" }
+      - { text: "United States" }
+      - { text: "Chile" }
+      - { text: "Argentina" }
+  - slot: 2
+    type: choice
+    category: science
+    text: "Which element does the symbol H stand for?"
+    options:
+      - { text: "Hydrogen", correct: true }
+      - { text: "Helium" }
+      - { text: "Hafnium" }
+      - { text: "Holmium" }
+      - { text: "Hassium" }
+      - { text: "Mercury" }
+  - slot: 3
+    type: number
+    category: general
+    text: "How many days are there in April?"
+    answer: 30
+    tolerance: 0
+  - slot: 4
+    type: choice
+    category: history
+    text: "Which explorer charted the east coast of Australia in 1770?"
+    options:
+      - { text: "James Cook", correct: true }
+      - { text: "Abel Tasman" }
+      - { text: "Christopher Columbus" }
+      - { text: "Vasco da Gama" }
+      - { text: "Ferdinand Magellan" }
+      - { text: "Francis Drake" }
+  - slot: 5
+    type: text
+    category: nature
+    text: "Which Australian animal hops and carries its baby in a pouch?"
+    answers:
+      - { canonical: "Kangaroo", aliases: [] }
+  - slot: 6
+    type: choice
+    category: film
+    text: "In 'Finding Nemo', which city is Nemo taken to?"
+    options:
+      - { text: "Sydney", correct: true }
+      - { text: "Melbourne" }
+      - { text: "Brisbane" }
+      - { text: "Perth" }
+      - { text: "Auckland" }
+      - { text: "Cairns" }
+  - slot: 7
+    type: choice
+    category: music
+    text: "Which Australian band released 'Highway to Hell'?"
+    options:
+      - { text: "AC/DC", correct: true }
+      - { text: "INXS" }
+      - { text: "Midnight Oil" }
+      - { text: "Men at Work" }
+      - { text: "Crowded House" }
+      - { text: "The Bee Gees" }
+  - slot: 8
+    type: choice
+    category: nature
+    text: "Which Australian animal eats eucalyptus leaves and sleeps for most of the day?"
+    options:
+      - { text: "Koala", correct: true }
+      - { text: "Wombat" }
+      - { text: "Kangaroo" }
+      - { text: "Platypus" }
+      - { text: "Possum" }
+      - { text: "Quokka" }

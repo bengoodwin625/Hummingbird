@@ -93,3 +93,9 @@ export function smoothDistribution(counts: readonly number[], samples = 81, band
 export function scorePercent(score: number, maxScore: number): number {
   return Math.min(100, Math.max(0, (score / maxScore) * 100));
 }
+
+/** A content category as shown above a question: "geography" → "Geography". */
+export function categoryLabel(category: string): string {
+  const c = category.trim();
+  return c ? c.charAt(0).toUpperCase() + c.slice(1) : "";
+}

@@ -1,0 +1,80 @@
+date: 2027-01-01
+questions:
+  - slot: 1
+    type: choice
+    category: geography
+    text: "In which city does the famous New Year's Eve ball drop happen in Times Square?"
+    options:
+      - { text: "New York", correct: true }
+      - { text: "Chicago" }
+      - { text: "Boston" }
+      - { text: "Los Angeles" }
+      - { text: "Las Vegas" }
+      - { text: "Washington, D.C." }
+  - slot: 2
+    type: choice
+    category: space
+    text: "Roughly how long does Earth take to spin once on its axis?"
+    options:
+      - { text: "24 hours", correct: true }
+      - { text: "12 hours" }
+      - { text: "7 days" }
+      - { text: "30 days" }
+      - { text: "365 days" }
+      - { text: "1 hour" }
+  - slot: 3
+    type: number
+    category: general
+    text: "How many days are there in a year that isn't a leap year?"
+    answer: 365
+    tolerance: 0
+  - slot: 4
+    type: choice
+    category: history
+    text: "Which calendar is used by most of the world today?"
+    options:
+      - { text: "Gregorian", correct: true }
+      - { text: "Julian" }
+      - { text: "Mayan" }
+      - { text: "Roman" }
+      - { text: "Hebrew" }
+      - { text: "Lunar" }
+  - slot: 5
+    type: text
+    category: geography
+    text: "What is the capital of France?"
+    answers:
+      - { canonical: "Paris", aliases: [] }
+  - slot: 6
+    type: choice
+    category: music
+    text: "Who released the album 'Thriller'?"
+    options:
+      - { text: "Michael Jackson", correct: true }
+      - { text: "Prince" }
+      - { text: "Stevie Wonder" }
+      - { text: "Lionel Richie" }
+      - { text: "Whitney Houston" }
+      - { text: "Madonna" }
+  - slot: 7
+    type: choice
+    category: film
+    text: "Which film features a little clownfish called Nemo?"
+    options:
+      - { text: "Finding Nemo", correct: true }
+      - { text: "Shark Tale" }
+      - { text: "Moana" }
+      - { text: "The Little Mermaid" }
+      - { text: "Luca" }
+      - { text: "Ponyo" }
+  - slot: 8
+    type: choice
+    category: nature
+    text: "What is the largest living reptile?"
+    options:
+      - { text: "Saltwater crocodile", correct: true }
+      - { text: "Komodo dragon" }
+      - { text: "Leatherback turtle" }
+      - { text: "Green anaconda" }
+      - { text: "Nile crocodile" }
+      - { text: "Galápagos tortoise" }

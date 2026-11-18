@@ -1,0 +1,80 @@
+date: 2027-01-11
+questions:
+  - slot: 1
+    type: choice
+    category: geography
+    text: "What is the capital of the Czech Republic?"
+    options:
+      - { text: "Prague", correct: true }
+      - { text: "Brno" }
+      - { text: "Bratislava" }
+      - { text: "Vienna" }
+      - { text: "Budapest" }
+      - { text: "Warsaw" }
+  - slot: 2
+    type: choice
+    category: science
+    text: "What is the study of weather called?"
+    options:
+      - { text: "Meteorology", correct: true }
+      - { text: "Geology" }
+      - { text: "Astronomy" }
+      - { text: "Ecology" }
+      - { text: "Seismology" }
+      - { text: "Oceanography" }
+  - slot: 3
+    type: number
+    category: general
+    text: "How many small squares are on one face of a standard Rubik's Cube?"
+    answer: 9
+    tolerance: 0
+  - slot: 4
+    type: choice
+    category: history
+    text: "Who reached the summit of Everest with Tenzing Norgay in 1953?"
+    options:
+      - { text: "Edmund Hillary", correct: true }
+      - { text: "George Mallory" }
+      - { text: "Ernest Shackleton" }
+      - { text: "Roald Amundsen" }
+      - { text: "Chris Bonington" }
+      - { text: "Reinhold Messner" }
+  - slot: 5
+    type: text
+    category: geography
+    text: "What is the capital of Romania?"
+    answers:
+      - { canonical: "Bucharest", aliases: [] }
+  - slot: 6
+    type: choice
+    category: film
+    text: "Which Pixar film follows a rat who loves to cook?"
+    options:
+      - { text: "Ratatouille", correct: true }
+      - { text: "Luca" }
+      - { text: "Up" }
+      - { text: "Cars" }
+      - { text: "Coco" }
+      - { text: "Soul" }
+  - slot: 7
+    type: choice
+    category: music
+    text: "How many musicians are in a quartet?"
+    options:
+      - { text: "4", correct: true }
+      - { text: "3" }
+      - { text: "5" }
+      - { text: "6" }
+      - { text: "8" }
+      - { text: "2" }
+  - slot: 8
+    type: choice
+    category: nature
+    text: "Which sea creature has eight arms?"
+    options:
+      - { text: "Octopus", correct: true }
+      - { text: "Seahorse" }
+      - { text: "Starfish" }
+      - { text: "Jellyfish" }
+      - { text: "Crab" }
+      - { text: "Lobster" }

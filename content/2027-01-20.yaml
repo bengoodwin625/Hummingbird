@@ -1,0 +1,80 @@
+date: 2027-01-20
+questions:
+  - slot: 1
+    type: choice
+    category: geography
+    text: "Which mountain range is often taken as the border between Europe and Asia in Russia?"
+    options:
+      - { text: "Ural Mountains", correct: true }
+      - { text: "Alps" }
+      - { text: "Carpathians" }
+      - { text: "Andes" }
+      - { text: "Himalayas" }
+      - { text: "Pyrenees" }
+  - slot: 2
+    type: choice
+    category: science
+    text: "What is the chemical symbol for helium?"
+    options:
+      - { text: "He", correct: true }
+      - { text: "H" }
+      - { text: "Hl" }
+      - { text: "Hm" }
+      - { text: "Ho" }
+      - { text: "Hu" }
+  - slot: 3
+    type: number
+    category: maths
+    text: "What is 7 multiplied by 8?"
+    answer: 56
+    tolerance: 0
+  - slot: 4
+    type: choice
+    category: history
+    text: "In which country was Adolf Hitler born?"
+    options:
+      - { text: "Austria", correct: true }
+      - { text: "Germany" }
+      - { text: "Switzerland" }
+      - { text: "Poland" }
+      - { text: "Hungary" }
+      - { text: "Czech Republic" }
+  - slot: 5
+    type: text
+    category: geography
+    text: "What is the capital of Venezuela?"
+    answers:
+      - { canonical: "Caracas", aliases: [] }
+  - slot: 6
+    type: choice
+    category: literature
+    text: "Which detective lives at 221B Baker Street?"
+    options:
+      - { text: "Sherlock Holmes", correct: true }
+      - { text: "Hercule Poirot" }
+      - { text: "Miss Marple" }
+      - { text: "Inspector Morse" }
+      - { text: "Father Brown" }
+      - { text: "Philip Marlowe" }
+  - slot: 7
+    type: choice
+    category: sport
+    text: "Which country holds a Formula 1 Grand Prix on the streets of Monte Carlo?"
+    options:
+      - { text: "Monaco", correct: true }
+      - { text: "France" }
+      - { text: "Italy" }
+      - { text: "Spain" }
+      - { text: "Belgium" }
+      - { text: "Switzerland" }
+  - slot: 8
+    type: choice
+    category: nature
+    text: "What is a baby frog called?"
+    options:
+      - { text: "Tadpole", correct: true }
+      - { text: "Larva" }
+      - { text: "Pupa" }
+      - { text: "Cub" }
+      - { text: "Kit" }
+      - { text: "Fry" }

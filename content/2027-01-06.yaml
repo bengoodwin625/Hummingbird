@@ -1,0 +1,80 @@
+date: 2027-01-06
+questions:
+  - slot: 1
+    type: choice
+    category: geography
+    text: "Mount Everest sits on the border of Nepal and which other country?"
+    options:
+      - { text: "China", correct: true }
+      - { text: "India" }
+      - { text: "Bhutan" }
+      - { text: "Pakistan" }
+      - { text: "Bangladesh" }
+      - { text: "Myanmar" }
+  - slot: 2
+    type: choice
+    category: science
+    text: "Which organs filter the blood to make urine?"
+    options:
+      - { text: "Kidneys", correct: true }
+      - { text: "Liver" }
+      - { text: "Lungs" }
+      - { text: "Heart" }
+      - { text: "Stomach" }
+      - { text: "Pancreas" }
+  - slot: 3
+    type: number
+    category: general
+    text: "How many letters are there in the English alphabet?"
+    answer: 26
+    tolerance: 0
+  - slot: 4
+    type: choice
+    category: history
+    text: "Who was the first Tudor king of England?"
+    options:
+      - { text: "Henry VII", correct: true }
+      - { text: "Henry VIII" }
+      - { text: "Richard III" }
+      - { text: "Edward IV" }
+      - { text: "Edward VI" }
+      - { text: "Henry VI" }
+  - slot: 5
+    type: text
+    category: geography
+    text: "What is the capital of Sweden?"
+    answers:
+      - { canonical: "Stockholm", aliases: [] }
+  - slot: 6
+    type: choice
+    category: art
+    text: "Which artist is famous for paintings of 'matchstick men' in northern industrial towns?"
+    options:
+      - { text: "L. S. Lowry", correct: true }
+      - { text: "J. M. W. Turner" }
+      - { text: "John Constable" }
+      - { text: "David Hockney" }
+      - { text: "Banksy" }
+      - { text: "Francis Bacon" }
+  - slot: 7
+    type: choice
+    category: sport
+    text: "In which sport would you see a slam dunk?"
+    options:
+      - { text: "Basketball", correct: true }
+      - { text: "Volleyball" }
+      - { text: "Tennis" }
+      - { text: "Netball" }
+      - { text: "Handball" }
+      - { text: "Rugby" }
+  - slot: 8
+    type: choice
+    category: food
+    text: "What type of food is brie?"
+    options:
+      - { text: "Cheese", correct: true }
+      - { text: "Bread" }
+      - { text: "Sausage" }
+      - { text: "Wine" }
+      - { text: "Cake" }
+      - { text: "Pasta" }

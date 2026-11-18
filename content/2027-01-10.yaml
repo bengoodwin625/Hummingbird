@@ -1,0 +1,80 @@
+date: 2027-01-10
+questions:
+  - slot: 1
+    type: choice
+    category: geography
+    text: "What is the capital of Colombia?"
+    options:
+      - { text: "Bogotá", correct: true }
+      - { text: "Medellín" }
+      - { text: "Cali" }
+      - { text: "Cartagena" }
+      - { text: "Quito" }
+      - { text: "Caracas" }
+  - slot: 2
+    type: choice
+    category: space
+    text: "What is a 'shooting star' really?"
+    options:
+      - { text: "A meteor", correct: true }
+      - { text: "A comet" }
+      - { text: "A falling star" }
+      - { text: "A satellite" }
+      - { text: "A planet" }
+      - { text: "A supernova" }
+  - slot: 3
+    type: number
+    category: history
+    text: "In what year did the Great Fire of London break out?"
+    answer: 1666
+    tolerance: 0
+  - slot: 4
+    type: choice
+    category: history
+    text: "Who invented the World Wide Web?"
+    options:
+      - { text: "Tim Berners-Lee", correct: true }
+      - { text: "Bill Gates" }
+      - { text: "Steve Jobs" }
+      - { text: "Alan Turing" }
+      - { text: "Mark Zuckerberg" }
+      - { text: "Charles Babbage" }
+  - slot: 5
+    type: text
+    category: geography
+    text: "What is the capital of Vietnam?"
+    answers:
+      - { canonical: "Hanoi", aliases: ["Ha Noi"] }
+  - slot: 6
+    type: choice
+    category: art
+    text: "Which anonymous street artist comes from Bristol?"
+    options:
+      - { text: "Banksy", correct: true }
+      - { text: "Damien Hirst" }
+      - { text: "Tracey Emin" }
+      - { text: "Keith Haring" }
+      - { text: "David Hockney" }
+      - { text: "Shepard Fairey" }
+  - slot: 7
+    type: choice
+    category: sport
+    text: "How many players does a hockey team have on the pitch?"
+    options:
+      - { text: "11", correct: true }
+      - { text: "10" }
+      - { text: "9" }
+      - { text: "12" }
+      - { text: "7" }
+      - { text: "6" }
+  - slot: 8
+    type: choice
+    category: food
+    text: "Traditional mozzarella is made from the milk of which animal?"
+    options:
+      - { text: "Water buffalo", correct: true }
+      - { text: "Goat" }
+      - { text: "Sheep" }
+      - { text: "Camel" }
+      - { text: "Yak" }
+      - { text: "Horse" }

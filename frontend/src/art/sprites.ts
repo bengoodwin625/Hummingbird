@@ -46,12 +46,10 @@ function hummingbird(pose: Pose, frame: number): Raster {
   // ruby gorget with a gold glint
   r.ellipse(21.6, 10.8, 2, 1.2, C.ruby);
   r.set(21, 10, C.gold);
-  // round eye (a dark disc with its corners cut) with a glint, pale spot behind it
+  // 2x2 eye with a glint in its top-right pixel, pale spot behind it
   r.set(21, 7, C.near0);
-  r.set(20, 8, C.near0);
   r.set(21, 8, C.near0);
   r.set(22, 8, C.near0);
-  r.set(21, 9, C.near0);
   r.set(22, 7, C.ivory);
   r.set(19, 9, C.sage);
   // long, fine bill, lit along its top so it reads on the dark

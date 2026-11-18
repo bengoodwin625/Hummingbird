@@ -73,7 +73,7 @@ questions:
     text: "Cider is made from which fruit?"
     options:
       - { text: "Apple", correct: true }
-      - { text: "Pear" }
+      - { text: "Orange" }
       - { text: "Grape" }
       - { text: "Plum" }
       - { text: "Cherry" }

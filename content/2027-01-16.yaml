@@ -1,0 +1,80 @@
+date: 2027-01-16
+questions:
+  - slot: 1
+    type: choice
+    category: geography
+    text: "What is the largest country in Africa by area?"
+    options:
+      - { text: "Algeria", correct: true }
+      - { text: "Nigeria" }
+      - { text: "Egypt" }
+      - { text: "DR Congo" }
+      - { text: "Sudan" }
+      - { text: "South Africa" }
+  - slot: 2
+    type: choice
+    category: space
+    text: "What do we call the huge explosion of a star at the end of its life?"
+    options:
+      - { text: "A supernova", correct: true }
+      - { text: "A black hole" }
+      - { text: "A nebula" }
+      - { text: "A comet" }
+      - { text: "A quasar" }
+      - { text: "A pulsar" }
+  - slot: 3
+    type: number
+    category: maths
+    text: "What is half of 250?"
+    answer: 125
+    tolerance: 0
+  - slot: 4
+    type: choice
+    category: history
+    text: "Which empire built the Colosseum?"
+    options:
+      - { text: "Roman", correct: true }
+      - { text: "Greek" }
+      - { text: "Ottoman" }
+      - { text: "Persian" }
+      - { text: "Byzantine" }
+      - { text: "Egyptian" }
+  - slot: 5
+    type: text
+    category: geography
+    text: "What is the capital of India?"
+    answers:
+      - { canonical: "New Delhi", aliases: ["Delhi"] }
+  - slot: 6
+    type: choice
+    category: literature
+    text: "Who wrote 'Alice's Adventures in Wonderland'?"
+    options:
+      - { text: "Lewis Carroll", correct: true }
+      - { text: "Roald Dahl" }
+      - { text: "Beatrix Potter" }
+      - { text: "J. M. Barrie" }
+      - { text: "A. A. Milne" }
+      - { text: "Kenneth Grahame" }
+  - slot: 7
+    type: choice
+    category: sport
+    text: "Which country has won the most men's Rugby World Cups?"
+    options:
+      - { text: "South Africa", correct: true }
+      - { text: "New Zealand" }
+      - { text: "Australia" }
+      - { text: "England" }
+      - { text: "France" }
+      - { text: "Wales" }
+  - slot: 8
+    type: choice
+    category: food
+    text: "Which country does the pizza Margherita come from?"
+    options:
+      - { text: "Italy", correct: true }
+      - { text: "Greece" }
+      - { text: "Spain" }
+      - { text: "France" }
+      - { text: "United States" }
+      - { text: "Turkey" }

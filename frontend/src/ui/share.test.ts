@@ -19,8 +19,20 @@ describe("buildShareText", () => {
       ],
     });
     expect(text).toBe(
-      "Hummingbird #42 — 6,400 pts\n🐦🐆🦜❌🐸🐆🐦🦥\navg 4.8 s · 7/8 correct",
+      "Hummingbird #42 — 6,400 pts\n🐦🐆🦜❌🐸🐆🐦🦥\navg 4.8 s · fastest 1.0 s · 7/8 correct",
     );
+  });
+
+  it("adds the link to the game on its own line", () => {
+    const text = buildShareText({
+      number: 3,
+      totalScore: 1000,
+      totalQuestions: 1,
+      answers: [{ band: "hummingbird", correct: true, elapsedMs: 400 }],
+      url: "https://example.test",
+    });
+    expect(text.split("\n").at(-1)).toBe("https://example.test");
+    expect(text).toContain("fastest 0.4 s");
   });
 
   it("handles a day with no correct answers", () => {

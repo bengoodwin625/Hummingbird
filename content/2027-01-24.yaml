@@ -1,0 +1,80 @@
+date: 2027-01-24
+questions:
+  - slot: 1
+    type: choice
+    category: geography
+    text: "Which country is famous for tulips and windmills?"
+    options:
+      - { text: "Netherlands", correct: true }
+      - { text: "Belgium" }
+      - { text: "Denmark" }
+      - { text: "Germany" }
+      - { text: "Switzerland" }
+      - { text: "Austria" }
+  - slot: 2
+    type: choice
+    category: science
+    text: "What is the process plants use to make food from sunlight?"
+    options:
+      - { text: "Photosynthesis", correct: true }
+      - { text: "Respiration" }
+      - { text: "Digestion" }
+      - { text: "Evaporation" }
+      - { text: "Pollination" }
+      - { text: "Germination" }
+  - slot: 3
+    type: number
+    category: maths
+    text: "How many sides does a nonagon have?"
+    answer: 9
+    tolerance: 0
+  - slot: 4
+    type: choice
+    category: history
+    text: "Who made the first powered aeroplane flight, in 1903?"
+    options:
+      - { text: "The Wright brothers", correct: true }
+      - { text: "Charles Lindbergh" }
+      - { text: "Amelia Earhart" }
+      - { text: "Louis Blériot" }
+      - { text: "The Montgolfier brothers" }
+      - { text: "Alcock and Brown" }
+  - slot: 5
+    type: text
+    category: geography
+    text: "What is the capital of Bangladesh?"
+    answers:
+      - { canonical: "Dhaka", aliases: ["Dacca"] }
+  - slot: 6
+    type: choice
+    category: literature
+    text: "Who wrote 'Oliver Twist'?"
+    options:
+      - { text: "Charles Dickens", correct: true }
+      - { text: "Thomas Hardy" }
+      - { text: "Jane Austen" }
+      - { text: "William Thackeray" }
+      - { text: "George Eliot" }
+      - { text: "Anthony Trollope" }
+  - slot: 7
+    type: choice
+    category: sport
+    text: "Which country is the home of sumo wrestling?"
+    options:
+      - { text: "Japan", correct: true }
+      - { text: "China" }
+      - { text: "South Korea" }
+      - { text: "Mongolia" }
+      - { text: "Thailand" }
+      - { text: "India" }
+  - slot: 8
+    type: choice
+    category: food
+    text: "Which drink is made from roasted beans?"
+    options:
+      - { text: "Coffee", correct: true }
+      - { text: "Tea" }
+      - { text: "Lemonade" }
+      - { text: "Cider" }
+      - { text: "Milk" }
+      - { text: "Kombucha" }

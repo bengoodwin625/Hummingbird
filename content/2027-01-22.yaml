@@ -1,0 +1,80 @@
+date: 2027-01-22
+questions:
+  - slot: 1
+    type: choice
+    category: geography
+    text: "What is the highest mountain in Africa?"
+    options:
+      - { text: "Kilimanjaro", correct: true }
+      - { text: "Mount Kenya" }
+      - { text: "Mount Stanley" }
+      - { text: "Mount Toubkal" }
+      - { text: "Table Mountain" }
+      - { text: "Mount Meru" }
+  - slot: 2
+    type: choice
+    category: science
+    text: "Which type of rock forms when lava cools?"
+    options:
+      - { text: "Igneous", correct: true }
+      - { text: "Sedimentary" }
+      - { text: "Metamorphic" }
+      - { text: "Limestone" }
+      - { text: "Chalk" }
+      - { text: "Sandstone" }
+  - slot: 3
+    type: number
+    category: music
+    text: "How many strings does a violin have?"
+    answer: 4
+    tolerance: 0
+  - slot: 4
+    type: choice
+    category: history
+    text: "Which Roman emperor is said to have played music while Rome burned?"
+    options:
+      - { text: "Nero", correct: true }
+      - { text: "Caligula" }
+      - { text: "Augustus" }
+      - { text: "Claudius" }
+      - { text: "Hadrian" }
+      - { text: "Julius Caesar" }
+  - slot: 5
+    type: text
+    category: geography
+    text: "What is the capital of Iraq?"
+    answers:
+      - { canonical: "Baghdad", aliases: [] }
+  - slot: 6
+    type: choice
+    category: art
+    text: "Who painted 'The Last Supper'?"
+    options:
+      - { text: "Leonardo da Vinci", correct: true }
+      - { text: "Michelangelo" }
+      - { text: "Raphael" }
+      - { text: "Caravaggio" }
+      - { text: "Titian" }
+      - { text: "Sandro Botticelli" }
+  - slot: 7
+    type: choice
+    category: sport
+    text: "In which sport do teams form a scrum?"
+    options:
+      - { text: "Rugby", correct: true }
+      - { text: "Football" }
+      - { text: "Cricket" }
+      - { text: "Hockey" }
+      - { text: "Basketball" }
+      - { text: "Netball" }
+  - slot: 8
+    type: choice
+    category: food
+    text: "Which fruit carries its seeds on the outside?"
+    options:
+      - { text: "Strawberry", correct: true }
+      - { text: "Raspberry" }
+      - { text: "Blueberry" }
+      - { text: "Kiwi" }
+      - { text: "Banana" }
+      - { text: "Grape" }

@@ -1,0 +1,80 @@
+date: 2027-01-05
+questions:
+  - slot: 1
+    type: choice
+    category: geography
+    text: "What is the largest island in the world?"
+    options:
+      - { text: "Greenland", correct: true }
+      - { text: "New Guinea" }
+      - { text: "Borneo" }
+      - { text: "Madagascar" }
+      - { text: "Great Britain" }
+      - { text: "Iceland" }
+  - slot: 2
+    type: choice
+    category: space
+    text: "Which planet is the furthest from the Sun?"
+    options:
+      - { text: "Neptune", correct: true }
+      - { text: "Uranus" }
+      - { text: "Pluto" }
+      - { text: "Saturn" }
+      - { text: "Jupiter" }
+      - { text: "Mars" }
+  - slot: 3
+    type: number
+    category: maths
+    text: "What is 12 multiplied by 12?"
+    answer: 144
+    tolerance: 0
+  - slot: 4
+    type: choice
+    category: history
+    text: "Which nurse was known as 'the Lady with the Lamp'?"
+    options:
+      - { text: "Florence Nightingale", correct: true }
+      - { text: "Mary Seacole" }
+      - { text: "Edith Cavell" }
+      - { text: "Clara Barton" }
+      - { text: "Elizabeth Fry" }
+      - { text: "Grace Darling" }
+  - slot: 5
+    type: text
+    category: geography
+    text: "What is the capital of Denmark?"
+    answers:
+      - { canonical: "Copenhagen", aliases: [] }
+  - slot: 6
+    type: choice
+    category: film
+    text: "In 'The Lion King', what is the name of Simba's father?"
+    options:
+      - { text: "Mufasa", correct: true }
+      - { text: "Scar" }
+      - { text: "Rafiki" }
+      - { text: "Timon" }
+      - { text: "Pumbaa" }
+      - { text: "Zazu" }
+  - slot: 7
+    type: choice
+    category: music
+    text: "Who composed the opera 'The Magic Flute'?"
+    options:
+      - { text: "Wolfgang Amadeus Mozart", correct: true }
+      - { text: "Ludwig van Beethoven" }
+      - { text: "Johann Sebastian Bach" }
+      - { text: "George Frideric Handel" }
+      - { text: "Joseph Haydn" }
+      - { text: "Giuseppe Verdi" }
+  - slot: 8
+    type: choice
+    category: nature
+    text: "Which of these mammals lays eggs?"
+    options:
+      - { text: "Platypus", correct: true }
+      - { text: "Kangaroo" }
+      - { text: "Koala" }
+      - { text: "Bat" }
+      - { text: "Dolphin" }
+      - { text: "Hedgehog" }

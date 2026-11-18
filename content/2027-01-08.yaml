@@ -1,0 +1,80 @@
+date: 2027-01-08
+questions:
+  - slot: 1
+    type: choice
+    category: geography
+    text: "Which of these cities does the River Thames flow through?"
+    options:
+      - { text: "London", correct: true }
+      - { text: "Manchester" }
+      - { text: "Bristol" }
+      - { text: "Birmingham" }
+      - { text: "Liverpool" }
+      - { text: "Cardiff" }
+  - slot: 2
+    type: choice
+    category: science
+    text: "Which vitamin are oranges famous for?"
+    options:
+      - { text: "Vitamin C", correct: true }
+      - { text: "Vitamin A" }
+      - { text: "Vitamin D" }
+      - { text: "Vitamin K" }
+      - { text: "Vitamin B12" }
+      - { text: "Vitamin E" }
+  - slot: 3
+    type: number
+    category: sport
+    text: "How many players does a baseball team have on the field?"
+    answer: 9
+    tolerance: 0
+  - slot: 4
+    type: choice
+    category: history
+    text: "Which civilisation built the pyramid at Chichén Itzá?"
+    options:
+      - { text: "Maya", correct: true }
+      - { text: "Aztec" }
+      - { text: "Inca" }
+      - { text: "Olmec" }
+      - { text: "Egyptian" }
+      - { text: "Roman" }
+  - slot: 5
+    type: text
+    category: geography
+    text: "What is the capital of Peru?"
+    answers:
+      - { canonical: "Lima", aliases: [] }
+  - slot: 6
+    type: choice
+    category: literature
+    text: "Who wrote 'Charlie and the Chocolate Factory'?"
+    options:
+      - { text: "Roald Dahl", correct: true }
+      - { text: "Enid Blyton" }
+      - { text: "J. K. Rowling" }
+      - { text: "David Walliams" }
+      - { text: "C. S. Lewis" }
+      - { text: "Lewis Carroll" }
+  - slot: 7
+    type: choice
+    category: sport
+    text: "In which country were the first modern Olympic Games held, in 1896?"
+    options:
+      - { text: "Greece", correct: true }
+      - { text: "France" }
+      - { text: "United Kingdom" }
+      - { text: "United States" }
+      - { text: "Italy" }
+      - { text: "Germany" }
+  - slot: 8
+    type: choice
+    category: food
+    text: "Which spice gives many curries their yellow colour?"
+    options:
+      - { text: "Turmeric", correct: true }
+      - { text: "Paprika" }
+      - { text: "Cinnamon" }
+      - { text: "Cumin" }
+      - { text: "Ginger" }
+      - { text: "Nutmeg" }

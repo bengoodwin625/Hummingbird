@@ -1,0 +1,80 @@
+date: 2027-01-29
+questions:
+  - slot: 1
+    type: choice
+    category: geography
+    text: "Victoria Falls lies on the border of Zimbabwe and which other country?"
+    options:
+      - { text: "Zambia", correct: true }
+      - { text: "Kenya" }
+      - { text: "Tanzania" }
+      - { text: "Botswana" }
+      - { text: "Mozambique" }
+      - { text: "South Africa" }
+  - slot: 2
+    type: choice
+    category: space
+    text: "How many moons does Mars have?"
+    options:
+      - { text: "2", correct: true }
+      - { text: "1" }
+      - { text: "0" }
+      - { text: "3" }
+      - { text: "4" }
+      - { text: "12" }
+  - slot: 3
+    type: number
+    category: general
+    text: "How many years are there in a millennium?"
+    answer: 1000
+    tolerance: 0
+  - slot: 4
+    type: choice
+    category: history
+    text: "What did the Romans call Britain?"
+    options:
+      - { text: "Britannia", correct: true }
+      - { text: "Gaul" }
+      - { text: "Hibernia" }
+      - { text: "Hispania" }
+      - { text: "Londinium" }
+      - { text: "Germania" }
+  - slot: 5
+    type: text
+    category: geography
+    text: "What is the capital of Lebanon?"
+    answers:
+      - { canonical: "Beirut", aliases: [] }
+  - slot: 6
+    type: choice
+    category: film
+    text: "Which film features a giant ape climbing the Empire State Building?"
+    options:
+      - { text: "King Kong", correct: true }
+      - { text: "Godzilla" }
+      - { text: "Mighty Joe Young" }
+      - { text: "Planet of the Apes" }
+      - { text: "Jurassic Park" }
+      - { text: "Gorillas in the Mist" }
+  - slot: 7
+    type: choice
+    category: music
+    text: "A 'Stradivarius' is a famous example of which instrument?"
+    options:
+      - { text: "Violin", correct: true }
+      - { text: "Piano" }
+      - { text: "Guitar" }
+      - { text: "Flute" }
+      - { text: "Trumpet" }
+      - { text: "Harp" }
+  - slot: 8
+    type: choice
+    category: nature
+    text: "Which flightless bird lives in Antarctica?"
+    options:
+      - { text: "Penguin", correct: true }
+      - { text: "Ostrich" }
+      - { text: "Emu" }
+      - { text: "Kiwi" }
+      - { text: "Puffin" }
+      - { text: "Albatross" }

@@ -1,0 +1,80 @@
+date: 2027-01-31
+questions:
+  - slot: 1
+    type: choice
+    category: geography
+    text: "What is the smallest continent by area?"
+    options:
+      - { text: "Australia", correct: true }
+      - { text: "Europe" }
+      - { text: "Antarctica" }
+      - { text: "South America" }
+      - { text: "Africa" }
+      - { text: "Asia" }
+  - slot: 2
+    type: choice
+    category: science
+    text: "Which metal is the best conductor of electricity?"
+    options:
+      - { text: "Silver", correct: true }
+      - { text: "Copper" }
+      - { text: "Gold" }
+      - { text: "Aluminium" }
+      - { text: "Iron" }
+      - { text: "Lead" }
+  - slot: 3
+    type: number
+    category: general
+    text: "How many days are there in January?"
+    answer: 31
+    tolerance: 0
+  - slot: 4
+    type: choice
+    category: history
+    text: "From which port did the Titanic begin its maiden voyage?"
+    options:
+      - { text: "Southampton", correct: true }
+      - { text: "Liverpool" }
+      - { text: "Belfast" }
+      - { text: "Plymouth" }
+      - { text: "New York" }
+      - { text: "Glasgow" }
+  - slot: 5
+    type: text
+    category: geography
+    text: "What is the capital of Tunisia?"
+    answers:
+      - { canonical: "Tunis", aliases: [] }
+  - slot: 6
+    type: choice
+    category: film
+    text: "Which actor played Captain Jack Sparrow?"
+    options:
+      - { text: "Johnny Depp", correct: true }
+      - { text: "Orlando Bloom" }
+      - { text: "Brad Pitt" }
+      - { text: "Keanu Reeves" }
+      - { text: "Tom Cruise" }
+      - { text: "Hugh Jackman" }
+  - slot: 7
+    type: choice
+    category: music
+    text: "Which band sang 'Hey Jude'?"
+    options:
+      - { text: "The Beatles", correct: true }
+      - { text: "The Rolling Stones" }
+      - { text: "The Who" }
+      - { text: "The Kinks" }
+      - { text: "The Beach Boys" }
+      - { text: "Queen" }
+  - slot: 8
+    type: choice
+    category: nature
+    text: "What is a group of wolves called?"
+    options:
+      - { text: "A pack", correct: true }
+      - { text: "A pride" }
+      - { text: "A herd" }
+      - { text: "A flock" }
+      - { text: "A school" }
+      - { text: "A swarm" }

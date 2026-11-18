@@ -1,0 +1,80 @@
+date: 2027-01-21
+questions:
+  - slot: 1
+    type: choice
+    category: geography
+    text: "What is the capital of Iran?"
+    options:
+      - { text: "Tehran", correct: true }
+      - { text: "Baghdad" }
+      - { text: "Kabul" }
+      - { text: "Isfahan" }
+      - { text: "Ankara" }
+      - { text: "Riyadh" }
+  - slot: 2
+    type: choice
+    category: science
+    text: "What do we call animals that eat both plants and meat?"
+    options:
+      - { text: "Omnivores", correct: true }
+      - { text: "Herbivores" }
+      - { text: "Carnivores" }
+      - { text: "Insectivores" }
+      - { text: "Scavengers" }
+      - { text: "Predators" }
+  - slot: 3
+    type: number
+    category: general
+    text: "How many weeks are there in a fortnight?"
+    answer: 2
+    tolerance: 0
+  - slot: 4
+    type: choice
+    category: history
+    text: "Which ship did Admiral Nelson command at Trafalgar?"
+    options:
+      - { text: "HMS Victory", correct: true }
+      - { text: "HMS Beagle" }
+      - { text: "Mary Rose" }
+      - { text: "HMS Endeavour" }
+      - { text: "Golden Hind" }
+      - { text: "HMS Belfast" }
+  - slot: 5
+    type: text
+    category: geography
+    text: "What is the capital of Malaysia?"
+    answers:
+      - { canonical: "Kuala Lumpur", aliases: [] }
+  - slot: 6
+    type: choice
+    category: film
+    text: "In 'Frozen', what is the name of Elsa's sister?"
+    options:
+      - { text: "Anna", correct: true }
+      - { text: "Rapunzel" }
+      - { text: "Ariel" }
+      - { text: "Belle" }
+      - { text: "Moana" }
+      - { text: "Merida" }
+  - slot: 7
+    type: choice
+    category: music
+    text: "What nationality was the composer Johann Sebastian Bach?"
+    options:
+      - { text: "German", correct: true }
+      - { text: "Austrian" }
+      - { text: "Italian" }
+      - { text: "French" }
+      - { text: "English" }
+      - { text: "Dutch" }
+  - slot: 8
+    type: choice
+    category: nature
+    text: "What is the largest species of bear?"
+    options:
+      - { text: "Polar bear", correct: true }
+      - { text: "Grizzly bear" }
+      - { text: "Black bear" }
+      - { text: "Sun bear" }
+      - { text: "Giant panda" }
+      - { text: "Spectacled bear" }

@@ -1,0 +1,80 @@
+date: 2027-01-04
+questions:
+  - slot: 1
+    type: choice
+    category: geography
+    text: "In which country is the city of Mumbai?"
+    options:
+      - { text: "India", correct: true }
+      - { text: "Pakistan" }
+      - { text: "Bangladesh" }
+      - { text: "Sri Lanka" }
+      - { text: "Nepal" }
+      - { text: "Indonesia" }
+  - slot: 2
+    type: choice
+    category: science
+    text: "At what temperature in Celsius does water freeze?"
+    options:
+      - { text: "0", correct: true }
+      - { text: "32" }
+      - { text: "10" }
+      - { text: "5" }
+      - { text: "4" }
+      - { text: "100" }
+  - slot: 3
+    type: number
+    category: history
+    text: "In what year did the First World War begin?"
+    answer: 1914
+    tolerance: 0
+  - slot: 4
+    type: choice
+    category: history
+    text: "Which queen of the Iceni led a revolt against the Romans?"
+    options:
+      - { text: "Boudica", correct: true }
+      - { text: "Cleopatra" }
+      - { text: "Matilda" }
+      - { text: "Eleanor of Aquitaine" }
+      - { text: "Æthelflæd" }
+      - { text: "Cartimandua" }
+  - slot: 5
+    type: text
+    category: geography
+    text: "What is the capital of Belgium?"
+    answers:
+      - { canonical: "Brussels", aliases: [] }
+  - slot: 6
+    type: choice
+    category: literature
+    text: "Who wrote 'Romeo and Juliet'?"
+    options:
+      - { text: "William Shakespeare", correct: true }
+      - { text: "Christopher Marlowe" }
+      - { text: "Charles Dickens" }
+      - { text: "Geoffrey Chaucer" }
+      - { text: "John Milton" }
+      - { text: "Ben Jonson" }
+  - slot: 7
+    type: choice
+    category: sport
+    text: "How many points is the bullseye worth in darts?"
+    options:
+      - { text: "50", correct: true }
+      - { text: "25" }
+      - { text: "60" }
+      - { text: "100" }
+      - { text: "20" }
+      - { text: "180" }
+  - slot: 8
+    type: choice
+    category: food
+    text: "What is the main ingredient of an omelette?"
+    options:
+      - { text: "Eggs", correct: true }
+      - { text: "Flour" }
+      - { text: "Milk" }
+      - { text: "Cheese" }
+      - { text: "Potatoes" }
+      - { text: "Rice" }

@@ -1,0 +1,80 @@
+date: 2027-01-27
+questions:
+  - slot: 1
+    type: choice
+    category: geography
+    text: "In which country is the city of Istanbul?"
+    options:
+      - { text: "Turkey", correct: true }
+      - { text: "Greece" }
+      - { text: "Egypt" }
+      - { text: "Iran" }
+      - { text: "Syria" }
+      - { text: "Bulgaria" }
+  - slot: 2
+    type: choice
+    category: science
+    text: "Which force slows things down when they rub together?"
+    options:
+      - { text: "Friction", correct: true }
+      - { text: "Gravity" }
+      - { text: "Magnetism" }
+      - { text: "Inertia" }
+      - { text: "Momentum" }
+      - { text: "Pressure" }
+  - slot: 3
+    type: number
+    category: maths
+    text: "What is 9 squared?"
+    answer: 81
+    tolerance: 0
+  - slot: 4
+    type: choice
+    category: history
+    text: "Which Paris fortress was stormed in 1789, starting the French Revolution?"
+    options:
+      - { text: "The Bastille", correct: true }
+      - { text: "The Louvre" }
+      - { text: "Notre-Dame" }
+      - { text: "The Tuileries" }
+      - { text: "The Eiffel Tower" }
+      - { text: "The Panthéon" }
+  - slot: 5
+    type: text
+    category: geography
+    text: "What is the capital of Ethiopia?"
+    answers:
+      - { canonical: "Addis Ababa", aliases: [] }
+  - slot: 6
+    type: choice
+    category: film
+    text: "What colour is Shrek?"
+    options:
+      - { text: "Green", correct: true }
+      - { text: "Blue" }
+      - { text: "Brown" }
+      - { text: "Grey" }
+      - { text: "Yellow" }
+      - { text: "Purple" }
+  - slot: 7
+    type: choice
+    category: music
+    text: "Who sang 'Shake It Off'?"
+    options:
+      - { text: "Taylor Swift", correct: true }
+      - { text: "Katy Perry" }
+      - { text: "Ariana Grande" }
+      - { text: "Lady Gaga" }
+      - { text: "Selena Gomez" }
+      - { text: "Dua Lipa" }
+  - slot: 8
+    type: choice
+    category: nature
+    text: "What is a baby sheep called?"
+    options:
+      - { text: "Lamb", correct: true }
+      - { text: "Kid" }
+      - { text: "Calf" }
+      - { text: "Foal" }
+      - { text: "Piglet" }
+      - { text: "Cub" }

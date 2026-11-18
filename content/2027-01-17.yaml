@@ -1,0 +1,80 @@
+date: 2027-01-17
+questions:
+  - slot: 1
+    type: choice
+    category: geography
+    text: "What is the capital of Jamaica?"
+    options:
+      - { text: "Kingston", correct: true }
+      - { text: "Montego Bay" }
+      - { text: "Port of Spain" }
+      - { text: "Nassau" }
+      - { text: "Havana" }
+      - { text: "Bridgetown" }
+  - slot: 2
+    type: choice
+    category: science
+    text: "What is the smallest bone in the human body?"
+    options:
+      - { text: "The stapes, in the ear", correct: true }
+      - { text: "The femur, in the leg" }
+      - { text: "The patella, in the knee" }
+      - { text: "The hyoid, in the throat" }
+      - { text: "The coccyx, at the base of the spine" }
+      - { text: "A finger bone" }
+  - slot: 3
+    type: number
+    category: general
+    text: "How many sides does a stop sign have?"
+    answer: 8
+    tolerance: 0
+  - slot: 4
+    type: choice
+    category: history
+    text: "Which queen was on the throne when the Spanish Armada was defeated?"
+    options:
+      - { text: "Elizabeth I", correct: true }
+      - { text: "Mary I" }
+      - { text: "Victoria" }
+      - { text: "Anne" }
+      - { text: "Mary, Queen of Scots" }
+      - { text: "Elizabeth II" }
+  - slot: 5
+    type: text
+    category: geography
+    text: "What is the capital of Morocco?"
+    answers:
+      - { canonical: "Rabat", aliases: [] }
+  - slot: 6
+    type: choice
+    category: film
+    text: "Which film series features hobbits and a powerful ring?"
+    options:
+      - { text: "The Lord of the Rings", correct: true }
+      - { text: "Harry Potter" }
+      - { text: "The Chronicles of Narnia" }
+      - { text: "Star Wars" }
+      - { text: "The Witcher" }
+      - { text: "Game of Thrones" }
+  - slot: 7
+    type: choice
+    category: music
+    text: "Who sang 'Rocket Man'?"
+    options:
+      - { text: "Elton John", correct: true }
+      - { text: "David Bowie" }
+      - { text: "Rod Stewart" }
+      - { text: "Billy Joel" }
+      - { text: "Freddie Mercury" }
+      - { text: "Elvis Costello" }
+  - slot: 8
+    type: choice
+    category: nature
+    text: "How many hearts does an octopus have?"
+    options:
+      - { text: "3", correct: true }
+      - { text: "1" }
+      - { text: "2" }
+      - { text: "4" }
+      - { text: "8" }
+      - { text: "5" }

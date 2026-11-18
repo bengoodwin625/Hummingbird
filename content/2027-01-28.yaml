@@ -1,0 +1,80 @@
+date: 2027-01-28
+questions:
+  - slot: 1
+    type: choice
+    category: geography
+    text: "What is the largest city in Canada?"
+    options:
+      - { text: "Toronto", correct: true }
+      - { text: "Ottawa" }
+      - { text: "Montreal" }
+      - { text: "Vancouver" }
+      - { text: "Calgary" }
+      - { text: "Edmonton" }
+  - slot: 2
+    type: choice
+    category: science
+    text: "Which part of the body has a cornea?"
+    options:
+      - { text: "The eye", correct: true }
+      - { text: "The ear" }
+      - { text: "The heart" }
+      - { text: "The skin" }
+      - { text: "The brain" }
+      - { text: "The knee" }
+  - slot: 3
+    type: number
+    category: general
+    text: "How many tiles are in a standard double-six set of dominoes?"
+    answer: 28
+    tolerance: 0
+  - slot: 4
+    type: choice
+    category: history
+    text: "Who led the Bolsheviks in the Russian Revolution of 1917?"
+    options:
+      - { text: "Vladimir Lenin", correct: true }
+      - { text: "Joseph Stalin" }
+      - { text: "Leon Trotsky" }
+      - { text: "Nicholas II" }
+      - { text: "Mikhail Gorbachev" }
+      - { text: "Boris Yeltsin" }
+  - slot: 5
+    type: text
+    category: geography
+    text: "What is the capital of Libya?"
+    answers:
+      - { canonical: "Tripoli", aliases: [] }
+  - slot: 6
+    type: choice
+    category: art
+    text: "What colour do you get by mixing red and white?"
+    options:
+      - { text: "Pink", correct: true }
+      - { text: "Purple" }
+      - { text: "Orange" }
+      - { text: "Brown" }
+      - { text: "Grey" }
+      - { text: "Yellow" }
+  - slot: 7
+    type: choice
+    category: sport
+    text: "Which sprinter was nicknamed 'Lightning Bolt'?"
+    options:
+      - { text: "Usain Bolt", correct: true }
+      - { text: "Mo Farah" }
+      - { text: "Carl Lewis" }
+      - { text: "Michael Johnson" }
+      - { text: "Yohan Blake" }
+      - { text: "Linford Christie" }
+  - slot: 8
+    type: choice
+    category: food
+    text: "What type of food is a bagel?"
+    options:
+      - { text: "Bread", correct: true }
+      - { text: "Cake" }
+      - { text: "Cheese" }
+      - { text: "Biscuit" }
+      - { text: "Pasta" }
+      - { text: "Sausage" }

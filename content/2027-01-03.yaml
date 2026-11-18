@@ -1,0 +1,80 @@
+date: 2027-01-03
+questions:
+  - slot: 1
+    type: choice
+    category: geography
+    text: "What is the longest river in South America?"
+    options:
+      - { text: "Amazon", correct: true }
+      - { text: "Paraná" }
+      - { text: "Orinoco" }
+      - { text: "São Francisco" }
+      - { text: "Magdalena" }
+      - { text: "Madeira" }
+  - slot: 2
+    type: choice
+    category: space
+    text: "Which planet spins tipped over on its side?"
+    options:
+      - { text: "Uranus", correct: true }
+      - { text: "Neptune" }
+      - { text: "Saturn" }
+      - { text: "Venus" }
+      - { text: "Mars" }
+      - { text: "Mercury" }
+  - slot: 3
+    type: number
+    category: general
+    text: "How many minutes are there in a day?"
+    answer: 1440
+    tolerance: 0
+  - slot: 4
+    type: choice
+    category: history
+    text: "In which year did the Titanic sink?"
+    options:
+      - { text: "1912", correct: true }
+      - { text: "1905" }
+      - { text: "1915" }
+      - { text: "1920" }
+      - { text: "1898" }
+      - { text: "1931" }
+  - slot: 5
+    type: text
+    category: space
+    text: "What is the name of our galaxy?"
+    answers:
+      - { canonical: "Milky Way", aliases: [] }
+  - slot: 6
+    type: choice
+    category: film
+    text: "Who is the main villain of the Harry Potter books?"
+    options:
+      - { text: "Lord Voldemort", correct: true }
+      - { text: "Saruman" }
+      - { text: "Gellert Grindelwald" }
+      - { text: "Draco Malfoy" }
+      - { text: "Sauron" }
+      - { text: "Severus Snape" }
+  - slot: 7
+    type: choice
+    category: music
+    text: "Which brass instrument has a slide?"
+    options:
+      - { text: "Trombone", correct: true }
+      - { text: "Trumpet" }
+      - { text: "Tuba" }
+      - { text: "French horn" }
+      - { text: "Saxophone" }
+      - { text: "Clarinet" }
+  - slot: 8
+    type: choice
+    category: nature
+    text: "What is a baby cat called?"
+    options:
+      - { text: "Kitten", correct: true }
+      - { text: "Cub" }
+      - { text: "Pup" }
+      - { text: "Kid" }
+      - { text: "Calf" }
+      - { text: "Foal" }

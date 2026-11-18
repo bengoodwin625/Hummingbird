@@ -1764,3 +1764,371 @@ ul {
   color: var(--sage);
   opacity: 0.75;
 }
+
+/* ---------------------------------------------------------------- page backdrop */
+
+/* The forest fills the whole window behind the page. A soft dusk scrim sits over its middle,
+   where the words are, and both deepen while a question is live so nothing competes with it. */
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  pointer-events: none;
+  image-rendering: pixelated;
+  opacity: 0.6;
+  transition: opacity 0.7s var(--ease-out);
+}
+
+.app::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse 75% 65% at 50% 58%,
+    rgb(6 17 13 / 0.9) 0,
+    rgb(6 17 13 / 0.62) 50%,
+    rgb(6 17 13 / 0.12) 100%
+  );
+  opacity: 0.9;
+  transition: opacity 0.7s var(--ease-out);
+}
+
+.app > :not(.backdrop):not(.sr-only) {
+  position: relative;
+  z-index: 1;
+}
+
+.app.is-home .backdrop {
+  opacity: 0.9;
+}
+
+.app.is-home::after {
+  opacity: 0.7;
+}
+
+.app.is-results .backdrop {
+  opacity: 0.5;
+}
+
+.app[data-phase="serving"] .backdrop,
+.app[data-phase="reading"] .backdrop,
+.app[data-phase="answering"] .backdrop,
+.app[data-phase="submitting"] .backdrop {
+  opacity: 0.22;
+}
+
+.app[data-phase="reading"]::after,
+.app[data-phase="answering"]::after,
+.app[data-phase="submitting"]::after {
+  opacity: 1;
+}
+
+/* ---------------------------------------------------------------- question header */
+
+.question-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2) var(--space-3);
+  margin: 0 0 var(--space-1);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  animation: meta-in 0.4s var(--ease-out) both;
+}
+
+.q-count {
+  color: var(--gold-hi);
+}
+
+.q-of {
+  color: var(--sage);
+}
+
+.q-cat {
+  padding: 3px 10px;
+  border-radius: var(--radius-pill);
+  background: rgb(63 208 176 / 0.14);
+  color: var(--jade);
+}
+
+.q-word {
+  display: inline-block;
+  animation: word-in 0.45s var(--ease-out) both;
+  animation-delay: calc(var(--w, 0) * 45ms + 140ms);
+}
+
+@keyframes meta-in {
+  from {
+    opacity: 0;
+    translate: 0 -8px;
+  }
+}
+
+@keyframes word-in {
+  from {
+    opacity: 0;
+    translate: 0 0.35em;
+    filter: blur(3px);
+  }
+}
+
+/* ---------------------------------------------------------------- reveal extras */
+
+.reveal-ladder {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: var(--space-2);
+  margin-bottom: var(--space-1);
+}
+
+.reveal-rung {
+  display: grid;
+  place-items: center;
+  padding: 4px 6px;
+  border-radius: 10px;
+  opacity: 0.45;
+  filter: grayscale(0.8);
+}
+
+.reveal-rung canvas {
+  display: block;
+  image-rendering: pixelated;
+}
+
+.reveal-rung.is-on {
+  opacity: 1;
+  filter: none;
+  background: color-mix(in srgb, var(--band-colour) 20%, transparent);
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--band-colour) 60%, transparent),
+    0 0 18px color-mix(in srgb, var(--band-colour) 35%, transparent);
+}
+
+.reveal-rung.is-on {
+  animation: rung-on 0.55s var(--ease-out) both 0.75s;
+}
+
+@keyframes rung-on {
+  from {
+    transform: scale(1.7);
+    opacity: 0;
+  }
+}
+
+.reveal-streak {
+  color: var(--gold-hi);
+  font-weight: 800;
+}
+
+.score {
+  position: relative;
+}
+
+.score-fly {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--gold-hi);
+  white-space: nowrap;
+  pointer-events: none;
+  text-shadow: 0 0 12px rgb(232 176 74 / 0.6);
+  animation: fly-up 1.2s var(--ease-out) forwards;
+}
+
+@keyframes fly-up {
+  0% {
+    opacity: 0;
+    translate: 0 12px;
+  }
+
+  20% {
+    opacity: 1;
+    translate: 0 0;
+  }
+
+  100% {
+    opacity: 0;
+    translate: 0 -20px;
+  }
+}
+
+/* ---------------------------------------------------------------- game info */
+
+.mode-item {
+  position: relative;
+}
+
+.mode {
+  padding-right: calc(var(--space-4) + 36px);
+}
+
+.mode-info {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--jade);
+  cursor: pointer;
+}
+
+.mode-info span {
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  border-radius: var(--radius-pill);
+  box-shadow: inset 0 0 0 1.5px currentColor;
+  font-size: 0.875rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.mode-info:hover span,
+.mode-info:focus-visible span {
+  background: var(--jade);
+  color: var(--night);
+}
+
+.mode-info:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: -4px;
+  border-radius: var(--radius-pill);
+}
+
+.mode-info.is-new span {
+  animation: info-pulse 1.8s ease-in-out infinite;
+}
+
+@keyframes info-pulse {
+  50% {
+    box-shadow:
+      inset 0 0 0 1.5px currentColor,
+      0 0 0 6px rgb(63 208 176 / 0.18);
+  }
+}
+
+.mode-animals {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  margin-top: var(--space-2);
+}
+
+.mode-animals canvas {
+  display: block;
+  image-rendering: pixelated;
+}
+
+.info-dialog {
+  width: min(560px, calc(100vw - 24px));
+  max-height: min(88svh, 760px);
+  padding: 0;
+  border: 0;
+  border-radius: 18px;
+  background: var(--sky2);
+  color: var(--ivory);
+  box-shadow:
+    0 0 0 1px rgb(63 208 176 / 0.22),
+    0 24px 80px rgb(0 0 0 / 0.6);
+  overflow: hidden;
+}
+
+.info-dialog[open] {
+  animation: sheet-in 0.3s var(--ease-out);
+}
+
+.info-dialog::backdrop {
+  background: rgb(3 8 6 / 0.72);
+  backdrop-filter: blur(3px);
+}
+
+@keyframes sheet-in {
+  from {
+    opacity: 0;
+    translate: 0 16px;
+  }
+}
+
+.info-body {
+  display: grid;
+  gap: var(--space-4);
+  max-height: min(88svh, 760px);
+  padding: var(--space-4) var(--space-5) var(--space-5);
+  overflow-y: auto;
+  text-align: left;
+  overscroll-behavior: contain;
+}
+
+.info-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.info-title {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 800;
+}
+
+.info-close {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 44px;
+  height: 44px;
+  margin-right: calc(-1 * var(--space-3));
+  border: 0;
+  border-radius: var(--radius-pill);
+  background: transparent;
+  color: var(--sage);
+  cursor: pointer;
+}
+
+.info-close:hover,
+.info-close:focus-visible {
+  background: var(--fill-hover);
+  color: var(--ivory);
+}
+
+.info-content,
+.info-section {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.info-content .section-title {
+  margin: var(--space-3) 0 0;
+}
+
+.info-lede {
+  margin: 0;
+  color: var(--sage);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .q-word,
+  .question-meta,
+  .info-dialog[open],
+  .mode-info.is-new span,
+  .reveal-rung.is-on {
+    animation: none;
+  }
+}

@@ -1,0 +1,80 @@
+date: 2027-01-07
+questions:
+  - slot: 1
+    type: choice
+    category: geography
+    text: "Which desert covers much of northern Chile?"
+    options:
+      - { text: "Atacama", correct: true }
+      - { text: "Sahara" }
+      - { text: "Gobi" }
+      - { text: "Mojave" }
+      - { text: "Kalahari" }
+      - { text: "Namib" }
+  - slot: 2
+    type: choice
+    category: science
+    text: "What is the hardest substance in the human body?"
+    options:
+      - { text: "Tooth enamel", correct: true }
+      - { text: "Bone" }
+      - { text: "Cartilage" }
+      - { text: "Fingernail" }
+      - { text: "Hair" }
+      - { text: "Tendon" }
+  - slot: 3
+    type: number
+    category: sport
+    text: "How many balls are on a snooker table at the start of a frame, including the cue ball?"
+    answer: 22
+    tolerance: 0
+  - slot: 4
+    type: choice
+    category: history
+    text: "Who was the British Prime Minister when the Berlin Wall fell in 1989?"
+    options:
+      - { text: "Margaret Thatcher", correct: true }
+      - { text: "Tony Blair" }
+      - { text: "John Major" }
+      - { text: "James Callaghan" }
+      - { text: "Harold Wilson" }
+      - { text: "Edward Heath" }
+  - slot: 5
+    type: text
+    category: geography
+    text: "What is the capital of Mexico?"
+    answers:
+      - { canonical: "Mexico City", aliases: ["Ciudad de Mexico"] }
+  - slot: 6
+    type: choice
+    category: film
+    text: "Which superhero is also known as the Dark Knight?"
+    options:
+      - { text: "Batman", correct: true }
+      - { text: "Superman" }
+      - { text: "Spider-Man" }
+      - { text: "Iron Man" }
+      - { text: "Daredevil" }
+      - { text: "Black Panther" }
+  - slot: 7
+    type: choice
+    category: music
+    text: "Which British band released the song 'Yellow'?"
+    options:
+      - { text: "Coldplay", correct: true }
+      - { text: "Oasis" }
+      - { text: "Blur" }
+      - { text: "Radiohead" }
+      - { text: "Keane" }
+      - { text: "Muse" }
+  - slot: 8
+    type: choice
+    category: nature
+    text: "Which of these birds is famous for copying human speech?"
+    options:
+      - { text: "Parrot", correct: true }
+      - { text: "Owl" }
+      - { text: "Pigeon" }
+      - { text: "Robin" }
+      - { text: "Eagle" }
+      - { text: "Penguin" }

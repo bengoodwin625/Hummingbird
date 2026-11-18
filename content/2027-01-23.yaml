@@ -1,0 +1,80 @@
+date: 2027-01-23
+questions:
+  - slot: 1
+    type: choice
+    category: geography
+    text: "Which US state is made up entirely of islands?"
+    options:
+      - { text: "Hawaii", correct: true }
+      - { text: "Alaska" }
+      - { text: "Florida" }
+      - { text: "California" }
+      - { text: "Maine" }
+      - { text: "Rhode Island" }
+  - slot: 2
+    type: choice
+    category: space
+    text: "What is a scientist who studies stars and planets called?"
+    options:
+      - { text: "Astronomer", correct: true }
+      - { text: "Astrologer" }
+      - { text: "Geologist" }
+      - { text: "Biologist" }
+      - { text: "Meteorologist" }
+      - { text: "Botanist" }
+  - slot: 3
+    type: number
+    category: maths
+    text: "How many minutes are there in two hours?"
+    answer: 120
+    tolerance: 0
+  - slot: 4
+    type: choice
+    category: history
+    text: "Which country did the UK fight in the 1982 Falklands War?"
+    options:
+      - { text: "Argentina", correct: true }
+      - { text: "Chile" }
+      - { text: "Spain" }
+      - { text: "Brazil" }
+      - { text: "Uruguay" }
+      - { text: "Peru" }
+  - slot: 5
+    type: text
+    category: geography
+    text: "What is the capital of Afghanistan?"
+    answers:
+      - { canonical: "Kabul", aliases: [] }
+  - slot: 6
+    type: choice
+    category: film
+    text: "Which film is about a boy who never grows up and lives in Neverland?"
+    options:
+      - { text: "Peter Pan", correct: true }
+      - { text: "Pinocchio" }
+      - { text: "The Jungle Book" }
+      - { text: "Aladdin" }
+      - { text: "Matilda" }
+      - { text: "Bambi" }
+  - slot: 7
+    type: choice
+    category: music
+    text: "What is the largest instrument in the string family of an orchestra?"
+    options:
+      - { text: "Double bass", correct: true }
+      - { text: "Cello" }
+      - { text: "Viola" }
+      - { text: "Violin" }
+      - { text: "Harp" }
+      - { text: "Guitar" }
+  - slot: 8
+    type: choice
+    category: nature
+    text: "What do giant pandas mainly eat?"
+    options:
+      - { text: "Bamboo", correct: true }
+      - { text: "Eucalyptus" }
+      - { text: "Grass" }
+      - { text: "Fish" }
+      - { text: "Fruit" }
+      - { text: "Insects" }

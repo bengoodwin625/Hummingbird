@@ -1,0 +1,80 @@
+date: 2027-01-02
+questions:
+  - slot: 1
+    type: choice
+    category: geography
+    text: "What is the capital of China?"
+    options:
+      - { text: "Beijing", correct: true }
+      - { text: "Shanghai" }
+      - { text: "Hong Kong" }
+      - { text: "Guangzhou" }
+      - { text: "Shenzhen" }
+      - { text: "Chengdu" }
+  - slot: 2
+    type: choice
+    category: science
+    text: "At what temperature in Celsius does water boil at sea level?"
+    options:
+      - { text: "100", correct: true }
+      - { text: "90" }
+      - { text: "50" }
+      - { text: "120" }
+      - { text: "212" }
+      - { text: "80" }
+  - slot: 3
+    type: number
+    category: sport
+    text: "How many players does a rugby league team have on the pitch?"
+    answer: 13
+    tolerance: 0
+  - slot: 4
+    type: choice
+    category: history
+    text: "Who was the first Emperor of the French?"
+    options:
+      - { text: "Napoleon Bonaparte", correct: true }
+      - { text: "Louis XIV" }
+      - { text: "Charlemagne" }
+      - { text: "Louis XVI" }
+      - { text: "Charles de Gaulle" }
+      - { text: "Napoleon III" }
+  - slot: 5
+    type: text
+    category: geography
+    text: "What is the capital of Wales?"
+    answers:
+      - { canonical: "Cardiff", aliases: [] }
+  - slot: 6
+    type: choice
+    category: art
+    text: "Who painted 'The Birth of Venus'?"
+    options:
+      - { text: "Sandro Botticelli", correct: true }
+      - { text: "Leonardo da Vinci" }
+      - { text: "Raphael" }
+      - { text: "Titian" }
+      - { text: "Michelangelo" }
+      - { text: "Caravaggio" }
+  - slot: 7
+    type: choice
+    category: sport
+    text: "In which sport would you hit a shuttlecock?"
+    options:
+      - { text: "Badminton", correct: true }
+      - { text: "Tennis" }
+      - { text: "Squash" }
+      - { text: "Table tennis" }
+      - { text: "Volleyball" }
+      - { text: "Cricket" }
+  - slot: 8
+    type: choice
+    category: food
+    text: "Which fruit is dried to make raisins?"
+    options:
+      - { text: "Grapes", correct: true }
+      - { text: "Plums" }
+      - { text: "Apricots" }
+      - { text: "Figs" }
+      - { text: "Dates" }
+      - { text: "Cherries" }

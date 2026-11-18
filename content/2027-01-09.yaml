@@ -1,0 +1,80 @@
+date: 2027-01-09
+questions:
+  - slot: 1
+    type: choice
+    category: geography
+    text: "Angkor Wat is in which country?"
+    options:
+      - { text: "Cambodia", correct: true }
+      - { text: "Thailand" }
+      - { text: "Vietnam" }
+      - { text: "Laos" }
+      - { text: "Myanmar" }
+      - { text: "Indonesia" }
+  - slot: 2
+    type: choice
+    category: science
+    text: "What do we call the energy an object has because it is moving?"
+    options:
+      - { text: "Kinetic energy", correct: true }
+      - { text: "Potential energy" }
+      - { text: "Thermal energy" }
+      - { text: "Nuclear energy" }
+      - { text: "Chemical energy" }
+      - { text: "Elastic energy" }
+  - slot: 3
+    type: number
+    category: general
+    text: "How many days does February have in a leap year?"
+    answer: 29
+    tolerance: 0
+  - slot: 4
+    type: choice
+    category: history
+    text: "On which ship did Charles Darwin sail around the world?"
+    options:
+      - { text: "HMS Beagle", correct: true }
+      - { text: "HMS Endeavour" }
+      - { text: "HMS Victory" }
+      - { text: "HMS Bounty" }
+      - { text: "Mayflower" }
+      - { text: "Golden Hind" }
+  - slot: 5
+    type: text
+    category: geography
+    text: "What is the capital of Cuba?"
+    answers:
+      - { canonical: "Havana", aliases: ["La Habana"] }
+  - slot: 6
+    type: choice
+    category: film
+    text: "Which film is famous for the line \"I'll be back\"?"
+    options:
+      - { text: "The Terminator", correct: true }
+      - { text: "RoboCop" }
+      - { text: "Die Hard" }
+      - { text: "Predator" }
+      - { text: "Total Recall" }
+      - { text: "Rambo" }
+  - slot: 7
+    type: choice
+    category: music
+    text: "Which drum in a drum kit is played with a foot pedal?"
+    options:
+      - { text: "Bass drum", correct: true }
+      - { text: "Snare drum" }
+      - { text: "Tambourine" }
+      - { text: "Tom-tom" }
+      - { text: "Triangle" }
+      - { text: "Xylophone" }
+  - slot: 8
+    type: choice
+    category: nature
+    text: "What is the tallest animal in the world?"
+    options:
+      - { text: "Giraffe", correct: true }
+      - { text: "Elephant" }
+      - { text: "Ostrich" }
+      - { text: "Camel" }
+      - { text: "Moose" }
+      - { text: "Horse" }

@@ -1,0 +1,80 @@
+date: 2027-01-15
+questions:
+  - slot: 1
+    type: choice
+    category: geography
+    text: "Which country has the largest population in the world?"
+    options:
+      - { text: "India", correct: true }
+      - { text: "China" }
+      - { text: "United States" }
+      - { text: "Indonesia" }
+      - { text: "Pakistan" }
+      - { text: "Brazil" }
+  - slot: 2
+    type: choice
+    category: science
+    text: "Which blood vessels carry blood away from the heart?"
+    options:
+      - { text: "Arteries", correct: true }
+      - { text: "Veins" }
+      - { text: "Capillaries" }
+      - { text: "Nerves" }
+      - { text: "Tendons" }
+      - { text: "Ligaments" }
+  - slot: 3
+    type: number
+    category: maths
+    text: "How many zeros are there in one million?"
+    answer: 6
+    tolerance: 0
+  - slot: 4
+    type: choice
+    category: history
+    text: "Who founded the suffragettes' Women's Social and Political Union in 1903?"
+    options:
+      - { text: "Emmeline Pankhurst", correct: true }
+      - { text: "Florence Nightingale" }
+      - { text: "Emily Davison" }
+      - { text: "Millicent Fawcett" }
+      - { text: "Mary Wollstonecraft" }
+      - { text: "Nancy Astor" }
+  - slot: 5
+    type: text
+    category: geography
+    text: "What is the capital of Ghana?"
+    answers:
+      - { canonical: "Accra", aliases: [] }
+  - slot: 6
+    type: choice
+    category: film
+    text: "What kind of animal is Baloo in 'The Jungle Book'?"
+    options:
+      - { text: "Bear", correct: true }
+      - { text: "Panther" }
+      - { text: "Tiger" }
+      - { text: "Snake" }
+      - { text: "Monkey" }
+      - { text: "Elephant" }
+  - slot: 7
+    type: choice
+    category: music
+    text: "Which instrument has keys, pedals and pipes?"
+    options:
+      - { text: "Organ", correct: true }
+      - { text: "Piano" }
+      - { text: "Harp" }
+      - { text: "Accordion" }
+      - { text: "Bagpipes" }
+      - { text: "Harpsichord" }
+  - slot: 8
+    type: choice
+    category: nature
+    text: "What is a group of fish swimming together often called?"
+    options:
+      - { text: "A school", correct: true }
+      - { text: "A pack" }
+      - { text: "A herd" }
+      - { text: "A flock" }
+      - { text: "A pride" }
+      - { text: "A colony" }

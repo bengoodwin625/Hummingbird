@@ -1,0 +1,80 @@
+date: 2027-01-19
+questions:
+  - slot: 1
+    type: choice
+    category: geography
+    text: "Which river runs through Rome?"
+    options:
+      - { text: "Tiber", correct: true }
+      - { text: "Po" }
+      - { text: "Arno" }
+      - { text: "Danube" }
+      - { text: "Seine" }
+      - { text: "Rhine" }
+  - slot: 2
+    type: choice
+    category: science
+    text: "Roughly how fast does light travel, in kilometres per second?"
+    options:
+      - { text: "300,000", correct: true }
+      - { text: "3,000" }
+      - { text: "30,000" }
+      - { text: "3,000,000" }
+      - { text: "150,000" }
+      - { text: "1,000,000" }
+  - slot: 3
+    type: number
+    category: maths
+    text: "How many sides does a decagon have?"
+    answer: 10
+    tolerance: 0
+  - slot: 4
+    type: choice
+    category: history
+    text: "Which British monarch reigned for most of the 1800s?"
+    options:
+      - { text: "Victoria", correct: true }
+      - { text: "George III" }
+      - { text: "George IV" }
+      - { text: "William IV" }
+      - { text: "Edward VII" }
+      - { text: "Anne" }
+  - slot: 5
+    type: text
+    category: geography
+    text: "What is the capital of Nigeria?"
+    answers:
+      - { canonical: "Abuja", aliases: [] }
+  - slot: 6
+    type: choice
+    category: film
+    text: "Who played Iron Man in the Marvel films?"
+    options:
+      - { text: "Robert Downey Jr.", correct: true }
+      - { text: "Chris Evans" }
+      - { text: "Chris Hemsworth" }
+      - { text: "Mark Ruffalo" }
+      - { text: "Tom Holland" }
+      - { text: "Benedict Cumberbatch" }
+  - slot: 7
+    type: choice
+    category: music
+    text: "Which Spice Girl was known as 'Posh Spice'?"
+    options:
+      - { text: "Victoria Beckham", correct: true }
+      - { text: "Geri Halliwell" }
+      - { text: "Emma Bunton" }
+      - { text: "Mel B" }
+      - { text: "Mel C" }
+      - { text: "Kylie Minogue" }
+  - slot: 8
+    type: choice
+    category: nature
+    text: "Which creature appears on the flag of Wales?"
+    options:
+      - { text: "A dragon", correct: true }
+      - { text: "A lion" }
+      - { text: "A unicorn" }
+      - { text: "An eagle" }
+      - { text: "A griffin" }
+      - { text: "A stag" }

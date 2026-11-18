@@ -1,0 +1,80 @@
+date: 2027-01-30
+questions:
+  - slot: 1
+    type: choice
+    category: geography
+    text: "What is the capital of Ecuador?"
+    options:
+      - { text: "Quito", correct: true }
+      - { text: "Guayaquil" }
+      - { text: "Lima" }
+      - { text: "Bogotá" }
+      - { text: "La Paz" }
+      - { text: "Caracas" }
+  - slot: 2
+    type: choice
+    category: science
+    text: "Which bone protects the brain?"
+    options:
+      - { text: "The skull", correct: true }
+      - { text: "The spine" }
+      - { text: "The pelvis" }
+      - { text: "The ribs" }
+      - { text: "The jaw" }
+      - { text: "The femur" }
+  - slot: 3
+    type: number
+    category: maths
+    text: "What is 100 divided by 4?"
+    answer: 25
+    tolerance: 0
+  - slot: 4
+    type: choice
+    category: history
+    text: "Which country was ruled by tsars?"
+    options:
+      - { text: "Russia", correct: true }
+      - { text: "Germany" }
+      - { text: "Austria" }
+      - { text: "Poland" }
+      - { text: "Turkey" }
+      - { text: "Sweden" }
+  - slot: 5
+    type: text
+    category: geography
+    text: "What is the capital of Bulgaria?"
+    answers:
+      - { canonical: "Sofia", aliases: [] }
+  - slot: 6
+    type: choice
+    category: literature
+    text: "Which bear lives in the Hundred Acre Wood?"
+    options:
+      - { text: "Winnie-the-Pooh", correct: true }
+      - { text: "Paddington Bear" }
+      - { text: "Rupert Bear" }
+      - { text: "Baloo" }
+      - { text: "Yogi Bear" }
+      - { text: "Fozzie Bear" }
+  - slot: 7
+    type: choice
+    category: sport
+    text: "Which sport did Serena Williams play?"
+    options:
+      - { text: "Tennis", correct: true }
+      - { text: "Golf" }
+      - { text: "Basketball" }
+      - { text: "Athletics" }
+      - { text: "Badminton" }
+      - { text: "Squash" }
+  - slot: 8
+    type: choice
+    category: food
+    text: "Which country does chow mein come from?"
+    options:
+      - { text: "China", correct: true }
+      - { text: "Japan" }
+      - { text: "Thailand" }
+      - { text: "Vietnam" }
+      - { text: "South Korea" }
+      - { text: "India" }

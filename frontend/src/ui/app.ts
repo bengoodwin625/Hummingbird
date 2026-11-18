@@ -1,11 +1,13 @@
 /** The quiz flow: menu → ready → read → answer → reveal (×8) → results. */
 import { ApiError, api, rememberPlayer, type Question, type Results, type Reveal, type Today } from "../api";
 import { BANDS, type Band } from "../art/sprites";
+import { Backdrop } from "../scene/backdrop";
 import { Stage } from "../scene/stage";
 import { animalIcon, byId, h, icon, logoIcon } from "./dom";
 import {
   BAND_INFO,
   TYPING_ALLOWANCE_S,
+  categoryLabel,
   formatCountdown,
   formatOrdinal,
   formatPoints,
@@ -16,6 +18,22 @@ import {
   speedTrackPercent,
 } from "./format";
 import { buildShareText } from "./share";
+
+function readFlag(key: string): boolean {
+  try {
+    return window.localStorage.getItem(key) === "1";
+  } catch {
+    return false;
+  }
+}
+
+function writeFlag(key: string): void {
+  try {
+    window.localStorage.setItem(key, "1");
+  } catch {
+    // Private windows can refuse storage; the flag is only a nicety.
+  }
+}
 
 type Phase = "loading" | "intro" | "serving" | "reading" | "answering" | "submitting" | "reveal" | "results" | "closed";
 
@@ -46,6 +64,8 @@ export class App {
 
   constructor() {
     this.stage = new Stage(byId("stage"));
+    // The whole page sits in the forest; CSS fades it back while a question is live.
+    new Backdrop(this.root);
     byId("brand-mark").append(logoIcon(1));
     // The logo goes back to the menu, except while a question is live.
     byId("brand").addEventListener("click", (event) => {
@@ -228,6 +248,22 @@ export class App {
         ? { status: `Question ${slot} of ${today.total_questions} is waiting`, cta: "Continue", go: () => void this.serve() }
         : { status: "New questions today", cta: "Play", go: () => void this.serve() };
 
+    // Once you've played, the card carries your day: the animals you caught, in order.
+    const answered = [...today.answered].sort((x, y) => x.slot - y.slot);
+    const animals = answered.length
+      ? h(
+          "span",
+          {
+            class: "mode-animals",
+            role: "img",
+            "aria-label": answered.map((a) => (a.outcome === "correct" && a.band ? BAND_INFO[a.band].name : "missed")).join(", "),
+          },
+          ...answered.map((a) =>
+            a.outcome === "correct" && a.band ? animalIcon(a.band, 1) : icon("cross", "var(--ruby-text)"),
+          ),
+        )
+      : null;
+
     const card = h(
       "button",
       { class: `mode${finished ? " mode--done" : ""}`, type: "button" },
@@ -238,6 +274,7 @@ export class App {
         h("span", { class: "mode-name", text: "Daily quiz" }),
         h("span", { class: "mode-desc", text: "Eight questions, one go a day, the same for everyone." }),
         h("span", { class: "mode-status", text: daily.status }),
+        animals,
       ),
       h("span", { class: "mode-cta", text: daily.cta }),
     );
@@ -245,12 +282,43 @@ export class App {
       card.disabled = true;
       daily.go();
     });
+
+    // Each game carries its own instructions behind a little "i".
+    const firstVisit = !readFlag("hb-seen-howto");
+    const info = h(
+      "button",
+      {
+        class: `mode-info${firstVisit && !finished ? " is-new" : ""}`,
+        type: "button",
+        "aria-label": "How to play the daily quiz",
+        "aria-haspopup": "dialog",
+      },
+      h("span", { "aria-hidden": "true", text: "i" }),
+    );
+    info.addEventListener("click", () => {
+      writeFlag("hb-seen-howto");
+      info.classList.remove("is-new");
+      this.openInfo("How to play the daily quiz", this.dailyInfo());
+    });
+
     const modes = h(
       "ul",
       { class: "modes" },
-      h("li", {}, card),
+      h("li", { class: "mode-item" }, card, info),
       h("li", { class: "mode-soon" }, h("span", { text: "More game modes coming soon" })),
     );
+
+    const note = h("p", { class: "cta-note" });
+    window.clearInterval(this.countdownTimer);
+    if (finished) {
+      const update = () => {
+        note.textContent = `Next quiz in ${formatCountdown(Date.parse(today.next_unlock_at), Date.now())}.`;
+      };
+      update();
+      this.countdownTimer = window.setInterval(update, 30_000);
+    } else {
+      note.textContent = firstVisit ? "New here? Tap the i for how to play." : "New questions every day at midnight UK time.";
+    }
 
     this.actionEl.replaceChildren(
       h(
@@ -259,14 +327,36 @@ export class App {
         h("h2", { class: "section-title", id: "menu-title", text: "Choose a game" }),
         modes,
       ),
-      h("p", {
-        class: "cta-note",
-        text: finished
-          ? `Next quiz in ${formatCountdown(Date.parse(today.next_unlock_at), Date.now())}.`
-          : "New questions every day at midnight UK time.",
-      }),
+      note,
     );
+    this.answersEl.replaceChildren();
+  }
 
+  /** A modal sheet for a game's instructions. */
+  private openInfo(title: string, body: HTMLElement): void {
+    const close = h("button", { class: "info-close", type: "button", "aria-label": "Close" }, icon("cross", "currentColor"));
+    const dialog = h(
+      "dialog",
+      { class: "info-dialog", "aria-labelledby": "info-title" },
+      h(
+        "div",
+        { class: "info-body" },
+        h("div", { class: "info-head" }, h("h2", { class: "info-title", id: "info-title", text: title }), close),
+        body,
+      ),
+    );
+    close.addEventListener("click", () => dialog.close());
+    // A tap on the dimmed backdrop (outside the sheet) closes it too.
+    dialog.addEventListener("click", (event) => {
+      if (event.target === dialog) dialog.close();
+    });
+    dialog.addEventListener("close", () => dialog.remove());
+    document.body.append(dialog);
+    dialog.showModal();
+  }
+
+  /** The daily quiz's instructions: the speed ladder, then the steps. */
+  private dailyInfo(): HTMLElement {
     const ladder = h("ol", { class: "ladder", "aria-label": "Speed animals, fastest first" });
     for (const band of BANDS) {
       const info = BAND_INFO[band];
@@ -285,13 +375,12 @@ export class App {
       item.style.setProperty("--band-colour", `var(--band-${band})`);
       ladder.append(item);
     }
-    this.answersEl.replaceChildren(
-      h(
-        "section",
-        { class: "home-section", "aria-labelledby": "ladder-title" },
-        h("h2", { class: "section-title", id: "ladder-title", text: "The speed ladder" }),
-        ladder,
-      ),
+    return h(
+      "div",
+      { class: "info-content" },
+      h("p", { class: "info-lede", text: "Eight questions. The faster you answer, the faster your animal, and the more points you score." }),
+      h("h3", { class: "section-title", text: "The speed ladder" }),
+      ladder,
       this.howToPlay(),
     );
   }
@@ -311,12 +400,7 @@ export class App {
     for (const [title, body] of steps) {
       list.append(h("li", { class: "howto-step" }, h("strong", { text: title }), h("span", { text: body })));
     }
-    return h(
-      "section",
-      { class: "home-section", "aria-labelledby": "howto-title" },
-      h("h2", { class: "section-title", id: "howto-title", text: "How to play" }),
-      list,
-    );
+    return h("section", { class: "info-section" }, h("h3", { class: "section-title", text: "How to play" }), list);
   }
 
   // ------------------------------------------------------------- serving a question
@@ -353,12 +437,30 @@ export class App {
     this.setPhase("reading");
 
     this.renderProgress(question.slot);
+    // Each word rises in turn while the pips fill, so the read beat feels staged, not stalled.
+    const words: Array<Node | string> = [];
+    question.text.split(/(\s+)/).forEach((part, i) => {
+      if (!part) return;
+      if (/^\s+$/.test(part)) {
+        words.push(part);
+        return;
+      }
+      const word = h("span", { class: "q-word", text: part });
+      word.style.setProperty("--w", String(Math.floor(i / 2)));
+      words.push(word);
+    });
     this.questionEl.replaceChildren(
+      h(
+        "p",
+        { class: "question-meta", "aria-hidden": "true" },
+        h("span", { class: "q-count" }, `Question ${question.slot}`, h("span", { class: "q-of", text: ` / ${question.total}` })),
+        question.category ? h("span", { class: "q-cat", text: categoryLabel(question.category) }) : null,
+      ),
       h(
         "h1",
         { class: "question-text", id: "question-text" },
         h("span", { class: "sr-only", text: `Question ${question.slot} of ${question.total}: ` }),
-        question.text,
+        ...words,
       ),
     );
 
@@ -587,6 +689,7 @@ export class App {
     });
     this.renderProgress(null);
     this.renderAnswerResult(reveal, question);
+    const streak = this.streakAt(reveal.slot);
 
     const next = reveal.slot + 1;
     const total = this.today?.total_questions ?? 8;
@@ -598,14 +701,36 @@ export class App {
     this.actionEl.replaceChildren(button);
     button.focus({ preventScroll: true });
 
-    this.renderRevealCard(reveal, () => button.classList.remove("button--quiet"));
+    this.renderRevealCard(reveal, () => button.classList.remove("button--quiet"), streak);
     if (reveal.outcome === "correct" && reveal.band === "hummingbird") {
       // Said under the scene, not over it, so nothing covers the bird itself.
       this.actionEl.prepend(
         h("p", { class: "reveal-rare", text: "Lightning reflexes. The rarest catch in the forest." }),
       );
     }
+    if (reveal.outcome === "correct" && reveal.band) {
+      // The five animals in a row with yours lit, so you see where your speed landed.
+      const ladder = h("div", { class: "reveal-ladder", "aria-hidden": "true" });
+      for (const band of BANDS) {
+        const rung = h("span", { class: `reveal-rung${band === reveal.band ? " is-on" : ""}` }, animalIcon(band, 1));
+        rung.style.setProperty("--band-colour", `var(--band-${band})`);
+        ladder.append(rung);
+      }
+      this.actionEl.prepend(ladder);
+    }
     this.setScore(reveal.total_score, true);
+    if (reveal.points > 0 && !this.stage.still) {
+      const fly = h("span", { class: "score-fly", "aria-hidden": "true", text: `+${formatPoints(reveal.points)}` });
+      this.scoreEl.parentElement?.append(fly);
+      fly.addEventListener("animationend", () => fly.remove());
+    }
+  }
+
+  /** How many answers in a row, ending at this slot, were correct. */
+  private streakAt(slot: number): number {
+    let n = 0;
+    for (let k = slot; k >= 1 && this.slotResults.get(k)?.correct; k--) n++;
+    return n;
   }
 
   private renderAnswerResult(reveal: Reveal, question: Question | null): void {
@@ -656,7 +781,7 @@ export class App {
     this.answersEl.replaceChildren(h("div", { class: "typed-result" }, ...rows));
   }
 
-  private renderRevealCard(reveal: Reveal, onLanded: () => void): void {
+  private renderRevealCard(reveal: Reveal, onLanded: () => void, streak = 0): void {
     const still = this.stage.still;
     const card = h("div", { class: `reveal${reveal.outcome === "correct" ? " reveal--correct" : ""}` });
     if (reveal.band) card.style.setProperty("--band-colour", `var(--band-${reveal.band})`);
@@ -676,7 +801,14 @@ export class App {
         const info = BAND_INFO[reveal.band];
         later.append(
           h("p", { class: "reveal-band", text: `${info.name}!` }),
-          h("p", { class: "reveal-detail" }, "Correct · ", h("strong", { text: `+${formatPoints(reveal.points)}` }), " points"),
+          h(
+            "p",
+            { class: "reveal-detail" },
+            "Correct · ",
+            h("strong", { text: `+${formatPoints(reveal.points)}` }),
+            " points",
+            streak >= 2 ? h("span", { class: "reveal-streak", text: ` · ${streak} in a row` }) : null,
+          ),
         );
         if (reveal.band === "hummingbird") {
           // The rarest catch: it gets its own moment.
@@ -1052,10 +1184,14 @@ export class App {
     if (faster === null || players <= 1) {
       return "Check back later to see how your speed compares with everyone else.";
     }
-    if (faster === 0) {
-      return "Everyone else was quicker on average today. Tomorrow's another chance.";
-    }
     const everyone = results.speed.everyone_avg_ms;
+    if (faster === 0) {
+      // Nobody was slower: either a dead heat with the field, or everyone was quicker.
+      const level = everyone !== null && Math.abs(everyone - results.avg_correct_elapsed_ms) < 100;
+      return level
+        ? "Right on today's average speed. A few tenths quicker tomorrow takes you clear."
+        : "Everyone else was quicker on average today. Tomorrow's another chance.";
+    }
     const gap = everyone !== null && results.avg_correct_elapsed_ms !== null ? everyone - results.avg_correct_elapsed_ms : 0;
     const by = gap >= 100 ? ` You beat today's average by ${formatSeconds(gap)}.` : "";
     return `Faster than ${faster}% of today's players.${by}`;
@@ -1071,6 +1207,7 @@ export class App {
         correct: q.outcome === "correct",
         elapsedMs: q.elapsed_ms,
       })),
+      url: window.location.origin,
     });
     try {
       if (navigator.share && window.matchMedia("(pointer: coarse)").matches) {

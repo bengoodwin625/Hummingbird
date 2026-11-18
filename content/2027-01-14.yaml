@@ -1,0 +1,80 @@
+date: 2027-01-14
+questions:
+  - slot: 1
+    type: choice
+    category: geography
+    text: "In which ocean is the Bermuda Triangle?"
+    options:
+      - { text: "Atlantic Ocean", correct: true }
+      - { text: "Pacific Ocean" }
+      - { text: "Indian Ocean" }
+      - { text: "Arctic Ocean" }
+      - { text: "Southern Ocean" }
+      - { text: "Mediterranean Sea" }
+  - slot: 2
+    type: choice
+    category: science
+    text: "What is the green pigment in plants called?"
+    options:
+      - { text: "Chlorophyll", correct: true }
+      - { text: "Haemoglobin" }
+      - { text: "Melanin" }
+      - { text: "Carotene" }
+      - { text: "Keratin" }
+      - { text: "Chitin" }
+  - slot: 3
+    type: number
+    category: general
+    text: "How many pence are there in a pound?"
+    answer: 100
+    tolerance: 0
+  - slot: 4
+    type: choice
+    category: history
+    text: "Who was Henry VIII's first wife?"
+    options:
+      - { text: "Catherine of Aragon", correct: true }
+      - { text: "Anne Boleyn" }
+      - { text: "Jane Seymour" }
+      - { text: "Anne of Cleves" }
+      - { text: "Catherine Howard" }
+      - { text: "Catherine Parr" }
+  - slot: 5
+    type: text
+    category: geography
+    text: "What is the capital of Chile?"
+    answers:
+      - { canonical: "Santiago", aliases: [] }
+  - slot: 6
+    type: choice
+    category: art
+    text: "In which city is the Louvre museum?"
+    options:
+      - { text: "Paris", correct: true }
+      - { text: "London" }
+      - { text: "Rome" }
+      - { text: "Madrid" }
+      - { text: "Amsterdam" }
+      - { text: "Vienna" }
+  - slot: 7
+    type: choice
+    category: sport
+    text: "Which sport is played with a puck?"
+    options:
+      - { text: "Ice hockey", correct: true }
+      - { text: "Field hockey" }
+      - { text: "Lacrosse" }
+      - { text: "Polo" }
+      - { text: "Curling" }
+      - { text: "Cricket" }
+  - slot: 8
+    type: choice
+    category: food
+    text: "Which nut is used to make Nutella?"
+    options:
+      - { text: "Hazelnut", correct: true }
+      - { text: "Almond" }
+      - { text: "Walnut" }
+      - { text: "Peanut" }
+      - { text: "Cashew" }
+      - { text: "Pistachio" }

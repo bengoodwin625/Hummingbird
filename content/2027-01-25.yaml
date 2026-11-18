@@ -1,0 +1,80 @@
+date: 2027-01-25
+questions:
+  - slot: 1
+    type: choice
+    category: history
+    text: "Burns Night celebrates which Scottish poet?"
+    options:
+      - { text: "Robert Burns", correct: true }
+      - { text: "Walter Scott" }
+      - { text: "Robert Louis Stevenson" }
+      - { text: "James Hogg" }
+      - { text: "Hugh MacDiarmid" }
+      - { text: "Allan Ramsay" }
+  - slot: 2
+    type: choice
+    category: food
+    text: "Which dish is the star of a traditional Burns supper?"
+    options:
+      - { text: "Haggis", correct: true }
+      - { text: "Shepherd's pie" }
+      - { text: "Fish and chips" }
+      - { text: "Roast beef" }
+      - { text: "Toad in the hole" }
+      - { text: "Cornish pasty" }
+  - slot: 3
+    type: number
+    category: geography
+    text: "How many countries make up Great Britain?"
+    answer: 3
+    tolerance: 0
+  - slot: 4
+    type: choice
+    category: music
+    text: "Which instrument is traditionally played to welcome the haggis?"
+    options:
+      - { text: "Bagpipes", correct: true }
+      - { text: "Fiddle" }
+      - { text: "Accordion" }
+      - { text: "Drum" }
+      - { text: "Harp" }
+      - { text: "Flute" }
+  - slot: 5
+    type: text
+    category: geography
+    text: "What is the longest river in Scotland?"
+    answers:
+      - { canonical: "Tay", aliases: ["River Tay"] }
+  - slot: 6
+    type: choice
+    category: nature
+    text: "What is the national flower of Scotland?"
+    options:
+      - { text: "Thistle", correct: true }
+      - { text: "Rose" }
+      - { text: "Daffodil" }
+      - { text: "Shamrock" }
+      - { text: "Heather" }
+      - { text: "Bluebell" }
+  - slot: 7
+    type: choice
+    category: geography
+    text: "Loch Ness is in which country?"
+    options:
+      - { text: "Scotland", correct: true }
+      - { text: "Ireland" }
+      - { text: "Wales" }
+      - { text: "England" }
+      - { text: "Norway" }
+      - { text: "Iceland" }
+  - slot: 8
+    type: choice
+    category: film
+    text: "Which film tells the story of the Scottish hero William Wallace?"
+    options:
+      - { text: "Braveheart", correct: true }
+      - { text: "Rob Roy" }
+      - { text: "Highlander" }
+      - { text: "Outlaw King" }
+      - { text: "Gladiator" }
+      - { text: "Brave" }

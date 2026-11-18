@@ -1,0 +1,80 @@
+date: 2027-01-12
+questions:
+  - slot: 1
+    type: choice
+    category: geography
+    text: "In which country is the city of Kyoto?"
+    options:
+      - { text: "Japan", correct: true }
+      - { text: "China" }
+      - { text: "South Korea" }
+      - { text: "Taiwan" }
+      - { text: "Vietnam" }
+      - { text: "Thailand" }
+  - slot: 2
+    type: choice
+    category: science
+    text: "What is the chemical symbol for carbon?"
+    options:
+      - { text: "C", correct: true }
+      - { text: "Ca" }
+      - { text: "Co" }
+      - { text: "Cr" }
+      - { text: "Cn" }
+      - { text: "K" }
+  - slot: 3
+    type: number
+    category: maths
+    text: "How many degrees are there in a right angle?"
+    answer: 90
+    tolerance: 0
+  - slot: 4
+    type: choice
+    category: history
+    text: "In which modern country did the Aztec civilisation flourish?"
+    options:
+      - { text: "Mexico", correct: true }
+      - { text: "Peru" }
+      - { text: "Guatemala" }
+      - { text: "Brazil" }
+      - { text: "Chile" }
+      - { text: "Colombia" }
+  - slot: 5
+    type: text
+    category: geography
+    text: "What is the capital of Ukraine?"
+    answers:
+      - { canonical: "Kyiv", aliases: ["Kiev"] }
+  - slot: 6
+    type: choice
+    category: literature
+    text: "What is the name of the hobbit hero of 'The Hobbit'?"
+    options:
+      - { text: "Bilbo Baggins", correct: true }
+      - { text: "Frodo Baggins" }
+      - { text: "Samwise Gamgee" }
+      - { text: "Peregrin Took" }
+      - { text: "Gandalf" }
+      - { text: "Thorin Oakenshield" }
+  - slot: 7
+    type: choice
+    category: sport
+    text: "Which country won the 2022 FIFA World Cup?"
+    options:
+      - { text: "Argentina", correct: true }
+      - { text: "France" }
+      - { text: "Brazil" }
+      - { text: "Croatia" }
+      - { text: "Morocco" }
+      - { text: "Germany" }
+  - slot: 8
+    type: choice
+    category: food
+    text: "Which vegetable is used to make sauerkraut?"
+    options:
+      - { text: "Cabbage", correct: true }
+      - { text: "Cucumber" }
+      - { text: "Carrot" }
+      - { text: "Onion" }
+      - { text: "Beetroot" }
+      - { text: "Potato" }
