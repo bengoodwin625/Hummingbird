@@ -174,6 +174,8 @@ class Submission(Base):
     elapsed_ms: Mapped[int | None] = mapped_column(Integer, nullable=True)
     speed_band: Mapped[str | None] = mapped_column(String(12), nullable=True)
     points: Mapped[int] = mapped_column(Integer, default=0)
+    # How Close only: Bullseye bonus points included in `points` (0 for everything else).
+    bonus: Mapped[int] = mapped_column(Integer, default=0, server_default="0")
 
     play: Mapped[Play] = relationship(back_populates="submissions")
 

@@ -79,6 +79,8 @@ class NumbersRevealOut(BaseModel):
     band: str | None
     multiplier: float
     points: int
+    bullseye: bool
+    bonus: int
     elapsed_ms: int | None
     total_score: int
     finished: bool
@@ -129,6 +131,8 @@ class NumbersResultOut(BaseModel):
     band: str | None
     multiplier: float
     points: int
+    bullseye: bool
+    bonus: int
     elapsed_ms: int | None
     outcome: Literal["correct", "wrong", "timeout"]
 
@@ -222,6 +226,7 @@ def _resolve(
     sub.elapsed_ms = score.elapsed_ms
     sub.speed_band = score.band.value if score.band else None
     sub.points = score.points
+    sub.bonus = score.bonus
     if sub.received_at is None and score.outcome != Outcome.TIMEOUT:
         sub.received_at = now
     play.total_score += score.points
@@ -243,6 +248,8 @@ def _reveal(
         band=sub.speed_band,
         multiplier=MULTIPLIERS.get(sub.speed_band or "", 0.0),
         points=sub.points,
+        bullseye=sub.bonus > 0,
+        bonus=sub.bonus,
         elapsed_ms=sub.elapsed_ms,
         total_score=play.total_score,
         finished=play.finished_at is not None,
@@ -434,6 +441,8 @@ def results(session: SessionDep, player: PlayerDep, clock: ClockDep) -> NumbersR
                 band=sub.speed_band,
                 multiplier=MULTIPLIERS.get(sub.speed_band or "", 0.0),
                 points=sub.points,
+                bullseye=sub.bonus > 0,
+                bonus=sub.bonus,
                 elapsed_ms=sub.elapsed_ms,
                 outcome=sub.outcome,  # type: ignore[arg-type]
             )

@@ -75,7 +75,9 @@ def test_leagues_need_a_name_then_share_scores(client: TestClient, clock: FakeCl
     names = [m["name"] for m in joined["members"]]
     assert names == ["Ben", "Sam"]  # Ben has played today, so he's listed first
     ben = joined["members"][0]
-    assert ben["today"] == 8000 and ben["week"] == 8000 and len(ben["today_bands"]) == 8
+    assert ben["today"] == 8000 and len(ben["today_bands"]) == 8
+    # The week and today's total are combined scores: Speed / 8 plus How Close.
+    assert ben["today_total"] == 1000 and ben["week"] == 1000 and ben["today_close"] is None
     assert joined["members"][1]["today"] is None and not joined["owner"]
 
     assert len(client.get("/api/leagues").json()) == 1
@@ -111,3 +113,53 @@ def test_challenge_links_share_the_score_but_never_the_answers(
     assert len(challenge["bands"]) == 8
     assert "Right" not in str(challenge) and "Radiohead" not in str(challenge)
     assert client.get("/api/challenge/NOPE1234").status_code == 404
+
+
+def _play_close(client: TestClient, clock: FakeClock, guess: str = "50") -> None:
+    for slot in range(1, 6):
+        client.post("/api/numbers/ready")
+        clock.advance(4)
+        client.post("/api/numbers/answer", json={"slot": slot, "value": guess})
+
+
+def _with_numbers(session_factory: Any) -> None:
+    from app.content import load_day, parse_day
+
+    from .test_numbers import numbers_day
+
+    with session_factory() as session:
+        load_day(session, parse_day(numbers_day(), "2026-11-17.yaml"))
+        session.commit()
+
+
+def test_leagues_show_both_games_and_a_combined_total(
+    client: TestClient, clock: FakeClock, session_factory: Any
+) -> None:
+    _with_numbers(session_factory)
+    client.put("/api/me/name", json={"display_name": "Ben"})
+    league = client.post("/api/leagues", json={"name": "Office"}).json()
+    _play_all(client, clock, seconds=0.5)  # 8,000
+    _play_close(client, clock)  # only slot 1 is right (50); the rest score by closeness
+    me = client.get("/api/me").json()
+    close = me["today"]["close"]
+    assert me["today"]["speed"] == 8000 and close > 0
+    assert me["today"]["combined"] == 1000 + close
+    assert me["guide"]["bullseyes"] >= 1
+    member = client.get("/api/leagues").json()[0]["members"][0]
+    assert (member["today"], member["today_close"]) == (8000, close)
+    assert member["today_total"] == 1000 + close and member["week"] == 1000 + close
+    assert league["code"]
+
+
+def test_weekly_table_for_each_game(
+    client: TestClient, clock: FakeClock, session_factory: Any
+) -> None:
+    _with_numbers(session_factory)
+    client.put("/api/me/name", json={"display_name": "Ben"})
+    _play_close(client, clock)
+    close = client.get("/api/me").json()["today"]["close"]
+    assert client.get("/api/week").json()["top"] == []  # no speed quiz played yet
+    by_close = client.get("/api/week?game=close").json()
+    assert by_close["game"] == "close" and by_close["top"][0]["total"] == close
+    assert client.get("/api/week?game=combined").json()["top"][0]["total"] == close
+    assert client.get("/api/week?game=nonsense").status_code == 422

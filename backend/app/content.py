@@ -17,7 +17,10 @@ from .checking import normalise
 from .daily import quiz_number
 from .scoring import NUMBERS_QUESTIONS_PER_DAY, QUESTIONS_PER_DAY
 
-QUESTION_TYPES = ("choice", "number", "text")
+QUESTION_TYPES = ("choice", "truefalse", "pair", "order", "number", "text")
+# Types answered by picking options (stored as choice options, answered with an option id).
+PICK_TYPES = ("choice", "truefalse", "pair")
+ORDER_ITEMS = 4
 MIN_CHOICE_QUESTIONS = 5
 OPTIONS_PER_CHOICE = 6
 
@@ -166,6 +169,42 @@ def parse_day(data: Any, source: str) -> DaySpec:
             seen = [normalise(option.text) for option in spec.options]
             if len(set(seen)) != len(seen):
                 problems.append(f"{label} has duplicate options")
+        elif qtype == "truefalse":
+            # A statement that is true or false: stored as two options, True then False.
+            answer = raw.get("answer")
+            if not isinstance(answer, bool):
+                problems.append(f"{label} needs answer: true or false")
+                answer = True
+            spec.options = [OptionSpec("True", answer), OptionSpec("False", not answer)]
+        elif qtype == "pair":
+            # "Which came first?" and the like: exactly two options, one right.
+            raw_options = raw.get("options")
+            if not isinstance(raw_options, list):
+                problems.append(f"{label} has no options list")
+                raw_options = []
+            for raw_option in raw_options:
+                is_mapping = isinstance(raw_option, dict)
+                option_text = _as_str(raw_option.get("text")) if is_mapping else ""
+                if not option_text:
+                    problems.append(f"{label} has an option with no text")
+                    continue
+                correct = bool(raw_option.get("correct", False))
+                spec.options.append(OptionSpec(option_text, correct))
+            if len(raw_options) != 2:
+                problems.append(f"{label} must have exactly 2 options")
+            if sum(1 for option in spec.options if option.correct) != 1:
+                problems.append(f"{label} must have exactly one correct option")
+            if len({normalise(o.text) for o in spec.options}) != len(spec.options):
+                problems.append(f"{label} has duplicate options")
+        elif qtype == "order":
+            # Four items listed in their correct order; the player puts them back in order.
+            raw_items = raw.get("items")
+            items = [_as_str(i) for i in raw_items] if isinstance(raw_items, list) else []
+            if len(items) != ORDER_ITEMS or not all(items):
+                problems.append(f"{label} needs exactly {ORDER_ITEMS} items, in the right order")
+            elif len({normalise(i) for i in items}) != ORDER_ITEMS:
+                problems.append(f"{label} has duplicate items")
+            spec.options = [OptionSpec(i, False) for i in items if i]
         elif qtype == "number":
             number = _as_decimal(raw.get("answer"))
             if number is None:
@@ -342,7 +381,8 @@ def _speed_question(q: QuestionSpec) -> models.Question:
     question = models.Question(
         mode="speed", slot=q.slot, type=q.type, text=q.text, category=q.category
     )
-    if q.type == "choice":
+    if q.type in (*PICK_TYPES, "order"):
+        # For "order", position is each item's correct place (0 = first).
         question.options = [
             models.ChoiceOption(position=i, text=o.text, is_correct=o.correct)
             for i, o in enumerate(q.options)

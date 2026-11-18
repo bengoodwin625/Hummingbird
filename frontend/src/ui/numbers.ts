@@ -25,7 +25,7 @@ import {
   numbersBandForTime,
 } from "./format";
 import { disclosure, scoreCompare, scoreCurve, speedSection, standingText, stat } from "./resultparts";
-import { buildNumbersShareText } from "./share";
+import { buildNumbersShareText, combinedLine } from "./share";
 import { drawShareCard, shareCard } from "./sharecard";
 
 export type ShellPhase = "serving" | "reading" | "answering" | "submitting" | "reveal" | "results";
@@ -49,6 +49,8 @@ export interface Shell {
   setQuizNo(text: string): void;
   backToMenu(): void;
   showError(error: unknown, retry: () => void): void;
+  chime(band: Band | null): void;
+  tick(): void;
 }
 
 const READ_MS = 3000;
@@ -218,6 +220,7 @@ export class NumbersGame {
     s.answersEl.classList.add("is-open");
     const label = s.answersEl.querySelector(".read-label");
     if (label) label.textContent = "Your best guess!";
+    s.tick();
     s.root.classList.add("is-go");
     this.later(900, () => s.root.classList.remove("is-go"));
     if (!s.stage.still && "vibrate" in navigator) navigator.vibrate?.(15);
@@ -339,8 +342,11 @@ export class NumbersGame {
             " points",
           ),
         );
+        if (r.bullseye) later.append(h("p", { class: "reveal-bullseye", text: `Bullseye! +${r.bonus} bonus` }));
         if (r.band === "hummingbird") card.classList.add("reveal--rare");
-        s.announce(`${r.closeness}% close. ${BAND_INFO[r.band].name}, times ${r.multiplier}. ${r.points} points.`);
+        s.announce(
+          `${r.bullseye ? "Bullseye! " : ""}${r.closeness}% close. ${BAND_INFO[r.band].name}, times ${r.multiplier}. ${r.points} points.`,
+        );
       } else {
         later.append(
           h("p", { class: "reveal-band reveal-band--miss", text: "Way off" }),
@@ -360,6 +366,7 @@ export class NumbersGame {
     }
     card.append(later);
     s.overlayEl.replaceChildren(card);
+    s.chime(r.band);
 
     const next = r.slot + 1;
     const button =
@@ -428,7 +435,7 @@ export class NumbersGame {
 
     const average = res.others ? res.average_score : null;
     const top = res.others && res.better_than_percent === 100;
-    const spotOn = res.questions.filter((q) => q.closeness === 100).length;
+    const bullseyes = res.questions.filter((q) => q.bullseye).length;
     const caught = res.questions.filter((q) => q.band === "hummingbird").length;
 
     s.overlayEl.replaceChildren();
@@ -463,7 +470,7 @@ export class NumbersGame {
           "dl",
           { class: "stat-row" },
           stat("Average closeness", `${res.avg_closeness}%`),
-          stat("Spot on", String(spotOn), spotOn > 0),
+          stat("Bullseyes", String(bullseyes), bullseyes > 0),
           stat("Hummingbirds", String(caught), caught > 0),
         ),
       ),
@@ -476,6 +483,7 @@ export class NumbersGame {
         const name = h("span", { class: "band", text: `${BAND_INFO[q.band].name} ${formatMultiplier(q.multiplier)}` });
         name.style.color = `var(--band-${q.band})`;
         chips.append(h("span", { text: `${q.closeness}% close` }), name);
+        if (q.bullseye) chips.append(h("span", { class: "chip-bullseye", text: `Bullseye +${q.bonus}` }));
       } else {
         chips.append(h("span", { class: "missed", text: q.outcome === "timeout" ? "Out of time" : "Way off" }));
       }
@@ -546,7 +554,9 @@ export class NumbersGame {
   }
 
   private async share(res: NumbersResults, status: HTMLElement): Promise<void> {
+    const me = await api.me().catch(() => null);
     const text = buildNumbersShareText({
+      extra: me ? combinedLine(me.today) : [],
       number: res.number,
       totalScore: res.total_score,
       maxScore: res.max_score,
@@ -592,7 +602,8 @@ export class NumbersGame {
     const steps: Array<[string, string]> = [
       ["Five numbers a day", "Each question has a number for an answer, usually one you won't know. Make your best guess."],
       ["Closer scores more", "A spot-on guess scores 100. 10% out scores about 93, double or half about 50, and four times out or more scores nothing."],
-      ["Speed multiplies it", "Your speed animal multiplies your closeness score, up to ×2 for a Hummingbird. So the best score on a question is 200, and 1,000 for the day."],
+      ["Hit a Bullseye", "A guess within 1% of the answer is a Bullseye: it counts as spot on, and earns 20 extra points on top."],
+      ["Speed multiplies it", "Your speed animal multiplies your closeness score, up to ×2 for a Hummingbird. So the best score on a question is 220, and 1,100 for the day."],
       ["More time to think", "You get three seconds to read and 30 seconds to answer. The clock stays hidden until you lock in."],
       ["Type any number", "Commas and decimals are fine, like 1,500 or 9.6. A blank or something that isn't a number doesn't use your go."],
     ];

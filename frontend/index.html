@@ -7,6 +7,12 @@
     <meta name="description" content="Hummingbird: eight hard questions a day. Answer fast and find out which rainforest animal you catch." />
     <title>Hummingbird — the daily speed quiz</title>
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Hummingbird" />
   </head>
   <body>
     <div class="app" id="app">
@@ -16,6 +22,7 @@
           <span class="wordmark">Hummingbird</span>
           <span class="quiz-no" id="quiz-no"></span>
         </a>
+        <button class="sound-toggle" id="sound-toggle" type="button" aria-pressed="false" aria-label="Sound is off. Turn sound on"></button>
         <div class="score" aria-live="off">
           <span class="score-label">Score</span>
           <span class="score-value" id="score">0</span>

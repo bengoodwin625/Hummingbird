@@ -161,3 +161,14 @@ def new_code(length: int) -> str:
 def normalise_code(raw: str) -> str:
     """Codes are matched without case, spaces or dashes."""
     return re.sub(r"[^A-Z0-9]", "", raw.upper())
+
+
+# ---------------------------------------------------------------- combined daily score
+
+SPEED_TO_COMBINED = 8
+"""The Speed quiz (up to 8,000) is divided by this so both games weigh about the same."""
+
+
+def combined_score(speed: int | None, close: int | None) -> int:
+    """One number for the day across both games: Speed / 8 plus How Close."""
+    return round((speed or 0) / SPEED_TO_COMBINED) + (close or 0)

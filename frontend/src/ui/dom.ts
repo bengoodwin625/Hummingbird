@@ -109,7 +109,15 @@ export function setFavicon(): void {
 const SVG_NS = "http://www.w3.org/2000/svg";
 
 /** Small pixel-grid icons, drawn as crisp SVG rectangles. */
-const ICONS: Record<"cross" | "tick" | "share", Array<[number, number, number, number]>> = {
+const SPEAKER: Array<[number, number, number, number]> = [[1, 5, 3, 4], [4, 4, 1, 6], [5, 3, 1, 8], [6, 2, 1, 10]];
+
+const ICONS: Record<"cross" | "tick" | "share" | "soundOn" | "soundOff", Array<[number, number, number, number]>> = {
+  soundOn: [...SPEAKER, [8, 5, 1, 4], [10, 3, 1, 8], [12, 2, 1, 10]],
+  soundOff: [
+    ...SPEAKER,
+    [9, 5, 1, 1], [10, 6, 1, 1], [11, 7, 1, 1], [12, 8, 1, 1],
+    [12, 5, 1, 1], [11, 6, 1, 1], [10, 7, 1, 1], [9, 8, 1, 1],
+  ],
   cross: [
     [1, 1, 2, 2], [3, 3, 2, 2], [5, 5, 2, 2], [7, 7, 2, 2], [9, 9, 2, 2], [11, 11, 2, 2],
     [11, 1, 2, 2], [9, 3, 2, 2], [7, 5, 2, 2], [5, 7, 2, 2], [3, 9, 2, 2], [1, 11, 2, 2],

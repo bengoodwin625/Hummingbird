@@ -11,3 +11,13 @@ import { setFavicon } from "./ui/dom";
 setFavicon();
 const app = new App();
 void app.start();
+
+// Installable as an app. Only in the built site: during development the worker would cache
+// files that are meant to reload.
+if (import.meta.env.PROD && "serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    void navigator.serviceWorker.register("/sw.js").catch(() => {
+      // Without the worker the site still works; it just can't open offline.
+    });
+  });
+}

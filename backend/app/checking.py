@@ -134,3 +134,14 @@ def check_number(raw: str, answer: Decimal, tolerance: Decimal) -> bool | None:
     if value is None:
         return None
     return abs(value - answer) <= tolerance
+
+
+def check_order(submitted: Sequence[int], correct: Sequence[int]) -> bool | None:
+    """An 'order' answer is right only if every item is in exactly the right place.
+
+    Returns None when the submission isn't a full arrangement of the items (a repeat, a
+    missing item or an unknown one), which is invalid input rather than a wrong answer.
+    """
+    if len(submitted) != len(correct) or sorted(submitted) != sorted(correct):
+        return None
+    return list(submitted) == list(correct)

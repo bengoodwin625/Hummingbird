@@ -4,9 +4,18 @@
  * Each builder returns an element for the App's sheet; actions call the API and then ask the
  * sheet to redraw itself.
  */
-import { ApiError, api, rememberPlayer, type Challenge, type League, type Me, type Week } from "../api";
+import {
+  ApiError,
+  api,
+  rememberPlayer,
+  type Challenge,
+  type League,
+  type Me,
+  type Week,
+  type WeekGame,
+} from "../api";
 import { BANDS, type Band } from "../art/sprites";
-import { animalIcon, animalSilhouette, goldenHummingbird, h, icon } from "./dom";
+import { animalIcon, animalSilhouette, goldenHummingbird, h, icon, targetCanvas } from "./dom";
 import { BAND_INFO, formatPoints } from "./format";
 
 export type Redraw = () => Promise<void>;
@@ -115,7 +124,8 @@ export function streakSheet(me: Me): HTMLElement {
 
 export function guideSheet(me: Me): HTMLElement {
   const g = me.guide;
-  const found = BANDS.filter((b) => (g.counts[b] ?? 0) > 0).length + (g.golden > 0 ? 1 : 0);
+  const found =
+    BANDS.filter((b) => (g.counts[b] ?? 0) > 0).length + (g.golden > 0 ? 1 : 0) + (g.bullseyes > 0 ? 1 : 0);
   const cells = BANDS.map((band) => {
     const n = g.counts[band] ?? 0;
     return h(
@@ -127,6 +137,16 @@ export function guideSheet(me: Me): HTMLElement {
     );
   });
   cells.push(
+    h(
+      "li",
+      { class: `guide-cell guide-cell--bullseye${g.bullseyes ? "" : " guide-cell--missing"}` },
+      h("span", { class: "guide-art" }, targetCanvas(2)),
+      h("span", { class: "guide-name", text: g.bullseyes ? "Bullseyes" : "No Bullseye yet" }),
+      h("span", {
+        class: "guide-count",
+        text: g.bullseyes ? `Hit ${formatPoints(g.bullseyes)}×` : "How Close: within 1%",
+      }),
+    ),
     h(
       "li",
       { class: `guide-cell guide-cell--golden${g.golden ? "" : " guide-cell--missing"}` },
@@ -141,7 +161,7 @@ export function guideSheet(me: Me): HTMLElement {
   return h(
     "div",
     { class: "sheet-content" },
-    h("p", { class: "sheet-lede", text: `${found} of 6 found` }),
+    h("p", { class: "sheet-lede", text: `${found} of 7 found` }),
     h("ul", { class: "guide-grid" }, ...cells),
     h("p", {
       class: "sheet-note",
@@ -154,7 +174,14 @@ export function guideSheet(me: Me): HTMLElement {
 
 // ---------------------------------------------------------------- weekly league
 
-export function weekSheet(week: Week): HTMLElement {
+const WEEK_GAMES: Array<[WeekGame, string]> = [
+  ["speed", "Speed"],
+  ["close", "How Close"],
+  ["combined", "Combined"],
+];
+
+/** The weekly table, with tabs to switch between the Speed quiz, How Close and both combined. */
+export function weekSheet(week: Week, onGame?: (game: WeekGame) => void): HTMLElement {
   const row = (r: Week["top"][number]) =>
     h(
       "tr",
@@ -173,10 +200,30 @@ export function weekSheet(week: Week): HTMLElement {
     month: "long",
     timeZone: "UTC",
   });
+  const tabs = h("div", { class: "week-tabs", role: "tablist", "aria-label": "Which game" });
+  for (const [game, label] of WEEK_GAMES) {
+    const tab = h("button", {
+      class: `week-tab${game === week.game ? " is-on" : ""}`,
+      type: "button",
+      role: "tab",
+      "aria-selected": game === week.game ? "true" : "false",
+      text: label,
+    });
+    tab.addEventListener("click", () => {
+      if (game !== week.game) onGame?.(game);
+    });
+    tabs.append(tab);
+  }
+  const how =
+    week.game === "combined"
+      ? "Combined is your Speed score divided by 8, plus your How Close score, for each day."
+      : null;
   return h(
     "div",
     { class: "sheet-content" },
+    onGame ? tabs : null,
     h("p", { class: "sheet-lede", text: `Week starting Monday ${monday}` }),
+    how ? h("p", { class: "sheet-note", text: how }) : null,
     week.top.length
       ? h("table", { class: "week-table" }, body)
       : h("p", { class: "sheet-note", text: "Nobody has finished a quiz this week yet. Be the first." }),
@@ -293,19 +340,22 @@ function leagueCard(league: League, redraw: Redraw): HTMLElement {
         status.textContent = errorText(error);
       });
   });
+  const cell = (value: number | null) => (value === null ? "–" : formatPoints(value));
   const rows = league.members.map((m, i) =>
     h(
       "tr",
       { class: m.you ? "is-you" : "" },
-      h("td", { class: "wk-rank", text: m.today === null ? "–" : `${i + 1}` }),
+      h("td", { class: "wk-rank", text: m.today_total === null ? "–" : `${i + 1}` }),
       h(
         "td",
         { class: "wk-name" },
         h("span", { text: m.you ? `${m.name} (you)` : m.name }),
         m.today_bands ? bandRow(m.today_bands) : null,
+        h("span", { class: "wk-week", text: `Week ${formatPoints(m.week)}` }),
       ),
-      h("td", { class: "wk-total", text: m.today === null ? "Not played" : formatPoints(m.today) }),
-      h("td", { class: "wk-days", text: formatPoints(m.week) }),
+      h("td", { class: "wk-days", text: cell(m.today) }),
+      h("td", { class: "wk-days", text: cell(m.today_close) }),
+      h("td", { class: "wk-total", text: cell(m.today_total) }),
     ),
   );
   return h(
@@ -328,12 +378,17 @@ function leagueCard(league: League, redraw: Redraw): HTMLElement {
           {},
           h("th", { text: "" }),
           h("th", { text: "Player" }),
-          h("th", { text: "Today" }),
-          h("th", { text: "Week" }),
+          h("th", { class: "wk-num", text: "Speed" }),
+          h("th", { class: "wk-num", text: "Close" }),
+          h("th", { class: "wk-num", text: "Total" }),
         ),
       ),
       h("tbody", {}, ...rows),
     ),
+    h("p", {
+      class: "sheet-note",
+      text: "Total is today's Speed score divided by 8 plus How Close. Week adds your best five daily totals.",
+    }),
     h("div", { class: "league-actions" }, invite, leave),
     status,
   );

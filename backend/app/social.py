@@ -9,11 +9,11 @@ from __future__ import annotations
 from collections import defaultdict
 from collections.abc import Callable
 from datetime import date, datetime
-from typing import Any
+from typing import Any, Literal
 
 from fastapi import APIRouter, Request, Response
 from pydantic import BaseModel
-from sqlalchemy import select
+from sqlalchemy import func, select
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.orm import Session
 
@@ -33,6 +33,7 @@ from .progress import (
     anon_name,
     clean_display_name,
     clean_league_name,
+    combined_score,
     field_guide,
     new_code,
     normalise_code,
@@ -65,6 +66,16 @@ class GuideOut(BaseModel):
     counts: dict[str, int]
     golden: int
     perfect_days: int
+    bullseyes: int
+    """How Close guesses within 1% of the answer."""
+
+
+class TodayScoresOut(BaseModel):
+    """Today's finished scores in each game, and the combined total (Speed / 8 + How Close)."""
+
+    speed: int | None
+    close: int | None
+    combined: int | None
 
 
 class MeOut(BaseModel):
@@ -72,6 +83,7 @@ class MeOut(BaseModel):
     streak: StreakOut
     guide: GuideOut
     days_played: int
+    today: TodayScoresOut
 
 
 class NameIn(BaseModel):
@@ -103,7 +115,11 @@ class WeekRowOut(BaseModel):
     you: bool
 
 
+Game = Literal["speed", "close", "combined"]
+
+
 class WeekOut(BaseModel):
+    game: Game
     week_start: date
     best_days: int
     top: list[WeekRowOut]
@@ -122,8 +138,14 @@ class MemberOut(BaseModel):
     name: str
     you: bool
     today: int | None
+    """Today's Speed quiz score, once finished."""
     today_bands: list[str | None] | None
+    today_close: int | None
+    """Today's How Close score, once finished."""
+    today_total: int | None
+    """Today's combined score, once either game is finished."""
     week: int
+    """The week's combined score: the best five daily combined totals."""
 
 
 class LeagueOut(BaseModel):
@@ -170,6 +192,35 @@ def _finished_plays(
     return list(session.scalars(query))
 
 
+def _daily_scores(
+    session: Session, player_ids: list[str] | None, since: date, until: date
+) -> dict[tuple[str, date], dict[str, int]]:
+    """Finished scores by (player, day): {"speed": n, "numbers": n} for whichever were played.
+    `player_ids=None` means everyone."""
+    query = select(models.Play).where(
+        models.Play.finished_at.is_not(None), models.Play.date >= since, models.Play.date <= until
+    )
+    if player_ids is not None:
+        if not player_ids:
+            return {}
+        query = query.where(models.Play.player_id.in_(player_ids))
+    out: dict[tuple[str, date], dict[str, int]] = defaultdict(dict)
+    for play in session.scalars(query):
+        out[(play.player_id, play.date)][play.mode] = play.total_score
+    return out
+
+
+def _day_value(scores: dict[str, int], game: Game) -> int | None:
+    """One day's score in the chosen game (None if that game wasn't finished)."""
+    if game == "speed":
+        return scores.get("speed")
+    if game == "close":
+        return scores.get("numbers")
+    if "speed" not in scores and "numbers" not in scores:
+        return None
+    return combined_score(scores.get("speed"), scores.get("numbers"))
+
+
 def _bands(play: models.Play) -> list[str | None]:
     return [
         s.speed_band if s.correct else None for s in sorted(play.submissions, key=lambda s: s.slot)
@@ -198,31 +249,36 @@ def _league_out(
         p.id: p for p in session.scalars(select(models.Player).where(models.Player.id.in_(ids)))
     }
     monday = week_start(today)
-    plays = _finished_plays(session, ids, since=monday)
-    week: dict[str, list[int]] = defaultdict(list)
-    today_play: dict[str, models.Play] = {}
-    for play in plays:
-        if play.date > today:
-            continue
-        week[play.player_id].append(play.total_score)
-        if play.date == today:
-            today_play[play.player_id] = play
+    daily = _daily_scores(session, ids, monday, today)
+    speed_today = {
+        p.player_id: p for p in _finished_plays(session, ids, since=today) if p.date == today
+    }
     members = []
     for pid in ids:
         player = players.get(pid)
         if player is None:
             continue
-        tp = today_play.get(pid)
+        sp = speed_today.get(pid)
+        scores = daily.get((pid, today), {})
+        week_values = [
+            v
+            for (who, _day), day_scores in daily.items()
+            if who == pid and (v := _day_value(day_scores, "combined")) is not None
+        ]
         members.append(
             MemberOut(
                 name=_name(player),
                 you=pid == me.id,
-                today=tp.total_score if tp else None,
-                today_bands=_bands(tp) if tp else None,
-                week=weekly_total(week[pid]),
+                today=sp.total_score if sp else None,
+                today_bands=_bands(sp) if sp else None,
+                today_close=scores.get("numbers"),
+                today_total=_day_value(scores, "combined"),
+                week=weekly_total(week_values),
             )
         )
-    members.sort(key=lambda m: (m.today is None, -(m.today or 0), -m.week, m.name.lower()))
+    members.sort(
+        key=lambda m: (m.today_total is None, -(m.today_total or 0), -m.week, m.name.lower())
+    )
     return LeagueOut(
         id=league.id,
         code=league.code,
@@ -249,6 +305,18 @@ def me(session: SessionDep, player: PlayerDep, clock: ClockDep) -> MeOut:
         [Catch(sub.speed_band, sub.elapsed_ms) for sub in p.submissions if sub.correct]
         for p in plays
     )
+    bullseyes = session.scalar(
+        select(func.count())
+        .select_from(models.Submission)
+        .join(models.Play)
+        .where(
+            models.Play.player_id == player.id,
+            models.Play.mode == "numbers",
+            models.Submission.bonus > 0,
+        )
+    )
+    today = _today(clock)
+    today_scores = _daily_scores(session, [player.id], today, today).get((player.id, today), {})
     return MeOut(
         display_name=player.display_name,
         streak=StreakOut(
@@ -257,7 +325,17 @@ def me(session: SessionDep, player: PlayerDep, clock: ClockDep) -> MeOut:
             hummingbird_current=s.hummingbird_current,
             hummingbird_best=s.hummingbird_best,
         ),
-        guide=GuideOut(counts=guide.counts, golden=guide.golden, perfect_days=guide.perfect_days),
+        guide=GuideOut(
+            counts=guide.counts,
+            golden=guide.golden,
+            perfect_days=guide.perfect_days,
+            bullseyes=bullseyes or 0,
+        ),
+        today=TodayScoresOut(
+            speed=today_scores.get("speed"),
+            close=today_scores.get("numbers"),
+            combined=_day_value(today_scores, "combined"),
+        ),
         days_played=len(set(played)),
     )
 
@@ -315,23 +393,15 @@ def use_sync_code(
 
 
 @router.get("/week", response_model=WeekOut)
-def week(session: SessionDep, player: PlayerDep, clock: ClockDep) -> WeekOut:
+def week(session: SessionDep, player: PlayerDep, clock: ClockDep, game: Game = "speed") -> WeekOut:
+    """The week's table for one game, or both combined: everyone's best five days."""
     today = _today(clock)
     monday = week_start(today)
-    plays = [
-        p
-        for p in session.scalars(
-            select(models.Play).where(
-                models.Play.finished_at.is_not(None),
-                models.Play.mode == "speed",
-                models.Play.date >= monday,
-                models.Play.date <= today,
-            )
-        )
-    ]
     scores: dict[str, list[int]] = defaultdict(list)
-    for play in plays:
-        scores[play.player_id].append(play.total_score)
+    for (pid, _day), day_scores in _daily_scores(session, None, monday, today).items():
+        value = _day_value(day_scores, game)
+        if value is not None:
+            scores[pid].append(value)
     totals = sorted(
         ((weekly_total(v), len(v), pid) for pid, v in scores.items()), key=lambda t: (-t[0], -t[1])
     )
@@ -355,7 +425,7 @@ def week(session: SessionDep, player: PlayerDep, clock: ClockDep) -> WeekOut:
             you = row
         if index <= WEEKLY_TOP:
             rows.append(row)
-    return WeekOut(week_start=monday, best_days=5, top=rows, you=you)
+    return WeekOut(game=game, week_start=monday, best_days=5, top=rows, you=you)
 
 
 # ---------------------------------------------------------------- private leagues

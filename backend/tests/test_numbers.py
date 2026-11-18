@@ -69,28 +69,31 @@ def test_full_numbers_play(numbers_client: TestClient, clock: FakeClock) -> None
     client = numbers_client
     today = client.get("/api/numbers/today").json()
     assert today["status"] == "not_started" and today["total_questions"] == 5
-    assert today["max_score"] == 1000
+    assert today["max_score"] == 1100
 
-    exact = _guess(client, clock, 1, "50", 2.0)  # Hummingbird: 100 x 2
-    assert (exact["closeness"], exact["band"], exact["points"]) == (100, "hummingbird", 200)
+    exact = _guess(client, clock, 1, "50", 2.0)  # Hummingbird: 100 x 2, plus the Bullseye
+    assert (exact["closeness"], exact["band"], exact["points"]) == (100, "hummingbird", 220)
+    assert exact["bullseye"] and exact["bonus"] == 20
     assert exact["answer"] == "50"
     close = _guess(client, clock, 2, "1,650", 5.0)  # 10% high, Jaguar
     assert (close["closeness"], close["band"], close["points"]) == (93, "jaguar", 158)
     miss = _guess(client, clock, 3, "1000", 1.0)  # way off: nothing
     assert (miss["outcome"], miss["band"], miss["points"]) == ("wrong", None, 0)
-    slow = _guess(client, clock, 4, "365", 25.0)  # Sloth: 100 x 1
-    assert (slow["band"], slow["points"]) == ("sloth", 100)
+    slow = _guess(client, clock, 4, "365", 25.0)  # Sloth: 100 x 1, plus the Bullseye
+    assert (slow["band"], slow["points"]) == ("sloth", 120)
     loose = _guess(client, clock, 5, "44", 9.0)  # double, but a spread of 1.2: 75 x 1.45
     assert (loose["closeness"], loose["band"], loose["points"]) == (75, "toucan", 109)
-    assert loose["finished"] and loose["total_score"] == 200 + 158 + 0 + 100 + 109
+    assert not loose["bullseye"]
+    assert loose["finished"] and loose["total_score"] == 220 + 158 + 0 + 120 + 109
 
     results = client.get("/api/numbers/results").json()
-    assert results["total_score"] == 567 and len(results["questions"]) == 5
+    assert results["total_score"] == 607 and len(results["questions"]) == 5
+    assert [q["bullseye"] for q in results["questions"]] == [True, False, False, True, False]
     assert results["avg_closeness"] == round((100 + 93 + 0 + 100 + 75) / 5)
     assert results["better_than_percent"] is None
     assert results["others"] is False and results["everyone_avg_ms"] is None
-    assert len(results["distribution"]) == 20 and sum(results["distribution"]) == 1
-    assert results["distribution"][567 // 50] == 1
+    assert len(results["distribution"]) == 22 and sum(results["distribution"]) == 1
+    assert results["distribution"][607 // 50] == 1
     # Average time over the four answered guesses: 2, 5, 1, 25 and 9 s minus 0.3 s each.
     assert results["avg_elapsed_ms"] == round((1_700 + 4_700 + 700 + 24_700 + 8_700) / 5)
     # The speed quiz is untouched by a Numbers play.

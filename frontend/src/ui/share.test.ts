@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { buildNumbersShareText, buildShareText } from "./share";
+import { buildNumbersShareText, buildShareText, combinedLine } from "./share";
 
 describe("buildShareText", () => {
   it("builds the animal row, score and average without answers", () => {
@@ -62,5 +62,25 @@ describe("buildNumbersShareText", () => {
     expect(text).toBe(
       "Hummingbird How Close #2 — 567/1,000\n🐦🐆❌🦥🦜\n74% close on average\nhttps://example.test",
     );
+  });
+});
+
+describe("combinedLine", () => {
+  it("appears only once both games are done", () => {
+    expect(combinedLine({ speed: 4000, close: 600, combined: 1100 })).toEqual(["Both games today: 1,100"]);
+    expect(combinedLine({ speed: 4000, close: null, combined: 500 })).toEqual([]);
+  });
+
+  it("sits before the link in the share text", () => {
+    const text = buildNumbersShareText({
+      number: 2,
+      totalScore: 600,
+      maxScore: 1100,
+      avgCloseness: 70,
+      answers: [{ band: "jaguar" }],
+      extra: ["Both games today: 1,100"],
+      url: "https://example.test",
+    });
+    expect(text.split("\n").slice(-2)).toEqual(["Both games today: 1,100", "https://example.test"]);
   });
 });

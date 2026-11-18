@@ -9,6 +9,8 @@ import {
   type Results,
   type Reveal,
   type Today,
+  type WeekGame,
+  PICK_TYPES,
 } from "../api";
 import { BANDS, type Band } from "../art/sprites";
 import { Stage } from "../scene/stage";
@@ -26,7 +28,8 @@ import {
 } from "./format";
 import { NumbersGame, type Shell } from "./numbers";
 import { scoreCompare, scoreCurve, speedSection, standingText, stat } from "./resultparts";
-import { buildShareText } from "./share";
+import { buildShareText, combinedLine } from "./share";
+import { Sound } from "./sound";
 import { drawShareCard, shareCard } from "./sharecard";
 import {
   challengeBanner,
@@ -73,6 +76,19 @@ function writeSession(key: string, value: string): void {
 
 const CHALLENGE_KEY = "hb-challenge";
 
+/** A small label for the kinds of question beyond plain multiple choice and typing. */
+const TYPE_LABELS: Partial<Record<Question["type"], string>> = {
+  truefalse: "True or false",
+  pair: "Pick one of two",
+  order: "Put in order",
+};
+
+/** Chrome and Edge's "install this site" prompt (not yet in TypeScript's DOM types). */
+interface InstallPromptEvent extends Event {
+  prompt(): Promise<void>;
+  userChoice: Promise<{ outcome: "accepted" | "dismissed" }>;
+}
+
 type Phase = "loading" | "intro" | "serving" | "reading" | "answering" | "submitting" | "reveal" | "results" | "closed";
 
 /** Ask the server to resolve a timeout a little after its limit (15 s + 1 s grace). */
@@ -106,13 +122,38 @@ export class App {
   private pendingLeague = "";
   /** Refreshes the menu's progress tiles after a sheet changes something. */
   private refreshTiles: (() => void) | null = null;
+  /** Redraws the menu's install row when the browser says installing is (no longer) possible. */
+  private refreshInstall: (() => void) | null = null;
   /** The How Close quiz: same page, same style, its own five questions. */
   private readonly numbers: NumbersGame;
   private numbersToday: NumbersToday | null = null;
+  /** Optional sound, off by default (the header's speaker button). */
+  private readonly sound: Sound;
+  /** The browser's install prompt, kept for the menu's "Install the app" button. */
+  private installPrompt: InstallPromptEvent | null = null;
 
   constructor() {
     // One forest for the whole page: its ground lines up with the stage band.
     this.stage = new Stage(byId("stage"), this.root, [this.progressEl, byId("question")]);
+    const soundButton = byId<HTMLButtonElement>("sound-toggle");
+    const paintSound = (on: boolean) => {
+      soundButton.replaceChildren(icon(on ? "soundOn" : "soundOff", "currentColor"));
+      soundButton.setAttribute("aria-pressed", on ? "true" : "false");
+      soundButton.setAttribute("aria-label", on ? "Sound is on. Turn sound off" : "Sound is off. Turn sound on");
+      soundButton.classList.toggle("is-on", on);
+    };
+    this.sound = new Sound(paintSound);
+    paintSound(this.sound.enabled);
+    soundButton.addEventListener("click", () => this.sound.toggle());
+    window.addEventListener("beforeinstallprompt", (event) => {
+      event.preventDefault();
+      this.installPrompt = event as InstallPromptEvent;
+      if (this.phase === "intro") this.refreshInstall?.();
+    });
+    window.addEventListener("appinstalled", () => {
+      this.installPrompt = null;
+      this.refreshInstall?.();
+    });
     this.numbers = new NumbersGame(this.shell());
     byId("brand-mark").append(logoIcon(1));
     // The logo goes back to the menu, except while a question is live.
@@ -152,6 +193,8 @@ export class App {
         void this.start();
       },
       showError: (error, retry) => this.renderError(error, retry),
+      chime: (band) => this.sound.chime(band),
+      tick: () => this.sound.tick(),
     };
   }
 
@@ -458,14 +501,22 @@ export class App {
     };
     const streak = tile("Streak", () => this.openSheet("Your streak", async () => streakSheet(await api.me())));
     const guide = tile("Field guide", () => this.openSheet("Field guide", async () => guideSheet(await api.me())));
-    const week = tile("This week", () => this.openSheet("This week", async () => weekSheet(await api.week())));
+    let weekGame: WeekGame = "combined";
+    const week = tile("This week", () =>
+      this.openSheet("This week", async (redraw) =>
+        weekSheet(await api.week(weekGame), (game) => {
+          weekGame = game;
+          void redraw();
+        }),
+      ),
+    );
     const leagues = tile("Leagues", () =>
       this.openSheet("Leagues", async (redraw) => leaguesSheet(await api.leagues(), await api.me(), redraw)),
     );
     const you = tile("You", () => this.openSheet("You", async (redraw) => profileSheet(await api.me(), redraw)));
 
     const fill = () => {
-      void Promise.all([api.me(), api.week(), api.leagues()])
+      void Promise.all([api.me(), api.week("combined"), api.leagues()])
         .then(([me, wk, mine]) => {
           const s = me.streak;
           streak.value.textContent = `${s.current} ${s.current === 1 ? "day" : "days"}`;
@@ -491,7 +542,45 @@ export class App {
       { class: "tiles-section", "aria-labelledby": "tiles-title" },
       h("h2", { class: "section-title", id: "tiles-title", text: "Your forest" }),
       h("div", { class: "tiles" }, streak.button, guide.button, week.button, leagues.button, you.button),
+      this.installRow(),
     );
+  }
+
+  /**
+   * "Install the app": a button where the browser offers it (Android, Chrome, Edge), a short
+   * how-to on iPhone and iPad (Safari has no prompt), and nothing once it's installed.
+   */
+  private installRow(): HTMLElement {
+    const row = h("div", { class: "install-row" });
+    const draw = () => {
+      const standalone =
+        window.matchMedia("(display-mode: standalone)").matches ||
+        (navigator as Navigator & { standalone?: boolean }).standalone === true;
+      const ios = /iphone|ipad|ipod/i.test(navigator.userAgent);
+      if (standalone) {
+        row.replaceChildren();
+      } else if (this.installPrompt) {
+        const button = h("button", { class: "sheet-button sheet-button--quiet install-button", type: "button" }, logoIcon(1), "Install the app");
+        button.addEventListener("click", () => {
+          const prompt = this.installPrompt;
+          if (!prompt) return;
+          void prompt.prompt().then(() => prompt.userChoice).then(() => {
+            this.installPrompt = null;
+            draw();
+          });
+        });
+        row.replaceChildren(button);
+      } else if (ios) {
+        row.replaceChildren(
+          h("p", { class: "install-note", text: "Play it like an app: tap Share, then Add to Home Screen." }),
+        );
+      } else {
+        row.replaceChildren();
+      }
+    };
+    draw();
+    this.refreshInstall = draw;
+    return row;
   }
 
   /** A sheet whose content loads from the server and can redraw itself after an action. */
@@ -705,6 +794,7 @@ export class App {
         { class: "question-meta", "aria-hidden": "true" },
         h("span", { class: "q-count" }, `Question ${question.slot}`, h("span", { class: "q-of", text: ` / ${question.total}` })),
         question.category ? h("span", { class: "q-cat", text: categoryLabel(question.category) }) : null,
+        TYPE_LABELS[question.type] ? h("span", { class: "q-kind", text: TYPE_LABELS[question.type] }) : null,
       ),
       h(
         "h1",
@@ -715,7 +805,8 @@ export class App {
     );
 
     this.answersEl.classList.remove("is-open");
-    if (question.type === "choice") this.renderChoices(question);
+    if (PICK_TYPES.includes(question.type)) this.renderChoices(question);
+    else if (question.type === "order") this.renderOrder(question);
     else this.renderTyped(question);
     this.answersEl.prepend(this.readCue(question.read_remaining_ms));
 
@@ -741,7 +832,8 @@ export class App {
   }
 
   private renderChoices(question: Question): void {
-    const grid = h("div", { class: "choices", role: "group", "aria-label": "Answers" });
+    const two = question.options.length === 2;
+    const grid = h("div", { class: `choices${two ? " choices--two" : ""}`, role: "group", "aria-label": "Answers" });
     question.options.forEach((option, i) => {
       const button = h(
         "button",
@@ -760,6 +852,68 @@ export class App {
       grid.append(button);
     });
     this.answersEl.replaceChildren(grid);
+  }
+
+  /**
+   * "Put in order": tap the four in order, first to last. Each tap stamps its place; Undo
+   * takes the last one back. The fourth tap locks the answer in.
+   */
+  private renderOrder(question: Question): void {
+    const picked: number[] = [];
+    const grid = h("div", { class: "choices choices--order", role: "group", "aria-label": "Tap them in order" });
+    const undo = h("button", { class: "order-undo", type: "button", disabled: true, text: "Undo" });
+    const buttons = question.options.map((option, i) => {
+      const button = h(
+        "button",
+        {
+          class: "choice choice--locked order-item",
+          type: "button",
+          disabled: true,
+          "data-option": option.id,
+          "aria-label": "Answer opening",
+          style: `--i: ${i}`,
+        },
+        h("span", { class: "order-rank", "aria-hidden": "true" }),
+        h("span", { class: "choice-text", text: option.text }),
+      );
+      button.addEventListener("click", () => {
+        if (this.phase !== "answering" || picked.includes(option.id)) return;
+        picked.push(option.id);
+        refresh();
+        if (picked.length === question.options.length) void this.answerOrder([...picked]);
+      });
+      grid.append(button);
+      return button;
+    });
+    const refresh = () => {
+      for (const button of buttons) {
+        const at = picked.indexOf(Number(button.dataset.option));
+        const rank = button.querySelector(".order-rank");
+        if (rank) rank.textContent = at >= 0 ? String(at + 1) : "";
+        button.classList.toggle("is-picked", at >= 0);
+        button.setAttribute("aria-pressed", at >= 0 ? "true" : "false");
+      }
+      undo.disabled = picked.length === 0;
+    };
+    undo.addEventListener("click", () => {
+      if (this.phase !== "answering") return;
+      picked.pop();
+      refresh();
+    });
+    this.answersEl.replaceChildren(
+      grid,
+      h("div", { class: "order-foot" }, h("p", { class: "order-hint", text: "Tap them in order, first to last." }), undo),
+    );
+  }
+
+  private async answerOrder(order: number[]): Promise<void> {
+    const question = this.question;
+    if (this.phase !== "answering" || !question) return;
+    this.setPhase("submitting");
+    this.answersEl.querySelectorAll<HTMLButtonElement>("button").forEach((button) => {
+      button.disabled = true;
+    });
+    await this.submit(question, () => api.answerOrder(question.slot, order));
   }
 
   private renderTyped(question: Question): void {
@@ -797,10 +951,11 @@ export class App {
     // The GO moment: the cue turns gold, the stage frame flashes, and phones give a tick.
     const label = this.answersEl.querySelector(".read-label");
     if (label) label.textContent = "Answer now!";
+    this.sound.tick();
     this.root.classList.add("is-go");
     this.later(900, () => this.root.classList.remove("is-go"));
     if (!this.stage.still && "vibrate" in navigator) navigator.vibrate?.(15);
-    if (question.type === "choice") {
+    if (question.type !== "number" && question.type !== "text") {
       this.answersEl.querySelectorAll<HTMLButtonElement>(".choice").forEach((button) => {
         button.disabled = false;
         button.classList.remove("choice--locked");
@@ -826,7 +981,7 @@ export class App {
    * typed into its guess box must stay a guess.
    */
   private onKey = (event: KeyboardEvent): void => {
-    if (this.phase !== "answering" || this.question?.type !== "choice") return;
+    if (this.phase !== "answering" || !this.question || !PICK_TYPES.includes(this.question.type)) return;
     if (!this.answersEl.querySelector(".choices")) return;
     const target = event.target;
     const typing =
@@ -964,6 +1119,7 @@ export class App {
     button.focus({ preventScroll: true });
 
     this.renderRevealCard(reveal, () => button.classList.remove("button--quiet"), streak);
+    this.sound.chime(reveal.outcome === "correct" ? reveal.band : null);
     if (reveal.outcome === "correct" && reveal.band === "hummingbird") {
       // Said under the scene, not over it, so nothing covers the bird itself.
       this.actionEl.prepend(
@@ -996,7 +1152,7 @@ export class App {
   }
 
   private renderAnswerResult(reveal: Reveal, question: Question | null): void {
-    if (question?.type === "choice" || reveal.correct_option_id !== null) {
+    if ((question && PICK_TYPES.includes(question.type)) || reveal.correct_option_id !== null) {
       const buttons = this.answersEl.querySelectorAll<HTMLButtonElement>(".choice");
       if (buttons.length) {
         buttons.forEach((button) => {
@@ -1324,7 +1480,9 @@ export class App {
   }
 
   private async share(results: Results, status: HTMLElement): Promise<void> {
+    const me = await api.me().catch(() => null);
     const text = buildShareText({
+      extra: me ? combinedLine(me.today) : [],
       number: results.number,
       totalScore: results.total_score,
       totalQuestions: results.questions.length,

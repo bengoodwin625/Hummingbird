@@ -8,6 +8,7 @@ from app.progress import (
     anon_name,
     clean_display_name,
     clean_league_name,
+    combined_score,
     field_guide,
     new_code,
     normalise_code,
@@ -84,3 +85,10 @@ def test_codes_avoid_lookalike_characters_and_normalise() -> None:
     code = new_code(10)
     assert len(code) == 10 and not set(code) & set("01IO")
     assert normalise_code(" ab3d-e f ") == "AB3DEF"
+
+
+def test_combined_score_weighs_both_games_about_equally() -> None:
+    assert combined_score(8_000, 1_100) == 2_100
+    assert combined_score(4_000, None) == 500
+    assert combined_score(None, 600) == 600
+    assert combined_score(None, None) == 0

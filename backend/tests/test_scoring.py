@@ -151,13 +151,14 @@ def test_numbers_score_multiplies_closeness_by_the_animal() -> None:
     from app.scoring import Band, Outcome, score_numbers
 
     fast = score_numbers(50, 50, 4_000)
-    assert (fast.band, fast.multiplier, fast.points) == (Band.HUMMINGBIRD, 2.0, 200)
+    assert (fast.band, fast.multiplier, fast.points) == (Band.HUMMINGBIRD, 2.0, 220)
+    assert fast.bullseye and fast.bonus == 20
     jaguar = score_numbers(55, 50, 4_001)
     assert (jaguar.band, jaguar.points) == (Band.JAGUAR, round(93 * 1.7))
     assert score_numbers(50, 50, 11_000).band == Band.TOUCAN
     assert score_numbers(50, 50, 17_000).band == Band.TREE_FROG
     slow = score_numbers(50, 50, 29_000)
-    assert (slow.band, slow.points) == (Band.SLOTH, 100)
+    assert (slow.band, slow.points) == (Band.SLOTH, 120)
     miss = score_numbers(500, 50, 1_000)
     assert (miss.outcome, miss.band, miss.points) == (Outcome.WRONG, None, 0)
 
@@ -165,7 +166,7 @@ def test_numbers_score_multiplies_closeness_by_the_animal() -> None:
 def test_numbers_limits_use_the_longer_window() -> None:
     from app.scoring import NUMBERS_ANSWER_LIMIT_MS, NUMBERS_MAX_PER_DAY, elapsed_ms, is_timed_out
 
-    assert NUMBERS_MAX_PER_DAY == 1_000
+    assert NUMBERS_MAX_PER_DAY == 1_100
     assert elapsed_ms(0, 60_000, NUMBERS_ANSWER_LIMIT_MS) == NUMBERS_ANSWER_LIMIT_MS
     assert not is_timed_out(0, 30_500, NUMBERS_ANSWER_LIMIT_MS)
     assert is_timed_out(0, 31_001, NUMBERS_ANSWER_LIMIT_MS)
@@ -175,7 +176,19 @@ def test_score_distribution_for_the_how_close_quiz() -> None:
     from app.scoring import NUMBERS_DISTRIBUTION_BUCKET, NUMBERS_MAX_PER_DAY, score_distribution
 
     counts = score_distribution(
-        [0, 49, 50, 567, 1_000], NUMBERS_DISTRIBUTION_BUCKET, NUMBERS_MAX_PER_DAY
+        [0, 49, 50, 567, 1_100], NUMBERS_DISTRIBUTION_BUCKET, NUMBERS_MAX_PER_DAY
     )
-    assert len(counts) == 20
-    assert counts[0] == 2 and counts[1] == 1 and counts[11] == 1 and counts[19] == 1
+    assert len(counts) == 22
+    assert counts[0] == 2 and counts[1] == 1 and counts[11] == 1 and counts[21] == 1
+
+
+def test_bullseye_is_within_one_percent_and_earns_a_bonus() -> None:
+    from app.scoring import BULLSEYE_BONUS, closeness, is_bullseye, score_numbers
+
+    assert is_bullseye(50.5, 50) and is_bullseye(49.5, 50)
+    assert not is_bullseye(50.6, 50)
+    assert closeness(10_050, 10_000) == 100  # inside 1% counts as spot on
+    near = score_numbers(10_050, 10_000, 6_000)
+    assert near.bullseye and near.points == round(100 * 1.7) + BULLSEYE_BONUS
+    close = score_numbers(10_200, 10_000, 6_000)
+    assert not close.bullseye and close.bonus == 0

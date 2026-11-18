@@ -2,7 +2,10 @@
 import type { Band } from "./art/sprites";
 
 export type Outcome = "correct" | "wrong" | "timeout";
-export type QuestionType = "choice" | "number" | "text";
+export type QuestionType = "choice" | "truefalse" | "pair" | "order" | "number" | "text";
+
+/** Question types answered by tapping one option. */
+export const PICK_TYPES: ReadonlyArray<QuestionType> = ["choice", "truefalse", "pair"];
 
 export interface SlotResult {
   slot: number;
@@ -98,8 +101,10 @@ export interface Results {
 export interface Me {
   display_name: string | null;
   streak: { current: number; best: number; hummingbird_current: number; hummingbird_best: number };
-  guide: { counts: Record<Band, number>; golden: number; perfect_days: number };
+  guide: { counts: Record<Band, number>; golden: number; perfect_days: number; bullseyes: number };
   days_played: number;
+  /** Today's finished scores, and the combined total (Speed / 8 + How Close). */
+  today: { speed: number | null; close: number | null; combined: number | null };
 }
 
 export interface WeekRow {
@@ -110,7 +115,10 @@ export interface WeekRow {
   you: boolean;
 }
 
+export type WeekGame = "speed" | "close" | "combined";
+
 export interface Week {
+  game: WeekGame;
   week_start: string;
   best_days: number;
   top: WeekRow[];
@@ -122,6 +130,9 @@ export interface LeagueMember {
   you: boolean;
   today: number | null;
   today_bands: Array<Band | null> | null;
+  today_close: number | null;
+  today_total: number | null;
+  /** The week's combined score: the best five daily totals. */
   week: number;
 }
 
@@ -177,6 +188,8 @@ export interface NumbersReveal {
   band: Band | null;
   multiplier: number;
   points: number;
+  bullseye: boolean;
+  bonus: number;
   elapsed_ms: number | null;
   total_score: number;
   finished: boolean;
@@ -202,6 +215,8 @@ export interface NumbersResults {
     band: Band | null;
     multiplier: number;
     points: number;
+    bullseye: boolean;
+    bonus: number;
     elapsed_ms: number | null;
     outcome: NumbersOutcome;
   }>;
@@ -279,6 +294,7 @@ export const api = {
   ready: () => request<Served>("POST", "/api/play/ready"),
   answerChoice: (slot: number, optionId: number) =>
     request<Reveal>("POST", "/api/play/answer", { slot, option_id: optionId }),
+  answerOrder: (slot: number, order: number[]) => request<Reveal>("POST", "/api/play/answer", { slot, order }),
   answerText: (slot: number, value: string) =>
     request<Reveal>("POST", "/api/play/answer", { slot, value }),
   timeout: (slot: number) => request<Reveal>("POST", "/api/play/timeout", { slot }),
@@ -289,7 +305,7 @@ export const api = {
   syncCode: () => request<{ code: string }>("POST", "/api/me/sync-code"),
   useSyncCode: (code: string) =>
     request<{ player_id: string; display_name: string | null }>("POST", "/api/me/sync", { code }),
-  week: () => request<Week>("GET", "/api/week"),
+  week: (game: WeekGame = "speed") => request<Week>("GET", `/api/week?game=${game}`),
   leagues: () => request<League[]>("GET", "/api/leagues"),
   createLeague: (name: string) => request<League>("POST", "/api/leagues", { name }),
   joinLeague: (code: string) => request<League>("POST", "/api/leagues/join", { code }),

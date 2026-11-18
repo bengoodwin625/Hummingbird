@@ -21,7 +21,14 @@ from sqlalchemy import func, select
 from sqlalchemy.orm import Session
 
 from . import models
-from .checking import build_text_answer, check_number, check_text, is_blank, parse_number
+from .checking import (
+    build_text_answer,
+    check_number,
+    check_order,
+    check_text,
+    is_blank,
+    parse_number,
+)
 from .daily import next_unlock, quiz_date
 from .db import get_session
 from .scoring import (
@@ -43,6 +50,10 @@ from .scoring import (
 
 SPEED = "speed"
 """The mode of the eight-question speed quiz; the Numbers quiz lives in numbers.py."""
+
+PICK_TYPES = ("choice", "truefalse", "pair")
+"""Question types answered by picking one option."""
+QuestionType = Literal["choice", "truefalse", "pair", "order", "number", "text"]
 
 PLAYER_COOKIE = "rq_pid"
 PLAYER_HEADER = "X-RapidQ-Player"
@@ -161,7 +172,7 @@ class OptionOut(BaseModel):
 class QuestionOut(BaseModel):
     slot: int
     total: int
-    type: Literal["choice", "number", "text"]
+    type: QuestionType
     category: str
     text: str
     options: list[OptionOut]
@@ -215,6 +226,8 @@ class AnswerIn(BaseModel):
     slot: int
     option_id: int | None = None
     value: str | None = None
+    order: list[int] | None = None
+    """For "order" questions: the option ids, first to last."""
 
 
 class SlotIn(BaseModel):
@@ -295,9 +308,20 @@ def _question(day: models.Day, slot: int) -> models.Question:
 
 
 def _shuffled_options(question: models.Question) -> list[models.ChoiceOption]:
-    options = list(question.options)
+    """The same order for everyone that day. True/false always reads True, then False."""
+    options = sorted(question.options, key=lambda o: o.position)
+    if question.type == "truefalse":
+        return options
     random.Random(f"{question.date.isoformat()}:{question.slot}").shuffle(options)
+    positions = [o.position for o in options]
+    if question.type == "order" and positions == sorted(positions):
+        # Never show an order question already solved.
+        options.append(options.pop(0))
     return options
+
+
+def _in_order(question: models.Question) -> list[models.ChoiceOption]:
+    return sorted(question.options, key=lambda o: o.position)
 
 
 def _format_number(value: Decimal) -> str:
@@ -308,7 +332,9 @@ def _format_number(value: Decimal) -> str:
 
 
 def _correct_answer(question: models.Question) -> tuple[str, int | None]:
-    if question.type == "choice":
+    if question.type == "order":
+        return " → ".join(o.text for o in _in_order(question)), None
+    if question.type in PICK_TYPES:
         for option in question.options:
             if option.is_correct:
                 return option.text, option.id
@@ -320,6 +346,9 @@ def _correct_answer(question: models.Question) -> tuple[str, int | None]:
 
 
 def _your_answer(question: models.Question, sub: models.Submission) -> str | None:
+    if question.type == "order" and sub.raw_input:
+        texts = {o.id: o.text for o in question.options}
+        return " → ".join(texts.get(int(i), "?") for i in sub.raw_input.split(",") if i.isdigit())
     if sub.choice_option_id is not None:
         for option in question.options:
             if option.id == sub.choice_option_id:
@@ -364,7 +393,7 @@ def _resolve(
 def _question_out(question: models.Question, sub: models.Submission, now: datetime) -> QuestionOut:
     options = (
         [OptionOut(id=o.id, text=o.text) for o in _shuffled_options(question)]
-        if question.type == "choice"
+        if question.type in (*PICK_TYPES, "order")
         else []
     )
     return QuestionOut(
@@ -521,9 +550,15 @@ def answer(
         return _reveal(question, sub, play)
 
     correct: bool
-    if question.type == "choice":
+    if question.type == "order":
+        result = check_order(body.order or [], [o.id for o in _in_order(question)])
+        if result is None:
+            raise ApiError(422, "invalid_order", "Put all four in order first.")
+        sub.raw_input = ",".join(str(i) for i in body.order or [])
+        correct = result
+    elif question.type in PICK_TYPES:
         if body.option_id is None or body.option_id not in {o.id for o in question.options}:
-            raise ApiError(422, "invalid_option", "Pick one of the four answers.")
+            raise ApiError(422, "invalid_option", "Pick one of the answers.")
         sub.choice_option_id = body.option_id
         correct = any(o.id == body.option_id and o.is_correct for o in question.options)
     elif question.type == "number":

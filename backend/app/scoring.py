@@ -41,7 +41,15 @@ BAND_RULES: tuple[BandRule, ...] = (
 
 # Typing takes longer than tapping, so typed answers get this much time off before banding.
 # The time shown to the player is always the real time.
-TYPING_ALLOWANCE_MS: dict[str, int] = {"choice": 0, "number": 1_500, "text": 2_500}
+TYPING_ALLOWANCE_MS: dict[str, int] = {
+    "choice": 0,
+    "truefalse": 0,
+    "pair": 0,
+    # Four taps in sequence take about as long as typing a short word.
+    "order": 2_500,
+    "number": 1_500,
+    "text": 2_500,
+}
 
 MAX_POINTS_PER_QUESTION = BAND_RULES[0].points
 MAX_POINTS_PER_DAY = MAX_POINTS_PER_QUESTION * QUESTIONS_PER_DAY
@@ -163,7 +171,12 @@ NUMBERS_BAND_RULES: tuple[NumbersBandRule, ...] = (
     NumbersBandRule(Band.SLOTH, None, 1.0),
 )
 
-NUMBERS_MAX_PER_QUESTION = round(100 * NUMBERS_BAND_RULES[0].multiplier)
+BULLSEYE_RATIO = 0.01
+"""A guess within 1% of the answer is a Bullseye: it counts as spot on."""
+BULLSEYE_BONUS = 20
+"""Extra points for a Bullseye, added after the speed multiplier."""
+
+NUMBERS_MAX_PER_QUESTION = round(100 * NUMBERS_BAND_RULES[0].multiplier) + BULLSEYE_BONUS
 NUMBERS_MAX_PER_DAY = NUMBERS_MAX_PER_QUESTION * NUMBERS_QUESTIONS_PER_DAY
 
 
@@ -175,6 +188,13 @@ class NumbersScore:
     band: Band | None
     multiplier: float
     points: int
+    bullseye: bool = False
+    bonus: int = 0
+
+
+def is_bullseye(guess: float, answer: float) -> bool:
+    """Within 1% of the answer (either side)."""
+    return guess > 0 and answer > 0 and abs(guess - answer) <= BULLSEYE_RATIO * answer
 
 
 def closeness(guess: float, answer: float, spread: float = NUMBERS_DEFAULT_SPREAD) -> int:
@@ -185,6 +205,8 @@ def closeness(guess: float, answer: float, spread: float = NUMBERS_DEFAULT_SPREA
         raise ValueError("spread must be positive")
     if guess <= 0 or answer <= 0:
         return 0
+    if is_bullseye(guess, answer):
+        return 100
     error = abs(math.log10(guess / answer))
     return max(0, round(100 * (1 - error / spread)))
 
@@ -207,8 +229,12 @@ def score_numbers(
     if close == 0:
         return NumbersScore(Outcome.WRONG, elapsed, 0, None, 0.0, 0)
     rule = numbers_band_for(elapsed)
-    points = round(close * rule.multiplier)
-    return NumbersScore(Outcome.CORRECT, elapsed, close, rule.band, rule.multiplier, points)
+    bullseye = is_bullseye(guess, answer)
+    bonus = BULLSEYE_BONUS if bullseye else 0
+    points = round(close * rule.multiplier) + bonus
+    return NumbersScore(
+        Outcome.CORRECT, elapsed, close, rule.band, rule.multiplier, points, bullseye, bonus
+    )
 
 
 def score_numbers_timeout() -> NumbersScore:

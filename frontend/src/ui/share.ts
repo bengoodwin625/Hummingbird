@@ -6,6 +6,8 @@ export interface ShareInput {
   totalScore: number;
   totalQuestions: number;
   answers: ReadonlyArray<{ band: Band | null; correct: boolean; elapsedMs: number | null }>;
+  /** Extra lines before the link, such as the combined total for both games. */
+  extra?: string[];
   /** Where to play, added as the last line when given. */
   url?: string;
 }
@@ -22,6 +24,7 @@ export function buildShareText(input: ShareInput): string {
   if (times.length) stats.push(`fastest ${formatSeconds(Math.min(...times))}`);
   stats.push(`${correct.length}/${input.totalQuestions} correct`);
   const lines = [`Hummingbird #${input.number} — ${formatPoints(input.totalScore)} pts`, row, stats.join(" · ")];
+  lines.push(...(input.extra ?? []));
   if (input.url) lines.push(input.url);
   return lines.join("\n");
 }
@@ -32,6 +35,7 @@ export interface NumbersShareInput {
   maxScore: number;
   avgCloseness: number;
   answers: ReadonlyArray<{ band: Band | null }>;
+  extra?: string[];
   url?: string;
 }
 
@@ -43,6 +47,13 @@ export function buildNumbersShareText(input: NumbersShareInput): string {
     row,
     `${input.avgCloseness}% close on average`,
   ];
+  lines.push(...(input.extra ?? []));
   if (input.url) lines.push(input.url);
   return lines.join("\n");
+}
+
+/** The line added to either game's share text once both have been played today. */
+export function combinedLine(today: { speed: number | null; close: number | null; combined: number | null }): string[] {
+  if (today.speed === null || today.close === null || today.combined === null) return [];
+  return [`Both games today: ${formatPoints(today.combined)}`];
 }
