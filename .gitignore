@@ -21,3 +21,6 @@ frontend/dist/
 
 # Claude Code personal settings
 .claude/settings.local.json
+
+# Scratch output
+hummingbird-designs.png

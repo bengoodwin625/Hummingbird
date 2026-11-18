@@ -23,12 +23,12 @@ function hummingbird(pose: Pose, frame: number): Raster {
   const r = new Raster(32, 22);
   const wingUp = pose === "move" ? frame % 2 === 0 : true;
   // forked tail, fanned down and back, with pale tips
-  r.poly([[11, 14], [3, 18], [4, 20], [10, 16]], C.forest);
-  r.poly([[12, 15], [6, 20], [8, 21], [13, 16]], C.forest);
-  r.line(10, 15, 5, 18, C.emerald);
-  r.line(12, 16, 8, 19, C.emerald);
-  r.set(3, 18, C.ivory);
-  r.set(6, 20, C.ivory);
+  r.poly([[11, 14], [6, 17], [7, 18], [10, 16]], C.forest);
+  r.poly([[12, 15], [9, 19], [10, 20], [13, 16]], C.forest);
+  r.line(10, 15, 7, 17, C.emerald);
+  r.line(12, 16, 10, 18, C.emerald);
+  r.set(6, 17, C.ivory);
+  r.set(9, 19, C.ivory);
   // slim body, tilted head-up as it hovers
   r.ellipse(14.5, 13.6, 5.5, 2.8, C.emerald);
   r.ellipse(18.2, 11.6, 3.2, 2.5, C.emerald);
@@ -46,11 +46,14 @@ function hummingbird(pose: Pose, frame: number): Raster {
   // ruby gorget with a gold glint
   r.ellipse(21.6, 10.8, 2, 1.2, C.ruby);
   r.set(21, 10, C.gold);
-  // eye with a glint, pale spot behind it
+  // round eye (a dark disc with its corners cut) with a glint, pale spot behind it
+  r.set(21, 7, C.near0);
+  r.set(20, 8, C.near0);
+  r.set(21, 8, C.near0);
   r.set(22, 8, C.near0);
-  r.set(23, 8, C.near0);
-  r.set(23, 7, C.ivory);
-  r.set(20, 9, C.sage);
+  r.set(21, 9, C.near0);
+  r.set(22, 7, C.ivory);
+  r.set(19, 9, C.sage);
   // long, fine bill, lit along its top so it reads on the dark
   r.line(24, 9, 31, 10, C.bark2);
   r.line(24, 8, 28, 9, C.haze2);

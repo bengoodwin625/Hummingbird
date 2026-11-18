@@ -108,3 +108,31 @@ def test_load_replaces_a_day_without_plays_but_not_one_with_plays(
         session.commit()
         with pytest.raises(DayLockedError):
             load_day(session, spec)
+        session.rollback()
+
+        # Raising `restart` clears the day's plays and loads the new questions...
+        restarted = copy.deepcopy(changed)
+        restarted.restart = 1
+        restarted.questions[0].text = "Restarted?"
+        load_day(session, restarted)
+        session.commit()
+        day = session.get(models.Day, spec.date)
+        assert day is not None and day.restart == 1 and day.questions[0].text == "Restarted?"
+        assert session.query(models.Play).filter_by(date=spec.date).count() == 0
+
+        # ...once: the same restart number doesn't wipe the plays that come after it.
+        session.add(models.Play(player_id=player.id, date=spec.date,
+                                started_at=datetime.now(UTC), total_score=0))
+        session.commit()
+        with pytest.raises(DayLockedError):
+            load_day(session, restarted)
+
+
+def test_restart_must_be_a_non_negative_whole_number() -> None:
+    for bad in (-1, "2", 1.5, True):
+        data = sample_day()
+        data["restart"] = bad
+        assert any("restart" in p for p in _problems(data))
+    data = sample_day()
+    data["restart"] = 3
+    assert parse_day(data, "2026-11-17.yaml").restart == 3

@@ -290,7 +290,13 @@ questions:
 fewer than 5 are multiple choice, if a choice question doesn't have exactly 6 options with
 exactly one correct, if a number question has no numeric answer or a negative tolerance, if a
 text question has no canonical answer, if there are duplicate normalised forms within a text
-question, or if a type is unknown. Quiz numbers count from the launch date (2026-11-17 is #1).
+question, if `restart` is not a whole number of 0 or more, or if a type is unknown. Quiz numbers
+count from the launch date (2026-11-17 is #1).
+
+A day that has plays is locked (scores are frozen), so editing its file changes nothing. To
+deliberately **restart** a played day with new questions, raise its optional top-level
+`restart:` number (default 0). On the next load that day's plays are deleted, everyone can play
+it again, and the new questions go in. Use it rarely: it throws away that day's scores.
 
 ---
 
@@ -328,6 +334,9 @@ In Claude Code, `.claude/launch.json` defines `backend` and `frontend` servers f
   through `DATABASE_URL` (Render's `postgres://` URL is normalised for the psycopg driver in
   `backend/app/db.py`). Pushing to `main` redeploys.
 - New daily questions go live by committing a file to `content/` and pushing.
+- **Auto-publish**: a personal Stop hook (`.claude/settings.local.json` running
+  `.claude/hooks/auto-publish.sh`) commits and pushes any changes at the end of every Claude
+  turn, but only if the backend tests, the content validator and the frontend type check pass.
 
 ---
 

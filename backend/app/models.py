@@ -41,6 +41,8 @@ class Day(Base):
 
     date: Mapped[date] = mapped_column(Date, primary_key=True)
     number: Mapped[int] = mapped_column(Integer, unique=True)
+    # Raised in a content file to restart a day that has already been played (see content.py).
+    restart: Mapped[int] = mapped_column(Integer, default=0, server_default="0")
 
     questions: Mapped[list[Question]] = relationship(
         back_populates="day", order_by="Question.slot", cascade="all, delete-orphan"

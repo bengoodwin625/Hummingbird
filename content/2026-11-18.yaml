@@ -1,80 +1,82 @@
 date: 2026-11-18
+# Restarted on 18 November with easier questions: raise this to restart the day again.
+restart: 1
 questions:
   - slot: 1
     type: choice
     category: geography
-    text: "Which is the longest river in Europe?"
+    text: "In which country are the Pyramids of Giza?"
     options:
-      - { text: "Volga", correct: true }
-      - { text: "Danube" }
-      - { text: "Ural" }
-      - { text: "Dnieper" }
-      - { text: "Rhine" }
-      - { text: "Don" }
+      - { text: "Egypt", correct: true }
+      - { text: "Mexico" }
+      - { text: "Peru" }
+      - { text: "Sudan" }
+      - { text: "Jordan" }
+      - { text: "Greece" }
   - slot: 2
     type: choice
-    category: space
-    text: "Which planet has the shortest day?"
+    category: nature
+    text: "Which part of a plant takes in water from the soil?"
     options:
-      - { text: "Jupiter", correct: true }
-      - { text: "Saturn" }
-      - { text: "Neptune" }
-      - { text: "Uranus" }
-      - { text: "Earth" }
-      - { text: "Mars" }
+      - { text: "Roots", correct: true }
+      - { text: "Leaves" }
+      - { text: "Petals" }
+      - { text: "Stem" }
+      - { text: "Seeds" }
+      - { text: "Flowers" }
   - slot: 3
     type: number
-    category: science
-    text: "How many squares are there on a chessboard?"
-    answer: 64
+    category: maths
+    text: "How many sides does a pentagon have?"
+    answer: 5
     tolerance: 0
   - slot: 4
     type: choice
-    category: literature
-    text: "Who wrote 'One Hundred Years of Solitude'?"
+    category: music
+    text: "Which singer was known as 'the King of Rock and Roll'?"
     options:
-      - { text: "Gabriel García Márquez", correct: true }
-      - { text: "Jorge Luis Borges" }
-      - { text: "Isabel Allende" }
-      - { text: "Mario Vargas Llosa" }
-      - { text: "Julio Cortázar" }
-      - { text: "Pablo Neruda" }
+      - { text: "Elvis Presley", correct: true }
+      - { text: "Little Richard" }
+      - { text: "Chuck Berry" }
+      - { text: "Buddy Holly" }
+      - { text: "Johnny Cash" }
+      - { text: "Jerry Lee Lewis" }
   - slot: 5
     type: text
     category: geography
-    text: "What is the capital of the Canadian province of British Columbia?"
+    text: "What is the capital of Japan?"
     answers:
-      - { canonical: "Victoria" }
+      - { canonical: "Tokyo", aliases: [] }
   - slot: 6
     type: choice
-    category: food
-    text: "Saffron comes from which part of the crocus flower?"
+    category: film
+    text: "Which school does Harry Potter go to?"
     options:
-      - { text: "Stigma", correct: true }
-      - { text: "Stamen" }
-      - { text: "Petal" }
-      - { text: "Sepal" }
-      - { text: "Bulb" }
-      - { text: "Pollen" }
+      - { text: "Hogwarts", correct: true }
+      - { text: "Beauxbatons" }
+      - { text: "Durmstrang" }
+      - { text: "Ilvermorny" }
+      - { text: "Brakebills" }
+      - { text: "Unseen University" }
   - slot: 7
     type: choice
-    category: music
-    text: "Who composed 'The Rite of Spring'?"
+    category: sport
+    text: "Which sport is mainly played at Twickenham Stadium?"
     options:
-      - { text: "Igor Stravinsky", correct: true }
-      - { text: "Sergei Prokofiev" }
-      - { text: "Claude Debussy" }
-      - { text: "Maurice Ravel" }
-      - { text: "Dmitri Shostakovich" }
-      - { text: "Béla Bartók" }
+      - { text: "Rugby", correct: true }
+      - { text: "Football" }
+      - { text: "Cricket" }
+      - { text: "Tennis" }
+      - { text: "Golf" }
+      - { text: "Horse racing" }
   - slot: 8
     type: choice
-    category: film
-    text: "Which film won Best Picture at the Oscars in 2020?"
+    category: nature
+    text: "Which animal is often called the 'king of the jungle'?"
     options:
-      - { text: "Parasite", correct: true }
-      - { text: "1917" }
-      - { text: "Joker" }
-      - { text: "Once Upon a Time in Hollywood" }
-      - { text: "The Irishman" }
-      - { text: "Little Women" }
+      - { text: "Lion", correct: true }
+      - { text: "Tiger" }
+      - { text: "Gorilla" }
+      - { text: "Elephant" }
+      - { text: "Jaguar" }
+      - { text: "Leopard" }

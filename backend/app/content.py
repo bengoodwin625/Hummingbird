@@ -57,6 +57,7 @@ class QuestionSpec:
 class DaySpec:
     date: date
     questions: list[QuestionSpec]
+    restart: int = 0
 
 
 def _as_str(value: Any) -> str:
@@ -97,6 +98,11 @@ def parse_day(data: Any, source: str) -> DaySpec:
                 problems.append(f"date {day} doesn't match the file name {stem}")
         except ValueError:
             pass
+
+    restart = data.get("restart", 0)
+    if isinstance(restart, bool) or not isinstance(restart, int) or restart < 0:
+        problems.append("restart must be a whole number, 0 or more")
+        restart = 0
 
     raw_questions = data.get("questions")
     if not isinstance(raw_questions, list):
@@ -192,7 +198,7 @@ def parse_day(data: Any, source: str) -> DaySpec:
 
     if problems or day is None:
         raise ContentError(source, problems or ["missing 'date'"])
-    return DaySpec(date=day, questions=sorted(questions, key=lambda q: q.slot))
+    return DaySpec(date=day, questions=sorted(questions, key=lambda q: q.slot), restart=restart)
 
 
 def read_day_file(path: Path) -> DaySpec:
@@ -215,18 +221,25 @@ class DayLockedError(Exception):
 
 
 def load_day(session: Session, spec: DaySpec) -> None:
-    """Insert or replace one day's questions. Refuses to replace a day that has plays."""
+    """Insert or replace one day's questions.
+
+    A day that has plays is locked, because scores are frozen. The one way past that is a
+    deliberate restart: raising the day's `restart` number in its content file above the stored
+    one deletes that day's plays (everyone can play it again) and loads the new questions.
+    """
     existing = session.get(models.Day, spec.date)
     if existing is not None:
-        has_plays = session.scalar(
-            select(models.Play.id).where(models.Play.date == spec.date).limit(1)
-        )
-        if has_plays is not None:
-            raise DayLockedError(f"{spec.date} already has plays and can't be replaced")
+        plays = session.scalars(select(models.Play).where(models.Play.date == spec.date)).all()
+        if plays:
+            if spec.restart <= existing.restart:
+                raise DayLockedError(f"{spec.date} already has plays and can't be replaced")
+            for play in plays:
+                session.delete(play)
+            session.flush()
         session.delete(existing)
         session.flush()
 
-    day = models.Day(date=spec.date, number=quiz_number(spec.date))
+    day = models.Day(date=spec.date, number=quiz_number(spec.date), restart=spec.restart)
     for q in spec.questions:
         question = models.Question(slot=q.slot, type=q.type, text=q.text, category=q.category)
         if q.type == "choice":
