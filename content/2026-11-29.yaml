@@ -78,3 +78,24 @@ questions:
       - { text: "Tashkent" }
       - { text: "Almaty" }
       - { text: "Hohhot" }
+numbers:
+  - slot: 1
+    category: history
+    text: "From the invasion of Poland to VE Day, how many days did the Second World War in Europe last?"
+    answer: 2076
+  - slot: 2
+    category: geography
+    text: "How tall is the Eiffel Tower, in metres?"
+    answer: 330
+  - slot: 3
+    category: history
+    text: "Roughly how many ships sailed in the Spanish Armada of 1588?"
+    answer: 130
+  - slot: 4
+    category: film
+    text: "How many Oscars did 'Titanic' (1997) win?"
+    answer: 11
+  - slot: 5
+    category: science
+    text: "What is the temperature of the Sun's surface, in degrees Celsius?"
+    answer: 5500

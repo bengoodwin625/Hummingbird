@@ -2598,3 +2598,47 @@ ul {
   font-size: 1.75rem;
   line-height: 1;
 }
+
+/* ---------------------------------------------------------------- the Numbers quiz */
+
+/* "close", under the big closeness percentage on a Numbers reveal. */
+.reveal-sub {
+  margin: var(--space-1) 0 0;
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--sage);
+  text-shadow: 0 2px 0 rgb(0 0 0 / 0.55);
+}
+
+/* Your five guesses on the results page: the same rows as the speed quiz's answers. */
+.guess-section {
+  display: grid;
+  gap: var(--space-2);
+  width: 100%;
+  max-width: 640px;
+  margin-top: var(--space-5);
+  text-align: left;
+}
+
+.guess-section .section-title {
+  text-align: center;
+}
+
+.guess-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.guess-item {
+  display: grid;
+  grid-template-columns: 52px minmax(0, 1fr);
+  gap: var(--space-3);
+  padding: var(--space-4) var(--space-2);
+}
+
+.guess-item + .guess-item {
+  border-top: 1px solid var(--hairline);
+}

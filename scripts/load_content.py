@@ -1,8 +1,9 @@
 """Load daily content into the database (DATABASE_URL, or the local SQLite file).
 
 Usage: python scripts/load_content.py content/                 (a folder or a single file)
-Every file is validated first; nothing is loaded if any file is invalid. A day that already
-has plays is skipped, because players' scores are frozen.
+Every file is validated first; nothing is loaded if any file is invalid. Each game (speed,
+numbers) is locked once played that day, so its scores stay frozen; a day where nothing can
+change is skipped.
 """
 
 from __future__ import annotations
@@ -41,10 +42,10 @@ def main(argv: list[str]) -> int:
     with SessionLocal() as session:
         for spec in specs:
             try:
-                load_day(session, spec)
+                games = load_day(session, spec)
                 session.commit()
                 loaded += 1
-                print(f"loaded  {spec.date}")
+                print(f"loaded  {spec.date} ({', '.join(games)})")
             except DayLockedError as error:
                 session.rollback()
                 skipped += 1

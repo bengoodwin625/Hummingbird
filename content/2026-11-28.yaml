@@ -78,3 +78,25 @@ questions:
       - { text: "1997" }
       - { text: "2000" }
       - { text: "1985" }
+numbers:
+  - slot: 1
+    category: history
+    text: "For how many days was Tony Blair Prime Minister?"
+    answer: 3708
+  - slot: 2
+    category: space
+    text: "How old is the universe, in billions of years?"
+    answer: 13.8
+    spread: 0.3
+  - slot: 3
+    category: geography
+    text: "How tall is Ben Nevis, in metres?"
+    answer: 1345
+  - slot: 4
+    category: history
+    text: "How many days after the Titanic sank was the Lusitania sunk?"
+    answer: 1117
+  - slot: 5
+    category: general
+    text: "How many member states does the United Nations have?"
+    answer: 193

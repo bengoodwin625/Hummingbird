@@ -142,6 +142,74 @@ export interface Challenge {
   is_today: boolean;
 }
 
+// ---------------------------------------------------------------- the Numbers quiz
+
+export type NumbersOutcome = "correct" | "wrong" | "timeout";
+
+export interface NumbersToday {
+  date: string;
+  number: number | null;
+  status: "no_quiz" | "not_started" | "in_progress" | "finished";
+  total_score: number;
+  answered: Array<{ slot: number; band: Band | null; closeness: number; points: number }>;
+  next_slot: number | null;
+  question_live: boolean;
+  total_questions: number;
+  max_score: number;
+  next_unlock_at: string;
+}
+
+export interface NumbersQuestion {
+  slot: number;
+  total: number;
+  category: string;
+  text: string;
+  read_remaining_ms: number;
+  answer_limit_ms: number;
+}
+
+export interface NumbersReveal {
+  slot: number;
+  outcome: NumbersOutcome;
+  your_guess: string | null;
+  answer: string;
+  closeness: number;
+  band: Band | null;
+  multiplier: number;
+  points: number;
+  elapsed_ms: number | null;
+  total_score: number;
+  finished: boolean;
+}
+
+export type NumbersServed =
+  | { kind: "question"; question: NumbersQuestion; reveal: null }
+  | { kind: "reveal"; question: null; reveal: NumbersReveal };
+
+export interface NumbersResults {
+  date: string;
+  number: number;
+  total_score: number;
+  max_score: number;
+  avg_closeness: number;
+  questions: Array<{
+    slot: number;
+    category: string;
+    text: string;
+    your_guess: string | null;
+    answer: string;
+    closeness: number;
+    band: Band | null;
+    multiplier: number;
+    points: number;
+    elapsed_ms: number | null;
+    outcome: NumbersOutcome;
+  }>;
+  better_than_percent: number | null;
+  average_score: number | null;
+  next_unlock_at: string;
+}
+
 export class ApiError extends Error {
   constructor(
     readonly status: number,
@@ -221,4 +289,10 @@ export const api = {
   joinLeague: (code: string) => request<League>("POST", "/api/leagues/join", { code }),
   leaveLeague: (id: number) => request<{ left: boolean }>("POST", `/api/leagues/${id}/leave`),
   challenge: (code: string) => request<Challenge>("GET", `/api/challenge/${encodeURIComponent(code)}`),
+  numbersToday: () => request<NumbersToday>("GET", "/api/numbers/today"),
+  numbersReady: () => request<NumbersServed>("POST", "/api/numbers/ready"),
+  numbersAnswer: (slot: number, value: string) =>
+    request<NumbersReveal>("POST", "/api/numbers/answer", { slot, value }),
+  numbersTimeout: (slot: number) => request<NumbersReveal>("POST", "/api/numbers/timeout", { slot }),
+  numbersResults: () => request<NumbersResults>("GET", "/api/numbers/results"),
 };

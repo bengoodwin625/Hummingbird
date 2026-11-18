@@ -118,3 +118,54 @@ def test_score_distribution_empty_and_out_of_range() -> None:
 
     assert score_distribution([]) == [0] * 16
     assert score_distribution([-5, 9_000]) == [1] + [0] * 14 + [1]
+
+
+# ---------------------------------------------------------------- the Numbers quiz
+
+
+def test_closeness_is_100_for_exact_and_falls_by_ratio() -> None:
+    from app.scoring import closeness
+
+    assert closeness(50, 50) == 100
+    assert closeness(55, 50) == 93  # 10% high
+    assert closeness(45, 50) == 92  # 10% low
+    assert closeness(100, 50) == 50  # double
+    assert closeness(25, 50) == 50  # half: the same as double
+    assert closeness(200, 50) == 0  # four times
+    assert closeness(1_000_000, 50) == 0
+
+
+def test_closeness_rejects_nonsense_and_honours_spread() -> None:
+    import pytest
+
+    from app.scoring import closeness
+
+    assert closeness(0, 50) == 0
+    assert closeness(-5, 50) == 0
+    assert closeness(100, 50, spread=1.2) == 75  # a looser question
+    with pytest.raises(ValueError):
+        closeness(10, 10, spread=0)
+
+
+def test_numbers_score_multiplies_closeness_by_the_animal() -> None:
+    from app.scoring import Band, Outcome, score_numbers
+
+    fast = score_numbers(50, 50, 4_000)
+    assert (fast.band, fast.multiplier, fast.points) == (Band.HUMMINGBIRD, 2.0, 200)
+    jaguar = score_numbers(55, 50, 4_001)
+    assert (jaguar.band, jaguar.points) == (Band.JAGUAR, round(93 * 1.7))
+    assert score_numbers(50, 50, 11_000).band == Band.TOUCAN
+    assert score_numbers(50, 50, 17_000).band == Band.TREE_FROG
+    slow = score_numbers(50, 50, 29_000)
+    assert (slow.band, slow.points) == (Band.SLOTH, 100)
+    miss = score_numbers(500, 50, 1_000)
+    assert (miss.outcome, miss.band, miss.points) == (Outcome.WRONG, None, 0)
+
+
+def test_numbers_limits_use_the_longer_window() -> None:
+    from app.scoring import NUMBERS_ANSWER_LIMIT_MS, NUMBERS_MAX_PER_DAY, elapsed_ms, is_timed_out
+
+    assert NUMBERS_MAX_PER_DAY == 1_000
+    assert elapsed_ms(0, 60_000, NUMBERS_ANSWER_LIMIT_MS) == NUMBERS_ANSWER_LIMIT_MS
+    assert not is_timed_out(0, 30_500, NUMBERS_ANSWER_LIMIT_MS)
+    assert is_timed_out(0, 31_001, NUMBERS_ANSWER_LIMIT_MS)

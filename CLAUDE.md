@@ -38,9 +38,8 @@ UI. The art is detailed, fine-grained pixel art of a rainforest at dusk, in dark
 ## Core game loop
 
 1. The player opens the site on the **menu**: the rainforest scene, the logo, a short
-   explanation and a list of game modes: the **Speed quiz** (this game) and a **Numbers quiz**
-   card marked "Coming soon" (not built yet; the owner will specify it). The menu is built so
-   more modes can be added. The Speed quiz card says Play, Continue or See your results, and once
+   explanation and a list of game modes: the **Speed quiz** (this game) and the **Numbers
+   quiz** (see "The Numbers quiz" below). The menu is built so more modes can be added. The Speed quiz card says Play, Continue or See your results, and once
    played shows the day's animals and a live countdown. Each game card has its own "i" button
    that opens that game's instructions (speed ladder and how to play) in a sheet; there is no
    instructions section on the page itself. The logo in the header returns to the menu (except
@@ -268,8 +267,9 @@ scripts/
 - `number_answers(question_id PK, value, tolerance)`
 - `text_answers(id, question_id, canonical)` and `text_aliases(text_answer_id,
   alias_normalised)`
-- `plays(id, player_id, date, started_at, finished_at?, total_score, challenge_code?)` — unique
-  on `(player_id, date)`.
+- `plays(id, player_id, date, mode, started_at, finished_at?, total_score, challenge_code?)` —
+  unique on `(player_id, date, mode)`. `questions` also have a `mode`, unique on
+  `(date, mode, slot)`, and `number_answers` an optional `spread` (Numbers quiz).
 - `players.sync_code?` (unique), `leagues(id, code, name, owner_id, created_at)` and
   `league_members(league_id, player_id, joined_at)`.
 - `submissions(id, play_id, slot, served_at, answer_open_at, received_at?, raw_input?,
@@ -358,6 +358,32 @@ In Claude Code, `.claude/launch.json` defines `backend` and `frontend` servers f
   turn, but only if the backend tests, the content validator and the frontend type check pass.
 
 ---
+
+## The Numbers quiz
+
+A second daily game: **five questions whose answers are obscure numbers**, and the player types
+their best guess. Routes are under `/api/numbers/*` (`backend/app/numbers.py`), the page code is
+`frontend/src/ui/numbers.ts`, and it uses the same page areas, styles and rhythm as the speed
+quiz (ready → 3 s read → answer → reveal → results), just with "Guess n / 5".
+
+- **Closeness (0–100)** is judged by ratio, so it is fair to small and huge answers:
+  `100 × (1 − |log10(guess / answer)| / spread)`, floored at 0. With the default spread of 0.6,
+  10% off scores about 93, double or half 50, and four times out or more 0. A question can set
+  its own `spread` (0.1–3): tighter for answers people round (Bolt's 9.58 s uses 0.1).
+- **Speed multiplies closeness**, using the same animals with longer timings: Hummingbird ≤ 4 s
+  ×2, Jaguar ≤ 7 s ×1.7, Toucan ≤ 11 s ×1.45, Tree frog ≤ 17 s ×1.2, Sloth ×1. Points =
+  round(closeness × multiplier): up to 200 a question, **1,000 a day**. A guess with 0
+  closeness earns no animal and no points.
+- **30 s to answer** (plus the usual 1 s grace); no typing allowance, the timings include typing.
+- A blank guess or something that isn't a number doesn't use the player's go.
+- Plays and questions carry a `mode` ("speed" or "numbers"), so the two games never mix:
+  streaks, the field guide, leagues, the weekly table and challenges are all speed-quiz only.
+- Scoring lives in `backend/app/scoring.py` (`closeness`, `score_numbers`) with tests.
+- **Content**: an optional `numbers:` section in the day's file with exactly five questions
+  (slots 1–5), each with a positive `answer` and optional `spread`. Answers must be
+  checkable: prefer exact counts and date gaps worked out in code over loose estimates, and
+  avoid years as answers (ratio scoring needs a quantity). Each game is locked separately once
+  played, so a day's Numbers questions can still be added after its speed quiz has been played.
 
 ## Progress and friends
 

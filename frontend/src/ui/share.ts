@@ -25,3 +25,24 @@ export function buildShareText(input: ShareInput): string {
   if (input.url) lines.push(input.url);
   return lines.join("\n");
 }
+
+export interface NumbersShareInput {
+  number: number;
+  totalScore: number;
+  maxScore: number;
+  avgCloseness: number;
+  answers: ReadonlyArray<{ band: Band | null }>;
+  url?: string;
+}
+
+/** The Numbers quiz result: score, the animals row and average closeness, no questions. */
+export function buildNumbersShareText(input: NumbersShareInput): string {
+  const row = input.answers.map((a) => (a.band ? BAND_INFO[a.band].emoji : MISSED_EMOJI)).join("");
+  const lines = [
+    `Hummingbird Numbers #${input.number} — ${formatPoints(input.totalScore)}/${formatPoints(input.maxScore)}`,
+    row,
+    `${input.avgCloseness}% close on average`,
+  ];
+  if (input.url) lines.push(input.url);
+  return lines.join("\n");
+}

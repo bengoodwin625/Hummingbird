@@ -78,3 +78,24 @@ questions:
       - { text: "Z" }
       - { text: "K" }
       - { text: "B" }
+numbers:
+  - slot: 1
+    category: history
+    text: "For how many days was Elizabeth II queen?"
+    answer: 25782
+  - slot: 2
+    category: sport
+    text: "How long is a marathon, in metres?"
+    answer: 42195
+  - slot: 3
+    category: geography
+    text: "How many islands make up the Philippines?"
+    answer: 7641
+  - slot: 4
+    category: music
+    text: "How many UK number one singles did the Beatles have?"
+    answer: 17
+  - slot: 5
+    category: general
+    text: "How many squares are there on a Scrabble board?"
+    answer: 225

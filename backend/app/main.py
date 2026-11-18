@@ -41,6 +41,9 @@ from .scoring import (
     score_timeout,
 )
 
+SPEED = "speed"
+"""The mode of the eight-question speed quiz; the Numbers quiz lives in numbers.py."""
+
 PLAYER_COOKIE = "rq_pid"
 PLAYER_HEADER = "X-RapidQ-Player"
 COOKIE_MAX_AGE = 60 * 60 * 24 * 730
@@ -278,13 +281,15 @@ def _today(session: Session, clock: Callable[[], datetime]) -> tuple[date, model
 
 def _play_for(session: Session, player: models.Player, day: date) -> models.Play | None:
     return session.scalar(
-        select(models.Play).where(models.Play.player_id == player.id, models.Play.date == day)
+        select(models.Play).where(
+            models.Play.player_id == player.id, models.Play.date == day, models.Play.mode == SPEED
+        )
     )
 
 
 def _question(day: models.Day, slot: int) -> models.Question:
     for question in day.questions:
-        if question.slot == slot:
+        if question.mode == SPEED and question.slot == slot:
             return question
     raise ApiError(500, "missing_question", f"Question {slot} is missing for {day.date}.")
 
@@ -584,7 +589,11 @@ def results(session: SessionDep, player: PlayerDep, clock: ClockDep) -> ResultsO
         for slot, count in session.execute(
             select(models.Submission.slot, func.count())
             .join(models.Play)
-            .where(models.Play.date == day.date, models.Submission.outcome.is_not(None))
+            .where(
+                models.Play.date == day.date,
+                models.Play.mode == SPEED,
+                models.Submission.outcome.is_not(None),
+            )
             .group_by(models.Submission.slot)
         )
     }
@@ -593,7 +602,11 @@ def results(session: SessionDep, player: PlayerDep, clock: ClockDep) -> ResultsO
         for slot, count in session.execute(
             select(models.Submission.slot, func.count())
             .join(models.Play)
-            .where(models.Play.date == day.date, models.Submission.correct.is_(True))
+            .where(
+                models.Play.date == day.date,
+                models.Play.mode == SPEED,
+                models.Submission.correct.is_(True),
+            )
             .group_by(models.Submission.slot)
         )
     }
@@ -629,6 +642,7 @@ def results(session: SessionDep, player: PlayerDep, clock: ClockDep) -> ResultsO
         .join(models.Submission)
         .where(
             models.Play.date == day.date,
+            models.Play.mode == SPEED,
             models.Play.finished_at.is_not(None),
             models.Submission.correct.is_(True),
         )
@@ -643,7 +657,9 @@ def results(session: SessionDep, player: PlayerDep, clock: ClockDep) -> ResultsO
 
     finished_scores = session.execute(
         select(models.Play.id, models.Play.total_score).where(
-            models.Play.date == day.date, models.Play.finished_at.is_not(None)
+            models.Play.date == day.date,
+            models.Play.mode == SPEED,
+            models.Play.finished_at.is_not(None),
         )
     )
     other_scores = [score for play_id, score in finished_scores if play_id != play.id]
@@ -680,10 +696,12 @@ def results(session: SessionDep, player: PlayerDep, clock: ClockDep) -> ResultsO
 
 # Progress and social routes live in their own module; they must be registered before the
 # built site is mounted at "/".
+from .numbers import router as numbers_router  # noqa: E402
 from .social import ensure_challenge_code  # noqa: E402
 from .social import router as social_router  # noqa: E402
 
 app.include_router(social_router)
+app.include_router(numbers_router)
 
 _FRONTEND_DIST = Path(
     os.environ.get("RAPIDQ_FRONTEND_DIST", Path(__file__).resolve().parents[2] / "frontend/dist")

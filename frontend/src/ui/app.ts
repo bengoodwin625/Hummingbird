@@ -4,6 +4,7 @@ import {
   api,
   rememberPlayer,
   type Challenge,
+  type NumbersToday,
   type Question,
   type Results,
   type Reveal,
@@ -25,6 +26,7 @@ import {
   scorePercent,
   smoothDistribution,
 } from "./format";
+import { NumbersGame, type Shell } from "./numbers";
 import { buildShareText } from "./share";
 import { drawShareCard, shareCard } from "./sharecard";
 import {
@@ -105,10 +107,14 @@ export class App {
   private pendingLeague = "";
   /** Refreshes the menu's progress tiles after a sheet changes something. */
   private refreshTiles: (() => void) | null = null;
+  /** The Numbers quiz: same page, same style, its own five questions. */
+  private readonly numbers: NumbersGame;
+  private numbersToday: NumbersToday | null = null;
 
   constructor() {
     // One forest for the whole page: its ground lines up with the stage band.
     this.stage = new Stage(byId("stage"), this.root, [this.progressEl, byId("question")]);
+    this.numbers = new NumbersGame(this.shell());
     byId("brand-mark").append(logoIcon(1));
     // The logo goes back to the menu, except while a question is live.
     byId("brand").addEventListener("click", (event) => {
@@ -120,6 +126,34 @@ export class App {
     });
     document.addEventListener("keydown", this.onKey);
     this.readLinks();
+  }
+
+  /** The page areas and helpers the Numbers quiz plays in. */
+  private shell(): Shell {
+    return {
+      root: this.root,
+      questionEl: this.questionEl,
+      answersEl: this.answersEl,
+      actionEl: this.actionEl,
+      overlayEl: this.overlayEl,
+      progressEl: this.progressEl,
+      scoreEl: this.scoreEl,
+      stage: this.stage,
+      setPhase: (phase) => this.setPhase(phase),
+      phase: () => this.phase,
+      announce: (text) => this.announce(text),
+      actionButton: (label, onClick, quiet) => this.actionButton(label, onClick, quiet),
+      renderStatus: (text) => this.renderStatus(text),
+      setScore: (total, animate) => this.setScore(total, animate),
+      setQuizNo: (text) => {
+        this.quizNoEl.textContent = text;
+      },
+      backToMenu: () => {
+        window.clearInterval(this.countdownTimer);
+        void this.start();
+      },
+      showError: (error, retry) => this.renderError(error, retry),
+    };
   }
 
   /** Challenge and league invite links: remember them, then tidy the address bar. */
@@ -148,8 +182,14 @@ export class App {
     this.clearTimers();
     this.renderStatus("Loading today's quiz…");
     try {
-      const [today] = await Promise.all([api.today(), this.loadChallenge()]);
+      this.numbers.stop();
+      const [today, , numbersToday] = await Promise.all([
+        api.today(),
+        this.loadChallenge(),
+        api.numbersToday().catch(() => null),
+      ]);
       this.today = today;
+      this.numbersToday = numbersToday;
       rememberPlayer(today.player_id);
       this.quizNoEl.textContent = today.number ? `#${today.number}` : "";
       this.setScore(today.total_score, false);
@@ -159,6 +199,8 @@ export class App {
       this.renderProgress(today.status === "finished" ? null : today.next_slot);
       if (today.status === "no_quiz") return this.renderNoQuiz();
       if (today.question_live) return this.serve();
+      // A reload in the middle of a Numbers question goes straight back to it.
+      if (numbersToday?.question_live) return this.numbers.start(numbersToday);
       this.renderMenu(today);
     } catch (error) {
       this.renderError(error, () => void this.start());
@@ -174,6 +216,7 @@ export class App {
 
   private renderProgress(current: number | null): void {
     const total = this.today?.total_questions ?? 8;
+    this.progressEl.style.gridTemplateColumns = "";
     if (!this.today?.has_quiz) {
       this.progressEl.replaceChildren();
       return;
@@ -303,7 +346,7 @@ export class App {
     this.questionEl.replaceChildren(
       h("p", {
         class: "hero-lede",
-        text: "8 questions. The faster you answer, the faster your animal, and the more points you score.",
+        text: "Two daily games. Answer fast, guess close, and the faster you are, the faster your animal.",
       }),
     );
 
@@ -370,23 +413,7 @@ export class App {
       "ul",
       { class: "modes" },
       h("li", { class: "mode-item" }, card, info),
-      // The next game, shown so players know it's coming; it opens once it's built.
-      h(
-        "li",
-        { class: "mode-item" },
-        h(
-          "div",
-          { class: "mode mode--soon", "aria-disabled": "true" },
-          h("span", { class: "mode-art mode-art--numbers", "aria-hidden": "true", text: "123" }),
-          h(
-            "span",
-            { class: "mode-text" },
-            h("span", { class: "mode-name", text: "Numbers quiz" }),
-            h("span", { class: "mode-desc", text: "A new game, all about numbers." }),
-            h("span", { class: "mode-status", text: "Coming soon" }),
-          ),
-        ),
-      ),
+      this.numbersCard(),
     );
 
     const note = h("p", { class: "cta-note" });
@@ -483,6 +510,72 @@ export class App {
     };
     this.openInfo(title, slot, () => this.refreshTiles?.());
     void redraw();
+  }
+
+  /** The Numbers quiz card: five guesses a day, scored on closeness and speed. */
+  private numbersCard(): HTMLElement {
+    const t = this.numbersToday;
+    const art = h("span", { class: "mode-art mode-art--numbers", "aria-hidden": "true", text: "123" });
+    const desc = h("span", { class: "mode-desc", text: "Five obscure numbers. Guess close, guess fast." });
+    if (!t || t.status === "no_quiz") {
+      return h(
+        "li",
+        { class: "mode-item" },
+        h(
+          "div",
+          { class: "mode mode--soon", "aria-disabled": "true" },
+          art,
+          h(
+            "span",
+            { class: "mode-text" },
+            h("span", { class: "mode-name", text: "Numbers quiz" }),
+            desc,
+            h("span", { class: "mode-status", text: "No Numbers quiz today. Back tomorrow." }),
+          ),
+        ),
+      );
+    }
+    const finished = t.status === "finished";
+    const slot = t.next_slot ?? 1;
+    const state = finished
+      ? { status: `Played today · ${formatPoints(t.total_score)} of ${formatPoints(t.max_score)}`, cta: "See your results" }
+      : t.status === "in_progress"
+        ? { status: `Guess ${slot} of ${t.total_questions} is waiting`, cta: "Continue" }
+        : { status: "Five new numbers today", cta: "Play" };
+    const animals = t.answered.length
+      ? h(
+          "span",
+          { class: "mode-animals", "aria-hidden": "true" },
+          ...[...t.answered]
+            .sort((a, b) => a.slot - b.slot)
+            .map((a) => (a.band ? animalIcon(a.band, 1) : icon("cross", "var(--ruby-text)"))),
+        )
+      : null;
+    const card = h(
+      "button",
+      { class: `mode${finished ? " mode--done" : ""}`, type: "button" },
+      art,
+      h(
+        "span",
+        { class: "mode-text" },
+        h("span", { class: "mode-name", text: "Numbers quiz" }),
+        desc,
+        h("span", { class: "mode-status", text: state.status }),
+        animals,
+      ),
+      h("span", { class: "mode-cta", text: state.cta }),
+    );
+    card.addEventListener("click", () => {
+      card.disabled = true;
+      this.numbers.start(t);
+    });
+    const info = h(
+      "button",
+      { class: "mode-info", type: "button", "aria-label": "How to play the Numbers quiz", "aria-haspopup": "dialog" },
+      h("span", { "aria-hidden": "true", text: "i" }),
+    );
+    info.addEventListener("click", () => this.openInfo("How to play the Numbers quiz", this.numbers.info()));
+    return h("li", { class: "mode-item" }, card, info);
   }
 
   /** A modal sheet for a game's instructions. */

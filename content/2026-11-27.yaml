@@ -78,3 +78,24 @@ questions:
       - { text: "Argon" }
       - { text: "Methane" }
       - { text: "Hydrogen" }
+numbers:
+  - slot: 1
+    category: music
+    text: "How many days passed between the Beatles' first single, 'Love Me Do', and Paul McCartney announcing the split?"
+    answer: 2744
+  - slot: 2
+    category: general
+    text: "How many MPs are there in the House of Commons?"
+    answer: 650
+  - slot: 3
+    category: geography
+    text: "How tall is Mount Kilimanjaro, in metres?"
+    answer: 5895
+  - slot: 4
+    category: space
+    text: "How many days old was Neil Armstrong when he landed on the Moon?"
+    answer: 14229
+  - slot: 5
+    category: general
+    text: "How many tiles are there in a standard mahjong set?"
+    answer: 144

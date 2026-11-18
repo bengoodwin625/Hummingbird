@@ -43,7 +43,14 @@ describe("format", () => {
   });
 });
 
-import { bandForTime, categoryLabel, scorePercent, smoothDistribution, speedGapLine } from "./format";
+import {
+  bandForTime,
+  categoryLabel,
+  formatMultiplier,
+  scorePercent,
+  smoothDistribution,
+  speedGapLine,
+} from "./format";
 
 describe("smoothDistribution", () => {
   it("peaks at the busiest bucket and is scaled to 1", () => {
@@ -96,5 +103,13 @@ describe("speedGapLine", () => {
     expect(speedGapLine(2300, 1800)).toBe("0.5 s slower than today's average.");
     expect(speedGapLine(1800, 1850)).toBe("Right on today's average speed.");
     expect(speedGapLine(1800, null)).toContain("setting today's pace");
+  });
+});
+
+describe("formatMultiplier", () => {
+  it("drops trailing zeros", () => {
+    expect(formatMultiplier(2)).toBe("×2");
+    expect(formatMultiplier(1.45)).toBe("×1.45");
+    expect(formatMultiplier(1.7)).toBe("×1.7");
   });
 });

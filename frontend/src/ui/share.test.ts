@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { buildShareText } from "./share";
+import { buildNumbersShareText, buildShareText } from "./share";
 
 describe("buildShareText", () => {
   it("builds the animal row, score and average without answers", () => {
@@ -46,5 +46,21 @@ describe("buildShareText", () => {
       ],
     });
     expect(text).toBe("Hummingbird #1 — 0 pts\n❌❌\navg – · 0/2 correct");
+  });
+});
+
+describe("buildNumbersShareText", () => {
+  it("shows the score out of 1,000, the animals and average closeness", () => {
+    const text = buildNumbersShareText({
+      number: 2,
+      totalScore: 567,
+      maxScore: 1000,
+      avgCloseness: 74,
+      answers: [{ band: "hummingbird" }, { band: "jaguar" }, { band: null }, { band: "sloth" }, { band: "toucan" }],
+      url: "https://example.test",
+    });
+    expect(text).toBe(
+      "Hummingbird Numbers #2 — 567/1,000\n🐦🐆❌🦥🦜\n74% close on average\nhttps://example.test",
+    );
   });
 });

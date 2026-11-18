@@ -78,3 +78,24 @@ questions:
       - { text: "Netherlands" }
       - { text: "Malaysia" }
       - { text: "Sri Lanka" }
+numbers:
+  - slot: 1
+    category: history
+    text: "For how many days was Queen Victoria on the throne?"
+    answer: 23226
+  - slot: 2
+    category: space
+    text: "How far is the Earth from the Sun on average, in millions of kilometres?"
+    answer: 149.6
+  - slot: 3
+    category: general
+    text: "How many passenger capsules are there on the London Eye?"
+    answer: 32
+  - slot: 4
+    category: sport
+    text: "What is the highest possible break in snooker (without a free ball)?"
+    answer: 147
+  - slot: 5
+    category: geography
+    text: "How deep is the deepest point of the ocean, the Challenger Deep, in metres?"
+    answer: 10935

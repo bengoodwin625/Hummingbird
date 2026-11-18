@@ -53,10 +53,14 @@ class Day(Base):
 
 class Question(Base):
     __tablename__ = "questions"
-    __table_args__ = (UniqueConstraint("date", "slot", name="uq_questions_date_slot"),)
+    __table_args__ = (
+        UniqueConstraint("date", "mode", "slot", name="uq_questions_date_mode_slot"),
+    )
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
     date: Mapped[date] = mapped_column(ForeignKey("days.date", ondelete="CASCADE"), index=True)
+    # Which game the question belongs to: "speed" (the eight a day) or "numbers" (five guesses).
+    mode: Mapped[str] = mapped_column(String(10), default="speed", server_default="speed")
     slot: Mapped[int] = mapped_column(Integer)
     type: Mapped[str] = mapped_column(String(10))
     text: Mapped[str] = mapped_column(Text)
@@ -96,6 +100,8 @@ class NumberAnswer(Base):
     )
     value: Mapped[Decimal] = mapped_column(Numeric(20, 6))
     tolerance: Mapped[Decimal] = mapped_column(Numeric(20, 6), default=Decimal(0))
+    # Numbers quiz only: how far off (a power of ten) a guess can be before it scores nothing.
+    spread: Mapped[Decimal | None] = mapped_column(Numeric(8, 4), nullable=True)
 
     question: Mapped[Question] = relationship(back_populates="number_answer")
 
@@ -128,11 +134,14 @@ class TextAlias(Base):
 
 class Play(Base):
     __tablename__ = "plays"
-    __table_args__ = (UniqueConstraint("player_id", "date", name="uq_plays_player_date"),)
+    __table_args__ = (
+        UniqueConstraint("player_id", "date", "mode", name="uq_plays_player_date_mode"),
+    )
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
     player_id: Mapped[str] = mapped_column(ForeignKey("players.id"), index=True)
     date: Mapped[date] = mapped_column(ForeignKey("days.date"), index=True)
+    mode: Mapped[str] = mapped_column(String(10), default="speed", server_default="speed")
     started_at: Mapped[datetime] = mapped_column(DateTime(timezone=True))
     finished_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
     total_score: Mapped[int] = mapped_column(Integer, default=0)

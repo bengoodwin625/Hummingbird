@@ -78,3 +78,24 @@ questions:
       - { text: "Sweden" }
       - { text: "United States" }
       - { text: "Brazil" }
+numbers:
+  - slot: 1
+    category: history
+    text: "How many days passed between the Wright brothers' first powered flight and the first Moon landing?"
+    answer: 23957
+  - slot: 2
+    category: geography
+    text: "How long is the Great Wall of China, with all its branches, in kilometres?"
+    answer: 21196
+  - slot: 3
+    category: nature
+    text: "How many eyes does a honeybee have?"
+    answer: 5
+  - slot: 4
+    category: literature
+    text: "How many days passed between the first Harry Potter book coming out and the last?"
+    answer: 3677
+  - slot: 5
+    category: general
+    text: "How many rooms are there in the White House?"
+    answer: 132

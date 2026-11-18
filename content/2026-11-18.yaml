@@ -80,3 +80,24 @@ questions:
       - { text: "Elephant" }
       - { text: "Jaguar" }
       - { text: "Leopard" }
+numbers:
+  - slot: 1
+    category: history
+    text: "In the real 'Great Escape' of 1944, 76 men got out of Stalag Luft III. How many of them were recaptured and shot?"
+    answer: 50
+  - slot: 2
+    category: history
+    text: "How many days older was George H. W. Bush on the day he became US president than his son George W. Bush was on his?"
+    answer: 3676
+  - slot: 3
+    category: geography
+    text: "How tall is Mount Everest, in metres?"
+    answer: 8849
+  - slot: 4
+    category: film
+    text: "How many episodes of 'Friends' were made?"
+    answer: 236
+  - slot: 5
+    category: science
+    text: "How many elements are there on the periodic table?"
+    answer: 118

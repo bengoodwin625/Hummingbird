@@ -78,3 +78,24 @@ questions:
       - { text: "Dnieper" }
       - { text: "Loire" }
       - { text: "Thames" }
+numbers:
+  - slot: 1
+    category: history
+    text: "How many days passed between D-Day and VE Day?"
+    answer: 336
+  - slot: 2
+    category: geography
+    text: "How many floors does the Burj Khalifa have?"
+    answer: 163
+  - slot: 3
+    category: general
+    text: "How many hours are there in a leap year?"
+    answer: 8784
+  - slot: 4
+    category: history
+    text: "How many days after the Battle of Hastings was William the Conqueror crowned?"
+    answer: 72
+  - slot: 5
+    category: film
+    text: "How many days passed between the release of 'Toy Story' and 'Toy Story 4'?"
+    answer: 8612

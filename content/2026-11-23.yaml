@@ -78,3 +78,25 @@ questions:
       - { text: "A negative" }
       - { text: "AB negative" }
       - { text: "B positive" }
+numbers:
+  - slot: 1
+    category: history
+    text: "For how many days was Margaret Thatcher Prime Minister?"
+    answer: 4226
+  - slot: 2
+    category: science
+    text: "How fast does light travel, in kilometres per second?"
+    answer: 299792
+  - slot: 3
+    category: sport
+    text: "What is Usain Bolt's 100 metres world record, in seconds?"
+    answer: 9.58
+    spread: 0.1
+  - slot: 4
+    category: history
+    text: "How many passengers sailed to America on the Mayflower in 1620?"
+    answer: 102
+  - slot: 5
+    category: geography
+    text: "How many letters are in the full name of the Welsh village 'Llanfair PG' (Llanfairpwllgwyngyll…gogogoch)?"
+    answer: 58

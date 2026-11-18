@@ -78,3 +78,24 @@ questions:
       - { text: "Kestrel" }
       - { text: "Bee-eater" }
       - { text: "Sunbird" }
+numbers:
+  - slot: 1
+    category: history
+    text: "How many days after the Titanic sank was its wreck found on the seabed?"
+    answer: 26802
+  - slot: 2
+    category: geography
+    text: "How long is the River Nile, in kilometres?"
+    answer: 6650
+  - slot: 3
+    category: general
+    text: "How many cards are in a tarot deck?"
+    answer: 78
+  - slot: 4
+    category: film
+    text: "How many days passed between the release of the first 'Star Wars' film and 'The Force Awakens'?"
+    answer: 14086
+  - slot: 5
+    category: science
+    text: "How many bones are in one human hand, including the wrist?"
+    answer: 27

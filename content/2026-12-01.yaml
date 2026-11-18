@@ -78,3 +78,24 @@ questions:
       - { text: "Egypt" }
       - { text: "Greece" }
       - { text: "India" }
+numbers:
+  - slot: 1
+    category: film
+    text: "How many days after the first episode of 'Doctor Who' was broadcast did humans land on the Moon?"
+    answer: 2066
+  - slot: 2
+    category: geography
+    text: "How long is the River Thames, in kilometres?"
+    answer: 346
+  - slot: 3
+    category: general
+    text: "How many steps are there from the ground to the crown of the Statue of Liberty?"
+    answer: 354
+  - slot: 4
+    category: history
+    text: "How many days passed between the Channel Tunnel opening and the UK leaving the EU?"
+    answer: 9401
+  - slot: 5
+    category: space
+    text: "How many people have walked on the Moon?"
+    answer: 12

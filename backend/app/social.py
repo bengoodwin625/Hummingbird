@@ -159,8 +159,11 @@ def _finished_plays(
 ) -> list[models.Play]:
     if not player_ids:
         return []
+    # Streaks, the field guide, leagues and the weekly table are all about the speed quiz.
     query = select(models.Play).where(
-        models.Play.player_id.in_(player_ids), models.Play.finished_at.is_not(None)
+        models.Play.player_id.in_(player_ids),
+        models.Play.mode == "speed",
+        models.Play.finished_at.is_not(None),
     )
     if since is not None:
         query = query.where(models.Play.date >= since)
@@ -320,6 +323,7 @@ def week(session: SessionDep, player: PlayerDep, clock: ClockDep) -> WeekOut:
         for p in session.scalars(
             select(models.Play).where(
                 models.Play.finished_at.is_not(None),
+                models.Play.mode == "speed",
                 models.Play.date >= monday,
                 models.Play.date <= today,
             )

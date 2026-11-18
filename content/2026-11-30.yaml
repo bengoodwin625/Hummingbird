@@ -78,3 +78,24 @@ questions:
       - { text: "About 100" }
       - { text: "About 300" }
       - { text: "About 500" }
+numbers:
+  - slot: 1
+    category: space
+    text: "How many days passed between the first Moon landing and the last astronauts leaving the Moon?"
+    answer: 1243
+  - slot: 2
+    category: geography
+    text: "How tall is the Shard in London, in metres?"
+    answer: 310
+  - slot: 3
+    category: history
+    text: "How many years passed between the first ancient Olympic Games (776 BC) and the first modern Games (1896)?"
+    answer: 2671
+  - slot: 4
+    category: general
+    text: "How many leap years were there from 1901 to 2000?"
+    answer: 25
+  - slot: 5
+    category: sport
+    text: "How many clubs are there in the Premier League and the English Football League together?"
+    answer: 92

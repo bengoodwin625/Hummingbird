@@ -112,3 +112,17 @@ export function speedGapLine(mine: number, everyone: number | null): string {
     ? `${formatSeconds(gap)} quicker than today's average.`
     : `${formatSeconds(-gap)} slower than today's average.`;
 }
+
+/** The Numbers quiz's speed animals: longer timings, and each one multiplies closeness. */
+export const NUMBERS_BAND_INFO: Record<Band, { range: string; multiplier: number }> = {
+  hummingbird: { range: "4 s or less", multiplier: 2 },
+  jaguar: { range: "4–7 s", multiplier: 1.7 },
+  toucan: { range: "7–11 s", multiplier: 1.45 },
+  tree_frog: { range: "11–17 s", multiplier: 1.2 },
+  sloth: { range: "over 17 s", multiplier: 1 },
+};
+
+/** "×1.45", "×2". */
+export function formatMultiplier(m: number): string {
+  return `×${Number(m.toFixed(2))}`;
+}

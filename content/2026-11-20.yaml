@@ -78,3 +78,24 @@ questions:
       - { text: "Peru" }
       - { text: "Guatemala" }
       - { text: "China" }
+numbers:
+  - slot: 1
+    category: space
+    text: "How many days after Yuri Gagarin's first spaceflight did Apollo 11 land on the Moon?"
+    answer: 3021
+  - slot: 2
+    category: geography
+    text: "How tall is the Burj Khalifa, in metres?"
+    answer: 828
+  - slot: 3
+    category: general
+    text: "How many stations are there on the London Underground?"
+    answer: 272
+  - slot: 4
+    category: film
+    text: "How long is the 1997 film 'Titanic', in minutes?"
+    answer: 194
+  - slot: 5
+    category: nature
+    text: "How many teeth does an adult dog have?"
+    answer: 42

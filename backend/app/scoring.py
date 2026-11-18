@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import math
 from dataclasses import dataclass
 from enum import StrEnum
 
@@ -60,10 +61,10 @@ class Score:
     points: int
 
 
-def elapsed_ms(answer_open_ms: int, received_ms: int) -> int:
+def elapsed_ms(answer_open_ms: int, received_ms: int, limit_ms: int = ANSWER_LIMIT_MS) -> int:
     """Server-measured answer time, with the latency allowance, floored at 0 and capped."""
     raw = received_ms - answer_open_ms - LATENCY_ALLOWANCE_MS
-    return max(0, min(raw, ANSWER_LIMIT_MS))
+    return max(0, min(raw, limit_ms))
 
 
 def is_too_early(answer_open_ms: int, received_ms: int) -> bool:
@@ -71,9 +72,9 @@ def is_too_early(answer_open_ms: int, received_ms: int) -> bool:
     return received_ms < answer_open_ms
 
 
-def is_timed_out(answer_open_ms: int, now_ms: int) -> bool:
+def is_timed_out(answer_open_ms: int, now_ms: int, limit_ms: int = ANSWER_LIMIT_MS) -> bool:
     """True once the answer limit plus the grace second has passed."""
-    return now_ms - answer_open_ms > ANSWER_LIMIT_MS + TIMEOUT_GRACE_MS
+    return now_ms - answer_open_ms > limit_ms + TIMEOUT_GRACE_MS
 
 
 def band_for(elapsed: int) -> Band:
@@ -131,3 +132,82 @@ def score_distribution(scores: list[int], bucket: int = DISTRIBUTION_BUCKET) -> 
         index = min(max(score, 0) // bucket, buckets - 1)
         counts[index] += 1
     return counts
+
+
+# ---------------------------------------------------------------- the Numbers quiz
+#
+# Five questions whose answers are obscure numbers. A guess earns a closeness score from 100
+# (spot on) down to 0, and the answer's speed animal multiplies it. Typing a considered guess
+# takes longer than tapping, so the answer window and the animal timings are longer.
+
+NUMBERS_QUESTIONS_PER_DAY = 5
+NUMBERS_ANSWER_LIMIT_MS = 30_000
+NUMBERS_DEFAULT_SPREAD = 0.6
+"""How far off, as a power of ten, a guess can be before it scores nothing: 0.6 is about 4x."""
+
+
+@dataclass(frozen=True)
+class NumbersBandRule:
+    band: Band
+    max_ms: int | None
+    multiplier: float
+
+
+NUMBERS_BAND_RULES: tuple[NumbersBandRule, ...] = (
+    NumbersBandRule(Band.HUMMINGBIRD, 4_000, 2.0),
+    NumbersBandRule(Band.JAGUAR, 7_000, 1.7),
+    NumbersBandRule(Band.TOUCAN, 11_000, 1.45),
+    NumbersBandRule(Band.TREE_FROG, 17_000, 1.2),
+    NumbersBandRule(Band.SLOTH, None, 1.0),
+)
+
+NUMBERS_MAX_PER_QUESTION = round(100 * NUMBERS_BAND_RULES[0].multiplier)
+NUMBERS_MAX_PER_DAY = NUMBERS_MAX_PER_QUESTION * NUMBERS_QUESTIONS_PER_DAY
+
+
+@dataclass(frozen=True)
+class NumbersScore:
+    outcome: Outcome
+    elapsed_ms: int | None
+    closeness: int
+    band: Band | None
+    multiplier: float
+    points: int
+
+
+def closeness(guess: float, answer: float, spread: float = NUMBERS_DEFAULT_SPREAD) -> int:
+    """How close a guess is, from 100 (exact) to 0, judged by ratio so it is fair for both
+    small and huge answers: 10% off scores about 93, double or half about 50, and anything
+    out by a factor of 10**spread (about 4x by default) or more scores 0."""
+    if spread <= 0:
+        raise ValueError("spread must be positive")
+    if guess <= 0 or answer <= 0:
+        return 0
+    error = abs(math.log10(guess / answer))
+    return max(0, round(100 * (1 - error / spread)))
+
+
+def numbers_band_for(elapsed: int) -> NumbersBandRule:
+    if elapsed < 0:
+        raise ValueError("elapsed must not be negative")
+    for rule in NUMBERS_BAND_RULES:
+        if rule.max_ms is None or elapsed <= rule.max_ms:
+            return rule
+    raise AssertionError("unreachable: the last band has no upper bound")
+
+
+def score_numbers(
+    guess: float, answer: float, elapsed: int, spread: float = NUMBERS_DEFAULT_SPREAD
+) -> NumbersScore:
+    """Closeness times the speed animal's multiplier. A guess that scores no closeness earns
+    no animal and no points."""
+    close = closeness(guess, answer, spread)
+    if close == 0:
+        return NumbersScore(Outcome.WRONG, elapsed, 0, None, 0.0, 0)
+    rule = numbers_band_for(elapsed)
+    points = round(close * rule.multiplier)
+    return NumbersScore(Outcome.CORRECT, elapsed, close, rule.band, rule.multiplier, points)
+
+
+def score_numbers_timeout() -> NumbersScore:
+    return NumbersScore(Outcome.TIMEOUT, None, 0, None, 0.0, 0)

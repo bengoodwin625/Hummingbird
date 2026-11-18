@@ -78,3 +78,24 @@ questions:
       - { text: "Mars" }
       - { text: "Saturn" }
       - { text: "Neptune" }
+numbers:
+  - slot: 1
+    category: history
+    text: "Roughly how many people died when the Titanic sank?"
+    answer: 1500
+  - slot: 2
+    category: space
+    text: "What is the average distance from the Earth to the Moon, in kilometres?"
+    answer: 384400
+  - slot: 3
+    category: general
+    text: "How many rooms are there in Buckingham Palace?"
+    answer: 775
+  - slot: 4
+    category: history
+    text: "For how many days did the Berlin Wall stand?"
+    answer: 10315
+  - slot: 5
+    category: sport
+    text: "How many seats are there in Wembley Stadium?"
+    answer: 90000
