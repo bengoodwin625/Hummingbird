@@ -47,15 +47,15 @@ questions:
       - { canonical: "Copenhagen", aliases: [] }
   - slot: 6
     type: choice
-    category: film
-    text: "In 'The Lion King', what is the name of Simba's father?"
+    category: sport
+    text: "Which of these was not a sport at the Paris 2024 Olympics?"
     options:
-      - { text: "Mufasa", correct: true }
-      - { text: "Scar" }
-      - { text: "Rafiki" }
-      - { text: "Timon" }
-      - { text: "Pumbaa" }
-      - { text: "Zazu" }
+      - { text: "Cricket", correct: true }
+      - { text: "Breaking" }
+      - { text: "Skateboarding" }
+      - { text: "Surfing" }
+      - { text: "Sport climbing" }
+      - { text: "Rowing" }
   - slot: 7
     type: choice
     category: literature
@@ -78,3 +78,24 @@ questions:
       - { text: "12" }
       - { text: "13" }
       - { text: "15" }
+numbers:
+  - slot: 1
+    category: nature
+    text: "How many hearts does an octopus have?"
+    answer: 3
+  - slot: 2
+    category: history
+    text: "How many days passed between Pearl Harbor and Japan's formal surrender?"
+    answer: 1365
+  - slot: 3
+    category: history
+    text: "How many days passed between Blériot flying the Channel and Alcock and Brown flying the Atlantic?"
+    answer: 3612
+  - slot: 4
+    category: geography
+    text: "How many steps are there up to the Golden Gallery at the top of St Paul's Cathedral?"
+    answer: 528
+  - slot: 5
+    category: music
+    text: "How long is 'Bohemian Rhapsody', in seconds?"
+    answer: 355

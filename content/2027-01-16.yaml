@@ -46,16 +46,10 @@ questions:
     answers:
       - { canonical: "New Delhi", aliases: ["Delhi"] }
   - slot: 6
-    type: choice
-    category: literature
-    text: "Who wrote 'Alice's Adventures in Wonderland'?"
-    options:
-      - { text: "Lewis Carroll", correct: true }
-      - { text: "Roald Dahl" }
-      - { text: "Beatrix Potter" }
-      - { text: "J. M. Barrie" }
-      - { text: "A. A. Milne" }
-      - { text: "Kenneth Grahame" }
+    type: order
+    category: nature
+    text: "Put these in order, fewest legs first"
+    items: ["Snake", "Robin", "Dog", "Spider"]
   - slot: 7
     type: choice
     category: literature
@@ -78,3 +72,24 @@ questions:
       - { text: "Niger" }
       - { text: "Bolivia" }
       - { text: "Mali" }
+numbers:
+  - slot: 1
+    category: music
+    text: "For how many weeks was Wet Wet Wet's 'Love Is All Around' at number one in the UK?"
+    answer: 15
+  - slot: 2
+    category: history
+    text: "How many days passed between the end of the Dunkirk evacuation and D-Day?"
+    answer: 1463
+  - slot: 3
+    category: technology
+    text: "How many days passed between Facebook launching and the very first tweet?"
+    answer: 776
+  - slot: 4
+    category: space
+    text: "How many days does it take Venus to go round the Sun?"
+    answer: 225
+  - slot: 5
+    category: geography
+    text: "How tall is St Paul's Cathedral, in feet? (Christopher Wren chose it on purpose.)"
+    answer: 365

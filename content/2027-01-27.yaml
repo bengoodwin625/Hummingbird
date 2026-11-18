@@ -46,16 +46,12 @@ questions:
     answers:
       - { canonical: "Addis Ababa", aliases: [] }
   - slot: 6
-    type: choice
-    category: film
-    text: "What colour is Shrek?"
+    type: pair
+    category: history
+    text: "Which came first?"
     options:
-      - { text: "Green", correct: true }
-      - { text: "Blue" }
-      - { text: "Brown" }
-      - { text: "Grey" }
-      - { text: "Yellow" }
-      - { text: "Purple" }
+      - { text: "The US Declaration of Independence", correct: true }
+      - { text: "The French Revolution" }
   - slot: 7
     type: choice
     category: nature
@@ -78,3 +74,24 @@ questions:
       - { text: "Johannes Kepler" }
       - { text: "Nicolaus Copernicus" }
       - { text: "Stephen Hawking" }
+numbers:
+  - slot: 1
+    category: science
+    text: "How many standard amino acids make up the proteins in your body?"
+    answer: 20
+  - slot: 2
+    category: science
+    text: "How many bones are there in total in your two ears?"
+    answer: 6
+  - slot: 3
+    category: science
+    text: "How many ribs does a human have?"
+    answer: 24
+  - slot: 4
+    category: sport
+    text: "How many days passed between England's men winning the 1966 World Cup and England's women winning Euro 2022?"
+    answer: 20455
+  - slot: 5
+    category: geography
+    text: "How many steps are there to the top of the Eiffel Tower?"
+    answer: 1665

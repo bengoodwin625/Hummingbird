@@ -48,14 +48,14 @@ questions:
   - slot: 6
     type: choice
     category: film
-    text: "Which film series features hobbits and a powerful ring?"
+    text: "Which of these is not a James Bond film?"
     options:
-      - { text: "The Lord of the Rings", correct: true }
-      - { text: "Harry Potter" }
-      - { text: "The Chronicles of Narnia" }
-      - { text: "Star Wars" }
-      - { text: "The Witcher" }
-      - { text: "Game of Thrones" }
+      - { text: "Never Say Goodbye", correct: true }
+      - { text: "Goldfinger" }
+      - { text: "Skyfall" }
+      - { text: "Dr. No" }
+      - { text: "Spectre" }
+      - { text: "Moonraker" }
   - slot: 7
     type: choice
     category: film
@@ -78,3 +78,24 @@ questions:
       - { text: "1933" }
       - { text: "1919" }
       - { text: "1937" }
+numbers:
+  - slot: 1
+    category: maths
+    text: "How many different games of noughts and crosses are possible?"
+    answer: 255168
+  - slot: 2
+    category: music
+    text: "How many days passed between the releases of 'Bohemian Rhapsody' and the Sex Pistols' 'God Save the Queen'?"
+    answer: 574
+  - slot: 3
+    category: sport
+    text: "How many Test centuries did Sachin Tendulkar score?"
+    answer: 51
+  - slot: 4
+    category: history
+    text: "How many days passed between Martin Luther King's 'I Have a Dream' speech and his assassination?"
+    answer: 1681
+  - slot: 5
+    category: general
+    text: "How many feet are there in a mile?"
+    answer: 5280

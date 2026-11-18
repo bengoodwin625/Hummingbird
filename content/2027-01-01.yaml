@@ -47,15 +47,15 @@ questions:
       - { canonical: "Paris", aliases: [] }
   - slot: 6
     type: choice
-    category: music
-    text: "Who released the album 'Thriller'?"
+    category: science
+    text: "Which of these is not a colour of the rainbow?"
     options:
-      - { text: "Michael Jackson", correct: true }
-      - { text: "Prince" }
-      - { text: "Stevie Wonder" }
-      - { text: "Lionel Richie" }
-      - { text: "Whitney Houston" }
-      - { text: "Madonna" }
+      - { text: "Pink", correct: true }
+      - { text: "Red" }
+      - { text: "Orange" }
+      - { text: "Green" }
+      - { text: "Indigo" }
+      - { text: "Violet" }
   - slot: 7
     type: choice
     category: history
@@ -78,3 +78,24 @@ questions:
       - { text: "2001" }
       - { text: "2004" }
       - { text: "1995" }
+numbers:
+  - slot: 1
+    category: science
+    text: "How many vertebrae are there in the human spine?"
+    answer: 33
+  - slot: 2
+    category: history
+    text: "How many days passed between the Chernobyl and Fukushima nuclear disasters?"
+    answer: 9085
+  - slot: 3
+    category: film
+    text: "How many days passed between the US releases of 'Titanic' and 'Avatar'?"
+    answer: 4382
+  - slot: 4
+    category: geography
+    text: "How long is Hadrian's Wall, in miles?"
+    answer: 73
+  - slot: 5
+    category: geography
+    text: "How deep is Lake Baikal, the world's deepest lake, in metres?"
+    answer: 1642

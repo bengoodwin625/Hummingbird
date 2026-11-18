@@ -46,16 +46,12 @@ questions:
     answers:
       - { canonical: "Aberdeen", aliases: [] }
   - slot: 6
-    type: choice
-    category: art
-    text: "Who designed St Paul's Cathedral in London?"
+    type: pair
+    category: history
+    text: "Which came first?"
     options:
-      - { text: "Christopher Wren", correct: true }
-      - { text: "Inigo Jones" }
-      - { text: "Nicholas Hawksmoor" }
-      - { text: "John Nash" }
-      - { text: "Augustus Pugin" }
-      - { text: "Charles Barry" }
+      - { text: "Facebook", correct: true }
+      - { text: "YouTube" }
   - slot: 7
     type: choice
     category: history
@@ -78,3 +74,25 @@ questions:
       - { text: "500" }
       - { text: "1,000" }
       - { text: "3,000" }
+numbers:
+  - slot: 1
+    category: music
+    text: "How many days passed between the Beatles' first 'Ed Sullivan Show' and their last ever paid concert?"
+    answer: 932
+  - slot: 2
+    category: technology
+    text: "How many days passed between Google being founded and Wikipedia launching?"
+    answer: 864
+  - slot: 3
+    category: sport
+    text: "What is the highest checkout possible in darts?"
+    answer: 170
+  - slot: 4
+    category: music
+    text: "How many symphonies did Haydn write (by the usual numbering)?"
+    answer: 104
+  - slot: 5
+    category: space
+    text: "How wide is the Earth, in kilometres?"
+    answer: 12742
+    spread: 0.2

@@ -46,16 +46,12 @@ questions:
     answers:
       - { canonical: "Wellington", aliases: [] }
   - slot: 6
-    type: choice
-    category: music
-    text: "Which instrument did the jazz musician Miles Davis play?"
+    type: pair
+    category: history
+    text: "Which came first?"
     options:
-      - { text: "Trumpet", correct: true }
-      - { text: "Saxophone" }
-      - { text: "Piano" }
-      - { text: "Trombone" }
-      - { text: "Double bass" }
-      - { text: "Clarinet" }
+      - { text: "The first Harry Potter book", correct: true }
+      - { text: "The first iPhone" }
   - slot: 7
     type: choice
     category: geography

@@ -46,16 +46,10 @@ questions:
     answers:
       - { canonical: "Max", aliases: [] }
   - slot: 6
-    type: choice
-    category: literature
-    text: "In 'The Lion, the Witch and the Wardrobe', Narnia is always winter but never what?"
-    options:
-      - { text: "Christmas", correct: true }
-      - { text: "Spring" }
-      - { text: "Summer" }
-      - { text: "Snowing" }
-      - { text: "Night" }
-      - { text: "Easter" }
+    type: order
+    category: music
+    text: "Put these Beatles albums in order, earliest first"
+    items: ["Please Please Me", "Revolver", "Sgt. Pepper's Lonely Hearts Club Band", "Abbey Road"]
   - slot: 7
     type: choice
     category: christmas
@@ -78,3 +72,24 @@ questions:
       - { text: "1988" }
       - { text: "1980" }
       - { text: "1990" }
+numbers:
+  - slot: 1
+    category: history
+    text: "How many days passed between Concorde's first and last passenger flights?"
+    answer: 10138
+  - slot: 2
+    category: games
+    text: "How many dominoes are there in a double-six set?"
+    answer: 28
+  - slot: 3
+    category: space
+    text: "How many days after launch did New Horizons fly past Pluto?"
+    answer: 3463
+  - slot: 4
+    category: history
+    text: "How many Concordes were built, including the prototypes?"
+    answer: 20
+  - slot: 5
+    category: games
+    text: "How many properties can you buy in Monopoly, counting stations and utilities?"
+    answer: 28

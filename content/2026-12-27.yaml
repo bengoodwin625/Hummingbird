@@ -46,16 +46,10 @@ questions:
     answers:
       - { canonical: "Mars", aliases: [] }
   - slot: 6
-    type: choice
-    category: art
-    text: "Which artist made 'Campbell's Soup Cans'?"
-    options:
-      - { text: "Andy Warhol", correct: true }
-      - { text: "Roy Lichtenstein" }
-      - { text: "Jasper Johns" }
-      - { text: "Keith Haring" }
-      - { text: "Jean-Michel Basquiat" }
-      - { text: "David Hockney" }
+    type: order
+    category: literature
+    text: "Put these Harry Potter books in order, earliest first"
+    items: ["Philosopher's Stone", "Chamber of Secrets", "Prisoner of Azkaban", "Goblet of Fire"]
   - slot: 7
     type: choice
     category: history
@@ -78,3 +72,24 @@ questions:
       - { text: "William Blake" }
       - { text: "George Stubbs" }
       - { text: "Joshua Reynolds" }
+numbers:
+  - slot: 1
+    category: politics
+    text: "For how many days was Theresa May Prime Minister?"
+    answer: 1106
+  - slot: 2
+    category: history
+    text: "How many days passed between Decimal Day and the first £1 coins?"
+    answer: 4448
+  - slot: 3
+    category: geography
+    text: "How long is the Danube, in kilometres?"
+    answer: 2850
+  - slot: 4
+    category: maths
+    text: "How many faces does an icosahedron have?"
+    answer: 20
+  - slot: 5
+    category: history
+    text: "How many people are known to have been part of the Gunpowder Plot?"
+    answer: 13

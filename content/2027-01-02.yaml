@@ -46,16 +46,10 @@ questions:
     answers:
       - { canonical: "Cardiff", aliases: [] }
   - slot: 6
-    type: choice
-    category: art
-    text: "Who painted 'The Birth of Venus'?"
-    options:
-      - { text: "Sandro Botticelli", correct: true }
-      - { text: "Leonardo da Vinci" }
-      - { text: "Raphael" }
-      - { text: "Titian" }
-      - { text: "Michelangelo" }
-      - { text: "Caravaggio" }
+    type: truefalse
+    category: food
+    text: "Honey can stay edible for thousands of years."
+    answer: true
   - slot: 7
     type: choice
     category: literature
@@ -78,3 +72,24 @@ questions:
       - { text: "Toronto" }
       - { text: "Halifax" }
       - { text: "Gatineau" }
+numbers:
+  - slot: 1
+    category: space
+    text: "How wide is the Moon, in kilometres?"
+    answer: 3474
+  - slot: 2
+    category: maths
+    text: "How many different five-card poker hands can be dealt from one deck?"
+    answer: 2598960
+  - slot: 3
+    category: space
+    text: "How many days passed between the Challenger and Columbia Space Shuttle disasters?"
+    answer: 6213
+  - slot: 4
+    category: maths
+    text: "How many positions can a Rubik's Cube be in, in quintillions?"
+    answer: 43
+  - slot: 5
+    category: history
+    text: "How many days passed between Mallard's steam speed record and the first Eurostar passenger trains?"
+    answer: 20588

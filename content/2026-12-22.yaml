@@ -46,16 +46,12 @@ questions:
     answers:
       - { canonical: "Red", aliases: [] }
   - slot: 6
-    type: choice
-    category: film
-    text: "In 'Home Alone', where is the McCallister family flying to?"
+    type: pair
+    category: history
+    text: "Which came first?"
     options:
-      - { text: "Paris", correct: true }
-      - { text: "London" }
-      - { text: "Rome" }
-      - { text: "New York" }
-      - { text: "Miami" }
-      - { text: "Madrid" }
+      - { text: "The founding of the NHS", correct: true }
+      - { text: "The coronation of Elizabeth II" }
   - slot: 7
     type: choice
     category: music
@@ -78,3 +74,25 @@ questions:
       - { text: "Cupid" }
       - { text: "Dasher" }
       - { text: "Vixen" }
+numbers:
+  - slot: 1
+    category: geography
+    text: "How big is the Isle of Wight, in square kilometres?"
+    answer: 380
+  - slot: 2
+    category: history
+    text: "How many days passed between Queen Victoria becoming queen and her coronation?"
+    answer: 373
+  - slot: 3
+    category: geography
+    text: "How far is it round the Earth at the equator, in kilometres?"
+    answer: 40075
+    spread: 0.2
+  - slot: 4
+    category: games
+    text: "How many days passed between the first PlayStation and the PlayStation 5 going on sale?"
+    answer: 9476
+  - slot: 5
+    category: nature
+    text: "How many hearts does an earthworm have?"
+    answer: 5

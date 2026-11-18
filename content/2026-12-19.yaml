@@ -46,16 +46,10 @@ questions:
     answers:
       - { canonical: "Green", aliases: [] }
   - slot: 6
-    type: choice
-    category: film
-    text: "Which 1939 film features the song 'Over the Rainbow'?"
-    options:
-      - { text: "The Wizard of Oz", correct: true }
-      - { text: "Gone with the Wind" }
-      - { text: "Snow White and the Seven Dwarfs" }
-      - { text: "Pinocchio" }
-      - { text: "Mary Poppins" }
-      - { text: "The Sound of Music" }
+    type: order
+    category: space
+    text: "Put these planets in order, smallest first"
+    items: ["Mercury", "Mars", "Venus", "Earth"]
   - slot: 7
     type: choice
     category: history
@@ -78,3 +72,24 @@ questions:
       - { text: "Brown" }
       - { text: "Taylor" }
       - { text: "Johnson" }
+numbers:
+  - slot: 1
+    category: history
+    text: "How many days passed between the Watergate break-in and Richard Nixon resigning?"
+    answer: 783
+  - slot: 2
+    category: politics
+    text: "For how many days was David Cameron Prime Minister?"
+    answer: 2255
+  - slot: 3
+    category: food
+    text: "How many teaspoons make a tablespoon?"
+    answer: 3
+  - slot: 4
+    category: general
+    text: "How many old pennies were there in a pound before decimalisation?"
+    answer: 240
+  - slot: 5
+    category: music
+    text: "How long does John Cage's silent piece '4′33″' last, in seconds?"
+    answer: 273

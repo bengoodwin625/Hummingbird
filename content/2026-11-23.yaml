@@ -46,16 +46,10 @@ questions:
     answers:
       - { canonical: "Jupiter", aliases: [] }
   - slot: 6
-    type: choice
-    category: literature
-    text: "Which Brontë sister wrote 'Wuthering Heights'?"
-    options:
-      - { text: "Emily Brontë", correct: true }
-      - { text: "Charlotte Brontë" }
-      - { text: "Anne Brontë" }
-      - { text: "Branwell Brontë" }
-      - { text: "Jane Austen" }
-      - { text: "George Eliot" }
+    type: truefalse
+    category: nature
+    text: "A group of flamingos is called a flamboyance."
+    answer: true
   - slot: 7
     type: choice
     category: geography

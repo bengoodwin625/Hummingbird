@@ -46,16 +46,10 @@ questions:
     answers:
       - { canonical: "Hanoi", aliases: ["Ha Noi"] }
   - slot: 6
-    type: choice
-    category: art
-    text: "Which anonymous street artist comes from Bristol?"
-    options:
-      - { text: "Banksy", correct: true }
-      - { text: "Damien Hirst" }
-      - { text: "Tracey Emin" }
-      - { text: "Keith Haring" }
-      - { text: "David Hockney" }
-      - { text: "Shepard Fairey" }
+    type: truefalse
+    category: space
+    text: "A day on Venus is longer than a year on Venus."
+    answer: true
   - slot: 7
     type: choice
     category: film
@@ -78,3 +72,24 @@ questions:
       - { text: "Edmund Spenser" }
       - { text: "Thomas Malory" }
       - { text: "William Shakespeare" }
+numbers:
+  - slot: 1
+    category: space
+    text: "How many days passed between the Apollo 11 and Apollo 12 Moon landings?"
+    answer: 122
+  - slot: 2
+    category: space
+    text: "How many days does it take Mars to go round the Sun?"
+    answer: 687
+  - slot: 3
+    category: games
+    text: "How many cards are there in an original Uno deck?"
+    answer: 108
+  - slot: 4
+    category: literature
+    text: "How many detective novels did Agatha Christie write?"
+    answer: 66
+  - slot: 5
+    category: history
+    text: "How many days old was the Queen Mother when she died?"
+    answer: 37128

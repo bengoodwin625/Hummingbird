@@ -47,15 +47,15 @@ questions:
       - { canonical: "Saint Nicholas", aliases: ["Nicholas", "St Nicholas", "Nicholas of Myra"] }
   - slot: 6
     type: choice
-    category: film
-    text: "Which film features Buddy, a human raised by elves?"
+    category: science
+    text: "Which of these is not a bone in the human body?"
     options:
-      - { text: "Elf", correct: true }
-      - { text: "The Santa Clause" }
-      - { text: "Jingle All the Way" }
-      - { text: "Fred Claus" }
-      - { text: "Arthur Christmas" }
-      - { text: "The Polar Express" }
+      - { text: "Mandolin", correct: true }
+      - { text: "Fibula" }
+      - { text: "Tibia" }
+      - { text: "Femur" }
+      - { text: "Radius" }
+      - { text: "Ulna" }
   - slot: 7
     type: choice
     category: music
@@ -78,3 +78,24 @@ questions:
       - { text: "Five" }
       - { text: "One" }
       - { text: "Twelve" }
+numbers:
+  - slot: 1
+    category: space
+    text: "How old is the Earth, in billions of years?"
+    answer: 4.54
+  - slot: 2
+    category: sport
+    text: "How many Olympic gold medals did Michael Phelps win?"
+    answer: 23
+  - slot: 3
+    category: history
+    text: "How many days passed between Elizabeth II becoming queen and her coronation?"
+    answer: 482
+  - slot: 4
+    category: sport
+    text: "How many Premier League goals did Alan Shearer score?"
+    answer: 260
+  - slot: 5
+    category: sport
+    text: "How many days old was Emma Raducanu when she won the 2021 US Open?"
+    answer: 6877

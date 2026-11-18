@@ -47,15 +47,15 @@ questions:
       - { canonical: "Gold", aliases: [] }
   - slot: 6
     type: choice
-    category: film
-    text: "Which film series features the line \"May the Force be with you\"?"
+    category: maths
+    text: "Which of these is not a prime number?"
     options:
-      - { text: "Star Wars", correct: true }
-      - { text: "Star Trek" }
-      - { text: "Dune" }
-      - { text: "Flash Gordon" }
-      - { text: "Battlestar Galactica" }
-      - { text: "The Matrix" }
+      - { text: "21", correct: true }
+      - { text: "2" }
+      - { text: "3" }
+      - { text: "13" }
+      - { text: "17" }
+      - { text: "23" }
   - slot: 7
     type: choice
     category: geography

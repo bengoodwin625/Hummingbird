@@ -47,15 +47,15 @@ questions:
       - { canonical: "Big Ben", aliases: [] }
   - slot: 6
     type: choice
-    category: art
-    text: "Who painted 'The Scream'?"
+    category: science
+    text: "Which of these is not a type of cloud?"
     options:
-      - { text: "Edvard Munch", correct: true }
-      - { text: "Vincent van Gogh" }
-      - { text: "Gustav Klimt" }
-      - { text: "Egon Schiele" }
-      - { text: "Paul Gauguin" }
-      - { text: "Wassily Kandinsky" }
+      - { text: "Stratosphere", correct: true }
+      - { text: "Cumulus" }
+      - { text: "Cirrus" }
+      - { text: "Stratus" }
+      - { text: "Cumulonimbus" }
+      - { text: "Altostratus" }
   - slot: 7
     type: choice
     category: history
@@ -78,3 +78,25 @@ questions:
       - { text: "Adelaide" }
       - { text: "Perth" }
       - { text: "Hobart" }
+numbers:
+  - slot: 1
+    category: geography
+    text: "How many windows does the Empire State Building have?"
+    answer: 6514
+  - slot: 2
+    category: sport
+    text: "What is Usain Bolt's 200 metres world record, in seconds?"
+    answer: 19.19
+    spread: 0.1
+  - slot: 3
+    category: science
+    text: "How many bones are there in a human foot?"
+    answer: 26
+  - slot: 4
+    category: history
+    text: "How many days did the Falklands War last?"
+    answer: 73
+  - slot: 5
+    category: history
+    text: "How many days passed between the Battle of Trafalgar and the Battle of Waterloo?"
+    answer: 3527

@@ -46,16 +46,10 @@ questions:
     answers:
       - { canonical: "Mandarin", aliases: ["Mandarin Chinese", "Chinese"] }
   - slot: 6
-    type: choice
-    category: literature
-    text: "Which author created the detective Hercule Poirot?"
-    options:
-      - { text: "Agatha Christie", correct: true }
-      - { text: "Dorothy L. Sayers" }
-      - { text: "Arthur Conan Doyle" }
-      - { text: "P. D. James" }
-      - { text: "Ngaio Marsh" }
-      - { text: "Ruth Rendell" }
+    type: truefalse
+    category: geography
+    text: "The Great Wall of China can be seen from the Moon with the naked eye."
+    answer: false
   - slot: 7
     type: choice
     category: science
@@ -78,3 +72,24 @@ questions:
       - { text: "Four" }
       - { text: "Five" }
       - { text: "Six" }
+numbers:
+  - slot: 1
+    category: music
+    text: "How many strings does a concert harp have?"
+    answer: 47
+  - slot: 2
+    category: history
+    text: "How many days old was Prince Philip when he died?"
+    answer: 36463
+  - slot: 3
+    category: music
+    text: "How many days passed between the UK's first Eurovision win (Sandie Shaw) and its most recent (Katrina and the Waves)?"
+    answer: 10983
+  - slot: 4
+    category: geography
+    text: "How tall is Nelson's Column, including Nelson, in metres?"
+    answer: 52
+  - slot: 5
+    category: history
+    text: "How many kings of England have been called Henry?"
+    answer: 8

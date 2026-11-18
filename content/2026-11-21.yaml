@@ -46,16 +46,10 @@ questions:
     answers:
       - { canonical: "George Orwell", aliases: ["Orwell", "Eric Blair", "Eric Arthur Blair"] }
   - slot: 6
-    type: choice
-    category: music
-    text: "Which country did ABBA come from?"
-    options:
-      - { text: "Sweden", correct: true }
-      - { text: "Norway" }
-      - { text: "Denmark" }
-      - { text: "Finland" }
-      - { text: "Netherlands" }
-      - { text: "Iceland" }
+    type: order
+    category: space
+    text: "Put these in order, nearest the Sun first"
+    items: ["Mercury", "Venus", "Earth", "Mars"]
   - slot: 7
     type: choice
     category: geography

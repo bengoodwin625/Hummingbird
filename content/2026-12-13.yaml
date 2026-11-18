@@ -46,16 +46,10 @@ questions:
     answers:
       - { canonical: "Albert Einstein", aliases: ["Einstein"] }
   - slot: 6
-    type: choice
-    category: art
-    text: "Which artist painted a famous series of water lilies?"
-    options:
-      - { text: "Claude Monet", correct: true }
-      - { text: "Édouard Manet" }
-      - { text: "Pierre-Auguste Renoir" }
-      - { text: "Paul Cézanne" }
-      - { text: "Edgar Degas" }
-      - { text: "Camille Pissarro" }
+    type: truefalse
+    category: space
+    text: "Venus spins in the opposite direction to most of the planets."
+    answer: true
   - slot: 7
     type: choice
     category: science
@@ -78,3 +72,25 @@ questions:
       - { text: "Cyprus" }
       - { text: "Egypt" }
       - { text: "Bulgaria" }
+numbers:
+  - slot: 1
+    category: space
+    text: "How many days passed between Halley's Comet's closest approaches to the Sun in 1910 and 1986?"
+    answer: 27689
+  - slot: 2
+    category: politics
+    text: "For how many days was Boris Johnson Prime Minister?"
+    answer: 1140
+  - slot: 3
+    category: geography
+    text: "How long is the Channel Tunnel, in kilometres?"
+    answer: 50
+    spread: 0.2
+  - slot: 4
+    category: science
+    text: "How many chromosomes does a potato have?"
+    answer: 48
+  - slot: 5
+    category: geography
+    text: "How many stars are there on the flag of Australia?"
+    answer: 6

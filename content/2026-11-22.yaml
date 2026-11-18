@@ -47,15 +47,15 @@ questions:
       - { canonical: "Iron", aliases: [] }
   - slot: 6
     type: choice
-    category: art
-    text: "Who sculpted 'The Thinker'?"
+    category: space
+    text: "Which of these is not a planet?"
     options:
-      - { text: "Auguste Rodin", correct: true }
-      - { text: "Michelangelo" }
-      - { text: "Donatello" }
-      - { text: "Henry Moore" }
-      - { text: "Gian Lorenzo Bernini" }
-      - { text: "Antonio Canova" }
+      - { text: "Pluto", correct: true }
+      - { text: "Mars" }
+      - { text: "Venus" }
+      - { text: "Saturn" }
+      - { text: "Neptune" }
+      - { text: "Mercury" }
   - slot: 7
     type: choice
     category: geography

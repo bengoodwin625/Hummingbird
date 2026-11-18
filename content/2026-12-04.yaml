@@ -47,15 +47,15 @@ questions:
       - { canonical: "Dublin", aliases: [] }
   - slot: 6
     type: choice
-    category: art
-    text: "Who painted the 'Mona Lisa'?"
+    category: film
+    text: "Which of these is not one of Disney's Seven Dwarfs?"
     options:
-      - { text: "Leonardo da Vinci", correct: true }
-      - { text: "Michelangelo" }
-      - { text: "Raphael" }
-      - { text: "Titian" }
-      - { text: "Sandro Botticelli" }
-      - { text: "Caravaggio" }
+      - { text: "Smiley", correct: true }
+      - { text: "Sleepy" }
+      - { text: "Dopey" }
+      - { text: "Doc" }
+      - { text: "Grumpy" }
+      - { text: "Bashful" }
   - slot: 7
     type: choice
     category: science
@@ -78,3 +78,24 @@ questions:
       - { text: "Great Britain" }
       - { text: "Germany" }
       - { text: "France" }
+numbers:
+  - slot: 1
+    category: music
+    text: "For how many weeks was Bryan Adams's '(Everything I Do) I Do It for You' at number one in the UK?"
+    answer: 16
+  - slot: 2
+    category: music
+    text: "How many days passed between the Beatles' rooftop concert and John Lennon's death?"
+    answer: 4330
+  - slot: 3
+    category: space
+    text: "How long did Armstrong and Aldrin spend outside on the Moon, in minutes?"
+    answer: 151
+  - slot: 4
+    category: film
+    text: "In 'Back to the Future', Marty travels from 26 October 1985 back to 5 November 1955. How many days back is that?"
+    answer: 10948
+  - slot: 5
+    category: sport
+    text: "How long is a tennis court, in feet?"
+    answer: 78

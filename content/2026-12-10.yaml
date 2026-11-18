@@ -46,16 +46,12 @@ questions:
     answers:
       - { canonical: "Pound", aliases: ["Pound sterling", "Sterling", "Pounds", "British pound"] }
   - slot: 6
-    type: choice
-    category: art
-    text: "Which Dutch painter created 'The Night Watch'?"
+    type: pair
+    category: history
+    text: "Which came first?"
     options:
-      - { text: "Rembrandt", correct: true }
-      - { text: "Johannes Vermeer" }
-      - { text: "Vincent van Gogh" }
-      - { text: "Frans Hals" }
-      - { text: "Piet Mondrian" }
-      - { text: "Hieronymus Bosch" }
+      - { text: "The first Moon landing", correct: true }
+      - { text: "The first Star Wars film" }
   - slot: 7
     type: choice
     category: science
@@ -78,3 +74,24 @@ questions:
       - { text: "Earth" }
       - { text: "Neptune" }
       - { text: "Jupiter" }
+numbers:
+  - slot: 1
+    category: sport
+    text: "How many days passed between the first ascent of Everest and Roger Bannister's four-minute mile?"
+    answer: 342
+  - slot: 2
+    category: sport
+    text: "How many runs did Brian Lara score in his record Test innings?"
+    answer: 400
+  - slot: 3
+    category: science
+    text: "How many bones are there in the human skull?"
+    answer: 22
+  - slot: 4
+    category: music
+    text: "How many days passed between Amy Winehouse releasing 'Back to Black' and her death?"
+    answer: 1730
+  - slot: 5
+    category: science
+    text: "What is the atomic number of silver?"
+    answer: 47

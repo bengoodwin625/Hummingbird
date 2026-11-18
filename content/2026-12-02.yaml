@@ -46,16 +46,12 @@ questions:
     answers:
       - { canonical: "Carbon dioxide", aliases: ["CO2"] }
   - slot: 6
-    type: choice
-    category: film
-    text: "In which film series does the ship the Black Pearl appear?"
+    type: pair
+    category: history
+    text: "Which came first?"
     options:
-      - { text: "Pirates of the Caribbean", correct: true }
-      - { text: "Harry Potter" }
-      - { text: "The Lord of the Rings" }
-      - { text: "Star Wars" }
-      - { text: "Indiana Jones" }
-      - { text: "Jurassic Park" }
+      - { text: "Teaching at Oxford University", correct: true }
+      - { text: "The founding of the Aztec Empire" }
   - slot: 7
     type: choice
     category: science
@@ -78,3 +74,24 @@ questions:
       - { text: "Heart" }
       - { text: "Stomach" }
       - { text: "Kidneys" }
+numbers:
+  - slot: 1
+    category: food
+    text: "How many 'herbs and spices' are in KFC's secret recipe?"
+    answer: 11
+  - slot: 2
+    category: geography
+    text: "How long is the main span of the Golden Gate Bridge, in metres?"
+    answer: 1280
+  - slot: 3
+    category: science
+    text: "How many days passed between the births of Louise Brown, the first IVF baby, and Dolly the sheep?"
+    answer: 6555
+  - slot: 4
+    category: general
+    text: "How many square feet are there in an acre?"
+    answer: 43560
+  - slot: 5
+    category: tv
+    text: "How many days passed between the first and last episodes of 'Game of Thrones'?"
+    answer: 2954

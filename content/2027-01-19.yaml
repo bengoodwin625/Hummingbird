@@ -46,16 +46,12 @@ questions:
     answers:
       - { canonical: "Abuja", aliases: [] }
   - slot: 6
-    type: choice
-    category: film
-    text: "Who played Iron Man in the Marvel films?"
+    type: pair
+    category: history
+    text: "Which came first?"
     options:
-      - { text: "Robert Downey Jr.", correct: true }
-      - { text: "Chris Evans" }
-      - { text: "Chris Hemsworth" }
-      - { text: "Mark Ruffalo" }
-      - { text: "Tom Holland" }
-      - { text: "Benedict Cumberbatch" }
+      - { text: "The invention of the World Wide Web", correct: true }
+      - { text: "The break-up of the Soviet Union" }
   - slot: 7
     type: choice
     category: sport
@@ -78,3 +74,24 @@ questions:
       - { text: "Apollo" }
       - { text: "Ares" }
       - { text: "Hermes" }
+numbers:
+  - slot: 1
+    category: space
+    text: "How many days passed between the Curiosity and Perseverance rovers landing on Mars?"
+    answer: 3118
+  - slot: 2
+    category: language
+    text: "How many letters are there in 'antidisestablishmentarianism'?"
+    answer: 28
+  - slot: 3
+    category: tv
+    text: "How many episodes of 'Game of Thrones' were made?"
+    answer: 73
+  - slot: 4
+    category: music
+    text: "How many days passed between Nirvana's 'Nevermind' coming out and Kurt Cobain's death?"
+    answer: 924
+  - slot: 5
+    category: tv
+    text: "How many episodes of 'Fawlty Towers' were made?"
+    answer: 12

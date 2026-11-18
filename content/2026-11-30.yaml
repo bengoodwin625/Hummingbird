@@ -47,15 +47,15 @@ questions:
       - { canonical: "Pacific", aliases: ["Pacific Ocean"] }
   - slot: 6
     type: choice
-    category: literature
-    text: "Who wrote 'The Hobbit'?"
+    category: nature
+    text: "Which of these is not a mammal?"
     options:
-      - { text: "J. R. R. Tolkien", correct: true }
-      - { text: "C. S. Lewis" }
-      - { text: "Roald Dahl" }
-      - { text: "Philip Pullman" }
-      - { text: "Terry Pratchett" }
-      - { text: "J. K. Rowling" }
+      - { text: "Penguin", correct: true }
+      - { text: "Dolphin" }
+      - { text: "Bat" }
+      - { text: "Whale" }
+      - { text: "Platypus" }
+      - { text: "Kangaroo" }
   - slot: 7
     type: choice
     category: history

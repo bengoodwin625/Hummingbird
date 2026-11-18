@@ -46,16 +46,12 @@ questions:
     answers:
       - { canonical: "Milky Way", aliases: [] }
   - slot: 6
-    type: choice
-    category: film
-    text: "Who is the main villain of the Harry Potter books?"
+    type: pair
+    category: history
+    text: "Which came first?"
     options:
-      - { text: "Lord Voldemort", correct: true }
-      - { text: "Saruman" }
-      - { text: "Gellert Grindelwald" }
-      - { text: "Draco Malfoy" }
-      - { text: "Sauron" }
-      - { text: "Severus Snape" }
+      - { text: "The Spanish Armada", correct: true }
+      - { text: "The Gunpowder Plot" }
   - slot: 7
     type: choice
     category: art
@@ -78,3 +74,24 @@ questions:
       - { text: "Egypt" }
       - { text: "Greece" }
       - { text: "Russia" }
+numbers:
+  - slot: 1
+    category: nature
+    text: "How many stomach chambers does a cow have?"
+    answer: 4
+  - slot: 2
+    category: music
+    text: "How many days after its release did 'Gangnam Style' become the first YouTube video to reach a billion views?"
+    answer: 159
+  - slot: 3
+    category: science
+    text: "How many chromosomes does a chimpanzee have?"
+    answer: 48
+  - slot: 4
+    category: sport
+    text: "How many league games in a row did Arsenal's 'Invincibles' go unbeaten?"
+    answer: 49
+  - slot: 5
+    category: technology
+    text: "How many days passed between the first ever text message and the first iPhone going on sale?"
+    answer: 5321

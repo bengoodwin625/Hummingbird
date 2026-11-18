@@ -46,16 +46,12 @@ questions:
     answers:
       - { canonical: "Tunis", aliases: [] }
   - slot: 6
-    type: choice
-    category: film
-    text: "Which actor played Captain Jack Sparrow?"
+    type: pair
+    category: history
+    text: "Which came first?"
     options:
-      - { text: "Johnny Depp", correct: true }
-      - { text: "Orlando Bloom" }
-      - { text: "Brad Pitt" }
-      - { text: "Keanu Reeves" }
-      - { text: "Tom Cruise" }
-      - { text: "Hugh Jackman" }
+      - { text: "The first public demonstration of television", correct: true }
+      - { text: "The discovery of penicillin" }
   - slot: 7
     type: choice
     category: food
@@ -78,3 +74,24 @@ questions:
       - { text: "12" }
       - { text: "32" }
       - { text: "104" }
+numbers:
+  - slot: 1
+    category: science
+    text: "At what temperature does iron melt, in degrees Celsius?"
+    answer: 1538
+  - slot: 2
+    category: technology
+    text: "How many days passed between the first iPhone going on sale and the first iPad?"
+    answer: 1009
+  - slot: 3
+    category: geography
+    text: "How many countries border China?"
+    answer: 14
+  - slot: 4
+    category: geography
+    text: "How tall is Blackpool Tower, in metres?"
+    answer: 158
+  - slot: 5
+    category: geography
+    text: "How tall is the Elizabeth Tower (Big Ben), in metres?"
+    answer: 96

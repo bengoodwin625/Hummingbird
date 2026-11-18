@@ -46,16 +46,10 @@ questions:
     answers:
       - { canonical: "Jacob Marley", aliases: ["Marley"] }
   - slot: 6
-    type: choice
-    category: literature
-    text: "Who wrote 'How the Grinch Stole Christmas!'?"
-    options:
-      - { text: "Dr. Seuss", correct: true }
-      - { text: "Roald Dahl" }
-      - { text: "Maurice Sendak" }
-      - { text: "Shel Silverstein" }
-      - { text: "Raymond Briggs" }
-      - { text: "Eric Carle" }
+    type: truefalse
+    category: food
+    text: "Botanically speaking, a strawberry is a berry."
+    answer: false
   - slot: 7
     type: choice
     category: christmas
@@ -78,3 +72,24 @@ questions:
       - { text: "Blue spruce" }
       - { text: "Douglas fir" }
       - { text: "Noble fir" }
+numbers:
+  - slot: 1
+    category: nature
+    text: "How many legs does a lobster have?"
+    answer: 10
+  - slot: 2
+    category: games
+    text: "How many tiles are there in a standard English Scrabble set?"
+    answer: 100
+  - slot: 3
+    category: space
+    text: "How many days passed between the launch of Sputnik 1 and Yuri Gagarin's spaceflight?"
+    answer: 1286
+  - slot: 4
+    category: history
+    text: "How many days old was Elizabeth II when she became queen?"
+    answer: 9422
+  - slot: 5
+    category: geography
+    text: "How tall is 30 St Mary Axe (the Gherkin), in metres?"
+    answer: 180

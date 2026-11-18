@@ -46,16 +46,10 @@ questions:
     answers:
       - { canonical: "Moscow", aliases: [] }
   - slot: 6
-    type: choice
-    category: literature
-    text: "Who wrote 'Lord of the Flies'?"
-    options:
-      - { text: "William Golding", correct: true }
-      - { text: "George Orwell" }
-      - { text: "Aldous Huxley" }
-      - { text: "Graham Greene" }
-      - { text: "Evelyn Waugh" }
-      - { text: "Kingsley Amis" }
+    type: order
+    category: geography
+    text: "Put these peaks in order, highest first"
+    items: ["Ben Nevis", "Snowdon", "Scafell Pike", "Slieve Donard"]
   - slot: 7
     type: choice
     category: history
@@ -78,3 +72,24 @@ questions:
       - { text: "Argentina" }
       - { text: "United States" }
       - { text: "Peru" }
+numbers:
+  - slot: 1
+    category: sport
+    text: "How many medal events were there at the Paris 2024 Olympics?"
+    answer: 329
+  - slot: 2
+    category: games
+    text: "How many days passed between the first Pokémon games and Pokémon Go?"
+    answer: 7435
+  - slot: 3
+    category: film
+    text: "How many days passed between the US releases of 'Top Gun' and 'Top Gun: Maverick'?"
+    answer: 13160
+  - slot: 4
+    category: space
+    text: "How much Moon rock did the six Apollo landings bring back, in kilograms?"
+    answer: 382
+  - slot: 5
+    category: science
+    text: "How many chromosomes does a dog have?"
+    answer: 78

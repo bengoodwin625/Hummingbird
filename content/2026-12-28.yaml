@@ -47,15 +47,15 @@ questions:
       - { canonical: "Budapest", aliases: [] }
   - slot: 6
     type: choice
-    category: literature
-    text: "Who wrote 'Moby-Dick'?"
+    category: geography
+    text: "Which of these is not a capital city?"
     options:
-      - { text: "Herman Melville", correct: true }
-      - { text: "Mark Twain" }
-      - { text: "Nathaniel Hawthorne" }
-      - { text: "Jack London" }
-      - { text: "Ernest Hemingway" }
-      - { text: "Henry James" }
+      - { text: "Sydney", correct: true }
+      - { text: "Canberra" }
+      - { text: "Ottawa" }
+      - { text: "Wellington" }
+      - { text: "Pretoria" }
+      - { text: "Brasília" }
   - slot: 7
     type: choice
     category: history
@@ -78,3 +78,24 @@ questions:
       - { text: "H2O2" }
       - { text: "O" }
       - { text: "NO2" }
+numbers:
+  - slot: 1
+    category: sport
+    text: "How many medals has Michael Phelps won at the Olympics?"
+    answer: 28
+  - slot: 2
+    category: geography
+    text: "How tall is One Canada Square at Canary Wharf, in metres?"
+    answer: 235
+  - slot: 3
+    category: maths
+    text: "Counting squares of every size, how many squares are there on a chessboard?"
+    answer: 204
+  - slot: 4
+    category: music
+    text: "How many days passed between 'Wannabe' coming out in the UK and Geri Halliwell leaving the Spice Girls?"
+    answer: 692
+  - slot: 5
+    category: history
+    text: "London's wobbly Millennium Bridge opened and then closed. How many days after opening did it reopen?"
+    answer: 622

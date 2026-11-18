@@ -128,7 +128,15 @@ Answer checking happens on the server in `backend/app/checking.py`.
 
 - **Multiple choice**: 6 options, exactly one correct. The client sends the option ID.
   Option order is shuffled per question (the same order for everyone that day, so the
-  results screen stays comparable).
+  results screen stays comparable). "Odd one out" questions are ordinary choice questions.
+- **True or false** (`truefalse`): a statement; stored as two options, True then False, never
+  shuffled. No typing allowance.
+- **Which came first?** (`pair`): two options, exactly one correct. No typing allowance.
+- **Put in order** (`order`): four items, stored with `position` = their correct place, shown
+  shuffled (never already in order). The client sends `order: [option ids]`; `check_order`
+  returns None for an invalid arrangement, which doesn't use the player's go. Banded on time
+  minus 2.5 s, like text.
+- Keyboard shortcuts 1–6 only work while a pick question's options are on screen.
 - **Number**: the answer is a number, with an optional tolerance (for example ±1 for "how
   many…" questions, or 0 for exact). Accept common formats: `1,000`, `1000`, `1 000`, and
   decimals with a point. Reject anything that doesn't parse as a number.
@@ -264,7 +272,7 @@ scripts/
 
 - `players(id, created_at, display_name?)`
 - `days(date PK, number)` — `number` is the quiz number shown in the share text.
-- `questions(id, date, slot 1–8, type choice|number|text, text, category)`
+- `questions(id, date, slot 1–8, type choice|truefalse|pair|order|number|text, text, category)`
 - `choice_options(id, question_id, position, text, is_correct)`
 - `number_answers(question_id PK, value, tolerance)`
 - `text_answers(id, question_id, canonical)` and `text_aliases(text_answer_id,
@@ -303,9 +311,28 @@ questions:
     type: text
     category: music
     text: "Which band released the album 'OK Computer'?"
-    answers:
+      answers:
       - { canonical: "Radiohead", aliases: ["radio head"] }
+  - slot: 4
+    type: truefalse
+    category: nature
+    text: "Bats are blind."
+    answer: false
+  - slot: 5
+    type: pair
+    category: history
+    text: "Which came first?"
+    options:
+      - { text: "The Battle of Hastings", correct: true }
+      - { text: "The Domesday Book" }
+  - slot: 6
+    type: order
+    category: space
+    text: "Put these in order, nearest the Sun first"
+    items: ["Mercury", "Venus", "Earth", "Mars"]   # exactly 4, in the right order
 ```
+
+At least 5 of the 8 must be plain `choice` questions; the newer types usually take slot 6.
 
 `validate_content.py` must fail if a day doesn't have exactly 8 questions with slots 1–8, if
 fewer than 5 are multiple choice, if a choice question doesn't have exactly 6 options with
@@ -373,17 +400,21 @@ quiz (ready → 3 s read → answer → reveal → results), just with "Guess n 
   `100 × (1 − |log10(guess / answer)| / spread)`, floored at 0. With the default spread of 0.6,
   10% off scores about 93, double or half 50, and four times out or more 0. A question can set
   its own `spread` (0.1–3): tighter for answers people round (Bolt's 9.58 s uses 0.1).
+- **Bullseye**: a guess within 1% of the answer scores closeness 100 plus a 20-point bonus
+  (`BULLSEYE_BONUS`, stored in `submissions.bonus`), before the speed multiplier is applied to
+  the closeness only. The reveal says "Bullseye!", and the field guide counts them.
 - **Speed multiplies closeness**, using the same animals with longer timings: Hummingbird ≤ 4 s
   ×2, Jaguar ≤ 7 s ×1.7, Toucan ≤ 11 s ×1.45, Tree frog ≤ 17 s ×1.2, Sloth ×1. Points =
-  round(closeness × multiplier): up to 200 a question, **1,000 a day**. A guess with 0
+  round(closeness × multiplier) + bonus: up to 220 a question, **1,100 a day**. A guess with 0
   closeness earns no animal and no points.
 - **30 s to answer** (plus the usual 1 s grace); no typing allowance, the timings include typing.
 - A blank guess or something that isn't a number doesn't use the player's go.
 - Plays and questions carry a `mode` ("speed" or "numbers"), so the two games never mix:
-  streaks, the field guide, leagues, the weekly table and challenges are all speed-quiz only.
+  streaks and challenges are speed-quiz only; the weekly table, leagues and field guide cover
+  both (see "Progress and friends").
 - Scoring lives in `backend/app/scoring.py` (`closeness`, `score_numbers`) with tests.
 - **Results** use the same blocks as the Speed quiz (`frontend/src/ui/resultparts.ts`): score
-  out of 1,000 and standing, You vs Average, everyone's scores curve (50-point buckets), your
+  out of 1,100 and standing, You vs Average, everyone's scores curve (50-point buckets), your
   speed (pace animal on the How Close timings, gap to today's average, the five-guess line-up),
   average closeness / spot on / hummingbirds, then every guess against its answer, and share
   text plus a picture card titled "HOW CLOSE #n".
@@ -402,12 +433,17 @@ All in `backend/app/social.py` (routes) and `backend/app/progress.py` (pure rule
 - **Streaks**: days in a row with a finished quiz, and days in a row with at least one
   Hummingbird. A streak stays alive until a whole day is missed.
 - **Field guide**: how many of each animal you've caught, plus the rare **golden hummingbird**
-  (a Hummingbird answered in 0.3 s or less, real time) and perfect days (8/8). Uncaught animals
+  (a Hummingbird answered in 0.3 s or less, real time), perfect days (8/8) and How Close
+  bullseyes. Uncaught animals
   show as silhouettes.
-- **Weekly league** (`/api/week`): everyone's best five days, Monday to Sunday, top 10 plus your
-  own row. Players without a name show as "Anonymous <animal>".
+- **Combined score**: a day's total across both games is round(speed ÷ 8) + How Close
+  (`progress.combined_score`), so each game counts up to about 1,000. `/api/me` returns
+  `today {speed, close, combined}` and the share text adds a "Both games" line.
+- **Weekly league** (`/api/week?game=speed|close|combined`): everyone's best five days, Monday
+  to Sunday, top 10 plus your own row, with tabs for each game. Players without a name show as
+  "Anonymous <animal>".
 - **Private leagues**: create or join with a 6-letter code (no 0/O/1/I); members see today's
-  scores and animals and a weekly best-five total. Invite links are `/?league=<code>`. A name is
+  Speed, Close and Total for today and a weekly best-five combined total. Invite links are `/?league=<code>`. A name is
   required to create or join. Up to 20 leagues per player and 50 players per league.
 - **Challenge links**: each finished play gets a code; the share text links to `/?c=<code>`.
   The friend sees "X challenged you: beat N" on the menu and a head-to-head on their results.
@@ -418,12 +454,24 @@ All in `backend/app/social.py` (routes) and `backend/app/progress.py` (pure rule
   animals in the forest with the score; touch devices get the share sheet, computers download.
 - Never show how many people have played (percentages and ranks only).
 
+## Sound and installing
+
+- **Sound** (`frontend/src/ui/sound.ts`): off by default, toggled by the header's speaker button
+  and remembered on the device (`hb-sound`). All synthesised with Web Audio: a quiet forest bed
+  with the odd bird call, a soft tick when answers open and a chime per animal (a falling tone
+  for a miss). No sound files.
+- **Install as an app**: `frontend/public/manifest.webmanifest` and `sw.js` (registered in
+  production builds only; it never caches `/api`, fetches pages network-first and caches
+  assets). The menu shows "Install the app" where the browser offers it and a Share → Add to
+  Home Screen hint on iPhone. Icons in `frontend/public/icons/` are written from the sprite by
+  `scripts/make_favicon.ts`.
+
 ## Out of scope for v1 (don't build unless asked)
 
 - Password accounts and email login (device sync by code is the account, see below).
 - Archive or replay of past days. When built, it is a paid Hummingbird Club feature only.
 - Live head-to-head or multiplayer rooms (challenge links are asynchronous).
-- Sound effects and music.
+- Music (gentle optional sound effects are built, see above).
 - Monetisation (the plan is in `docs/money-plan.md`; build none of it until asked).
 
 ## Open decisions

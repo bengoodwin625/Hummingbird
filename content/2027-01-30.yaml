@@ -46,16 +46,10 @@ questions:
     answers:
       - { canonical: "Sofia", aliases: [] }
   - slot: 6
-    type: choice
-    category: literature
-    text: "Which bear lives in the Hundred Acre Wood?"
-    options:
-      - { text: "Winnie-the-Pooh", correct: true }
-      - { text: "Paddington Bear" }
-      - { text: "Rupert Bear" }
-      - { text: "Baloo" }
-      - { text: "Yogi Bear" }
-      - { text: "Fozzie Bear" }
+    type: truefalse
+    category: geography
+    text: "The Sahara is the largest desert in the world."
+    answer: false
   - slot: 7
     type: choice
     category: nature
@@ -78,3 +72,24 @@ questions:
       - { text: "A charm" }
       - { text: "A colony" }
       - { text: "A gaggle" }
+numbers:
+  - slot: 1
+    category: film
+    text: "How many days passed between 'Back to the Future' coming out and the future date Marty visits in 'Part II'?"
+    answer: 11067
+  - slot: 2
+    category: science
+    text: "How many teeth does an adult cat have?"
+    answer: 30
+  - slot: 3
+    category: geography
+    text: "How long is the main span of the Humber Bridge, in metres?"
+    answer: 1410
+  - slot: 4
+    category: nature
+    text: "How many bones are there in a giraffe's neck?"
+    answer: 7
+  - slot: 5
+    category: history
+    text: "How many days passed between the Wall Street Crash ('Black Tuesday') and Pearl Harbor?"
+    answer: 4422

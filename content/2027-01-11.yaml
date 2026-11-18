@@ -46,16 +46,12 @@ questions:
     answers:
       - { canonical: "Bucharest", aliases: [] }
   - slot: 6
-    type: choice
-    category: film
-    text: "Which Pixar film follows a rat who loves to cook?"
+    type: pair
+    category: history
+    text: "Which came first?"
     options:
-      - { text: "Ratatouille", correct: true }
-      - { text: "Luca" }
-      - { text: "Up" }
-      - { text: "Cars" }
-      - { text: "Coco" }
-      - { text: "Soul" }
+      - { text: "The first Academy Awards", correct: true }
+      - { text: "The first FIFA World Cup" }
   - slot: 7
     type: choice
     category: film
@@ -78,3 +74,24 @@ questions:
       - { text: "Cuba" }
       - { text: "Bahamas" }
       - { text: "Guatemala" }
+numbers:
+  - slot: 1
+    category: history
+    text: "How many days passed between the UK's first Covid lockdown being announced and 'Freedom Day'?"
+    answer: 483
+  - slot: 2
+    category: history
+    text: "How many people signed the US Declaration of Independence?"
+    answer: 56
+  - slot: 3
+    category: geography
+    text: "How high is the top of the Sydney Harbour Bridge's arch above the water, in metres?"
+    answer: 134
+  - slot: 4
+    category: history
+    text: "How many days passed between Princess Diana's wedding and her death?"
+    answer: 5877
+  - slot: 5
+    category: sport
+    text: "How many balls are on a snooker table at the start of a frame, including the white?"
+    answer: 22

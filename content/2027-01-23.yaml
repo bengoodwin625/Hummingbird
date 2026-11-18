@@ -46,16 +46,12 @@ questions:
     answers:
       - { canonical: "Kabul", aliases: [] }
   - slot: 6
-    type: choice
-    category: film
-    text: "Which film is about a boy who never grows up and lives in Neverland?"
+    type: pair
+    category: history
+    text: "Which came first?"
     options:
-      - { text: "Peter Pan", correct: true }
-      - { text: "Pinocchio" }
-      - { text: "The Jungle Book" }
-      - { text: "Aladdin" }
-      - { text: "Matilda" }
-      - { text: "Bambi" }
+      - { text: "The Channel Tunnel opening", correct: true }
+      - { text: "The first 'Toy Story' film" }
   - slot: 7
     type: choice
     category: sport
@@ -78,3 +74,24 @@ questions:
       - { text: "Bosworth" }
       - { text: "Hastings" }
       - { text: "Waterloo" }
+numbers:
+  - slot: 1
+    category: sport
+    text: "How many days passed between the opening ceremonies of London 2012 and Paris 2024?"
+    answer: 4382
+  - slot: 2
+    category: geography
+    text: "How long is the M25, in miles?"
+    answer: 117
+  - slot: 3
+    category: history
+    text: "Roughly how many soldiers make up China's Terracotta Army?"
+    answer: 8000
+  - slot: 4
+    category: general
+    text: "How many minutes are there in a week?"
+    answer: 10080
+  - slot: 5
+    category: tv
+    text: "How many episodes of the UK 'Office' were made, including the Christmas specials?"
+    answer: 14

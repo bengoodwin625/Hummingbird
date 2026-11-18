@@ -46,16 +46,10 @@ questions:
     answers:
       - { canonical: "Manila", aliases: [] }
   - slot: 6
-    type: choice
-    category: art
-    text: "Which famous armless ancient Greek statue is in the Louvre?"
-    options:
-      - { text: "Venus de Milo", correct: true }
-      - { text: "The Discobolus" }
-      - { text: "David" }
-      - { text: "The Thinker" }
-      - { text: "Nefertiti" }
-      - { text: "The Little Mermaid" }
+    type: truefalse
+    category: nature
+    text: "Goldfish only have a three-second memory."
+    answer: false
   - slot: 7
     type: choice
     category: sport
@@ -78,3 +72,24 @@ questions:
       - { text: "Femur" }
       - { text: "Tibia" }
       - { text: "Scapula" }
+numbers:
+  - slot: 1
+    category: general
+    text: "How many shillings were there in a guinea?"
+    answer: 21
+  - slot: 2
+    category: film
+    text: "How many days passed between the UK releases of the first and last Harry Potter films?"
+    answer: 3528
+  - slot: 3
+    category: sport
+    text: "How many days passed between Andy Murray's first and second Wimbledon titles?"
+    answer: 1099
+  - slot: 4
+    category: maths
+    text: "What is 2 to the power of 20?"
+    answer: 1048576
+  - slot: 5
+    category: geography
+    text: "How tall is the Empire State Building to the tip of its antenna, in metres?"
+    answer: 443

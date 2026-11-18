@@ -46,16 +46,12 @@ questions:
     answers:
       - { canonical: "Accra", aliases: [] }
   - slot: 6
-    type: choice
-    category: film
-    text: "What kind of animal is Baloo in 'The Jungle Book'?"
+    type: pair
+    category: history
+    text: "Which came first?"
     options:
-      - { text: "Bear", correct: true }
-      - { text: "Panther" }
-      - { text: "Tiger" }
-      - { text: "Snake" }
-      - { text: "Monkey" }
-      - { text: "Elephant" }
+      - { text: "The first public steam railway", correct: true }
+      - { text: "Queen Victoria's coronation" }
   - slot: 7
     type: choice
     category: music
@@ -78,3 +74,24 @@ questions:
       - { text: "Nitrogen" }
       - { text: "Calcium" }
       - { text: "Oxygen" }
+numbers:
+  - slot: 1
+    category: history
+    text: "How long was the Titanic, in metres?"
+    answer: 269
+  - slot: 2
+    category: music
+    text: "How long is 'Stairway to Heaven', in seconds?"
+    answer: 482
+  - slot: 3
+    category: music
+    text: "How many days passed between Live Aid and Live 8?"
+    answer: 7294
+  - slot: 4
+    category: sport
+    text: "How many days passed between the first FA Cup final and the first international football match?"
+    answer: 259
+  - slot: 5
+    category: general
+    text: "How many seconds are there in a day?"
+    answer: 86400

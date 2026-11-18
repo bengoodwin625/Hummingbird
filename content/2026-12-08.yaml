@@ -47,15 +47,15 @@ questions:
       - { canonical: "Russia", aliases: [] }
   - slot: 6
     type: choice
-    category: film
-    text: "Who directed 'Pulp Fiction'?"
+    category: geography
+    text: "Which of these countries is not in South America?"
     options:
-      - { text: "Quentin Tarantino", correct: true }
-      - { text: "Martin Scorsese" }
-      - { text: "Guy Ritchie" }
-      - { text: "David Fincher" }
-      - { text: "Robert Rodriguez" }
-      - { text: "Paul Thomas Anderson" }
+      - { text: "Mexico", correct: true }
+      - { text: "Chile" }
+      - { text: "Peru" }
+      - { text: "Ecuador" }
+      - { text: "Uruguay" }
+      - { text: "Paraguay" }
   - slot: 7
     type: choice
     category: science
@@ -78,3 +78,25 @@ questions:
       - { text: "Krone" }
       - { text: "Schilling" }
       - { text: "Lira" }
+numbers:
+  - slot: 1
+    category: geography
+    text: "How tall is Snowdon (Yr Wyddfa), in metres?"
+    answer: 1085
+    spread: 0.2
+  - slot: 2
+    category: language
+    text: "How many syllables are there in a traditional haiku?"
+    answer: 17
+  - slot: 3
+    category: geography
+    text: "How many points does the maple leaf on Canada's flag have?"
+    answer: 11
+  - slot: 4
+    category: history
+    text: "How many days after Everest was first climbed was Elizabeth II crowned?"
+    answer: 4
+  - slot: 5
+    category: music
+    text: "How many days passed between the deaths of Elvis Presley and John Lennon?"
+    answer: 1210

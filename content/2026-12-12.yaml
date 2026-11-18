@@ -47,15 +47,15 @@ questions:
       - { canonical: "Lisbon", aliases: [] }
   - slot: 6
     type: choice
-    category: literature
-    text: "Who wrote 'Pride and Prejudice'?"
+    category: science
+    text: "Which of these is not a noble gas?"
     options:
-      - { text: "Jane Austen", correct: true }
-      - { text: "Charlotte Brontë" }
-      - { text: "George Eliot" }
-      - { text: "Mary Shelley" }
-      - { text: "Elizabeth Gaskell" }
-      - { text: "Fanny Burney" }
+      - { text: "Nitrogen", correct: true }
+      - { text: "Helium" }
+      - { text: "Neon" }
+      - { text: "Argon" }
+      - { text: "Krypton" }
+      - { text: "Xenon" }
   - slot: 7
     type: choice
     category: space
@@ -78,3 +78,24 @@ questions:
       - { text: "French" }
       - { text: "English" }
       - { text: "Italian" }
+numbers:
+  - slot: 1
+    category: sport
+    text: "How many Grand Slam singles titles did Serena Williams win?"
+    answer: 23
+  - slot: 2
+    category: history
+    text: "How many days after the first UK lockdown was announced did Margaret Keenan get the first Covid vaccine jab?"
+    answer: 260
+  - slot: 3
+    category: history
+    text: "How many amendments are there to the US Constitution?"
+    answer: 27
+  - slot: 4
+    category: music
+    text: "How many days passed between Elvis's first single, 'That's All Right', and his death?"
+    answer: 8429
+  - slot: 5
+    category: film
+    text: "How many official James Bond films have been made by Eon Productions?"
+    answer: 25

@@ -46,16 +46,12 @@ questions:
     answers:
       - { canonical: "Mexico City", aliases: ["Ciudad de Mexico"] }
   - slot: 6
-    type: choice
-    category: film
-    text: "Which superhero is also known as the Dark Knight?"
+    type: pair
+    category: history
+    text: "Which came first?"
     options:
-      - { text: "Batman", correct: true }
-      - { text: "Superman" }
-      - { text: "Spider-Man" }
-      - { text: "Iron Man" }
-      - { text: "Daredevil" }
-      - { text: "Black Panther" }
+      - { text: "Shakespeare's death", correct: true }
+      - { text: "The Mayflower's voyage to America" }
   - slot: 7
     type: choice
     category: music
@@ -78,3 +74,24 @@ questions:
       - { text: "Franz Liszt" }
       - { text: "Franz Schubert" }
       - { text: "Claude Debussy" }
+numbers:
+  - slot: 1
+    category: science
+    text: "What is the atomic number of uranium?"
+    answer: 92
+  - slot: 2
+    category: history
+    text: "How many days passed between the sinking of the Titanic and its sister ship Britannic?"
+    answer: 1681
+  - slot: 3
+    category: film
+    text: "How many 'Carry On' films were made?"
+    answer: 31
+  - slot: 4
+    category: geography
+    text: "How many cantons does Switzerland have?"
+    answer: 26
+  - slot: 5
+    category: games
+    text: "How many days passed between the Game Boy and the Nintendo Switch first going on sale in Japan?"
+    answer: 10178

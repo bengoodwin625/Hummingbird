@@ -46,16 +46,10 @@ questions:
     answers:
       - { canonical: "Dhaka", aliases: ["Dacca"] }
   - slot: 6
-    type: choice
-    category: literature
-    text: "Who wrote 'Oliver Twist'?"
-    options:
-      - { text: "Charles Dickens", correct: true }
-      - { text: "Thomas Hardy" }
-      - { text: "Jane Austen" }
-      - { text: "William Thackeray" }
-      - { text: "George Eliot" }
-      - { text: "Anthony Trollope" }
+    type: order
+    category: space
+    text: "Put these planets in order, biggest first"
+    items: ["Jupiter", "Saturn", "Uranus", "Neptune"]
   - slot: 7
     type: choice
     category: sport
@@ -78,3 +72,24 @@ questions:
       - { text: "Jupiter" }
       - { text: "Mars" }
       - { text: "Pluto" }
+numbers:
+  - slot: 1
+    category: general
+    text: "How many seconds are there in a year that isn't a leap year?"
+    answer: 31536000
+  - slot: 2
+    category: space
+    text: "How many days did Tim Peake spend in space on his 2015–16 mission?"
+    answer: 186
+  - slot: 3
+    category: music
+    text: "How many days passed between Blur's 'Parklife' and Oasis's 'Definitely Maybe' coming out?"
+    answer: 126
+  - slot: 4
+    category: science
+    text: "What is the atomic number of lead?"
+    answer: 82
+  - slot: 5
+    category: maths
+    text: "What do the inside angles of a pentagon add up to, in degrees?"
+    answer: 540

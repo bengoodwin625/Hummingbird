@@ -47,15 +47,15 @@ questions:
       - { canonical: "Beirut", aliases: [] }
   - slot: 6
     type: choice
-    category: film
-    text: "Which film features a giant ape climbing the Empire State Building?"
+    category: geography
+    text: "Which of these is not one of the Great Lakes?"
     options:
-      - { text: "King Kong", correct: true }
-      - { text: "Godzilla" }
-      - { text: "Mighty Joe Young" }
-      - { text: "Planet of the Apes" }
-      - { text: "Jurassic Park" }
-      - { text: "Gorillas in the Mist" }
+      - { text: "Lake Victoria", correct: true }
+      - { text: "Lake Superior" }
+      - { text: "Lake Michigan" }
+      - { text: "Lake Huron" }
+      - { text: "Lake Erie" }
+      - { text: "Lake Ontario" }
   - slot: 7
     type: choice
     category: nature
@@ -78,3 +78,24 @@ questions:
       - { text: "Spleen" }
       - { text: "Gallbladder" }
       - { text: "Thyroid" }
+numbers:
+  - slot: 1
+    category: sport
+    text: "How heavy is a men's shot put, in kilograms?"
+    answer: 7.26
+  - slot: 2
+    category: maths
+    text: "How many diagonals does a ten-sided shape (a decagon) have?"
+    answer: 35
+  - slot: 3
+    category: history
+    text: "For how many days was Edward VIII king?"
+    answer: 326
+  - slot: 4
+    category: tv
+    text: "How many episodes of 'Breaking Bad' were made?"
+    answer: 62
+  - slot: 5
+    category: food
+    text: "How many holes are there in a Ritz cracker?"
+    answer: 7

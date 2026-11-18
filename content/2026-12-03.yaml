@@ -46,16 +46,10 @@ questions:
     answers:
       - { canonical: "Madrid", aliases: [] }
   - slot: 6
-    type: choice
-    category: literature
-    text: "Who wrote 'Frankenstein'?"
-    options:
-      - { text: "Mary Shelley", correct: true }
-      - { text: "Bram Stoker" }
-      - { text: "Percy Bysshe Shelley" }
-      - { text: "Lord Byron" }
-      - { text: "Edgar Allan Poe" }
-      - { text: "H. G. Wells" }
+    type: order
+    category: geography
+    text: "Put these buildings in order, tallest first"
+    items: ["Burj Khalifa", "Shanghai Tower", "One World Trade Center", "The Shard"]
   - slot: 7
     type: choice
     category: science
@@ -78,3 +72,24 @@ questions:
       - { text: "Macbeth" }
       - { text: "The Tempest" }
       - { text: "King Lear" }
+numbers:
+  - slot: 1
+    category: geography
+    text: "How many ceremonial counties does England have?"
+    answer: 48
+  - slot: 2
+    category: tv
+    text: "How many days passed between the first episodes of 'Coronation Street' and 'EastEnders'?"
+    answer: 8838
+  - slot: 3
+    category: space
+    text: "How many days passed between Valentina Tereshkova's spaceflight and Helen Sharman's?"
+    answer: 10198
+  - slot: 4
+    category: general
+    text: "How many yards are there in a mile?"
+    answer: 1760
+  - slot: 5
+    category: geography
+    text: "How many countries border Germany?"
+    answer: 9

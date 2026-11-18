@@ -46,16 +46,12 @@ questions:
     answers:
       - { canonical: "Amsterdam", aliases: [] }
   - slot: 6
-    type: choice
-    category: literature
-    text: "Who wrote the poem 'The Raven'?"
+    type: pair
+    category: history
+    text: "Which came first?"
     options:
-      - { text: "Edgar Allan Poe", correct: true }
-      - { text: "Walt Whitman" }
-      - { text: "Emily Dickinson" }
-      - { text: "Robert Frost" }
-      - { text: "Lord Byron" }
-      - { text: "John Keats" }
+      - { text: "The Great Pyramid of Giza", correct: true }
+      - { text: "Cleopatra's reign" }
   - slot: 7
     type: choice
     category: history
@@ -78,3 +74,24 @@ questions:
       - { text: "Saturn" }
       - { text: "Mars" }
       - { text: "Jupiter" }
+numbers:
+  - slot: 1
+    category: music
+    text: "How many days passed between the deaths of John Lennon and George Harrison?"
+    answer: 7661
+  - slot: 2
+    category: history
+    text: "What top speed did Mallard reach in 1938 to set the steam record, in miles per hour?"
+    answer: 126
+  - slot: 3
+    category: sport
+    text: "How many goals did Just Fontaine score at the 1958 World Cup, still a record for one tournament?"
+    answer: 13
+  - slot: 4
+    category: history
+    text: "For how many days were Elizabeth II and Prince Philip married?"
+    answer: 26804
+  - slot: 5
+    category: games
+    text: "How many different first moves can White make in chess?"
+    answer: 20

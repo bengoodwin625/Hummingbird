@@ -47,15 +47,15 @@ questions:
       - { canonical: "Sahara", aliases: ["Sahara Desert"] }
   - slot: 6
     type: choice
-    category: art
-    text: "Who designed the Sagrada Família in Barcelona?"
+    category: literature
+    text: "Which of these is not a Shakespeare play?"
     options:
-      - { text: "Antoni Gaudí", correct: true }
-      - { text: "Le Corbusier" }
-      - { text: "Frank Lloyd Wright" }
-      - { text: "Joan Miró" }
-      - { text: "Lluís Domènech i Montaner" }
-      - { text: "Santiago Calatrava" }
+      - { text: "The Duchess of Malfi", correct: true }
+      - { text: "Hamlet" }
+      - { text: "Macbeth" }
+      - { text: "Othello" }
+      - { text: "The Tempest" }
+      - { text: "King Lear" }
   - slot: 7
     type: choice
     category: history
@@ -78,3 +78,24 @@ questions:
       - { text: "Liberty Leading the People" }
       - { text: "The Wedding at Cana" }
       - { text: "The Coronation of Napoleon" }
+numbers:
+  - slot: 1
+    category: literature
+    text: "How many books are there in the New Testament?"
+    answer: 27
+  - slot: 2
+    category: geography
+    text: "How long is the Trans-Siberian Railway from Moscow to Vladivostok, in kilometres?"
+    answer: 9289
+  - slot: 3
+    category: history
+    text: "How fast did Concorde cruise, in kilometres per hour?"
+    answer: 2179
+  - slot: 4
+    category: music
+    text: "How many days passed between Queen playing Live Aid and Freddie Mercury's death?"
+    answer: 2325
+  - slot: 5
+    category: science
+    text: "How many days did Charles Darwin's voyage on HMS Beagle last?"
+    answer: 1741

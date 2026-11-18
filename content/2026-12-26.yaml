@@ -46,16 +46,12 @@ questions:
     answers:
       - { canonical: "Edinburgh", aliases: [] }
   - slot: 6
-    type: choice
-    category: film
-    text: "Which actor voices Woody in the 'Toy Story' films?"
+    type: pair
+    category: history
+    text: "Which came first?"
     options:
-      - { text: "Tom Hanks", correct: true }
-      - { text: "Tim Allen" }
-      - { text: "Billy Crystal" }
-      - { text: "Robin Williams" }
-      - { text: "Tom Cruise" }
-      - { text: "Steve Martin" }
+      - { text: "The first email", correct: true }
+      - { text: "The first mobile phone call" }
   - slot: 7
     type: choice
     category: literature
@@ -78,3 +74,25 @@ questions:
       - { text: "Argentina" }
       - { text: "France" }
       - { text: "England" }
+numbers:
+  - slot: 1
+    category: sport
+    text: "How many days passed between the Champions League finals that sealed Manchester United's treble and Manchester City's?"
+    answer: 8781
+  - slot: 2
+    category: science
+    text: "What is the atomic number of gold?"
+    answer: 79
+  - slot: 3
+    category: food
+    text: "What percentage of a cucumber is water?"
+    answer: 96
+    spread: 0.1
+  - slot: 4
+    category: geography
+    text: "How long is the River Severn, in kilometres?"
+    answer: 354
+  - slot: 5
+    category: history
+    text: "How many days after Amundsen did Captain Scott's team reach the South Pole?"
+    answer: 34

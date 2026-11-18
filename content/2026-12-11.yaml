@@ -46,16 +46,10 @@ questions:
     answers:
       - { canonical: "Rome", aliases: [] }
   - slot: 6
-    type: choice
-    category: film
-    text: "Who is the headmaster of Hogwarts in the first Harry Potter film?"
-    options:
-      - { text: "Albus Dumbledore", correct: true }
-      - { text: "Severus Snape" }
-      - { text: "Minerva McGonagall" }
-      - { text: "Gellert Grindelwald" }
-      - { text: "Horace Slughorn" }
-      - { text: "Remus Lupin" }
+    type: order
+    category: history
+    text: "Put these monarchs in order, earliest first"
+    items: ["Henry VIII", "Elizabeth I", "Victoria", "Elizabeth II"]
   - slot: 7
     type: choice
     category: science
@@ -78,3 +72,24 @@ questions:
       - { text: "Alexander Pushkin" }
       - { text: "Ivan Turgenev" }
       - { text: "Nikolai Gogol" }
+numbers:
+  - slot: 1
+    category: general
+    text: "How many acres are there in a square mile?"
+    answer: 640
+  - slot: 2
+    category: tv
+    text: "How many days passed between the first and last episodes of 'Friends'?"
+    answer: 3514
+  - slot: 3
+    category: sport
+    text: "How many players are there on an Australian rules football team on the field?"
+    answer: 18
+  - slot: 4
+    category: science
+    text: "How many days passed between the first human heart transplant and the first Moon landing?"
+    answer: 595
+  - slot: 5
+    category: literature
+    text: "How many books are there in the Old Testament (Protestant Bible)?"
+    answer: 39

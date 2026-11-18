@@ -47,15 +47,15 @@ questions:
       - { canonical: "Tay", aliases: ["River Tay"] }
   - slot: 6
     type: choice
-    category: nature
-    text: "What is the national flower of Scotland?"
+    category: food
+    text: "Which of these is not a type of pasta?"
     options:
-      - { text: "Thistle", correct: true }
-      - { text: "Rose" }
-      - { text: "Daffodil" }
-      - { text: "Shamrock" }
-      - { text: "Heather" }
-      - { text: "Bluebell" }
+      - { text: "Paella", correct: true }
+      - { text: "Penne" }
+      - { text: "Fusilli" }
+      - { text: "Farfalle" }
+      - { text: "Rigatoni" }
+      - { text: "Linguine" }
   - slot: 7
     type: choice
     category: sport
@@ -78,3 +78,25 @@ questions:
       - { text: "1769" }
       - { text: "1789" }
       - { text: "1796" }
+numbers:
+  - slot: 1
+    category: games
+    text: "How many squares are there round a Monopoly board?"
+    answer: 40
+  - slot: 2
+    category: history
+    text: "How many days passed between the Suez Canal opening and the Panama Canal opening?"
+    answer: 16341
+  - slot: 3
+    category: sport
+    text: "How many Formula 1 races did Michael Schumacher win?"
+    answer: 91
+  - slot: 4
+    category: geography
+    text: "How many rooms are there in the Palace of Westminster?"
+    answer: 1100
+  - slot: 5
+    category: geography
+    text: "How tall is K2, in metres?"
+    answer: 8611
+    spread: 0.1

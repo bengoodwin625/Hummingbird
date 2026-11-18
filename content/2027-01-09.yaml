@@ -47,15 +47,15 @@ questions:
       - { canonical: "Havana", aliases: ["La Habana"] }
   - slot: 6
     type: choice
-    category: film
-    text: "Which film is famous for the line \"I'll be back\"?"
+    category: nature
+    text: "Which of these is not a marsupial?"
     options:
-      - { text: "The Terminator", correct: true }
-      - { text: "RoboCop" }
-      - { text: "Die Hard" }
-      - { text: "Predator" }
-      - { text: "Total Recall" }
-      - { text: "Rambo" }
+      - { text: "Panda", correct: true }
+      - { text: "Kangaroo" }
+      - { text: "Koala" }
+      - { text: "Wombat" }
+      - { text: "Wallaby" }
+      - { text: "Tasmanian devil" }
   - slot: 7
     type: choice
     category: music
@@ -78,3 +78,24 @@ questions:
       - { text: "Arctic Ocean" }
       - { text: "Southern Ocean" }
       - { text: "Mediterranean Sea" }
+numbers:
+  - slot: 1
+    category: history
+    text: "How many days passed between the Berlin Wall coming down and German reunification?"
+    answer: 328
+  - slot: 2
+    category: politics
+    text: "For how many days was Gordon Brown Prime Minister?"
+    answer: 1049
+  - slot: 3
+    category: sport
+    text: "How many hurdles are there in a 110 metres hurdles race?"
+    answer: 10
+  - slot: 4
+    category: music
+    text: "For how many weeks was 'Bohemian Rhapsody' at number one in the UK in 1975–76?"
+    answer: 9
+  - slot: 5
+    category: sport
+    text: "How many gold medals did Team GB win at London 2012?"
+    answer: 29

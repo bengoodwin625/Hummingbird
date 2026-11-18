@@ -46,16 +46,12 @@ questions:
     answers:
       - { canonical: "Berlin", aliases: [] }
   - slot: 6
-    type: choice
-    category: literature
-    text: "Who wrote 'A Christmas Carol'?"
+    type: pair
+    category: history
+    text: "Which came first?"
     options:
-      - { text: "Charles Dickens", correct: true }
-      - { text: "Thomas Hardy" }
-      - { text: "Charlotte Brontë" }
-      - { text: "Lewis Carroll" }
-      - { text: "Oscar Wilde" }
-      - { text: "Anthony Trollope" }
+      - { text: "Gutenberg's printing press", correct: true }
+      - { text: "Columbus reaching the Americas" }
   - slot: 7
     type: choice
     category: space
@@ -78,3 +74,24 @@ questions:
       - { text: "Ralph Vaughan Williams" }
       - { text: "Henry Purcell" }
       - { text: "Gustav Mahler" }
+numbers:
+  - slot: 1
+    category: history
+    text: "How long was the Hindenburg airship, in metres?"
+    answer: 245
+  - slot: 2
+    category: language
+    text: "How many letters are there in the Russian alphabet?"
+    answer: 33
+  - slot: 3
+    category: nature
+    text: "What is the most legs ever counted on a millipede?"
+    answer: 1306
+  - slot: 4
+    category: politics
+    text: "For how many days was Liz Truss Prime Minister?"
+    answer: 49
+  - slot: 5
+    category: history
+    text: "How many days passed between Charles and Diana's wedding and William and Catherine's?"
+    answer: 10866
