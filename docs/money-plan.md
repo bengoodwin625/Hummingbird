@@ -17,6 +17,7 @@ Suggested price to test: **£2.99 a month or £24.99 a year**.
 What members get, all built on things the game already has:
 
 - **The archive**: play any past day's quiz (scored, but not counted in that day's results).
+  *Owner decision (18 November 2026): the archive is a Club feature only, never free.*
 - **Your stats**: speed over time, your fastest answers, best categories, and your animal
   collection (how many hummingbirds you've ever caught).
 - **A bonus round**: an extra 8 questions a day, for people who want more than one go.
@@ -30,6 +31,8 @@ daily audience is in the thousands.
 ## 2. Leagues — play with your group (second, likely the biggest)
 
 - **Free leagues** for small friend groups: a private table for everyone in the group chat.
+  *Built (18 November 2026): create or join with a 6-letter code, today's scores and a weekly
+  best-five total. Teams would add on top of these.*
 - **Hummingbird for Teams**, paid per team (for example £15–£30 a month): for offices, clubs, schools
   and pubs. It includes a shared leaderboard, weekly and monthly winners, a channel that posts the
   daily results (Slack or Teams), and simple admin.

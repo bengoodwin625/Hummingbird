@@ -91,6 +91,55 @@ export interface Results {
     bucket_size: number;
   };
   next_unlock_at: string;
+  /** Share as ?c=<code> to challenge a friend to beat this score on the same questions. */
+  challenge_code: string;
+}
+
+export interface Me {
+  display_name: string | null;
+  streak: { current: number; best: number; hummingbird_current: number; hummingbird_best: number };
+  guide: { counts: Record<Band, number>; golden: number; perfect_days: number };
+  days_played: number;
+}
+
+export interface WeekRow {
+  rank: number;
+  name: string;
+  total: number;
+  days: number;
+  you: boolean;
+}
+
+export interface Week {
+  week_start: string;
+  best_days: number;
+  top: WeekRow[];
+  you: WeekRow | null;
+}
+
+export interface LeagueMember {
+  name: string;
+  you: boolean;
+  today: number | null;
+  today_bands: Array<Band | null> | null;
+  week: number;
+}
+
+export interface League {
+  id: number;
+  code: string;
+  name: string;
+  owner: boolean;
+  members: LeagueMember[];
+}
+
+export interface Challenge {
+  name: string;
+  number: number;
+  date: string;
+  total_score: number;
+  bands: Array<Band | null>;
+  is_today: boolean;
 }
 
 export class ApiError extends Error {
@@ -122,7 +171,7 @@ export function rememberPlayer(id: string): void {
   }
 }
 
-async function request<T>(method: "GET" | "POST", path: string, body?: unknown): Promise<T> {
+async function request<T>(method: "GET" | "POST" | "PUT", path: string, body?: unknown): Promise<T> {
   const headers: Record<string, string> = { Accept: "application/json" };
   const backup = backupId();
   if (backup) headers["X-RapidQ-Player"] = backup;
@@ -160,4 +209,16 @@ export const api = {
     request<Reveal>("POST", "/api/play/answer", { slot, value }),
   timeout: (slot: number) => request<Reveal>("POST", "/api/play/timeout", { slot }),
   results: () => request<Results>("GET", "/api/results"),
+  me: () => request<Me>("GET", "/api/me"),
+  setName: (displayName: string) =>
+    request<{ display_name: string }>("PUT", "/api/me/name", { display_name: displayName }),
+  syncCode: () => request<{ code: string }>("POST", "/api/me/sync-code"),
+  useSyncCode: (code: string) =>
+    request<{ player_id: string; display_name: string | null }>("POST", "/api/me/sync", { code }),
+  week: () => request<Week>("GET", "/api/week"),
+  leagues: () => request<League[]>("GET", "/api/leagues"),
+  createLeague: (name: string) => request<League>("POST", "/api/leagues", { name }),
+  joinLeague: (code: string) => request<League>("POST", "/api/leagues/join", { code }),
+  leaveLeague: (id: number) => request<{ left: boolean }>("POST", `/api/leagues/${id}/leave`),
+  challenge: (code: string) => request<Challenge>("GET", `/api/challenge/${encodeURIComponent(code)}`),
 };

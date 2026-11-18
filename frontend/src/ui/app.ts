@@ -1,5 +1,14 @@
 /** The quiz flow: menu → ready → read → answer → reveal (×8) → results. */
-import { ApiError, api, rememberPlayer, type Question, type Results, type Reveal, type Today } from "../api";
+import {
+  ApiError,
+  api,
+  rememberPlayer,
+  type Challenge,
+  type Question,
+  type Results,
+  type Reveal,
+  type Today,
+} from "../api";
 import { BANDS, type Band } from "../art/sprites";
 import { Stage } from "../scene/stage";
 import { animalIcon, byId, h, icon, logoIcon } from "./dom";
@@ -17,6 +26,17 @@ import {
   smoothDistribution,
 } from "./format";
 import { buildShareText } from "./share";
+import { drawShareCard, shareCard } from "./sharecard";
+import {
+  challengeBanner,
+  guideSheet,
+  headToHead,
+  leaguesSheet,
+  profileSheet,
+  streakSheet,
+  weekSheet,
+  type Redraw,
+} from "./social";
 
 function readFlag(key: string): boolean {
   try {
@@ -33,6 +53,24 @@ function writeFlag(key: string): void {
     // Private windows can refuse storage; the flag is only a nicety.
   }
 }
+
+function readSession(key: string): string | null {
+  try {
+    return window.sessionStorage.getItem(key);
+  } catch {
+    return null;
+  }
+}
+
+function writeSession(key: string, value: string): void {
+  try {
+    window.sessionStorage.setItem(key, value);
+  } catch {
+    // The challenge simply won't survive a reload.
+  }
+}
+
+const CHALLENGE_KEY = "hb-challenge";
 
 type Phase = "loading" | "intro" | "serving" | "reading" | "answering" | "submitting" | "reveal" | "results" | "closed";
 
@@ -60,6 +98,13 @@ export class App {
   private countdownTimer = 0;
   /** What happened on each slot so far, for the progress strip. */
   private slotResults = new Map<number, { band: Band | null; correct: boolean }>();
+  /** A friend's score to beat, from a ?c=<code> link, and that code. */
+  private challenge: Challenge | null = null;
+  private challengeCode: string | null = null;
+  /** A league code from a ?league=<code> invite, offered once the menu is up. */
+  private pendingLeague = "";
+  /** Refreshes the menu's progress tiles after a sheet changes something. */
+  private refreshTiles: (() => void) | null = null;
 
   constructor() {
     // One forest for the whole page: its ground lines up with the stage band.
@@ -74,6 +119,28 @@ export class App {
       }
     });
     document.addEventListener("keydown", this.onKey);
+    this.readLinks();
+  }
+
+  /** Challenge and league invite links: remember them, then tidy the address bar. */
+  private readLinks(): void {
+    const params = new URLSearchParams(window.location.search);
+    const challenge = params.get("c");
+    const league = params.get("league");
+    if (challenge) writeSession(CHALLENGE_KEY, challenge);
+    if (league) this.pendingLeague = league;
+    if (challenge || league) window.history.replaceState(null, "", window.location.pathname);
+  }
+
+  private async loadChallenge(): Promise<void> {
+    const code = readSession(CHALLENGE_KEY);
+    if (!code || code === this.challengeCode) return;
+    try {
+      this.challenge = await api.challenge(code);
+      this.challengeCode = code;
+    } catch {
+      this.challenge = null;
+    }
   }
 
   async start(): Promise<void> {
@@ -81,7 +148,7 @@ export class App {
     this.clearTimers();
     this.renderStatus("Loading today's quiz…");
     try {
-      const today = await api.today();
+      const [today] = await Promise.all([api.today(), this.loadChallenge()]);
       this.today = today;
       rememberPlayer(today.player_id);
       this.quizNoEl.textContent = today.number ? `#${today.number}` : "";
@@ -335,6 +402,7 @@ export class App {
     }
 
     this.actionEl.replaceChildren(
+      ...(this.challenge && !finished ? [challengeBanner(this.challenge)] : []),
       h(
         "nav",
         { class: "menu", "aria-labelledby": "menu-title" },
@@ -343,11 +411,82 @@ export class App {
       ),
       note,
     );
-    this.answersEl.replaceChildren();
+    this.answersEl.replaceChildren(this.progressTiles());
+    if (this.pendingLeague) {
+      const code = this.pendingLeague;
+      this.pendingLeague = "";
+      this.openSheet("Leagues", async (redraw) => leaguesSheet(await api.leagues(), await api.me(), redraw, code));
+    }
+  }
+
+  /** Your streak, field guide, week, leagues and profile, each opening its own sheet. */
+  private progressTiles(): HTMLElement {
+    const tile = (label: string, onOpen: () => void) => {
+      const value = h("span", { class: "tile-value", text: "…" });
+      const sub = h("span", { class: "tile-sub" });
+      const button = h("button", { class: "tile", type: "button" }, h("span", { class: "tile-label", text: label }), value, sub);
+      button.addEventListener("click", onOpen);
+      return { button, value, sub };
+    };
+    const streak = tile("Streak", () => this.openSheet("Your streak", async () => streakSheet(await api.me())));
+    const guide = tile("Field guide", () => this.openSheet("Field guide", async () => guideSheet(await api.me())));
+    const week = tile("This week", () => this.openSheet("This week", async () => weekSheet(await api.week())));
+    const leagues = tile("Leagues", () =>
+      this.openSheet("Leagues", async (redraw) => leaguesSheet(await api.leagues(), await api.me(), redraw)),
+    );
+    const you = tile("You", () => this.openSheet("You", async (redraw) => profileSheet(await api.me(), redraw)));
+
+    const fill = () => {
+      void Promise.all([api.me(), api.week(), api.leagues()])
+        .then(([me, wk, mine]) => {
+          const s = me.streak;
+          streak.value.textContent = `${s.current} ${s.current === 1 ? "day" : "days"}`;
+          streak.sub.textContent = s.hummingbird_current ? `${s.hummingbird_current} with a Hummingbird` : `Best ${s.best}`;
+          const found = BANDS.filter((b) => (me.guide.counts[b] ?? 0) > 0).length + (me.guide.golden ? 1 : 0);
+          guide.value.textContent = `${found} of 6`;
+          guide.sub.textContent = "animals found";
+          week.value.textContent = wk.you ? `#${wk.you.rank}` : "–";
+          week.sub.textContent = wk.you ? `${formatPoints(wk.you.total)} pts` : "Not played yet";
+          leagues.value.textContent = mine.length ? `${mine.length}` : "Start one";
+          leagues.sub.textContent = mine.length ? (mine.length === 1 ? "league" : "leagues") : "Play with friends";
+          you.value.textContent = me.display_name ?? "Set name";
+          you.sub.textContent = "Name & devices";
+        })
+        .catch(() => {
+          for (const t of [streak, guide, week, leagues, you]) t.value.textContent = "–";
+        });
+    };
+    fill();
+    this.refreshTiles = fill;
+    return h(
+      "section",
+      { class: "tiles-section", "aria-labelledby": "tiles-title" },
+      h("h2", { class: "section-title", id: "tiles-title", text: "Your forest" }),
+      h("div", { class: "tiles" }, streak.button, guide.button, week.button, leagues.button, you.button),
+    );
+  }
+
+  /** A sheet whose content loads from the server and can redraw itself after an action. */
+  private openSheet(title: string, build: (redraw: Redraw) => Promise<HTMLElement>): void {
+    const slot = h("div", { class: "sheet-slot" }, h("p", { class: "sheet-note", text: "Loading…" }));
+    const redraw: Redraw = async () => {
+      try {
+        slot.replaceChildren(await build(redraw));
+      } catch (error) {
+        slot.replaceChildren(
+          h("p", {
+            class: "sheet-status",
+            text: error instanceof ApiError ? error.message : "Couldn't load this. Please try again.",
+          }),
+        );
+      }
+    };
+    this.openInfo(title, slot, () => this.refreshTiles?.());
+    void redraw();
   }
 
   /** A modal sheet for a game's instructions. */
-  private openInfo(title: string, body: HTMLElement): void {
+  private openInfo(title: string, body: HTMLElement, onClose?: () => void): void {
     const close = h("button", { class: "info-close", type: "button", "aria-label": "Close" }, icon("cross", "currentColor"));
     const dialog = h(
       "dialog",
@@ -364,7 +503,10 @@ export class App {
     dialog.addEventListener("click", (event) => {
       if (event.target === dialog) dialog.close();
     });
-    dialog.addEventListener("close", () => dialog.remove());
+    dialog.addEventListener("close", () => {
+      dialog.remove();
+      onClose?.();
+    });
     document.body.append(dialog);
     dialog.showModal();
   }
@@ -895,6 +1037,11 @@ export class App {
     const shareStatus = h("p", { class: "share-status", role: "status" });
     const shareButton = this.actionButton("Share your result", () => void this.share(results, shareStatus));
     shareButton.prepend(icon("share", "currentColor"));
+    const pictureButton = this.actionButton(
+      "Share a picture",
+      () => void this.sharePicture(results, shareStatus, pictureButton),
+      true,
+    );
     const nextEl = h("p", { class: "cta-note" });
     const updateNext = () => {
       nextEl.textContent = `Next quiz in ${formatCountdown(Date.parse(results.next_unlock_at), Date.now())}.`;
@@ -924,6 +1071,13 @@ export class App {
           h("span", { text: "points" }),
         ),
         h("p", { class: "standing", text: this.standingLine(results) }),
+        this.challenge?.is_today && this.challengeCode !== results.challenge_code
+          ? headToHead(
+              this.challenge,
+              results.total_score,
+              results.questions.map((q) => (q.outcome === "correct" ? q.band : null)),
+            )
+          : null,
         this.scoreCompare(results),
         this.scoreCurve(results),
         this.speedCompare(results, avg),
@@ -982,7 +1136,7 @@ export class App {
       },
       true,
     );
-    this.actionEl.replaceChildren(shareButton, shareStatus, nextEl, menuButton);
+    this.actionEl.replaceChildren(shareButton, pictureButton, shareStatus, nextEl, menuButton);
     this.answersEl.replaceChildren(
       h(
         "details",
@@ -1180,6 +1334,29 @@ export class App {
     return list;
   }
 
+  private async sharePicture(results: Results, status: HTMLElement, button: HTMLButtonElement): Promise<void> {
+    button.disabled = true;
+    status.textContent = "Painting your forest…";
+    try {
+      const canvas = await drawShareCard({
+        number: results.number,
+        totalScore: results.total_score,
+        correct: results.correct_count,
+        total: results.questions.length,
+        avgMs: results.avg_correct_elapsed_ms,
+        bands: results.questions.filter((q) => q.outcome === "correct" && q.band).map((q) => q.band as Band),
+        host: window.location.host,
+      });
+      const how = await shareCard(canvas, `Beat my Hummingbird #${results.number}: ${window.location.origin}/?c=${results.challenge_code}`);
+      status.textContent = how === "saved" ? "Saved. Post it wherever you like." : "";
+    } catch (error) {
+      status.textContent =
+        error instanceof DOMException && error.name === "AbortError" ? "" : "Couldn't make the picture. Please try again.";
+    } finally {
+      button.disabled = false;
+    }
+  }
+
   private async share(results: Results, status: HTMLElement): Promise<void> {
     const text = buildShareText({
       number: results.number,
@@ -1190,7 +1367,8 @@ export class App {
         correct: q.outcome === "correct",
         elapsedMs: q.elapsed_ms,
       })),
-      url: window.location.origin,
+      // The link challenges whoever opens it to beat this score on the same questions.
+      url: `${window.location.origin}/?c=${results.challenge_code}`,
     });
     try {
       if (navigator.share && window.matchMedia("(pointer: coarse)").matches) {

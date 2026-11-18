@@ -34,6 +34,8 @@ class Player(Base):
     id: Mapped[str] = mapped_column(String(36), primary_key=True, default=_new_uuid)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True))
     display_name: Mapped[str | None] = mapped_column(String(40), nullable=True)
+    # A secret code that moves this player to another device (optional "account" sync).
+    sync_code: Mapped[str | None] = mapped_column(String(16), unique=True, nullable=True)
 
 
 class Day(Base):
@@ -134,6 +136,8 @@ class Play(Base):
     started_at: Mapped[datetime] = mapped_column(DateTime(timezone=True))
     finished_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
     total_score: Mapped[int] = mapped_column(Integer, default=0)
+    # Made on first request for results; a friend opening ?c=<code> is challenged to beat it.
+    challenge_code: Mapped[str | None] = mapped_column(String(12), unique=True, nullable=True)
 
     submissions: Mapped[list[Submission]] = relationship(
         back_populates="play", order_by="Submission.slot", cascade="all, delete-orphan"
@@ -163,3 +167,31 @@ class Submission(Base):
     points: Mapped[int] = mapped_column(Integer, default=0)
 
     play: Mapped[Play] = relationship(back_populates="submissions")
+
+
+class League(Base):
+    """A private league: friends who join with its code see each other's scores."""
+
+    __tablename__ = "leagues"
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
+    code: Mapped[str] = mapped_column(String(12), unique=True)
+    name: Mapped[str] = mapped_column(String(40))
+    owner_id: Mapped[str] = mapped_column(ForeignKey("players.id"))
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True))
+
+    members: Mapped[list[LeagueMember]] = relationship(
+        back_populates="league", cascade="all, delete-orphan"
+    )
+
+
+class LeagueMember(Base):
+    __tablename__ = "league_members"
+
+    league_id: Mapped[int] = mapped_column(
+        ForeignKey("leagues.id", ondelete="CASCADE"), primary_key=True
+    )
+    player_id: Mapped[str] = mapped_column(ForeignKey("players.id"), primary_key=True, index=True)
+    joined_at: Mapped[datetime] = mapped_column(DateTime(timezone=True))
+
+    league: Mapped[League] = relationship(back_populates="members")

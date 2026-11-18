@@ -1,6 +1,6 @@
 /** Minimal DOM helpers. Text always goes in through textContent, never innerHTML. */
-import { packedPalette } from "../art/palette";
-import type { Raster } from "../art/raster";
+import { C, packedPalette } from "../art/palette";
+import { Raster } from "../art/raster";
 import { logo, sprite, type Band } from "../art/sprites";
 
 type Child = Node | string | null | undefined | false;
@@ -49,6 +49,35 @@ function rasterCanvas(r: Raster, scale: number, className?: string): HTMLCanvasE
 /** A crisp canvas of an animal's resting sprite, scaled by whole pixels. */
 export function animalIcon(band: Band, scale = 2, className?: string): HTMLCanvasElement {
   return rasterCanvas(sprite(band, "rest"), scale, className);
+}
+
+/** A copy of a sprite with every colour swapped through `map` (unmapped colours stay). */
+function recolour(src: Raster, map: (c: number) => number): Raster {
+  const out = new Raster(src.width, src.height);
+  for (let i = 0; i < src.pixels.length; i++) {
+    const c = src.pixels[i] ?? 0;
+    out.pixels[i] = c === 0 ? 0 : map(c);
+  }
+  return out;
+}
+
+/** An animal not caught yet: a dark shape with its outline, for the field guide. */
+export function animalSilhouette(band: Band, scale = 2, className?: string): HTMLCanvasElement {
+  return rasterCanvas(recolour(sprite(band, "rest"), (c) => (c === C.near0 ? C.near0 : C.mid0)), scale, className);
+}
+
+/** The rare golden hummingbird (a Hummingbird answered in 0.3 s or less). */
+export function goldenHummingbird(scale = 2, className?: string): HTMLCanvasElement {
+  const gold: Record<number, number> = {
+    [C.emerald]: C.gold,
+    [C.forest]: C.ochre,
+    [C.jade]: C.goldHi,
+    [C.leafHi]: C.amber,
+    [C.leafHi2]: C.goldHi,
+    [C.mist1]: C.amber,
+    [C.mist0]: C.ochre,
+  };
+  return rasterCanvas(recolour(sprite("hummingbird", "rest"), (c) => gold[c] ?? c), scale, className);
 }
 
 /** The Hummingbird logo (the bird at a heliconia bloom), scaled by whole pixels. */

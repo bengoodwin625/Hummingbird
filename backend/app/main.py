@@ -264,6 +264,8 @@ class ResultsOut(BaseModel):
     speed: SpeedComparisonOut
     standing: StandingOut
     next_unlock_at: datetime
+    challenge_code: str
+    """Share this as ?c=<code> to challenge a friend to beat today's score."""
 
 
 # ---------------------------------------------------------------- queries
@@ -672,8 +674,16 @@ def results(session: SessionDep, player: PlayerDep, clock: ClockDep) -> ResultsO
             bucket_size=DISTRIBUTION_BUCKET,
         ),
         next_unlock_at=next_unlock(now),
+        challenge_code=ensure_challenge_code(session, play),
     )
 
+
+# Progress and social routes live in their own module; they must be registered before the
+# built site is mounted at "/".
+from .social import ensure_challenge_code  # noqa: E402
+from .social import router as social_router  # noqa: E402
+
+app.include_router(social_router)
 
 _FRONTEND_DIST = Path(
     os.environ.get("RAPIDQ_FRONTEND_DIST", Path(__file__).resolve().parents[2] / "frontend/dist")

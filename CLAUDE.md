@@ -268,8 +268,10 @@ scripts/
 - `number_answers(question_id PK, value, tolerance)`
 - `text_answers(id, question_id, canonical)` and `text_aliases(text_answer_id,
   alias_normalised)`
-- `plays(id, player_id, date, started_at, finished_at?, total_score)` — unique on
-  `(player_id, date)`.
+- `plays(id, player_id, date, started_at, finished_at?, total_score, challenge_code?)` — unique
+  on `(player_id, date)`.
+- `players.sync_code?` (unique), `leagues(id, code, name, owner_id, created_at)` and
+  `league_members(league_id, player_id, joined_at)`.
 - `submissions(id, play_id, slot, served_at, answer_open_at, received_at?, raw_input?,
   choice_option_id?, outcome?, correct, elapsed_ms?, speed_band?, points)` — unique on
   `(play_id, slot)`. A row is created when the question is served and resolved when it is
@@ -357,12 +359,36 @@ In Claude Code, `.claude/launch.json` defines `backend` and `frontend` servers f
 
 ---
 
+## Progress and friends
+
+All in `backend/app/social.py` (routes) and `backend/app/progress.py` (pure rules, tested in
+`tests/test_progress.py`), with the sheets in `frontend/src/ui/social.ts`. The home page shows a
+"Your forest" strip of tiles that open each one in a sheet.
+
+- **Streaks**: days in a row with a finished quiz, and days in a row with at least one
+  Hummingbird. A streak stays alive until a whole day is missed.
+- **Field guide**: how many of each animal you've caught, plus the rare **golden hummingbird**
+  (a Hummingbird answered in 0.3 s or less, real time) and perfect days (8/8). Uncaught animals
+  show as silhouettes.
+- **Weekly league** (`/api/week`): everyone's best five days, Monday to Sunday, top 10 plus your
+  own row. Players without a name show as "Anonymous <animal>".
+- **Private leagues**: create or join with a 6-letter code (no 0/O/1/I); members see today's
+  scores and animals and a weekly best-five total. Invite links are `/?league=<code>`. A name is
+  required to create or join. Up to 20 leagues per player and 50 players per league.
+- **Challenge links**: each finished play gets a code; the share text links to `/?c=<code>`.
+  The friend sees "X challenged you: beat N" on the menu and a head-to-head on their results.
+  Only totals and animals are shared, never questions or answers.
+- **Device sync** (the optional "account"): a private 10-character code moves a player to
+  another device by setting its cookie. No passwords or emails are stored.
+- **Picture share card**: `frontend/src/ui/sharecard.ts` draws a 1200×630 image of the day's
+  animals in the forest with the score; touch devices get the share sheet, computers download.
+- Never show how many people have played (percentages and ranks only).
+
 ## Out of scope for v1 (don't build unless asked)
 
-- Accounts and login, friends, and global leaderboards.
-- Archive or replay of past days.
-- Live head-to-head or multiplayer rooms.
-- Streaks and collectables (for example collecting animals over time) — nice idea, but later.
+- Password accounts and email login (device sync by code is the account, see below).
+- Archive or replay of past days. When built, it is a paid Hummingbird Club feature only.
+- Live head-to-head or multiplayer rooms (challenge links are asynchronous).
 - Sound effects and music.
 - Monetisation (the plan is in `docs/money-plan.md`; build none of it until asked).
 
