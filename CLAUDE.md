@@ -198,7 +198,7 @@ Answer checking happens on the server in `backend/app/checking.py`.
   creeps. Keep each run short (about 0.8–1.4 s).
 - **UI**: dark panels with thin glowing jade/gold outlines and letterspaced labels. Reading
   text (questions, answers, labels, buttons, headlines) uses Atkinson Hyperlegible Next for
-  legibility; the pixel faces (Pixelify Sans, with Silkscreen digits) are kept for the wordmark
+  legibility; the pixel face (Pixelify Sans) is kept for the wordmark
   and the big display numbers. All OFL and self-hosted.
 - **Logo**: the hummingbird sprite on its own (`logo()` in `frontend/src/art/sprites.ts`),
   used in the header, on the menu and as the favicon. **No countdown, timer bar or clock is shown while a question is live.**

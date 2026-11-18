@@ -76,7 +76,7 @@ export async function drawShareCard(input: CardInput): Promise<HTMLCanvasElement
   ctx.fillText(`HUMMINGBIRD #${input.number}`, x, 120);
 
   ctx.fillStyle = "#e8b04a";
-  ctx.font = "700 150px 'RQ Digits', 'Pixelify Sans', sans-serif";
+  ctx.font = "400 190px 'Jersey 10', 'Pixelify Sans', sans-serif";
   ctx.fillText(formatPoints(input.totalScore), x, 290);
   ctx.fillStyle = "#eef0e2";
   ctx.font = "600 34px 'Atkinson Hyperlegible Next Variable', sans-serif";

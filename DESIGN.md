@@ -31,51 +31,51 @@ colors:
   band-sloth: "#c9b089"
 typography:
   hero:
-    fontFamily: "RQ Digits, Pixelify Sans, ui-rounded, system-ui, sans-serif"
+    fontFamily: "Pixelify Sans, ui-rounded, system-ui, sans-serif"
     fontSize: "clamp(2.25rem, 9vw, 4.25rem)"
     fontWeight: 700
     lineHeight: 1.02
     letterSpacing: "-0.01em"
     fontFeature: "\"liga\" 0, \"clig\" 0"
   reveal-time:
-    fontFamily: "RQ Digits, Pixelify Sans, ui-rounded, system-ui, sans-serif"
+    fontFamily: "Pixelify Sans, ui-rounded, system-ui, sans-serif"
     fontSize: "clamp(3.5rem, 19vw, 6rem)"
     fontWeight: 700
     lineHeight: 0.95
     letterSpacing: "-0.02em"
     fontFeature: "\"liga\" 0, \"clig\" 0, \"tnum\" 1"
   reveal-band:
-    fontFamily: "Silkscreen, Pixelify Sans, ui-monospace, monospace"
+    fontFamily: "Atkinson Hyperlegible Next Variable, system-ui, sans-serif"
     fontSize: "clamp(1.5rem, 7vw, 2.25rem)"
     fontWeight: 400
     lineHeight: 1.05
     letterSpacing: "0.06em"
   display:
-    fontFamily: "RQ Digits, Pixelify Sans, ui-rounded, system-ui, sans-serif"
+    fontFamily: "Pixelify Sans, ui-rounded, system-ui, sans-serif"
     fontSize: "clamp(3rem, 14vw, 4.5rem)"
     fontWeight: 700
     lineHeight: 1
     fontFeature: "\"liga\" 0, \"clig\" 0, \"tnum\" 1"
   headline:
-    fontFamily: "RQ Digits, Pixelify Sans, ui-rounded, system-ui, sans-serif"
+    fontFamily: "Pixelify Sans, ui-rounded, system-ui, sans-serif"
     fontSize: "clamp(1.4rem, 5.6vw, 2.4rem)"
     fontWeight: 600
     lineHeight: 1.2
     fontFeature: "\"liga\" 0, \"clig\" 0"
   answer:
-    fontFamily: "RQ Digits, Pixelify Sans, ui-rounded, system-ui, sans-serif"
+    fontFamily: "Pixelify Sans, ui-rounded, system-ui, sans-serif"
     fontSize: "1.0625rem"
     fontWeight: 500
     lineHeight: 1.2
     fontFeature: "\"liga\" 0, \"clig\" 0"
   body:
-    fontFamily: "RQ Digits, Pixelify Sans, ui-rounded, system-ui, sans-serif"
+    fontFamily: "Pixelify Sans, ui-rounded, system-ui, sans-serif"
     fontSize: "1rem"
     fontWeight: 400
     lineHeight: 1.45
     fontFeature: "\"liga\" 0, \"clig\" 0"
   label:
-    fontFamily: "Silkscreen, Pixelify Sans, ui-monospace, monospace"
+    fontFamily: "Atkinson Hyperlegible Next Variable, system-ui, sans-serif"
     fontSize: "0.75rem"
     fontWeight: 400
     letterSpacing: "0.08em"
@@ -217,7 +217,7 @@ There are two materials. The scene is fine-grained, original pixel art at a fixe
 - No visible timer while answering; time is a surprise.
 - The reveal is the one loud moment, written on the scene, not in a card.
 - Crisp square pixels in the scene; soft rounded tone shapes in the UI; no outlined boxes.
-- Silkscreen digits for every numeral; ligatures off.
+- Big display numbers (scores, times, streaks) in Pixelify Sans, the same face as the wordmark; reading text and small numbers in Atkinson Hyperlegible Next; ligatures off.
 
 ## Colors
 
@@ -267,11 +267,11 @@ One token per speed animal, set on an element as `--band-colour` and read by the
 
 ## Typography
 
-**Display Font:** Pixelify Sans (400–700), with Silkscreen digits in front of it as "RQ Digits"
-**Label Font:** Silkscreen (400), uppercase and letterspaced
+**Display Font:** Pixelify Sans (400–700) for the wordmark, the hero line's pixel moments and animal names; **Jersey 10** for every big number (scores, times, streaks, codes)
+**Label Font:** Atkinson Hyperlegible Next, 700, uppercase and letterspaced
 **Fallbacks:** `ui-rounded, system-ui, sans-serif` for UI text; `ui-monospace, monospace` for labels
 
-**Character:** Pixelify Sans gives questions and answers a soft, readable pixel voice; Silkscreen gives labels, buttons, section titles and the wordmark a hard, stamped, letterspaced voice. Every numeral in the UI face is Silkscreen, so times and scores read cleanly at any size.
+**Character:** Atkinson Hyperlegible Next carries all reading text, labels and buttons for legibility; Pixelify Sans keeps the pixel voice for the wordmark and animal names; Jersey 10 gives big numbers a clean pixel-scoreboard look where 5, 8 and 0 never blur together.
 
 ### Hierarchy
 - **Hero** (700, clamp(2.25rem, 9vw, 4.25rem), 1.02, −0.01em): the home headline "How fast is your brain?", set low in the forest with a dark drop and halo, balanced.
@@ -284,7 +284,7 @@ One token per speed animal, set on an element as `--band-colour` and read by the
 - **Label** (Silkscreen 400, 0.75rem, 0.08em, uppercase, sage): functional labels such as "Score", "Read the question", "You said", "Answer", the "You"/"Average" bar labels, the stat labels (Correct, Fastest, Hummingbirds) and the Show/Hide hint. Speed-track marker labels use the same face at 0.06em; how-to-play step numbers at 1rem in gold. Buttons use the same face at 0.9375rem; the wordmark at 1rem with 0.12em (0.9375rem and 0.08em at 440px and below); the home date and the rare line at 0.8125rem; section titles at 0.875rem with 0.1em in gold-hi; "Answer now!" at 1.125rem with 0.1em in gold.
 
 ### Named Rules
-**The Silkscreen Digits Rule.** Every numeral rendered in the UI face uses Silkscreen digits ("RQ Digits", U+0030–0039, 400 for weights up to 500 and 700 for 600–900). Pixelify Sans's 2 and 5 read as 8 and S at small sizes, and a speed quiz lives on numbers. Never set a digit in raw Pixelify Sans.
+**The Numbers Rule.** Big numbers use Jersey 10 (`--font-numbers`). Never set digits in Silkscreen (its 8 is unreadable) or in Pixelify Sans (its 5 reads as 8). Small numbers in running text stay in Atkinson Hyperlegible Next.
 
 **The No Ligatures Rule.** Ligatures are off on the body (`font-variant-ligatures: none; font-feature-settings: "liga" 0, "clig" 0`). Pixelify's fi and fl ligatures read as a capital A at small sizes.
 

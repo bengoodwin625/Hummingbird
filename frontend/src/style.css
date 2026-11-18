@@ -40,7 +40,10 @@
      pixel faces are kept for the wordmark and the big display numbers. */
   --font-ui: "Atkinson Hyperlegible Next Variable", "Atkinson Hyperlegible Next", system-ui, sans-serif;
   --font-label: var(--font-ui);
-  --font-display: "RQ Digits", "Pixelify Sans", ui-rounded, system-ui, sans-serif;
+  --font-display: "Pixelify Sans", ui-rounded, system-ui, sans-serif;
+  /* Big numbers (scores, times, streaks): a clean pixel scoreboard face whose 5s and 8s never
+     blur together. */
+  --font-numbers: "Jersey 10", "Pixelify Sans", ui-rounded, system-ui, sans-serif;
 
   --space-1: 4px;
   --space-2: 8px;
@@ -2552,4 +2555,46 @@ ul {
 .h2h-score {
   font-family: var(--font-display);
   font-size: 1.75rem;
+}
+
+/* ---------------------------------------------------------------- numbers */
+
+.summary-score strong,
+.reveal-time,
+.pace-time,
+.h2h-score,
+.streak-value,
+.score-value,
+.score-fly,
+.sync-code,
+.mode-art--numbers {
+  font-family: var(--font-numbers);
+  font-weight: 400;
+  letter-spacing: 0.01em;
+}
+
+/* Jersey 10 is narrow, so the big numbers sit a size up from the old face. */
+.summary-score strong {
+  font-size: clamp(3.75rem, 17vw, 5.5rem);
+}
+
+.reveal-time {
+  font-size: clamp(4.25rem, 22vw, 7rem);
+}
+
+.pace-time {
+  font-size: clamp(2.5rem, 10vw, 3.25rem);
+}
+
+.h2h-score {
+  font-size: 2.25rem;
+}
+
+.streak-value {
+  font-size: 3.5rem;
+}
+
+.score-value {
+  font-size: 1.75rem;
+  line-height: 1;
 }
