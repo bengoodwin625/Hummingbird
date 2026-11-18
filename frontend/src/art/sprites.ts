@@ -71,28 +71,9 @@ function hummingbird(pose: Pose, frame: number): Raster {
   return r;
 }
 
-/** The logo: the hummingbird sipping from a heliconia, drawn once at art scale. */
+/** The logo: the hummingbird on its own, from the same sprite the game uses. */
 export function logo(): Raster {
-  const r = new Raster(46, 30);
-  // stem and a leaf at its foot
-  r.line(39, 9, 39, 29, C.forest);
-  r.line(40, 9, 40, 29, C.mid2);
-  r.poly([[39, 24], [31, 28], [33, 29], [39, 27]], C.forest);
-  r.line(38, 25, 33, 28, C.emerald);
-  // heliconia bracts zigzagging down the stem, ruby with gold lips
-  const bract = (y: number, dir: -1 | 1, len: number) => {
-    const tip = 39 + dir * len;
-    r.poly([[39, y], [tip, y + 2], [39, y + 4]], C.ruby);
-    r.line(39, y, tip, y + 2, C.gold);
-    r.set(tip, y + 2, C.goldHi);
-  };
-  bract(8, -1, 6);
-  bract(12, 1, 5);
-  bract(16, -1, 4);
-  bract(20, 1, 3);
-  r.outline(C.near0);
-  r.blit(sprite("hummingbird", "rest"), 1, 0);
-  return r;
+  return sprite("hummingbird", "rest");
 }
 
 function jaguar(pose: Pose, frame: number): Raster {

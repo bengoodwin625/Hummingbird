@@ -3,14 +3,14 @@ questions:
   - slot: 1
     type: choice
     category: geography
-    text: "What is the largest desert in the world by area?"
+    text: "What is the largest continent?"
     options:
-      - { text: "Antarctic", correct: true }
-      - { text: "Sahara" }
-      - { text: "Arctic" }
-      - { text: "Gobi" }
-      - { text: "Arabian" }
-      - { text: "Kalahari" }
+      - { text: "Asia", correct: true }
+      - { text: "Africa" }
+      - { text: "North America" }
+      - { text: "Europe" }
+      - { text: "Antarctica" }
+      - { text: "South America" }
   - slot: 2
     type: choice
     category: science

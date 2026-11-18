@@ -3,14 +3,14 @@ questions:
   - slot: 1
     type: choice
     category: geography
-    text: "Which is the longest river in the United States?"
+    text: "In which US city is Hollywood?"
     options:
-      - { text: "Missouri", correct: true }
-      - { text: "Mississippi" }
-      - { text: "Colorado" }
-      - { text: "Ohio" }
-      - { text: "Rio Grande" }
-      - { text: "Yukon" }
+      - { text: "Los Angeles", correct: true }
+      - { text: "New York" }
+      - { text: "Chicago" }
+      - { text: "Las Vegas" }
+      - { text: "Miami" }
+      - { text: "San Francisco" }
   - slot: 2
     type: choice
     category: science
@@ -24,9 +24,9 @@ questions:
       - { text: "Ka" }
   - slot: 3
     type: number
-    category: sport
-    text: "How many players are in a polo team?"
-    answer: 4
+    category: general
+    text: "How many wheels does a tricycle have?"
+    answer: 3
     tolerance: 0
   - slot: 4
     type: choice

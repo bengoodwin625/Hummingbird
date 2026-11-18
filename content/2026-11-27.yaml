@@ -24,21 +24,21 @@ questions:
       - { text: "Venus" }
   - slot: 3
     type: number
-    category: science
-    text: "How many teeth does an adult human usually have, including wisdom teeth?"
-    answer: 32
+    category: geography
+    text: "How many continents are there?"
+    answer: 7
     tolerance: 0
   - slot: 4
     type: choice
     category: history
-    text: "Who was the first person to reach the South Pole?"
+    text: "Which ship sank in 1912 after hitting an iceberg?"
     options:
-      - { text: "Roald Amundsen", correct: true }
-      - { text: "Robert Falcon Scott" }
-      - { text: "Ernest Shackleton" }
-      - { text: "Edmund Hillary" }
-      - { text: "Richard Byrd" }
-      - { text: "Fridtjof Nansen" }
+      - { text: "Titanic", correct: true }
+      - { text: "Lusitania" }
+      - { text: "Mary Rose" }
+      - { text: "Britannic" }
+      - { text: "Mayflower" }
+      - { text: "Queen Mary" }
   - slot: 5
     type: text
     category: general
@@ -59,14 +59,14 @@ questions:
   - slot: 7
     type: choice
     category: music
-    text: "What nationality was the composer Frédéric Chopin?"
+    text: "Which Beatle was the band's drummer?"
     options:
-      - { text: "Polish", correct: true }
-      - { text: "French" }
-      - { text: "Austrian" }
-      - { text: "Hungarian" }
-      - { text: "Russian" }
-      - { text: "Czech" }
+      - { text: "Ringo Starr", correct: true }
+      - { text: "John Lennon" }
+      - { text: "Paul McCartney" }
+      - { text: "George Harrison" }
+      - { text: "Pete Best" }
+      - { text: "Brian Epstein" }
   - slot: 8
     type: choice
     category: nature

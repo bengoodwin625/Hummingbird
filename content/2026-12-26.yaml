@@ -30,15 +30,15 @@ questions:
     tolerance: 0
   - slot: 4
     type: choice
-    category: history
-    text: "Boxing Day is the feast day of which saint?"
+    category: christmas
+    text: "What is the day after Christmas Day called in the UK?"
     options:
-      - { text: "Saint Stephen", correct: true }
-      - { text: "Saint Nicholas" }
-      - { text: "Saint Andrew" }
-      - { text: "Saint George" }
-      - { text: "Saint Patrick" }
-      - { text: "Saint David" }
+      - { text: "Boxing Day", correct: true }
+      - { text: "Twelfth Night" }
+      - { text: "Epiphany" }
+      - { text: "St Andrew's Day" }
+      - { text: "Shrove Tuesday" }
+      - { text: "Hogmanay" }
   - slot: 5
     type: text
     category: geography
@@ -59,14 +59,14 @@ questions:
   - slot: 7
     type: choice
     category: sport
-    text: "In which city does Australia's Boxing Day cricket Test traditionally begin?"
+    text: "Which sport is played at Wimbledon?"
     options:
-      - { text: "Melbourne", correct: true }
-      - { text: "Sydney" }
-      - { text: "Perth" }
-      - { text: "Adelaide" }
-      - { text: "Brisbane" }
-      - { text: "Hobart" }
+      - { text: "Tennis", correct: true }
+      - { text: "Golf" }
+      - { text: "Cricket" }
+      - { text: "Rugby" }
+      - { text: "Snooker" }
+      - { text: "Badminton" }
   - slot: 8
     type: choice
     category: nature

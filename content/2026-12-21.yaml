@@ -25,8 +25,8 @@ questions:
   - slot: 3
     type: number
     category: christmas
-    text: "In 'The Twelve Days of Christmas', how many gifts are given in total?"
-    answer: 364
+    text: "How many days are there in December?"
+    answer: 31
     tolerance: 0
   - slot: 4
     type: choice

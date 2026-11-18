@@ -24,9 +24,9 @@ questions:
       - { text: "Dual nucleic acid" }
   - slot: 3
     type: number
-    category: history
-    text: "How many years did the Hundred Years' War actually last?"
-    answer: 116
+    category: general
+    text: "How many years are there in a century?"
+    answer: 100
     tolerance: 0
   - slot: 4
     type: choice

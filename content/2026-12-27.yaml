@@ -3,14 +3,14 @@ questions:
   - slot: 1
     type: choice
     category: geography
-    text: "Which country has the most islands in the world?"
+    text: "What is the longest river in the UK?"
     options:
-      - { text: "Sweden", correct: true }
-      - { text: "Norway" }
-      - { text: "Finland" }
-      - { text: "Indonesia" }
-      - { text: "Philippines" }
-      - { text: "Canada" }
+      - { text: "River Severn", correct: true }
+      - { text: "River Thames" }
+      - { text: "River Trent" }
+      - { text: "River Tay" }
+      - { text: "River Wye" }
+      - { text: "River Clyde" }
   - slot: 2
     type: choice
     category: science

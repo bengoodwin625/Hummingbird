@@ -14,14 +14,14 @@ questions:
   - slot: 2
     type: choice
     category: science
-    text: "Roughly what is the boiling point of water in kelvin?"
+    text: "What is a scientist who studies rocks called?"
     options:
-      - { text: "373", correct: true }
-      - { text: "273" }
-      - { text: "100" }
-      - { text: "212" }
-      - { text: "0" }
-      - { text: "473" }
+      - { text: "Geologist", correct: true }
+      - { text: "Biologist" }
+      - { text: "Astronomer" }
+      - { text: "Botanist" }
+      - { text: "Zoologist" }
+      - { text: "Meteorologist" }
   - slot: 3
     type: number
     category: maths

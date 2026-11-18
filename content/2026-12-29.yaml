@@ -24,9 +24,9 @@ questions:
       - { text: "Ingenuity" }
   - slot: 3
     type: number
-    category: general
-    text: "How many tiles are in a standard English Scrabble set?"
-    answer: 100
+    category: sport
+    text: "How many players are on court in a game of tennis doubles?"
+    answer: 4
     tolerance: 0
   - slot: 4
     type: choice

@@ -31,14 +31,14 @@ questions:
   - slot: 4
     type: choice
     category: history
-    text: "In which ship did Sir Francis Drake sail around the world?"
+    text: "Which queen of Egypt was famously linked with Julius Caesar and Mark Antony?"
     options:
-      - { text: "Golden Hind", correct: true }
-      - { text: "Mary Rose" }
-      - { text: "Victory" }
-      - { text: "Endeavour" }
-      - { text: "Mayflower" }
-      - { text: "Beagle" }
+      - { text: "Cleopatra", correct: true }
+      - { text: "Nefertiti" }
+      - { text: "Hatshepsut" }
+      - { text: "Boudica" }
+      - { text: "Zenobia" }
+      - { text: "Isis" }
   - slot: 5
     type: text
     category: science
@@ -48,14 +48,14 @@ questions:
   - slot: 6
     type: choice
     category: film
-    text: "Which film won the Oscar for Best Picture at the 1998 ceremony?"
+    text: "In which film series does the ship the Black Pearl appear?"
     options:
-      - { text: "Titanic", correct: true }
-      - { text: "Good Will Hunting" }
-      - { text: "L.A. Confidential" }
-      - { text: "As Good as It Gets" }
-      - { text: "The Full Monty" }
-      - { text: "Amistad" }
+      - { text: "Pirates of the Caribbean", correct: true }
+      - { text: "Harry Potter" }
+      - { text: "The Lord of the Rings" }
+      - { text: "Star Wars" }
+      - { text: "Indiana Jones" }
+      - { text: "Jurassic Park" }
   - slot: 7
     type: choice
     category: sport

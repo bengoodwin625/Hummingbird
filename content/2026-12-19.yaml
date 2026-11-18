@@ -24,9 +24,9 @@ questions:
       - { text: "Saturn" }
   - slot: 3
     type: number
-    category: general
-    text: "How many feet are there in a mile?"
-    answer: 5280
+    category: maths
+    text: "How many centimetres are there in a metre?"
+    answer: 100
     tolerance: 0
   - slot: 4
     type: choice
@@ -41,10 +41,10 @@ questions:
       - { text: "Ostia" }
   - slot: 5
     type: text
-    category: science
-    text: "Which metal is extracted from bauxite?"
+    category: art
+    text: "Which colour do you get by mixing blue and yellow?"
     answers:
-      - { canonical: "Aluminium", aliases: ["Aluminum"] }
+      - { canonical: "Green", aliases: [] }
   - slot: 6
     type: choice
     category: film

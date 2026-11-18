@@ -25,8 +25,8 @@ questions:
   - slot: 3
     type: number
     category: maths
-    text: "How many sides does a dodecagon have?"
-    answer: 12
+    text: "How many sides does a hexagon have?"
+    answer: 6
     tolerance: 0
   - slot: 4
     type: choice

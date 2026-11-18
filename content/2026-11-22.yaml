@@ -14,14 +14,14 @@ questions:
   - slot: 2
     type: choice
     category: science
-    text: "What is the most common blood type in the world?"
+    text: "Which organ pumps blood around the body?"
     options:
-      - { text: "O positive", correct: true }
-      - { text: "A positive" }
-      - { text: "B positive" }
-      - { text: "AB positive" }
-      - { text: "O negative" }
-      - { text: "A negative" }
+      - { text: "Heart", correct: true }
+      - { text: "Lungs" }
+      - { text: "Liver" }
+      - { text: "Brain" }
+      - { text: "Kidneys" }
+      - { text: "Stomach" }
   - slot: 3
     type: number
     category: space
@@ -31,14 +31,14 @@ questions:
   - slot: 4
     type: choice
     category: history
-    text: "Which ancient wonder stood in Alexandria?"
+    text: "Which of the Seven Wonders of the Ancient World is still standing?"
     options:
-      - { text: "The Lighthouse", correct: true }
-      - { text: "The Hanging Gardens" }
-      - { text: "The Colossus" }
-      - { text: "The Mausoleum" }
-      - { text: "The Temple of Artemis" }
-      - { text: "The Statue of Zeus" }
+      - { text: "Great Pyramid of Giza", correct: true }
+      - { text: "Lighthouse of Alexandria" }
+      - { text: "Colossus of Rhodes" }
+      - { text: "Hanging Gardens of Babylon" }
+      - { text: "Temple of Artemis" }
+      - { text: "Statue of Zeus" }
   - slot: 5
     type: text
     category: science

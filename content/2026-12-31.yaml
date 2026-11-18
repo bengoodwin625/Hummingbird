@@ -3,14 +3,14 @@ questions:
   - slot: 1
     type: choice
     category: geography
-    text: "Which country is the first to see in the New Year each year?"
+    text: "In which city does Big Ben chime in the New Year for the UK?"
     options:
-      - { text: "Kiribati", correct: true }
-      - { text: "New Zealand" }
-      - { text: "Australia" }
-      - { text: "Japan" }
-      - { text: "Fiji" }
-      - { text: "Papua New Guinea" }
+      - { text: "London", correct: true }
+      - { text: "Edinburgh" }
+      - { text: "Cardiff" }
+      - { text: "Manchester" }
+      - { text: "Belfast" }
+      - { text: "Birmingham" }
   - slot: 2
     type: choice
     category: geography
@@ -48,14 +48,14 @@ questions:
   - slot: 6
     type: choice
     category: film
-    text: "Which film begins with a New Year's Eve party aboard an ocean liner that capsizes?"
+    text: "Which Disney film features the lion cub Simba?"
     options:
-      - { text: "The Poseidon Adventure", correct: true }
-      - { text: "Titanic" }
-      - { text: "Speed 2: Cruise Control" }
-      - { text: "Overboard" }
-      - { text: "Airport" }
-      - { text: "The Towering Inferno" }
+      - { text: "The Lion King", correct: true }
+      - { text: "The Jungle Book" }
+      - { text: "Tarzan" }
+      - { text: "Zootopia" }
+      - { text: "Madagascar" }
+      - { text: "Bambi" }
   - slot: 7
     type: choice
     category: music

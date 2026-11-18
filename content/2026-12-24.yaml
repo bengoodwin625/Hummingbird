@@ -30,15 +30,15 @@ questions:
     tolerance: 0
   - slot: 4
     type: choice
-    category: history
-    text: "On which date do Orthodox churches that follow the Julian calendar celebrate Christmas?"
+    category: film
+    text: "What is the name of the snowman in 'Frozen'?"
     options:
-      - { text: "7 January", correct: true }
-      - { text: "6 January" }
-      - { text: "25 December" }
-      - { text: "1 January" }
-      - { text: "19 December" }
-      - { text: "13 January" }
+      - { text: "Olaf", correct: true }
+      - { text: "Sven" }
+      - { text: "Kristoff" }
+      - { text: "Hans" }
+      - { text: "Frosty" }
+      - { text: "Marshmallow" }
   - slot: 5
     type: text
     category: christmas

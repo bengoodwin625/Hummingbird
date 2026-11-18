@@ -14,19 +14,19 @@ questions:
   - slot: 2
     type: choice
     category: science
-    text: "What is the SI unit of electrical resistance?"
+    text: "Which force pulls objects towards the Earth?"
     options:
-      - { text: "Ohm", correct: true }
-      - { text: "Volt" }
-      - { text: "Ampere" }
-      - { text: "Watt" }
-      - { text: "Coulomb" }
-      - { text: "Farad" }
+      - { text: "Gravity", correct: true }
+      - { text: "Magnetism" }
+      - { text: "Friction" }
+      - { text: "Inertia" }
+      - { text: "Pressure" }
+      - { text: "Tension" }
   - slot: 3
     type: number
     category: sport
-    text: "How many minutes does a rugby union match last, not counting stoppages?"
-    answer: 80
+    text: "How many players does a football team have on the pitch?"
+    answer: 11
     tolerance: 0
   - slot: 4
     type: choice

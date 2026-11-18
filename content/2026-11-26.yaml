@@ -31,14 +31,14 @@ questions:
   - slot: 4
     type: choice
     category: history
-    text: "In which year was the Battle of Waterloo fought?"
+    text: "Which country gave the Statue of Liberty to the United States?"
     options:
-      - { text: "1815", correct: true }
-      - { text: "1805" }
-      - { text: "1812" }
-      - { text: "1798" }
-      - { text: "1821" }
-      - { text: "1808" }
+      - { text: "France", correct: true }
+      - { text: "United Kingdom" }
+      - { text: "Spain" }
+      - { text: "Italy" }
+      - { text: "Germany" }
+      - { text: "Netherlands" }
   - slot: 5
     type: text
     category: science

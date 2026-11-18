@@ -24,9 +24,9 @@ questions:
       - { text: "Saturn" }
   - slot: 3
     type: number
-    category: history
-    text: "In what year did the UK join the European Economic Community?"
-    answer: 1973
+    category: sport
+    text: "How many players does a netball team have on court?"
+    answer: 7
     tolerance: 0
   - slot: 4
     type: choice

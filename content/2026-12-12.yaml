@@ -3,14 +3,14 @@ questions:
   - slot: 1
     type: choice
     category: geography
-    text: "Which country was formerly known as Abyssinia?"
+    text: "In which country do kangaroos live in the wild?"
     options:
-      - { text: "Ethiopia", correct: true }
-      - { text: "Eritrea" }
-      - { text: "Somalia" }
-      - { text: "Sudan" }
-      - { text: "Kenya" }
-      - { text: "Djibouti" }
+      - { text: "Australia", correct: true }
+      - { text: "South Africa" }
+      - { text: "New Zealand" }
+      - { text: "Brazil" }
+      - { text: "India" }
+      - { text: "Argentina" }
   - slot: 2
     type: choice
     category: science

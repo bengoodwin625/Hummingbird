@@ -30,15 +30,15 @@ questions:
     tolerance: 0
   - slot: 4
     type: choice
-    category: history
-    text: "Who was crowned King of England on Christmas Day 1066?"
+    category: christmas
+    text: "Which bird is traditionally the centrepiece of a British Christmas dinner?"
     options:
-      - { text: "William the Conqueror", correct: true }
-      - { text: "Harold Godwinson" }
-      - { text: "Edward the Confessor" }
-      - { text: "Henry I" }
-      - { text: "William II" }
-      - { text: "Edgar Ætheling" }
+      - { text: "Turkey", correct: true }
+      - { text: "Goose" }
+      - { text: "Duck" }
+      - { text: "Chicken" }
+      - { text: "Pheasant" }
+      - { text: "Swan" }
   - slot: 5
     type: text
     category: literature

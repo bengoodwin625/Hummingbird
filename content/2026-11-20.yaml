@@ -2,15 +2,15 @@ date: 2026-11-20
 questions:
   - slot: 1
     type: choice
-    category: geography
-    text: "Which country has the most time zones, counting its overseas territories?"
+    category: space
+    text: "Which planet is known as the Red Planet?"
     options:
-      - { text: "France", correct: true }
-      - { text: "Russia" }
-      - { text: "United States" }
-      - { text: "United Kingdom" }
-      - { text: "China" }
-      - { text: "Australia" }
+      - { text: "Mars", correct: true }
+      - { text: "Venus" }
+      - { text: "Jupiter" }
+      - { text: "Mercury" }
+      - { text: "Saturn" }
+      - { text: "Neptune" }
   - slot: 2
     type: choice
     category: science
@@ -31,14 +31,14 @@ questions:
   - slot: 4
     type: choice
     category: history
-    text: "In which year did Queen Victoria die?"
+    text: "Who was the first person to walk on the Moon?"
     options:
-      - { text: "1901", correct: true }
-      - { text: "1899" }
-      - { text: "1903" }
-      - { text: "1910" }
-      - { text: "1895" }
-      - { text: "1897" }
+      - { text: "Neil Armstrong", correct: true }
+      - { text: "Buzz Aldrin" }
+      - { text: "Yuri Gagarin" }
+      - { text: "John Glenn" }
+      - { text: "Michael Collins" }
+      - { text: "Alan Shepard" }
   - slot: 5
     type: text
     category: geography

@@ -14,31 +14,31 @@ questions:
   - slot: 2
     type: choice
     category: science
-    text: "How many chromosomes does a typical human cell have?"
+    text: "What is H2O more commonly called?"
     options:
-      - { text: "46", correct: true }
-      - { text: "23" }
-      - { text: "44" }
-      - { text: "48" }
-      - { text: "42" }
-      - { text: "92" }
+      - { text: "Water", correct: true }
+      - { text: "Salt" }
+      - { text: "Hydrogen" }
+      - { text: "Oxygen" }
+      - { text: "Steam" }
+      - { text: "Ice" }
   - slot: 3
     type: number
-    category: science
-    text: "At what temperature in Fahrenheit does water boil at sea level?"
-    answer: 212
+    category: nature
+    text: "How many legs does an insect have?"
+    answer: 6
     tolerance: 0
   - slot: 4
     type: choice
     category: history
-    text: "Who was British Prime Minister when the Second World War began?"
+    text: "Who was the British Prime Minister for most of the Second World War?"
     options:
-      - { text: "Neville Chamberlain", correct: true }
-      - { text: "Winston Churchill" }
-      - { text: "Stanley Baldwin" }
+      - { text: "Winston Churchill", correct: true }
+      - { text: "Neville Chamberlain" }
       - { text: "Clement Attlee" }
-      - { text: "Ramsay MacDonald" }
       - { text: "Anthony Eden" }
+      - { text: "Harold Macmillan" }
+      - { text: "Stanley Baldwin" }
   - slot: 5
     type: text
     category: space

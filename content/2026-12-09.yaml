@@ -3,14 +3,14 @@ questions:
   - slot: 1
     type: choice
     category: geography
-    text: "Which country has the longest coastline in the world?"
+    text: "In which country is the city of Rio de Janeiro?"
     options:
-      - { text: "Canada", correct: true }
-      - { text: "Russia" }
-      - { text: "Indonesia" }
-      - { text: "Norway" }
-      - { text: "Australia" }
-      - { text: "United States" }
+      - { text: "Brazil", correct: true }
+      - { text: "Argentina" }
+      - { text: "Portugal" }
+      - { text: "Mexico" }
+      - { text: "Spain" }
+      - { text: "Colombia" }
   - slot: 2
     type: choice
     category: science
@@ -24,21 +24,21 @@ questions:
       - { text: "Optic nerve" }
   - slot: 3
     type: number
-    category: sport
-    text: "How many players does each water polo team have in the water?"
+    category: general
+    text: "How many colours are there in a rainbow?"
     answer: 7
     tolerance: 0
   - slot: 4
     type: choice
     category: history
-    text: "In which year did the Wall Street Crash happen?"
+    text: "Who was the first woman to win a Nobel Prize?"
     options:
-      - { text: "1929", correct: true }
-      - { text: "1926" }
-      - { text: "1931" }
-      - { text: "1933" }
-      - { text: "1919" }
-      - { text: "1937" }
+      - { text: "Marie Curie", correct: true }
+      - { text: "Florence Nightingale" }
+      - { text: "Rosalind Franklin" }
+      - { text: "Ada Lovelace" }
+      - { text: "Jane Goodall" }
+      - { text: "Amelia Earhart" }
   - slot: 5
     type: text
     category: language
@@ -70,11 +70,11 @@ questions:
   - slot: 8
     type: choice
     category: nature
-    text: "Which continent has no native species of ant?"
+    text: "What is the largest land animal?"
     options:
-      - { text: "Antarctica", correct: true }
-      - { text: "Australia" }
-      - { text: "Europe" }
-      - { text: "South America" }
-      - { text: "Asia" }
-      - { text: "Africa" }
+      - { text: "African elephant", correct: true }
+      - { text: "Giraffe" }
+      - { text: "Hippopotamus" }
+      - { text: "White rhinoceros" }
+      - { text: "Polar bear" }
+      - { text: "Bison" }

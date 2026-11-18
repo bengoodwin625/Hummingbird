@@ -48,14 +48,14 @@ questions:
   - slot: 6
     type: choice
     category: art
-    text: "Who painted 'Girl with a Pearl Earring'?"
+    text: "Who painted 'The Starry Night'?"
     options:
-      - { text: "Johannes Vermeer", correct: true }
+      - { text: "Vincent van Gogh", correct: true }
+      - { text: "Claude Monet" }
+      - { text: "Pablo Picasso" }
+      - { text: "Salvador Dalí" }
+      - { text: "Leonardo da Vinci" }
       - { text: "Rembrandt" }
-      - { text: "Frans Hals" }
-      - { text: "Jan Steen" }
-      - { text: "Pieter de Hooch" }
-      - { text: "Peter Paul Rubens" }
   - slot: 7
     type: choice
     category: sport

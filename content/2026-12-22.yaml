@@ -30,15 +30,15 @@ questions:
     tolerance: 0
   - slot: 4
     type: choice
-    category: history
-    text: "Which monarch gave the first royal Christmas broadcast, in 1932?"
+    category: christmas
+    text: "What do children hang up on Christmas Eve for Father Christmas to fill?"
     options:
-      - { text: "George V", correct: true }
-      - { text: "George VI" }
-      - { text: "Edward VIII" }
-      - { text: "Elizabeth II" }
-      - { text: "Edward VII" }
-      - { text: "Victoria" }
+      - { text: "A stocking", correct: true }
+      - { text: "A wreath" }
+      - { text: "A bauble" }
+      - { text: "A cracker" }
+      - { text: "A sleigh bell" }
+      - { text: "A garland" }
   - slot: 5
     type: text
     category: nature

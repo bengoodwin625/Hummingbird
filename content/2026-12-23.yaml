@@ -24,9 +24,9 @@ questions:
       - { text: "Chile" }
   - slot: 3
     type: number
-    category: history
-    text: "In what year was the first commercial Christmas card sent?"
-    answer: 1843
+    category: christmas
+    text: "How many doors does a traditional Advent calendar have, up to Christmas Eve?"
+    answer: 24
     tolerance: 0
   - slot: 4
     type: choice
