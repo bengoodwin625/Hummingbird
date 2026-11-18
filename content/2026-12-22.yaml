@@ -69,12 +69,12 @@ questions:
       - { text: "Mud" }
   - slot: 8
     type: choice
-    category: food
-    text: "Which spirit is traditionally used to set a Christmas pudding alight?"
+    category: christmas
+    text: "Which of Santa's reindeer has a name meaning 'thunder'?"
     options:
-      - { text: "Brandy", correct: true }
-      - { text: "Rum" }
-      - { text: "Whisky" }
-      - { text: "Gin" }
-      - { text: "Vodka" }
-      - { text: "Sherry" }
+      - { text: "Donner", correct: true }
+      - { text: "Blitzen" }
+      - { text: "Comet" }
+      - { text: "Cupid" }
+      - { text: "Dasher" }
+      - { text: "Vixen" }

@@ -69,12 +69,12 @@ questions:
       - { text: "Claudio Monteverdi" }
   - slot: 8
     type: choice
-    category: nature
-    text: "What is the largest mammal on Earth?"
+    category: history
+    text: "Which country was the first to use paper money?"
     options:
-      - { text: "Blue whale", correct: true }
-      - { text: "Sperm whale" }
-      - { text: "African elephant" }
-      - { text: "Fin whale" }
-      - { text: "Whale shark" }
-      - { text: "Giraffe" }
+      - { text: "China", correct: true }
+      - { text: "Italy" }
+      - { text: "Persia" }
+      - { text: "Egypt" }
+      - { text: "Greece" }
+      - { text: "India" }

@@ -69,12 +69,12 @@ questions:
       - { text: "Kylie Minogue" }
   - slot: 8
     type: choice
-    category: nature
-    text: "Which creature appears on the flag of Wales?"
+    category: history
+    text: "Who was the Greek god of the sea?"
     options:
-      - { text: "A dragon", correct: true }
-      - { text: "A lion" }
-      - { text: "A unicorn" }
-      - { text: "An eagle" }
-      - { text: "A griffin" }
-      - { text: "A stag" }
+      - { text: "Poseidon", correct: true }
+      - { text: "Zeus" }
+      - { text: "Hades" }
+      - { text: "Apollo" }
+      - { text: "Ares" }
+      - { text: "Hermes" }

@@ -69,12 +69,12 @@ questions:
       - { text: "The Beach Boys" }
   - slot: 8
     type: choice
-    category: nature
-    text: "What is a group of lions called?"
+    category: literature
+    text: "Which Shakespeare play features the moneylender Shylock?"
     options:
-      - { text: "A pride", correct: true }
-      - { text: "A pack" }
-      - { text: "A herd" }
-      - { text: "A troop" }
-      - { text: "A colony" }
-      - { text: "A school" }
+      - { text: "The Merchant of Venice", correct: true }
+      - { text: "Othello" }
+      - { text: "Hamlet" }
+      - { text: "Macbeth" }
+      - { text: "The Tempest" }
+      - { text: "King Lear" }

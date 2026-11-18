@@ -69,12 +69,12 @@ questions:
       - { text: "3" }
   - slot: 8
     type: choice
-    category: nature
-    text: "Which bird is the national symbol of the United States?"
+    category: geography
+    text: "What is the deepest ocean trench on Earth?"
     options:
-      - { text: "Bald eagle", correct: true }
-      - { text: "Golden eagle" }
-      - { text: "Wild turkey" }
-      - { text: "Osprey" }
-      - { text: "Red-tailed hawk" }
-      - { text: "Peregrine falcon" }
+      - { text: "Mariana Trench", correct: true }
+      - { text: "Puerto Rico Trench" }
+      - { text: "Java Trench" }
+      - { text: "Tonga Trench" }
+      - { text: "Kuril Trench" }
+      - { text: "Japan Trench" }

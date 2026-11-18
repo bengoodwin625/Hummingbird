@@ -69,12 +69,12 @@ questions:
       - { text: "Lute" }
   - slot: 8
     type: choice
-    category: nature
-    text: "What type of animal is a Komodo dragon?"
+    category: geography
+    text: "What is the capital of Mongolia?"
     options:
-      - { text: "Lizard", correct: true }
-      - { text: "Snake" }
-      - { text: "Crocodile" }
-      - { text: "Turtle" }
-      - { text: "Frog" }
-      - { text: "Salamander" }
+      - { text: "Ulaanbaatar", correct: true }
+      - { text: "Astana" }
+      - { text: "Bishkek" }
+      - { text: "Tashkent" }
+      - { text: "Almaty" }
+      - { text: "Hohhot" }

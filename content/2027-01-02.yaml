@@ -69,12 +69,12 @@ questions:
       - { text: "Cricket" }
   - slot: 8
     type: choice
-    category: food
-    text: "Which fruit is dried to make raisins?"
+    category: geography
+    text: "What is the capital of the Canadian province of Quebec?"
     options:
-      - { text: "Grapes", correct: true }
-      - { text: "Plums" }
-      - { text: "Apricots" }
-      - { text: "Figs" }
-      - { text: "Dates" }
-      - { text: "Cherries" }
+      - { text: "Quebec City", correct: true }
+      - { text: "Montreal" }
+      - { text: "Ottawa" }
+      - { text: "Toronto" }
+      - { text: "Halifax" }
+      - { text: "Gatineau" }

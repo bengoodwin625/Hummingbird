@@ -69,12 +69,12 @@ questions:
       - { text: "The Bee Gees" }
   - slot: 8
     type: choice
-    category: nature
-    text: "Which Australian animal eats eucalyptus leaves and sleeps for most of the day?"
+    category: geography
+    text: "What is the capital of Western Australia?"
     options:
-      - { text: "Koala", correct: true }
-      - { text: "Wombat" }
-      - { text: "Kangaroo" }
-      - { text: "Platypus" }
-      - { text: "Possum" }
-      - { text: "Quokka" }
+      - { text: "Perth", correct: true }
+      - { text: "Darwin" }
+      - { text: "Adelaide" }
+      - { text: "Broome" }
+      - { text: "Fremantle" }
+      - { text: "Albany" }

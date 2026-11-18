@@ -69,12 +69,12 @@ questions:
       - { text: "Johannes Brahms" }
   - slot: 8
     type: choice
-    category: nature
-    text: "What is the largest species of penguin?"
+    category: general
+    text: "What is the most common surname in the UK?"
     options:
-      - { text: "Emperor penguin", correct: true }
-      - { text: "King penguin" }
-      - { text: "Adélie penguin" }
-      - { text: "Gentoo penguin" }
-      - { text: "Macaroni penguin" }
-      - { text: "Chinstrap penguin" }
+      - { text: "Smith", correct: true }
+      - { text: "Jones" }
+      - { text: "Williams" }
+      - { text: "Brown" }
+      - { text: "Taylor" }
+      - { text: "Johnson" }

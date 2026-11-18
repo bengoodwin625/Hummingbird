@@ -69,12 +69,12 @@ questions:
       - { text: "Mongolia" }
   - slot: 8
     type: choice
-    category: food
-    text: "Which pastry are profiteroles made from?"
+    category: music
+    text: "Who composed 'The Planets' suite?"
     options:
-      - { text: "Choux", correct: true }
-      - { text: "Puff" }
-      - { text: "Filo" }
-      - { text: "Shortcrust" }
-      - { text: "Flaky" }
-      - { text: "Hot water crust" }
+      - { text: "Gustav Holst", correct: true }
+      - { text: "Edward Elgar" }
+      - { text: "Benjamin Britten" }
+      - { text: "Ralph Vaughan Williams" }
+      - { text: "Henry Purcell" }
+      - { text: "Gustav Mahler" }

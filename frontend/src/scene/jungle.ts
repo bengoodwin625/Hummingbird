@@ -202,13 +202,7 @@ function monstera(r: Raster, cx: number, cy: number, rad: number, flip: boolean)
   r.line(cx, cy, cx + (flip ? 1 : -1) * rad * 1.1, cy + rad * 0.9, C.near1);
 }
 
-/** `sun: false` leaves out the low sun, for a second forest drawn behind the stage. */
-export function buildJungle(
-  width: number,
-  height: number,
-  seed = 20261117,
-  options: { sun?: boolean } = {},
-): Jungle {
+export function buildJungle(width: number, height: number, seed = 20261117): Jungle {
   const r = new Raster(width, height);
   const w = r.width;
   const h = r.height;
@@ -230,12 +224,10 @@ export function buildJungle(
   const sunX = w * 0.7;
   const sunY = h * 0.54;
   const sunR = Math.max(5, Math.min(w, h) * 0.06);
-  if (options.sun !== false) {
-    r.ellipse(sunX, sunY, sunR * 1.9, sunR * 1.9, C.glow, 0.25);
-    r.ellipse(sunX, sunY, sunR * 1.35, sunR * 1.35, C.glow, 0.6);
-    r.ellipse(sunX, sunY, sunR, sunR, C.gold);
-    r.ellipse(sunX - sunR * 0.15, sunY - sunR * 0.15, sunR * 0.6, sunR * 0.6, C.goldHi);
-  }
+  r.ellipse(sunX, sunY, sunR * 1.9, sunR * 1.9, C.glow, 0.25);
+  r.ellipse(sunX, sunY, sunR * 1.35, sunR * 1.35, C.glow, 0.6);
+  r.ellipse(sunX, sunY, sunR, sunR, C.gold);
+  r.ellipse(sunX - sunR * 0.15, sunY - sunR * 0.15, sunR * 0.6, sunR * 0.6, C.goldHi);
 
   // Distant canopy layers and mist.
   canopyLine(r, rand, Math.round(h * 0.6), C.sky4, 6, 14);

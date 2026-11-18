@@ -69,12 +69,12 @@ questions:
       - { text: "Switzerland" }
   - slot: 8
     type: choice
-    category: nature
-    text: "What is a baby frog called?"
+    category: space
+    text: "Which planet is often called the 'Morning Star'?"
     options:
-      - { text: "Tadpole", correct: true }
-      - { text: "Larva" }
-      - { text: "Pupa" }
-      - { text: "Cub" }
-      - { text: "Kit" }
-      - { text: "Fry" }
+      - { text: "Venus", correct: true }
+      - { text: "Mars" }
+      - { text: "Jupiter" }
+      - { text: "Mercury" }
+      - { text: "Saturn" }
+      - { text: "Neptune" }

@@ -69,12 +69,12 @@ questions:
       - { text: "Sydney" }
   - slot: 8
     type: choice
-    category: food
-    text: "Which fizzy drink is made by fermenting sweet tea?"
+    category: geography
+    text: "What is the capital of the Australian state of Victoria?"
     options:
-      - { text: "Kombucha", correct: true }
-      - { text: "Kefir" }
-      - { text: "Kvass" }
-      - { text: "Matcha" }
-      - { text: "Chai" }
-      - { text: "Sake" }
+      - { text: "Melbourne", correct: true }
+      - { text: "Sydney" }
+      - { text: "Brisbane" }
+      - { text: "Adelaide" }
+      - { text: "Perth" }
+      - { text: "Hobart" }

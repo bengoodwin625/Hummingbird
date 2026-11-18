@@ -69,12 +69,12 @@ questions:
       - { text: "Australia" }
   - slot: 8
     type: choice
-    category: food
-    text: "What is the main ingredient of guacamole?"
+    category: nature
+    text: "Which is the only bird that can fly backwards?"
     options:
-      - { text: "Avocado", correct: true }
-      - { text: "Tomato" }
-      - { text: "Lime" }
-      - { text: "Pea" }
-      - { text: "Courgette" }
-      - { text: "Chickpea" }
+      - { text: "Hummingbird", correct: true }
+      - { text: "Swift" }
+      - { text: "Kingfisher" }
+      - { text: "Kestrel" }
+      - { text: "Bee-eater" }
+      - { text: "Sunbird" }

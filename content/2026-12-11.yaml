@@ -69,12 +69,12 @@ questions:
       - { text: "Guitar" }
   - slot: 8
     type: choice
-    category: nature
-    text: "How many arms does a common starfish have?"
+    category: literature
+    text: "Who wrote 'War and Peace'?"
     options:
-      - { text: "5", correct: true }
-      - { text: "6" }
-      - { text: "4" }
-      - { text: "7" }
-      - { text: "8" }
-      - { text: "10" }
+      - { text: "Leo Tolstoy", correct: true }
+      - { text: "Fyodor Dostoevsky" }
+      - { text: "Anton Chekhov" }
+      - { text: "Alexander Pushkin" }
+      - { text: "Ivan Turgenev" }
+      - { text: "Nikolai Gogol" }

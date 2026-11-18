@@ -1,6 +1,9 @@
 /**
- * The canvas stage: sizes the scene to whole art pixels, draws the jungle, fireflies and the
- * revealed animal, and plays each animal's run.
+ * The canvas stage: one living forest behind the top of the page. The canvas starts at the top
+ * of the page and reaches at least the bottom of the window; the scene itself (trees, ground,
+ * fireflies, animals) is laid out so its ground sits at the bottom of the stage band, and below
+ * that the forest floor runs on into darkness. Everything is drawn in one canvas, so the whole
+ * forest moves together and nothing has to line up with anything else.
  */
 import { C, packedPalette } from "../art/palette";
 import { Raster } from "../art/raster";
@@ -35,20 +38,39 @@ export class Stage {
   private readonly reducedMotion: MediaQueryList;
   private readonly observer: ResizeObserver;
 
-  constructor(private readonly host: HTMLElement) {
+  /** Height of the scene (top of the page to the bottom of the band), in art pixels. */
+  private sceneHeight = 0;
+  private pendingResize = 0;
+
+  /**
+   * `band` is the stage band in the layout (it sets where the ground is and holds the overlay);
+   * `layer` is the element the canvas is placed in, at the top of the page.
+   */
+  constructor(
+    private readonly band: HTMLElement,
+    layer: HTMLElement,
+    watch: HTMLElement[] = [],
+  ) {
     this.canvas = document.createElement("canvas");
     this.canvas.className = "stage-canvas";
     this.canvas.setAttribute("aria-hidden", "true");
-    host.prepend(this.canvas);
+    layer.prepend(this.canvas);
     const ctx = this.canvas.getContext("2d");
     if (!ctx) throw new Error("Canvas 2D isn't available");
     this.ctx = ctx;
     this.reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-    this.observer = new ResizeObserver(() => this.resize());
-    this.observer.observe(host);
+    // The band can move (the progress strip comes and goes above it) as well as resize.
+    this.observer = new ResizeObserver(() => this.scheduleResize());
+    for (const el of [band, ...watch]) this.observer.observe(el);
+    window.addEventListener("resize", this.scheduleResize);
     this.resize();
     this.raf = requestAnimationFrame(this.tick);
   }
+
+  private readonly scheduleResize = (): void => {
+    window.clearTimeout(this.pendingResize);
+    this.pendingResize = window.setTimeout(() => this.resize(), 60);
+  };
 
   get still(): boolean {
     return this.reducedMotion.matches;
@@ -86,24 +108,37 @@ export class Stage {
   destroy(): void {
     cancelAnimationFrame(this.raf);
     this.observer.disconnect();
+    window.removeEventListener("resize", this.scheduleResize);
     this.canvas.remove();
   }
 
   private resize(): void {
-    const rect = this.host.getBoundingClientRect();
-    const { width, height, pixel } = artSize(rect.width, rect.height);
-    this.canvas.style.width = `${width * pixel}px`;
-    this.canvas.style.height = `${height * pixel}px`;
-    if (this.background && this.background.width === width && this.background.height === height) {
-      return;
+    const rect = this.band.getBoundingClientRect();
+    const bandBottom = rect.bottom + window.scrollY;
+    const cssWidth = document.documentElement.clientWidth;
+    // At least the window's height, so the forest floor carries on behind the content; it only
+    // grows while the width stays the same, so a phone's address bar can't make it thrash.
+    let cssHeight = Math.max(window.innerHeight, bandBottom);
+    const scene = artSize(cssWidth, bandBottom);
+    const full = artSize(cssWidth, cssHeight);
+    if (this.background && this.background.width === full.width && this.sceneHeight === scene.height) {
+      if (full.height <= this.background.height) return;
     }
-    this.canvas.width = width;
-    this.canvas.height = height;
-    const jungle = buildJungle(width, height);
-    this.background = jungle.raster;
+    cssHeight = full.height * full.pixel;
+    this.canvas.style.width = `${full.width * full.pixel}px`;
+    this.canvas.style.height = `${cssHeight}px`;
+    this.canvas.width = full.width;
+    this.canvas.height = full.height;
+
+    const jungle = buildJungle(full.width, scene.height);
+    const background = new Raster(full.width, full.height);
+    background.blit(jungle.raster, 0, 0);
+    forestFloor(background, scene.height);
+    this.background = background;
+    this.sceneHeight = scene.height;
     this.anchors = jungle.anchors;
-    this.frame = new Raster(width, height);
-    this.flies = makeFireflies(width, height);
+    this.frame = new Raster(full.width, full.height);
+    this.flies = makeFireflies(full.width, scene.height);
     // Resizing a canvas clears it, so draw straight away rather than waiting for a frame.
     this.draw(performance.now());
   }
@@ -126,7 +161,7 @@ export class Stage {
       const elapsed = now - actor.start;
       const duration = RUN_MS[actor.band];
       const p = Math.min(1, elapsed / duration);
-      const pos = animalPosition(actor.band, p, anchors, frame.width, frame.height);
+      const pos = animalPosition(actor.band, p, anchors, frame.width, this.sceneHeight);
       let frameIndex = Math.floor(elapsed / pos.frameMs) % MOVE_FRAMES[actor.band];
       let pose = pos.pose;
       if (p >= 1) {
@@ -162,7 +197,7 @@ export class Stage {
     for (const band of this.cast) {
       const k = seen.get(band) ?? 0;
       seen.set(band, k + 1);
-      const spots = castSpots(band, anchors, frame.width, frame.height);
+      const spots = castSpots(band, anchors, frame.width, this.sceneHeight);
       const spot = spots[k % spots.length] ?? spots[0];
       if (!spot) continue;
       // Each repeat gets its own perch, facing and rhythm, so the gathering looks alive.
@@ -217,6 +252,21 @@ export class Stage {
     }
     frame.ellipse(burst.x, burst.y, 8 * (1 - t) + 2, 6 * (1 - t) + 1, C.gold, 0.25 * (1 - t));
     if (burst.grand && t < 0.8) drawFireflies(frame, this.flies, 0, true);
+  }
+}
+
+/** Below the scene the forest floor runs on: dark undergrowth thinning into the night. */
+function forestFloor(r: Raster, top: number): void {
+  // It starts in the same tone as the scene's ground, so there is no seam, then thins out.
+  const depth = Math.max(1, r.height - top);
+  for (let y = top; y < r.height; y++) {
+    const t = (y - top) / depth;
+    const ground = Math.max(0, 1 - t * 1.6);
+    for (let x = 0; x < r.width; x++) {
+      r.set(x, y, C.near0);
+      r.scatter(x, y, C.near1, 0.25 + 0.75 * ground);
+      if (t < 0.2) r.scatter(x + 3, y, C.mid0, 0.08 * (1 - t * 5));
+    }
   }
 }
 

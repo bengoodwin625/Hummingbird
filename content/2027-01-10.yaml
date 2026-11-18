@@ -69,12 +69,12 @@ questions:
       - { text: "6" }
   - slot: 8
     type: choice
-    category: food
-    text: "Traditional mozzarella is made from the milk of which animal?"
+    category: literature
+    text: "Who wrote 'The Canterbury Tales'?"
     options:
-      - { text: "Water buffalo", correct: true }
-      - { text: "Goat" }
-      - { text: "Sheep" }
-      - { text: "Camel" }
-      - { text: "Yak" }
-      - { text: "Horse" }
+      - { text: "Geoffrey Chaucer", correct: true }
+      - { text: "William Langland" }
+      - { text: "John Milton" }
+      - { text: "Edmund Spenser" }
+      - { text: "Thomas Malory" }
+      - { text: "William Shakespeare" }

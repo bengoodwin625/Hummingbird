@@ -69,12 +69,12 @@ questions:
       - { text: "Tennis" }
   - slot: 8
     type: choice
-    category: food
-    text: "Besides eggs and milk, what is the main ingredient of Yorkshire pudding batter?"
+    category: science
+    text: "What is the bone in your upper arm called?"
     options:
-      - { text: "Flour", correct: true }
-      - { text: "Oats" }
-      - { text: "Sugar" }
-      - { text: "Butter" }
-      - { text: "Rice" }
-      - { text: "Potato" }
+      - { text: "Humerus", correct: true }
+      - { text: "Radius" }
+      - { text: "Ulna" }
+      - { text: "Femur" }
+      - { text: "Tibia" }
+      - { text: "Scapula" }

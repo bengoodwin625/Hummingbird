@@ -69,12 +69,12 @@ questions:
       - { text: "The Carpenters" }
   - slot: 8
     type: choice
-    category: nature
-    text: "Which bird has the longest annual migration?"
+    category: geography
+    text: "Which country's Line Islands are the first inhabited place to reach midnight each New Year?"
     options:
-      - { text: "Arctic tern", correct: true }
-      - { text: "Albatross" }
-      - { text: "Swallow" }
-      - { text: "Osprey" }
-      - { text: "Common swift" }
-      - { text: "Barnacle goose" }
+      - { text: "Kiribati", correct: true }
+      - { text: "Samoa" }
+      - { text: "Tonga" }
+      - { text: "New Zealand" }
+      - { text: "Fiji" }
+      - { text: "Japan" }

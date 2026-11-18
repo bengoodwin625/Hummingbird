@@ -69,12 +69,12 @@ questions:
       - { text: "Triple jump" }
   - slot: 8
     type: choice
-    category: nature
-    text: "What is the tallest living bird?"
+    category: geography
+    text: "Which country has the most lakes?"
     options:
-      - { text: "Ostrich", correct: true }
-      - { text: "Emu" }
-      - { text: "Cassowary" }
-      - { text: "Rhea" }
-      - { text: "Emperor penguin" }
-      - { text: "Albatross" }
+      - { text: "Canada", correct: true }
+      - { text: "Finland" }
+      - { text: "Russia" }
+      - { text: "Sweden" }
+      - { text: "United States" }
+      - { text: "Brazil" }

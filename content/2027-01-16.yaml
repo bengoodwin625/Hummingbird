@@ -69,12 +69,12 @@ questions:
       - { text: "Wales" }
   - slot: 8
     type: choice
-    category: food
-    text: "Which country does the pizza Margherita come from?"
+    category: geography
+    text: "What is the largest country in the world with no coastline?"
     options:
-      - { text: "Italy", correct: true }
-      - { text: "Greece" }
-      - { text: "Spain" }
-      - { text: "France" }
-      - { text: "United States" }
-      - { text: "Turkey" }
+      - { text: "Kazakhstan", correct: true }
+      - { text: "Mongolia" }
+      - { text: "Chad" }
+      - { text: "Niger" }
+      - { text: "Bolivia" }
+      - { text: "Mali" }

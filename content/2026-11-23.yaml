@@ -69,12 +69,12 @@ questions:
       - { text: "12" }
   - slot: 8
     type: choice
-    category: film
-    text: "What is the name of the cowboy toy in 'Toy Story'?"
+    category: science
+    text: "Which blood type is known as the universal donor?"
     options:
-      - { text: "Woody", correct: true }
-      - { text: "Buzz" }
-      - { text: "Jessie" }
-      - { text: "Bullseye" }
-      - { text: "Rex" }
-      - { text: "Slinky" }
+      - { text: "O negative", correct: true }
+      - { text: "AB positive" }
+      - { text: "O positive" }
+      - { text: "A negative" }
+      - { text: "AB negative" }
+      - { text: "B positive" }

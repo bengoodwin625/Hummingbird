@@ -69,12 +69,12 @@ questions:
       - { text: "Cricket" }
   - slot: 8
     type: choice
-    category: food
-    text: "What is the main ingredient of haggis?"
+    category: art
+    text: "Which painting was stolen from the Louvre in 1911?"
     options:
-      - { text: "Sheep's offal", correct: true }
-      - { text: "Beef mince" }
-      - { text: "Pork belly" }
-      - { text: "Venison" }
-      - { text: "Salmon" }
-      - { text: "Lamb chops" }
+      - { text: "Mona Lisa", correct: true }
+      - { text: "Venus de Milo" }
+      - { text: "The Raft of the Medusa" }
+      - { text: "Liberty Leading the People" }
+      - { text: "The Wedding at Cana" }
+      - { text: "The Coronation of Napoleon" }

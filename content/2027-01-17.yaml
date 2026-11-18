@@ -69,12 +69,12 @@ questions:
       - { text: "Elvis Costello" }
   - slot: 8
     type: choice
-    category: nature
-    text: "How many hearts does an octopus have?"
+    category: history
+    text: "In which year did the Wall Street Crash happen?"
     options:
-      - { text: "3", correct: true }
-      - { text: "1" }
-      - { text: "2" }
-      - { text: "4" }
-      - { text: "8" }
-      - { text: "5" }
+      - { text: "1929", correct: true }
+      - { text: "1926" }
+      - { text: "1931" }
+      - { text: "1933" }
+      - { text: "1919" }
+      - { text: "1937" }

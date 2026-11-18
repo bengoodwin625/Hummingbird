@@ -69,12 +69,12 @@ questions:
       - { text: "Blue Christmas" }
   - slot: 8
     type: choice
-    category: food
-    text: "Which nuts are 'roasting on an open fire' in 'The Christmas Song'?"
+    category: music
+    text: "In which year was Band Aid's 'Do They Know It's Christmas?' first released?"
     options:
-      - { text: "Chestnuts", correct: true }
-      - { text: "Almonds" }
-      - { text: "Hazelnuts" }
-      - { text: "Walnuts" }
-      - { text: "Pecans" }
-      - { text: "Brazil nuts" }
+      - { text: "1984", correct: true }
+      - { text: "1982" }
+      - { text: "1986" }
+      - { text: "1988" }
+      - { text: "1980" }
+      - { text: "1990" }

@@ -69,12 +69,12 @@ questions:
       - { text: "Germany" }
   - slot: 8
     type: choice
-    category: food
-    text: "Which spice gives many curries their yellow colour?"
+    category: science
+    text: "What is the name for the change in a siren's pitch as it passes you?"
     options:
-      - { text: "Turmeric", correct: true }
-      - { text: "Paprika" }
-      - { text: "Cinnamon" }
-      - { text: "Cumin" }
-      - { text: "Ginger" }
-      - { text: "Nutmeg" }
+      - { text: "The Doppler effect", correct: true }
+      - { text: "The echo effect" }
+      - { text: "The butterfly effect" }
+      - { text: "The placebo effect" }
+      - { text: "The greenhouse effect" }
+      - { text: "The domino effect" }

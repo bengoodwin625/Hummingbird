@@ -69,12 +69,12 @@ questions:
       - { text: "180" }
   - slot: 8
     type: choice
-    category: food
-    text: "What is the main ingredient of an omelette?"
+    category: geography
+    text: "In which country is the city of Timbuktu?"
     options:
-      - { text: "Eggs", correct: true }
-      - { text: "Flour" }
-      - { text: "Milk" }
-      - { text: "Cheese" }
-      - { text: "Potatoes" }
-      - { text: "Rice" }
+      - { text: "Mali", correct: true }
+      - { text: "Niger" }
+      - { text: "Chad" }
+      - { text: "Mauritania" }
+      - { text: "Sudan" }
+      - { text: "Morocco" }

@@ -69,12 +69,12 @@ questions:
       - { text: "Italy" }
   - slot: 8
     type: choice
-    category: food
-    text: "Besides eggs, what is the main ingredient of eggnog?"
+    category: christmas
+    text: "What is the most popular type of real Christmas tree in the UK?"
     options:
-      - { text: "Milk", correct: true }
-      - { text: "Orange juice" }
-      - { text: "Coffee" }
-      - { text: "Tea" }
-      - { text: "Coconut water" }
-      - { text: "Apple juice" }
+      - { text: "Nordmann fir", correct: true }
+      - { text: "Norway spruce" }
+      - { text: "Scots pine" }
+      - { text: "Blue spruce" }
+      - { text: "Douglas fir" }
+      - { text: "Noble fir" }

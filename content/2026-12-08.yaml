@@ -69,12 +69,12 @@ questions:
       - { text: "Rugby" }
   - slot: 8
     type: choice
-    category: food
-    text: "Which herb is the main ingredient of pesto?"
+    category: general
+    text: "What is the currency of Switzerland?"
     options:
-      - { text: "Basil", correct: true }
-      - { text: "Parsley" }
-      - { text: "Coriander" }
-      - { text: "Oregano" }
-      - { text: "Mint" }
-      - { text: "Rocket" }
+      - { text: "Swiss franc", correct: true }
+      - { text: "Euro" }
+      - { text: "Swiss mark" }
+      - { text: "Krone" }
+      - { text: "Schilling" }
+      - { text: "Lira" }

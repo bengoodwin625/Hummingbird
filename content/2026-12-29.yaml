@@ -69,12 +69,12 @@ questions:
       - { text: "Duffy" }
   - slot: 8
     type: choice
-    category: nature
-    text: "What is a group of owls called?"
+    category: geography
+    text: "Which country has the most islands in the world?"
     options:
-      - { text: "A parliament", correct: true }
-      - { text: "A murder" }
-      - { text: "A gaggle" }
-      - { text: "A flock" }
-      - { text: "A colony" }
-      - { text: "A pride" }
+      - { text: "Sweden", correct: true }
+      - { text: "Norway" }
+      - { text: "Finland" }
+      - { text: "Indonesia" }
+      - { text: "Philippines" }
+      - { text: "Canada" }

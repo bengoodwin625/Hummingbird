@@ -69,12 +69,12 @@ questions:
       - { text: "Xylophone" }
   - slot: 8
     type: choice
-    category: nature
-    text: "What is the tallest animal in the world?"
+    category: geography
+    text: "Which is the deepest ocean?"
     options:
-      - { text: "Giraffe", correct: true }
-      - { text: "Elephant" }
-      - { text: "Ostrich" }
-      - { text: "Camel" }
-      - { text: "Moose" }
-      - { text: "Horse" }
+      - { text: "Pacific Ocean", correct: true }
+      - { text: "Atlantic Ocean" }
+      - { text: "Indian Ocean" }
+      - { text: "Arctic Ocean" }
+      - { text: "Southern Ocean" }
+      - { text: "Mediterranean Sea" }

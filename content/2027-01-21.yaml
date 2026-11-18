@@ -69,12 +69,12 @@ questions:
       - { text: "Dutch" }
   - slot: 8
     type: choice
-    category: nature
-    text: "What is the largest species of bear?"
+    category: geography
+    text: "What is the longest river in Asia?"
     options:
-      - { text: "Polar bear", correct: true }
-      - { text: "Grizzly bear" }
-      - { text: "Black bear" }
-      - { text: "Sun bear" }
-      - { text: "Giant panda" }
-      - { text: "Spectacled bear" }
+      - { text: "Yangtze", correct: true }
+      - { text: "Yellow River" }
+      - { text: "Mekong" }
+      - { text: "Ganges" }
+      - { text: "Indus" }
+      - { text: "Ob" }

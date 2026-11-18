@@ -69,12 +69,12 @@ questions:
       - { text: "Clarinet" }
   - slot: 8
     type: choice
-    category: nature
-    text: "What is a baby cat called?"
+    category: history
+    text: "In which country did the game of chess begin?"
     options:
-      - { text: "Kitten", correct: true }
-      - { text: "Cub" }
-      - { text: "Pup" }
-      - { text: "Kid" }
-      - { text: "Calf" }
-      - { text: "Foal" }
+      - { text: "India", correct: true }
+      - { text: "Persia" }
+      - { text: "China" }
+      - { text: "Egypt" }
+      - { text: "Greece" }
+      - { text: "Russia" }

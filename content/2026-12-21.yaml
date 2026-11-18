@@ -69,12 +69,12 @@ questions:
       - { text: "Ariana Grande" }
   - slot: 8
     type: choice
-    category: food
-    text: "Which country does panettone come from?"
+    category: christmas
+    text: "In 'The Twelve Days of Christmas', what is given on the fifth day?"
     options:
-      - { text: "Italy", correct: true }
-      - { text: "Germany" }
-      - { text: "Spain" }
-      - { text: "France" }
-      - { text: "Austria" }
-      - { text: "Switzerland" }
+      - { text: "Gold rings", correct: true }
+      - { text: "Calling birds" }
+      - { text: "French hens" }
+      - { text: "Geese a-laying" }
+      - { text: "Swans a-swimming" }
+      - { text: "Turtle doves" }

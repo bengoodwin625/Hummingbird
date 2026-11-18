@@ -1,7 +1,6 @@
 /** The quiz flow: menu → ready → read → answer → reveal (×8) → results. */
 import { ApiError, api, rememberPlayer, type Question, type Results, type Reveal, type Today } from "../api";
 import { BANDS, type Band } from "../art/sprites";
-import { Backdrop } from "../scene/backdrop";
 import { Stage } from "../scene/stage";
 import { animalIcon, byId, h, icon, logoIcon } from "./dom";
 import {
@@ -63,9 +62,8 @@ export class App {
   private slotResults = new Map<number, { band: Band | null; correct: boolean }>();
 
   constructor() {
-    this.stage = new Stage(byId("stage"));
-    // The whole page sits in the forest; CSS fades it back while a question is live.
-    new Backdrop(this.root);
+    // One forest for the whole page: its ground lines up with the stage band.
+    this.stage = new Stage(byId("stage"), this.root, [this.progressEl, byId("question")]);
     byId("brand-mark").append(logoIcon(1));
     // The logo goes back to the menu, except while a question is live.
     byId("brand").addEventListener("click", (event) => {
@@ -211,7 +209,7 @@ export class App {
   // ------------------------------------------------------------- menu
 
   /**
-   * The home page is a menu of game modes. Today there is one, the daily quiz; the list is
+   * The home page is a menu of game modes. The speed quiz is playable and the numbers quiz is on its way; the list is
    * built so new modes slot in beside it.
    */
   private renderMenu(today: Today): void {
@@ -271,7 +269,7 @@ export class App {
       h(
         "span",
         { class: "mode-text" },
-        h("span", { class: "mode-name", text: "Daily quiz" }),
+        h("span", { class: "mode-name", text: "Speed quiz" }),
         h("span", { class: "mode-desc", text: "Eight questions, one go a day, the same for everyone." }),
         h("span", { class: "mode-status", text: daily.status }),
         animals,
@@ -290,7 +288,7 @@ export class App {
       {
         class: `mode-info${firstVisit && !finished ? " is-new" : ""}`,
         type: "button",
-        "aria-label": "How to play the daily quiz",
+        "aria-label": "How to play the speed quiz",
         "aria-haspopup": "dialog",
       },
       h("span", { "aria-hidden": "true", text: "i" }),
@@ -298,14 +296,30 @@ export class App {
     info.addEventListener("click", () => {
       writeFlag("hb-seen-howto");
       info.classList.remove("is-new");
-      this.openInfo("How to play the daily quiz", this.dailyInfo());
+      this.openInfo("How to play the speed quiz", this.speedInfo());
     });
 
     const modes = h(
       "ul",
       { class: "modes" },
       h("li", { class: "mode-item" }, card, info),
-      h("li", { class: "mode-soon" }, h("span", { text: "More game modes coming soon" })),
+      // The next game, shown so players know it's coming; it opens once it's built.
+      h(
+        "li",
+        { class: "mode-item" },
+        h(
+          "div",
+          { class: "mode mode--soon", "aria-disabled": "true" },
+          h("span", { class: "mode-art mode-art--numbers", "aria-hidden": "true", text: "123" }),
+          h(
+            "span",
+            { class: "mode-text" },
+            h("span", { class: "mode-name", text: "Numbers quiz" }),
+            h("span", { class: "mode-desc", text: "A new game, all about numbers." }),
+            h("span", { class: "mode-status", text: "Coming soon" }),
+          ),
+        ),
+      ),
     );
 
     const note = h("p", { class: "cta-note" });
@@ -355,8 +369,8 @@ export class App {
     dialog.showModal();
   }
 
-  /** The daily quiz's instructions: the speed ladder, then the steps. */
-  private dailyInfo(): HTMLElement {
+  /** The speed quiz's instructions: the speed ladder, then the steps. */
+  private speedInfo(): HTMLElement {
     const ladder = h("ol", { class: "ladder", "aria-label": "Speed animals, fastest first" });
     for (const band of BANDS) {
       const info = BAND_INFO[band];

@@ -69,12 +69,12 @@ questions:
       - { text: "Ponyo" }
   - slot: 8
     type: choice
-    category: nature
-    text: "What is the largest living reptile?"
+    category: history
+    text: "In which year did euro notes and coins come into circulation?"
     options:
-      - { text: "Saltwater crocodile", correct: true }
-      - { text: "Komodo dragon" }
-      - { text: "Leatherback turtle" }
-      - { text: "Green anaconda" }
-      - { text: "Nile crocodile" }
-      - { text: "Galápagos tortoise" }
+      - { text: "2002", correct: true }
+      - { text: "1999" }
+      - { text: "2000" }
+      - { text: "2001" }
+      - { text: "2004" }
+      - { text: "1995" }

@@ -69,12 +69,12 @@ questions:
       - { text: "Ça ira" }
   - slot: 8
     type: choice
-    category: nature
-    text: "Which of these mammals can truly fly?"
+    category: art
+    text: "Who painted 'The Hay Wain'?"
     options:
-      - { text: "Bat", correct: true }
-      - { text: "Flying squirrel" }
-      - { text: "Sugar glider" }
-      - { text: "Colugo" }
-      - { text: "Lemur" }
-      - { text: "Pangolin" }
+      - { text: "John Constable", correct: true }
+      - { text: "J. M. W. Turner" }
+      - { text: "Thomas Gainsborough" }
+      - { text: "William Blake" }
+      - { text: "George Stubbs" }
+      - { text: "Joshua Reynolds" }

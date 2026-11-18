@@ -69,12 +69,12 @@ questions:
       - { text: "8" }
   - slot: 8
     type: choice
-    category: food
-    text: "Which country is pierogi most closely associated with?"
+    category: science
+    text: "Roughly how fast does sound travel through air, in metres per second?"
     options:
-      - { text: "Poland", correct: true }
-      - { text: "Hungary" }
-      - { text: "Germany" }
-      - { text: "Austria" }
-      - { text: "Romania" }
-      - { text: "Greece" }
+      - { text: "343", correct: true }
+      - { text: "30" }
+      - { text: "150" }
+      - { text: "500" }
+      - { text: "1,000" }
+      - { text: "3,000" }

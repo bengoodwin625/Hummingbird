@@ -69,12 +69,12 @@ questions:
       - { text: "Squash" }
   - slot: 8
     type: choice
-    category: food
-    text: "Which country does chow mein come from?"
+    category: nature
+    text: "What is a group of crows called?"
     options:
-      - { text: "China", correct: true }
-      - { text: "Japan" }
-      - { text: "Thailand" }
-      - { text: "Vietnam" }
-      - { text: "South Korea" }
-      - { text: "India" }
+      - { text: "A murder", correct: true }
+      - { text: "A parliament" }
+      - { text: "A murmuration" }
+      - { text: "A charm" }
+      - { text: "A colony" }
+      - { text: "A gaggle" }

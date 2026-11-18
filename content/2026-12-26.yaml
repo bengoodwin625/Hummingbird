@@ -69,12 +69,12 @@ questions:
       - { text: "Badminton" }
   - slot: 8
     type: choice
-    category: nature
-    text: "What is the largest species of deer?"
+    category: sport
+    text: "Which is the only country to have played at every men's FIFA World Cup?"
     options:
-      - { text: "Moose", correct: true }
-      - { text: "Red deer" }
-      - { text: "Reindeer" }
-      - { text: "Sambar" }
-      - { text: "Fallow deer" }
-      - { text: "Roe deer" }
+      - { text: "Brazil", correct: true }
+      - { text: "Germany" }
+      - { text: "Italy" }
+      - { text: "Argentina" }
+      - { text: "France" }
+      - { text: "England" }

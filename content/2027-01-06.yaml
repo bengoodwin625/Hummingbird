@@ -69,12 +69,12 @@ questions:
       - { text: "Rugby" }
   - slot: 8
     type: choice
-    category: food
-    text: "What type of food is brie?"
+    category: space
+    text: "What is the most abundant element in the universe?"
     options:
-      - { text: "Cheese", correct: true }
-      - { text: "Bread" }
-      - { text: "Sausage" }
-      - { text: "Wine" }
-      - { text: "Cake" }
-      - { text: "Pasta" }
+      - { text: "Hydrogen", correct: true }
+      - { text: "Helium" }
+      - { text: "Oxygen" }
+      - { text: "Carbon" }
+      - { text: "Nitrogen" }
+      - { text: "Iron" }

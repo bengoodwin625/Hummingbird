@@ -69,12 +69,12 @@ questions:
       - { text: "24" }
   - slot: 8
     type: choice
-    category: food
-    text: "Which country does pad thai come from?"
+    category: space
+    text: "Which planet has the shortest year?"
     options:
-      - { text: "Thailand", correct: true }
-      - { text: "Vietnam" }
-      - { text: "China" }
-      - { text: "Malaysia" }
-      - { text: "Indonesia" }
-      - { text: "Cambodia" }
+      - { text: "Mercury", correct: true }
+      - { text: "Venus" }
+      - { text: "Mars" }
+      - { text: "Earth" }
+      - { text: "Neptune" }
+      - { text: "Jupiter" }

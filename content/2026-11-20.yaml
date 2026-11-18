@@ -69,12 +69,12 @@ questions:
       - { text: "John Carpenter" }
   - slot: 8
     type: choice
-    category: nature
-    text: "What is a baby kangaroo called?"
+    category: history
+    text: "Which country has the most ancient pyramids?"
     options:
-      - { text: "Joey", correct: true }
-      - { text: "Kit" }
-      - { text: "Cub" }
-      - { text: "Pup" }
-      - { text: "Calf" }
-      - { text: "Kid" }
+      - { text: "Sudan", correct: true }
+      - { text: "Egypt" }
+      - { text: "Mexico" }
+      - { text: "Peru" }
+      - { text: "Guatemala" }
+      - { text: "China" }

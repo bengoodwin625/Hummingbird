@@ -69,12 +69,12 @@ questions:
       - { text: "Modest Mussorgsky" }
   - slot: 8
     type: choice
-    category: food
-    text: "Stollen is a traditional Christmas bread from which country?"
+    category: christmas
+    text: "In 'A Christmas Carol', how many spirits visit Scrooge after Marley's ghost?"
     options:
-      - { text: "Germany", correct: true }
-      - { text: "Austria" }
-      - { text: "Switzerland" }
-      - { text: "Netherlands" }
-      - { text: "Denmark" }
-      - { text: "Poland" }
+      - { text: "Three", correct: true }
+      - { text: "Two" }
+      - { text: "Four" }
+      - { text: "Five" }
+      - { text: "One" }
+      - { text: "Twelve" }

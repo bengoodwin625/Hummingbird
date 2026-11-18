@@ -69,12 +69,12 @@ questions:
       - { text: "Lady Gaga" }
   - slot: 8
     type: choice
-    category: nature
-    text: "What is the largest land animal?"
+    category: geography
+    text: "How many official time zones does China use?"
     options:
-      - { text: "African elephant", correct: true }
-      - { text: "Giraffe" }
-      - { text: "Hippopotamus" }
-      - { text: "White rhinoceros" }
-      - { text: "Polar bear" }
-      - { text: "Bison" }
+      - { text: "One", correct: true }
+      - { text: "Two" }
+      - { text: "Three" }
+      - { text: "Four" }
+      - { text: "Five" }
+      - { text: "Six" }

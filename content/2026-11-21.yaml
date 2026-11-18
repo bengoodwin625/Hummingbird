@@ -69,12 +69,12 @@ questions:
       - { text: "Ewan McGregor" }
   - slot: 8
     type: choice
-    category: food
-    text: "Which country does paella come from?"
+    category: geography
+    text: "Which letter doesn't appear in the name of any US state?"
     options:
-      - { text: "Spain", correct: true }
-      - { text: "Portugal" }
-      - { text: "Italy" }
-      - { text: "Mexico" }
-      - { text: "Greece" }
-      - { text: "Morocco" }
+      - { text: "Q", correct: true }
+      - { text: "J" }
+      - { text: "X" }
+      - { text: "Z" }
+      - { text: "K" }
+      - { text: "B" }

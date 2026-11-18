@@ -69,12 +69,12 @@ questions:
       - { text: "Brain" }
   - slot: 8
     type: choice
-    category: nature
-    text: "What is the fastest land animal?"
+    category: space
+    text: "Which planet takes the longest to spin once on its axis?"
     options:
-      - { text: "Cheetah", correct: true }
-      - { text: "Lion" }
-      - { text: "Horse" }
-      - { text: "Greyhound" }
-      - { text: "Pronghorn" }
-      - { text: "Leopard" }
+      - { text: "Venus", correct: true }
+      - { text: "Mercury" }
+      - { text: "Jupiter" }
+      - { text: "Mars" }
+      - { text: "Saturn" }
+      - { text: "Neptune" }

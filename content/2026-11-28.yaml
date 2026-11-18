@@ -69,12 +69,12 @@ questions:
       - { text: "Condor" }
   - slot: 8
     type: choice
-    category: food
-    text: "Which country does feta cheese come from?"
+    category: history
+    text: "In which year did the Channel Tunnel open?"
     options:
-      - { text: "Greece", correct: true }
-      - { text: "Italy" }
-      - { text: "Turkey" }
-      - { text: "Cyprus" }
-      - { text: "Bulgaria" }
-      - { text: "France" }
+      - { text: "1994", correct: true }
+      - { text: "1988" }
+      - { text: "1991" }
+      - { text: "1997" }
+      - { text: "2000" }
+      - { text: "1985" }

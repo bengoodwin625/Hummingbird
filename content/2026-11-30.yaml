@@ -69,12 +69,12 @@ questions:
       - { text: "Uruguay" }
   - slot: 8
     type: choice
-    category: food
-    text: "What is the main ingredient of hummus?"
+    category: nature
+    text: "How many bones does a shark have?"
     options:
-      - { text: "Chickpeas", correct: true }
-      - { text: "Lentils" }
-      - { text: "Broad beans" }
-      - { text: "Kidney beans" }
-      - { text: "Peas" }
-      - { text: "Butter beans" }
+      - { text: "None", correct: true }
+      - { text: "206" }
+      - { text: "About 50" }
+      - { text: "About 100" }
+      - { text: "About 300" }
+      - { text: "About 500" }

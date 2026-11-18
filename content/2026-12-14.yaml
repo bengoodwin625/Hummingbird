@@ -69,12 +69,12 @@ questions:
       - { text: "11" }
   - slot: 8
     type: choice
-    category: food
-    text: "What kind of fruit is a Granny Smith?"
+    category: space
+    text: "What is the largest moon in the Solar System?"
     options:
-      - { text: "Apple", correct: true }
-      - { text: "Pear" }
-      - { text: "Plum" }
-      - { text: "Grape" }
-      - { text: "Peach" }
-      - { text: "Quince" }
+      - { text: "Ganymede", correct: true }
+      - { text: "Titan" }
+      - { text: "Callisto" }
+      - { text: "Io" }
+      - { text: "Europa" }
+      - { text: "The Moon" }

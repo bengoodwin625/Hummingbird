@@ -69,12 +69,12 @@ questions:
       - { text: "Muse" }
   - slot: 8
     type: choice
-    category: nature
-    text: "Which of these birds is famous for copying human speech?"
+    category: music
+    text: "Who composed the 'Moonlight Sonata'?"
     options:
-      - { text: "Parrot", correct: true }
-      - { text: "Owl" }
-      - { text: "Pigeon" }
-      - { text: "Robin" }
-      - { text: "Eagle" }
-      - { text: "Penguin" }
+      - { text: "Ludwig van Beethoven", correct: true }
+      - { text: "Wolfgang Amadeus Mozart" }
+      - { text: "Frédéric Chopin" }
+      - { text: "Franz Liszt" }
+      - { text: "Franz Schubert" }
+      - { text: "Claude Debussy" }

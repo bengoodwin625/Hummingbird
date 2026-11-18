@@ -69,12 +69,12 @@ questions:
       - { text: "2" }
   - slot: 8
     type: choice
-    category: nature
-    text: "Which bird is the fastest in a dive?"
+    category: science
+    text: "What is the chemical symbol for lead?"
     options:
-      - { text: "Peregrine falcon", correct: true }
-      - { text: "Golden eagle" }
-      - { text: "Common swift" }
-      - { text: "Albatross" }
-      - { text: "Ostrich" }
-      - { text: "Hummingbird" }
+      - { text: "Pb", correct: true }
+      - { text: "Le" }
+      - { text: "Ld" }
+      - { text: "L" }
+      - { text: "Pl" }
+      - { text: "Ph" }

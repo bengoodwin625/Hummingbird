@@ -69,12 +69,12 @@ questions:
       - { text: "22.4" }
   - slot: 8
     type: choice
-    category: food
-    text: "Cider is made from which fruit?"
+    category: science
+    text: "What is the largest organ inside the human body?"
     options:
-      - { text: "Apple", correct: true }
-      - { text: "Orange" }
-      - { text: "Grape" }
-      - { text: "Plum" }
-      - { text: "Cherry" }
-      - { text: "Peach" }
+      - { text: "Liver", correct: true }
+      - { text: "Lungs" }
+      - { text: "Brain" }
+      - { text: "Heart" }
+      - { text: "Stomach" }
+      - { text: "Kidneys" }

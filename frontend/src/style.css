@@ -152,6 +152,7 @@ ul {
 /* ---------------------------------------------------------------- shell */
 
 .app {
+  position: relative;
   min-height: 100svh;
   display: flex;
   flex-direction: column;
@@ -255,10 +256,6 @@ ul {
   background: var(--band-colour);
 }
 
-.progress-step[data-band="hummingbird"] {
-  box-shadow: 0 0 8px rgb(63 208 176 / 0.6);
-}
-
 /* One centred column. The forest breaks out of it to the full width of the window. */
 .layout {
   flex: 1;
@@ -302,10 +299,6 @@ ul {
   width: 100vw;
   margin-inline: calc(50% - 50vw);
   height: clamp(200px, 32svh, 320px);
-  overflow: hidden;
-  -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 14%, #000 76%, transparent 100%);
-  mask-image: linear-gradient(180deg, transparent 0, #000 14%, #000 76%, transparent 100%);
-  transition: height 0.4s var(--ease-out);
 }
 
 .app.is-home .stage {
@@ -317,11 +310,16 @@ ul {
 }
 
 
+/* The forest canvas sits at the top of the page behind everything and fades out at its foot. */
 .stage-canvas {
   position: absolute;
-  inset: 0;
-  margin: auto;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  pointer-events: none;
   image-rendering: pixelated;
+  -webkit-mask-image: linear-gradient(180deg, #000 0, #000 calc(100% - 200px), transparent 100%);
+  mask-image: linear-gradient(180deg, #000 0, #000 calc(100% - 200px), transparent 100%);
   transition: filter 0.5s var(--ease-out);
 }
 
@@ -344,7 +342,6 @@ ul {
 .stage-overlay:has(.hero) {
   inset: auto 0 0;
   padding-bottom: clamp(var(--space-5), 6svh, var(--space-7));
-  background: linear-gradient(0deg, rgb(6 17 13 / 0.85) 0, rgb(6 17 13 / 0.55) 55%, rgb(6 17 13 / 0) 100%);
 }
 
 /* ---------------------------------------------------------------- home */
@@ -359,9 +356,7 @@ ul {
   line-height: 1.05;
   letter-spacing: -0.02em;
   text-wrap: balance;
-  text-shadow:
-    0 3px 0 rgb(0 0 0 / 0.5),
-    0 0 30px rgb(0 0 0 / 0.7);
+  text-shadow: 0 3px 0 rgb(0 0 0 / 0.5);
 }
 
 .hero-date {
@@ -449,14 +444,6 @@ ul {
   gap: var(--space-3);
   padding: var(--space-2) var(--space-3);
   border-radius: var(--radius);
-}
-
-.ladder-step--rare .ladder-name {
-  text-shadow: 0 0 14px rgb(63 208 176 / 0.55);
-}
-
-.ladder-step--rare .ladder-sprite canvas {
-  filter: drop-shadow(0 0 10px rgb(63 208 176 / 0.45));
 }
 
 .ladder-sprite {
@@ -553,7 +540,6 @@ ul {
 
 .answers.is-open .read-pip {
   background: var(--gold);
-  box-shadow: 0 0 10px rgb(232 176 74 / 0.5);
   animation: go-pip 0.5s var(--ease-out) both;
 }
 
@@ -572,7 +558,7 @@ ul {
 }
 
 .app.is-go .stage-canvas {
-  filter: brightness(1.35) saturate(1.15);
+  filter: brightness(1.15);
   transition-duration: 0.12s;
 }
 
@@ -792,9 +778,7 @@ ul {
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--band-colour, var(--gold));
-  text-shadow:
-    0 2px 0 rgb(0 0 0 / 0.55),
-    0 0 24px color-mix(in srgb, var(--band-colour, var(--gold)) 45%, transparent);
+  text-shadow: 0 2px 0 rgb(0 0 0 / 0.55);
 }
 
 .reveal-band--miss {
@@ -832,13 +816,13 @@ ul {
   color: var(--gold-hi);
   text-shadow:
     0 2px 0 rgb(0 0 0 / 0.55),
-    0 0 28px rgb(232 176 74 / 0.55);
+    0 0 16px rgb(232 176 74 / 0.25);
 }
 
 .reveal--rare .reveal-band {
   text-shadow:
     0 2px 0 rgb(0 0 0 / 0.55),
-    0 0 30px rgb(63 208 176 / 0.7);
+    0 0 16px rgb(63 208 176 / 0.3);
 }
 
 .reveal--rare .reveal-later.is-in .reveal-band {
@@ -863,7 +847,6 @@ ul {
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--gold-hi);
-  text-shadow: 0 0 16px rgb(232 176 74 / 0.45);
 }
 
 /* ---------------------------------------------------------------- buttons */
@@ -897,7 +880,7 @@ ul {
   cursor: pointer;
   box-shadow:
     inset 0 -3px 0 rgb(0 0 0 / 0.2),
-    0 8px 24px rgb(232 176 74 / 0.18);
+    0 4px 10px rgb(0 0 0 / 0.25);
   touch-action: manipulation;
   transition:
     background-color 0.15s,
@@ -1170,7 +1153,6 @@ ul {
 
 .stat--rare dd {
   color: var(--jade);
-  text-shadow: 0 0 14px rgb(63 208 176 / 0.45);
 }
 
 .animal-row {
@@ -1531,7 +1513,7 @@ ul {
   display: block;
   margin: 0 auto var(--space-3);
   image-rendering: pixelated;
-  filter: drop-shadow(0 0 18px rgb(63 208 176 / 0.35)) drop-shadow(0 3px 0 rgb(0 0 0 / 0.5));
+  filter: drop-shadow(0 3px 0 rgb(0 0 0 / 0.5));
 }
 
 /* ---------------------------------------------------------------- menu */
@@ -1592,7 +1574,6 @@ ul {
 .mode-art canvas {
   display: block;
   image-rendering: pixelated;
-  filter: drop-shadow(0 0 10px rgb(63 208 176 / 0.35));
 }
 
 .mode-text {
@@ -1707,7 +1688,6 @@ ul {
 
 .curve-marker--you {
   background: var(--gold);
-  box-shadow: 0 0 10px rgb(232 176 74 / 0.6);
   z-index: 1;
 }
 
@@ -1765,21 +1745,10 @@ ul {
   opacity: 0.75;
 }
 
-/* ---------------------------------------------------------------- page backdrop */
+/* ---------------------------------------------------------------- page scrim */
 
-/* The forest fills the whole window behind the page. A soft dusk scrim sits over its middle,
-   where the words are, and both deepen while a question is live so nothing competes with it. */
-.backdrop {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 0;
-  pointer-events: none;
-  image-rendering: pixelated;
-  opacity: 0.6;
-  transition: opacity 0.7s var(--ease-out);
-}
-
+/* A soft dusk scrim over the middle of the window, where the words are. It deepens while a
+   question is live so the forest never competes with it. */
 .app::after {
   content: "";
   position: fixed;
@@ -1787,37 +1756,22 @@ ul {
   z-index: 0;
   pointer-events: none;
   background: radial-gradient(
-    ellipse 75% 65% at 50% 58%,
-    rgb(6 17 13 / 0.9) 0,
-    rgb(6 17 13 / 0.62) 50%,
-    rgb(6 17 13 / 0.12) 100%
+    ellipse 75% 60% at 50% 62%,
+    rgb(6 17 13 / 0.85) 0,
+    rgb(6 17 13 / 0.55) 50%,
+    rgb(6 17 13 / 0) 100%
   );
-  opacity: 0.9;
+  opacity: 0.8;
   transition: opacity 0.7s var(--ease-out);
 }
 
-.app > :not(.backdrop):not(.sr-only) {
+.app > :not(.stage-canvas):not(.sr-only) {
   position: relative;
   z-index: 1;
 }
 
-.app.is-home .backdrop {
-  opacity: 0.9;
-}
-
 .app.is-home::after {
-  opacity: 0.7;
-}
-
-.app.is-results .backdrop {
-  opacity: 0.5;
-}
-
-.app[data-phase="serving"] .backdrop,
-.app[data-phase="reading"] .backdrop,
-.app[data-phase="answering"] .backdrop,
-.app[data-phase="submitting"] .backdrop {
-  opacity: 0.22;
+  opacity: 0.75;
 }
 
 .app[data-phase="reading"]::after,
@@ -1906,9 +1860,7 @@ ul {
   opacity: 1;
   filter: none;
   background: color-mix(in srgb, var(--band-colour) 20%, transparent);
-  box-shadow:
-    0 0 0 1px color-mix(in srgb, var(--band-colour) 60%, transparent),
-    0 0 18px color-mix(in srgb, var(--band-colour) 35%, transparent);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--band-colour) 55%, transparent);
 }
 
 .reveal-rung.is-on {
@@ -1940,7 +1892,7 @@ ul {
   color: var(--gold-hi);
   white-space: nowrap;
   pointer-events: none;
-  text-shadow: 0 0 12px rgb(232 176 74 / 0.6);
+  text-shadow: 0 2px 0 rgb(0 0 0 / 0.5);
   animation: fly-up 1.2s var(--ease-out) forwards;
 }
 
@@ -2131,4 +2083,35 @@ ul {
   .reveal-rung.is-on {
     animation: none;
   }
+}
+
+/* A game that isn't playable yet: same card, quieter, and not a button. */
+.mode--soon {
+  cursor: default;
+  padding-right: var(--space-4);
+  background: rgb(16 38 30 / 0.45);
+}
+
+.mode--soon:hover {
+  background: rgb(16 38 30 / 0.45);
+}
+
+.mode--soon .mode-name {
+  color: var(--sage);
+}
+
+.mode--soon .mode-status {
+  color: var(--placeholder);
+}
+
+.mode-art--numbers {
+  display: grid;
+  place-items: center;
+  width: 64px;
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--gold);
+  opacity: 0.8;
 }

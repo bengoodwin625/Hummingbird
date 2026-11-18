@@ -69,12 +69,12 @@ questions:
       - { text: "Dua Lipa" }
   - slot: 8
     type: choice
-    category: nature
-    text: "What is a baby sheep called?"
+    category: science
+    text: "Who set out the laws of motion and universal gravitation?"
     options:
-      - { text: "Lamb", correct: true }
-      - { text: "Kid" }
-      - { text: "Calf" }
-      - { text: "Foal" }
-      - { text: "Piglet" }
-      - { text: "Cub" }
+      - { text: "Isaac Newton", correct: true }
+      - { text: "Galileo Galilei" }
+      - { text: "Albert Einstein" }
+      - { text: "Johannes Kepler" }
+      - { text: "Nicolaus Copernicus" }
+      - { text: "Stephen Hawking" }

@@ -69,12 +69,12 @@ questions:
       - { text: "2" }
   - slot: 8
     type: choice
-    category: food
-    text: "Which country does sushi come from?"
+    category: sport
+    text: "Which country has won the most gold medals at the Summer Olympics?"
     options:
-      - { text: "Japan", correct: true }
+      - { text: "United States", correct: true }
+      - { text: "Soviet Union" }
       - { text: "China" }
-      - { text: "South Korea" }
-      - { text: "Thailand" }
-      - { text: "Vietnam" }
-      - { text: "Philippines" }
+      - { text: "Great Britain" }
+      - { text: "Germany" }
+      - { text: "France" }

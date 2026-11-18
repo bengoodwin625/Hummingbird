@@ -69,12 +69,12 @@ questions:
       - { text: "Cricket" }
   - slot: 8
     type: choice
-    category: food
-    text: "Which nut is used to make Nutella?"
+    category: history
+    text: "Who became the world's first female prime minister, in 1960?"
     options:
-      - { text: "Hazelnut", correct: true }
-      - { text: "Almond" }
-      - { text: "Walnut" }
-      - { text: "Peanut" }
-      - { text: "Cashew" }
-      - { text: "Pistachio" }
+      - { text: "Sirimavo Bandaranaike", correct: true }
+      - { text: "Indira Gandhi" }
+      - { text: "Golda Meir" }
+      - { text: "Margaret Thatcher" }
+      - { text: "Benazir Bhutto" }
+      - { text: "Gro Harlem Brundtland" }

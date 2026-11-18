@@ -38,8 +38,9 @@ UI. The art is detailed, fine-grained pixel art of a rainforest at dusk, in dark
 ## Core game loop
 
 1. The player opens the site on the **menu**: the rainforest scene, the logo, a short
-   explanation and a list of game modes (today only the daily quiz; the menu is built so more
-   modes can be added). The daily quiz card says Play, Continue or See your results, and once
+   explanation and a list of game modes: the **Speed quiz** (this game) and a **Numbers quiz**
+   card marked "Coming soon" (not built yet; the owner will specify it). The menu is built so
+   more modes can be added. The Speed quiz card says Play, Continue or See your results, and once
    played shows the day's animals and a live countdown. Each game card has its own "i" button
    that opens that game's instructions (speed ladder and how to play) in a sheet; there is no
    instructions section on the page itself. The logo in the header returns to the menu (except
@@ -176,12 +177,16 @@ Answer checking happens on the server in `backend/app/checking.py`.
   art pixel is always 2 CSS pixels (`frontend/src/scene/sizing.ts`); bigger stages get more
   forest, not bigger pixels. The canvas is sized so that scaling is always a whole number. `image-rendering: pixelated` and `imageSmoothingEnabled = false`. No half-pixel
   scaling and no anti-aliased edges inside the scene.
-- **Page backdrop**: a second, still jungle (no sun) fills the whole window behind the page
-  (`frontend/src/scene/backdrop.ts`), under a dusk scrim over the centre. It fades well back
-  while a question is live so nothing competes with the question.
+- **Page scrim**: a dusk scrim over the middle of the window sits between the forest and the
+  words, and deepens while a question is live so nothing competes with the question.
 - **Question screens**: a "Question n / 8" and category header, the question's words rising in
   turn during the read beat, the GO flash, then on a correct reveal the points fly into the
   score, a streak note ("3 in a row") and the five animals with yours lit under the scene.
+- **One forest**: the scene is a single canvas from the top of the page down to at least the
+  bottom of the window. Its ground lines up with the bottom of the stage band and the forest
+  floor carries on below, fading out. Never add a second, separately drawn forest.
+- **Restraint with glow**: no coloured glows or halos on text, sprites, bars or buttons; plain
+  dark drop shadows only. The single exception is a faint glow on the Hummingbird reveal.
 - **Detail**: layered depth — sky gradient with dithered bands, distant canopy silhouettes,
   hanging vines, mist bands, detailed foreground leaves and ferns, fireflies. The scene should
   read as illustrated, not as chunky blocks.

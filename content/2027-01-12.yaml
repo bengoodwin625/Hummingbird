@@ -69,12 +69,12 @@ questions:
       - { text: "Germany" }
   - slot: 8
     type: choice
-    category: food
-    text: "Which vegetable is used to make sauerkraut?"
+    category: science
+    text: "What was the supercontinent that formed about 300 million years ago called?"
     options:
-      - { text: "Cabbage", correct: true }
-      - { text: "Cucumber" }
-      - { text: "Carrot" }
-      - { text: "Onion" }
-      - { text: "Beetroot" }
-      - { text: "Potato" }
+      - { text: "Pangaea", correct: true }
+      - { text: "Laurasia" }
+      - { text: "Rodinia" }
+      - { text: "Atlantis" }
+      - { text: "Lemuria" }
+      - { text: "Avalonia" }

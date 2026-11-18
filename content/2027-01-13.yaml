@@ -69,12 +69,12 @@ questions:
       - { text: "Elton John" }
   - slot: 8
     type: choice
-    category: nature
-    text: "What covers a pangolin's body?"
+    category: geography
+    text: "Which river flows through Budapest?"
     options:
-      - { text: "Scales", correct: true }
-      - { text: "Fur" }
-      - { text: "Feathers" }
-      - { text: "Spines" }
-      - { text: "A shell" }
-      - { text: "Slime" }
+      - { text: "Danube", correct: true }
+      - { text: "Vltava" }
+      - { text: "Rhine" }
+      - { text: "Elbe" }
+      - { text: "Oder" }
+      - { text: "Sava" }

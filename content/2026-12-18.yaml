@@ -69,12 +69,12 @@ questions:
       - { text: "Polka dot" }
   - slot: 8
     type: choice
-    category: food
-    text: "Which vegetable gives borscht its deep red colour?"
+    category: space
+    text: "Which planet was found in 1846 after mathematicians predicted where it would be?"
     options:
-      - { text: "Beetroot", correct: true }
-      - { text: "Red cabbage" }
-      - { text: "Carrot" }
-      - { text: "Tomato" }
-      - { text: "Red pepper" }
-      - { text: "Radish" }
+      - { text: "Neptune", correct: true }
+      - { text: "Uranus" }
+      - { text: "Pluto" }
+      - { text: "Saturn" }
+      - { text: "Mars" }
+      - { text: "Jupiter" }

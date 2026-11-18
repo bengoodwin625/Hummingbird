@@ -69,12 +69,12 @@ questions:
       - { text: "Pink Floyd" }
   - slot: 8
     type: choice
-    category: nature
-    text: "How many legs does a spider have?"
+    category: geography
+    text: "What is the longest river in Europe?"
     options:
-      - { text: "8", correct: true }
-      - { text: "6" }
-      - { text: "10" }
-      - { text: "12" }
-      - { text: "4" }
-      - { text: "7" }
+      - { text: "Volga", correct: true }
+      - { text: "Danube" }
+      - { text: "Rhine" }
+      - { text: "Dnieper" }
+      - { text: "Loire" }
+      - { text: "Thames" }

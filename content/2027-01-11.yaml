@@ -69,12 +69,12 @@ questions:
       - { text: "2" }
   - slot: 8
     type: choice
-    category: nature
-    text: "Which sea creature has eight arms?"
+    category: geography
+    text: "Which country shares the longest border with the United States?"
     options:
-      - { text: "Octopus", correct: true }
-      - { text: "Seahorse" }
-      - { text: "Starfish" }
-      - { text: "Jellyfish" }
-      - { text: "Crab" }
-      - { text: "Lobster" }
+      - { text: "Canada", correct: true }
+      - { text: "Mexico" }
+      - { text: "Russia" }
+      - { text: "Cuba" }
+      - { text: "Bahamas" }
+      - { text: "Guatemala" }

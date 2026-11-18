@@ -69,12 +69,12 @@ questions:
       - { text: "Queen" }
   - slot: 8
     type: choice
-    category: nature
-    text: "What is a group of wolves called?"
+    category: music
+    text: "How many symphonies did Beethoven complete?"
     options:
-      - { text: "A pack", correct: true }
-      - { text: "A pride" }
-      - { text: "A herd" }
-      - { text: "A flock" }
-      - { text: "A school" }
-      - { text: "A swarm" }
+      - { text: "9", correct: true }
+      - { text: "5" }
+      - { text: "7" }
+      - { text: "12" }
+      - { text: "32" }
+      - { text: "104" }

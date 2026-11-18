@@ -69,12 +69,12 @@ questions:
       - { text: "Detached" }
   - slot: 8
     type: choice
-    category: nature
-    text: "Which animal is known as the 'ship of the desert'?"
+    category: history
+    text: "In which modern country are the ruins of ancient Troy?"
     options:
-      - { text: "Camel", correct: true }
-      - { text: "Horse" }
-      - { text: "Donkey" }
-      - { text: "Llama" }
-      - { text: "Elephant" }
-      - { text: "Ostrich" }
+      - { text: "Turkey", correct: true }
+      - { text: "Greece" }
+      - { text: "Italy" }
+      - { text: "Cyprus" }
+      - { text: "Egypt" }
+      - { text: "Bulgaria" }

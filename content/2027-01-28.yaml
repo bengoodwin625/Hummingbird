@@ -69,12 +69,12 @@ questions:
       - { text: "Linford Christie" }
   - slot: 8
     type: choice
-    category: food
-    text: "What type of food is a bagel?"
+    category: geography
+    text: "Which country was formerly called Persia?"
     options:
-      - { text: "Bread", correct: true }
-      - { text: "Cake" }
-      - { text: "Cheese" }
-      - { text: "Biscuit" }
-      - { text: "Pasta" }
-      - { text: "Sausage" }
+      - { text: "Iran", correct: true }
+      - { text: "Iraq" }
+      - { text: "Turkey" }
+      - { text: "Syria" }
+      - { text: "Afghanistan" }
+      - { text: "Jordan" }

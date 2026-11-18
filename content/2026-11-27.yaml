@@ -69,12 +69,12 @@ questions:
       - { text: "Brian Epstein" }
   - slot: 8
     type: choice
-    category: nature
-    text: "What do bees collect from flowers to make honey?"
+    category: space
+    text: "Which gas makes up most of the atmosphere of Mars?"
     options:
-      - { text: "Nectar", correct: true }
-      - { text: "Pollen" }
-      - { text: "Sap" }
-      - { text: "Dew" }
-      - { text: "Resin" }
-      - { text: "Wax" }
+      - { text: "Carbon dioxide", correct: true }
+      - { text: "Nitrogen" }
+      - { text: "Oxygen" }
+      - { text: "Argon" }
+      - { text: "Methane" }
+      - { text: "Hydrogen" }

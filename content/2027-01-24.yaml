@@ -69,12 +69,12 @@ questions:
       - { text: "India" }
   - slot: 8
     type: choice
-    category: food
-    text: "Which drink is made from roasted beans?"
+    category: space
+    text: "Which planet has a moon called Triton?"
     options:
-      - { text: "Coffee", correct: true }
-      - { text: "Tea" }
-      - { text: "Lemonade" }
-      - { text: "Cider" }
-      - { text: "Milk" }
-      - { text: "Kombucha" }
+      - { text: "Neptune", correct: true }
+      - { text: "Uranus" }
+      - { text: "Saturn" }
+      - { text: "Jupiter" }
+      - { text: "Mars" }
+      - { text: "Pluto" }

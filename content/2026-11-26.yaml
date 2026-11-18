@@ -69,12 +69,12 @@ questions:
       - { text: "11" }
   - slot: 8
     type: choice
-    category: food
-    text: "Which nut is used to make marzipan?"
+    category: geography
+    text: "Which country has three capital cities?"
     options:
-      - { text: "Almond", correct: true }
-      - { text: "Hazelnut" }
-      - { text: "Walnut" }
-      - { text: "Cashew" }
-      - { text: "Pistachio" }
-      - { text: "Peanut" }
+      - { text: "South Africa", correct: true }
+      - { text: "Bolivia" }
+      - { text: "Switzerland" }
+      - { text: "Netherlands" }
+      - { text: "Malaysia" }
+      - { text: "Sri Lanka" }

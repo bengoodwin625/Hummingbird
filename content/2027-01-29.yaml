@@ -69,12 +69,12 @@ questions:
       - { text: "Harp" }
   - slot: 8
     type: choice
-    category: nature
-    text: "Which flightless bird lives in Antarctica?"
+    category: science
+    text: "Which organ produces insulin?"
     options:
-      - { text: "Penguin", correct: true }
-      - { text: "Ostrich" }
-      - { text: "Emu" }
-      - { text: "Kiwi" }
-      - { text: "Puffin" }
-      - { text: "Albatross" }
+      - { text: "Pancreas", correct: true }
+      - { text: "Liver" }
+      - { text: "Kidney" }
+      - { text: "Spleen" }
+      - { text: "Gallbladder" }
+      - { text: "Thyroid" }

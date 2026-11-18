@@ -69,12 +69,12 @@ questions:
       - { text: "Portugal" }
   - slot: 8
     type: choice
-    category: nature
-    text: "What is a male duck called?"
+    category: language
+    text: "Which country has the most native Spanish speakers?"
     options:
-      - { text: "Drake", correct: true }
-      - { text: "Gander" }
-      - { text: "Cob" }
-      - { text: "Cock" }
-      - { text: "Buck" }
-      - { text: "Tom" }
+      - { text: "Mexico", correct: true }
+      - { text: "Spain" }
+      - { text: "Colombia" }
+      - { text: "Argentina" }
+      - { text: "United States" }
+      - { text: "Peru" }

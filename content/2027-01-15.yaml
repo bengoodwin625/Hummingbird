@@ -69,12 +69,12 @@ questions:
       - { text: "Harpsichord" }
   - slot: 8
     type: choice
-    category: nature
-    text: "What is a group of fish swimming together often called?"
+    category: science
+    text: "Which element are diamonds made of?"
     options:
-      - { text: "A school", correct: true }
-      - { text: "A pack" }
-      - { text: "A herd" }
-      - { text: "A flock" }
-      - { text: "A pride" }
-      - { text: "A colony" }
+      - { text: "Carbon", correct: true }
+      - { text: "Silicon" }
+      - { text: "Boron" }
+      - { text: "Nitrogen" }
+      - { text: "Calcium" }
+      - { text: "Oxygen" }

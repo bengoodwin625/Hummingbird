@@ -69,12 +69,12 @@ questions:
       - { text: "Netball" }
   - slot: 8
     type: choice
-    category: food
-    text: "Which fruit carries its seeds on the outside?"
+    category: science
+    text: "Who discovered penicillin?"
     options:
-      - { text: "Strawberry", correct: true }
-      - { text: "Raspberry" }
-      - { text: "Blueberry" }
-      - { text: "Kiwi" }
-      - { text: "Banana" }
-      - { text: "Grape" }
+      - { text: "Alexander Fleming", correct: true }
+      - { text: "Louis Pasteur" }
+      - { text: "Joseph Lister" }
+      - { text: "Edward Jenner" }
+      - { text: "Marie Curie" }
+      - { text: "Howard Florey" }

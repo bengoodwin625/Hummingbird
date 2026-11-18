@@ -69,12 +69,12 @@ questions:
       - { text: "Wales" }
   - slot: 8
     type: choice
-    category: food
-    text: "What is the main ingredient of a risotto?"
+    category: language
+    text: "What is the official language of Brazil?"
     options:
-      - { text: "Rice", correct: true }
-      - { text: "Pasta" }
-      - { text: "Barley" }
-      - { text: "Couscous" }
-      - { text: "Quinoa" }
-      - { text: "Bulgur wheat" }
+      - { text: "Portuguese", correct: true }
+      - { text: "Spanish" }
+      - { text: "Brazilian" }
+      - { text: "French" }
+      - { text: "English" }
+      - { text: "Italian" }

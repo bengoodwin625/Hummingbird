@@ -69,12 +69,12 @@ questions:
       - { text: "Guitar" }
   - slot: 8
     type: choice
-    category: nature
-    text: "What do giant pandas mainly eat?"
+    category: history
+    text: "Which 1415 battle is famous for England's longbowmen?"
     options:
-      - { text: "Bamboo", correct: true }
-      - { text: "Eucalyptus" }
-      - { text: "Grass" }
-      - { text: "Fish" }
-      - { text: "Fruit" }
-      - { text: "Insects" }
+      - { text: "Agincourt", correct: true }
+      - { text: "Crécy" }
+      - { text: "Poitiers" }
+      - { text: "Bosworth" }
+      - { text: "Hastings" }
+      - { text: "Waterloo" }

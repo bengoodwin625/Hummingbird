@@ -69,12 +69,12 @@ questions:
       - { text: "Iceland" }
   - slot: 8
     type: choice
-    category: film
-    text: "Which film tells the story of the Scottish hero William Wallace?"
+    category: history
+    text: "In which year was Robert Burns born?"
     options:
-      - { text: "Braveheart", correct: true }
-      - { text: "Rob Roy" }
-      - { text: "Highlander" }
-      - { text: "Outlaw King" }
-      - { text: "Gladiator" }
-      - { text: "Brave" }
+      - { text: "1759", correct: true }
+      - { text: "1709" }
+      - { text: "1745" }
+      - { text: "1769" }
+      - { text: "1789" }
+      - { text: "1796" }
