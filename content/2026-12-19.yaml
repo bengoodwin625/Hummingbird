@@ -58,15 +58,15 @@ questions:
       - { text: "The Sound of Music" }
   - slot: 7
     type: choice
-    category: music
-    text: "Which composer kept writing music after going deaf?"
+    category: history
+    text: "Who was the first emperor of a unified China?"
     options:
-      - { text: "Ludwig van Beethoven", correct: true }
-      - { text: "Wolfgang Amadeus Mozart" }
-      - { text: "Johann Sebastian Bach" }
-      - { text: "Joseph Haydn" }
-      - { text: "Franz Schubert" }
-      - { text: "Johannes Brahms" }
+      - { text: "Qin Shi Huang", correct: true }
+      - { text: "Kublai Khan" }
+      - { text: "Genghis Khan" }
+      - { text: "Puyi" }
+      - { text: "Sun Yat-sen" }
+      - { text: "Confucius" }
   - slot: 8
     type: choice
     category: general

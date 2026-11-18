@@ -58,15 +58,15 @@ questions:
       - { text: "Claude Monet" }
   - slot: 7
     type: choice
-    category: sport
-    text: "Which country hosted the 2016 Summer Olympics?"
+    category: geography
+    text: "In which mountain range is K2?"
     options:
-      - { text: "Brazil", correct: true }
-      - { text: "China" }
-      - { text: "United Kingdom" }
-      - { text: "Japan" }
-      - { text: "Greece" }
-      - { text: "Australia" }
+      - { text: "Karakoram", correct: true }
+      - { text: "Himalayas" }
+      - { text: "Hindu Kush" }
+      - { text: "Pamirs" }
+      - { text: "Tian Shan" }
+      - { text: "Andes" }
   - slot: 8
     type: choice
     category: nature

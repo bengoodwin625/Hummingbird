@@ -58,15 +58,15 @@ questions:
       - { text: "Fast & Furious" }
   - slot: 7
     type: choice
-    category: sport
-    text: "How many players does an ice hockey team have on the ice, including the goalie?"
+    category: history
+    text: "In which year was the Battle of Bosworth Field?"
     options:
-      - { text: "6", correct: true }
-      - { text: "5" }
-      - { text: "7" }
-      - { text: "8" }
-      - { text: "9" }
-      - { text: "11" }
+      - { text: "1485", correct: true }
+      - { text: "1415" }
+      - { text: "1455" }
+      - { text: "1066" }
+      - { text: "1509" }
+      - { text: "1603" }
   - slot: 8
     type: choice
     category: space

@@ -58,15 +58,15 @@ questions:
       - { text: "Fozzie Bear" }
   - slot: 7
     type: choice
-    category: sport
-    text: "Which sport did Serena Williams play?"
+    category: nature
+    text: "What colour is a polar bear's skin?"
     options:
-      - { text: "Tennis", correct: true }
-      - { text: "Golf" }
-      - { text: "Basketball" }
-      - { text: "Athletics" }
-      - { text: "Badminton" }
-      - { text: "Squash" }
+      - { text: "Black", correct: true }
+      - { text: "White" }
+      - { text: "Pink" }
+      - { text: "Grey" }
+      - { text: "Brown" }
+      - { text: "Blue" }
   - slot: 8
     type: choice
     category: nature

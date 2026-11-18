@@ -58,15 +58,15 @@ questions:
       - { text: "Benedict Cumberbatch" }
   - slot: 7
     type: choice
-    category: music
-    text: "Which Spice Girl was known as 'Posh Spice'?"
+    category: sport
+    text: "How many players does a Gaelic football team have on the pitch?"
     options:
-      - { text: "Victoria Beckham", correct: true }
-      - { text: "Geri Halliwell" }
-      - { text: "Emma Bunton" }
-      - { text: "Mel B" }
-      - { text: "Mel C" }
-      - { text: "Kylie Minogue" }
+      - { text: "15", correct: true }
+      - { text: "11" }
+      - { text: "13" }
+      - { text: "12" }
+      - { text: "14" }
+      - { text: "16" }
   - slot: 8
     type: choice
     category: history

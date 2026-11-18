@@ -58,15 +58,15 @@ questions:
       - { text: "Edgar Allan Poe" }
   - slot: 7
     type: choice
-    category: music
-    text: "Freddie Mercury was the lead singer of which band?"
+    category: geography
+    text: "In which country does the Blue Nile begin?"
     options:
-      - { text: "Queen", correct: true }
-      - { text: "Genesis" }
-      - { text: "The Who" }
-      - { text: "Led Zeppelin" }
-      - { text: "Deep Purple" }
-      - { text: "Pink Floyd" }
+      - { text: "Ethiopia", correct: true }
+      - { text: "Uganda" }
+      - { text: "Sudan" }
+      - { text: "Kenya" }
+      - { text: "Egypt" }
+      - { text: "Tanzania" }
   - slot: 8
     type: choice
     category: geography

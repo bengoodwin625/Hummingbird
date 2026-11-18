@@ -58,15 +58,15 @@ questions:
       - { text: "Clarinet" }
   - slot: 7
     type: choice
-    category: film
-    text: "Who directed the 1975 film 'Jaws'?"
+    category: geography
+    text: "What is the longest river in France?"
     options:
-      - { text: "Steven Spielberg", correct: true }
-      - { text: "George Lucas" }
-      - { text: "Francis Ford Coppola" }
-      - { text: "Martin Scorsese" }
-      - { text: "Ridley Scott" }
-      - { text: "John Carpenter" }
+      - { text: "Loire", correct: true }
+      - { text: "Seine" }
+      - { text: "Rhône" }
+      - { text: "Garonne" }
+      - { text: "Dordogne" }
+      - { text: "Somme" }
   - slot: 8
     type: choice
     category: history

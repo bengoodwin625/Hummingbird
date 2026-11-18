@@ -58,15 +58,15 @@ questions:
       - { text: "Bambi" }
   - slot: 7
     type: choice
-    category: music
-    text: "Which group released 'Happy New Year' in 1980?"
+    category: history
+    text: "Whose ship was the Endurance, crushed by Antarctic ice in 1915?"
     options:
-      - { text: "ABBA", correct: true }
-      - { text: "Queen" }
-      - { text: "Bee Gees" }
-      - { text: "Wham!" }
-      - { text: "Boney M." }
-      - { text: "The Carpenters" }
+      - { text: "Ernest Shackleton", correct: true }
+      - { text: "Robert Falcon Scott" }
+      - { text: "Roald Amundsen" }
+      - { text: "James Cook" }
+      - { text: "John Franklin" }
+      - { text: "Edmund Hillary" }
   - slot: 8
     type: choice
     category: geography

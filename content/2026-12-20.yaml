@@ -58,15 +58,15 @@ questions:
       - { text: "Wassily Kandinsky" }
   - slot: 7
     type: choice
-    category: sport
-    text: "Which city hosted the 2012 Summer Olympics?"
+    category: history
+    text: "At which battlefield did Abraham Lincoln give his famous 1863 address?"
     options:
-      - { text: "London", correct: true }
-      - { text: "Beijing" }
-      - { text: "Rio de Janeiro" }
-      - { text: "Athens" }
-      - { text: "Tokyo" }
-      - { text: "Sydney" }
+      - { text: "Gettysburg", correct: true }
+      - { text: "Antietam" }
+      - { text: "Bull Run" }
+      - { text: "Shiloh" }
+      - { text: "Vicksburg" }
+      - { text: "Fredericksburg" }
   - slot: 8
     type: choice
     category: geography

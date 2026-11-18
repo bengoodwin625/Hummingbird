@@ -58,15 +58,15 @@ questions:
       - { text: "Anthony Trollope" }
   - slot: 7
     type: choice
-    category: sport
-    text: "In which country did the sport of judo begin?"
+    category: space
+    text: "Who worked out the three laws of planetary motion?"
     options:
-      - { text: "Japan", correct: true }
-      - { text: "China" }
-      - { text: "South Korea" }
-      - { text: "Brazil" }
-      - { text: "Russia" }
-      - { text: "Mongolia" }
+      - { text: "Johannes Kepler", correct: true }
+      - { text: "Galileo Galilei" }
+      - { text: "Nicolaus Copernicus" }
+      - { text: "Isaac Newton" }
+      - { text: "Tycho Brahe" }
+      - { text: "Ptolemy" }
   - slot: 8
     type: choice
     category: music

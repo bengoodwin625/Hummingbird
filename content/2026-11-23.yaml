@@ -58,15 +58,15 @@ questions:
       - { text: "George Eliot" }
   - slot: 7
     type: choice
-    category: music
-    text: "How many strings does a standard guitar have?"
+    category: geography
+    text: "Greenland is part of which country's kingdom?"
     options:
-      - { text: "6", correct: true }
-      - { text: "4" }
-      - { text: "5" }
-      - { text: "7" }
-      - { text: "8" }
-      - { text: "12" }
+      - { text: "Denmark", correct: true }
+      - { text: "Norway" }
+      - { text: "Iceland" }
+      - { text: "Canada" }
+      - { text: "Sweden" }
+      - { text: "United Kingdom" }
   - slot: 8
     type: choice
     category: science

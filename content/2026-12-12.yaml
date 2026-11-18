@@ -58,15 +58,15 @@ questions:
       - { text: "Fanny Burney" }
   - slot: 7
     type: choice
-    category: sport
-    text: "Which nation won the Rugby World Cup in 2003?"
+    category: space
+    text: "Which planet takes the longest to orbit the Sun?"
     options:
-      - { text: "England", correct: true }
-      - { text: "Australia" }
-      - { text: "New Zealand" }
-      - { text: "South Africa" }
-      - { text: "France" }
-      - { text: "Wales" }
+      - { text: "Neptune", correct: true }
+      - { text: "Uranus" }
+      - { text: "Saturn" }
+      - { text: "Jupiter" }
+      - { text: "Pluto" }
+      - { text: "Mars" }
   - slot: 8
     type: choice
     category: language

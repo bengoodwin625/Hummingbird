@@ -59,14 +59,14 @@ questions:
   - slot: 7
     type: choice
     category: sport
-    text: "Which country holds a Formula 1 Grand Prix on the streets of Monte Carlo?"
+    text: "Who won the first men's Cricket World Cup, in 1975?"
     options:
-      - { text: "Monaco", correct: true }
-      - { text: "France" }
-      - { text: "Italy" }
-      - { text: "Spain" }
-      - { text: "Belgium" }
-      - { text: "Switzerland" }
+      - { text: "West Indies", correct: true }
+      - { text: "Australia" }
+      - { text: "England" }
+      - { text: "India" }
+      - { text: "Pakistan" }
+      - { text: "New Zealand" }
   - slot: 8
     type: choice
     category: space

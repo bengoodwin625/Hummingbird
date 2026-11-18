@@ -59,14 +59,14 @@ questions:
   - slot: 7
     type: choice
     category: music
-    text: "Who composed the ballet 'The Nutcracker'?"
+    text: "In which year was The Pogues' 'Fairytale of New York' released?"
     options:
-      - { text: "Pyotr Ilyich Tchaikovsky", correct: true }
-      - { text: "Sergei Prokofiev" }
-      - { text: "Sergei Rachmaninoff" }
-      - { text: "Nikolai Rimsky-Korsakov" }
-      - { text: "Igor Stravinsky" }
-      - { text: "Modest Mussorgsky" }
+      - { text: "1987", correct: true }
+      - { text: "1985" }
+      - { text: "1984" }
+      - { text: "1989" }
+      - { text: "1990" }
+      - { text: "1982" }
   - slot: 8
     type: choice
     category: christmas

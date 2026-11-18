@@ -58,15 +58,15 @@ questions:
       - { text: "J. K. Rowling" }
   - slot: 7
     type: choice
-    category: sport
-    text: "Which country has won the most FIFA World Cups?"
+    category: history
+    text: "In which modern country are the ruins of Persepolis?"
     options:
-      - { text: "Brazil", correct: true }
-      - { text: "Germany" }
-      - { text: "Italy" }
-      - { text: "Argentina" }
-      - { text: "France" }
-      - { text: "Uruguay" }
+      - { text: "Iran", correct: true }
+      - { text: "Iraq" }
+      - { text: "Turkey" }
+      - { text: "Egypt" }
+      - { text: "Syria" }
+      - { text: "Jordan" }
   - slot: 8
     type: choice
     category: nature

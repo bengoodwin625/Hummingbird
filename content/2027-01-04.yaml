@@ -58,15 +58,15 @@ questions:
       - { text: "Ben Jonson" }
   - slot: 7
     type: choice
-    category: sport
-    text: "How many points is the bullseye worth in darts?"
+    category: music
+    text: "Who composed 'The Rite of Spring'?"
     options:
-      - { text: "50", correct: true }
-      - { text: "25" }
-      - { text: "60" }
-      - { text: "100" }
-      - { text: "20" }
-      - { text: "180" }
+      - { text: "Igor Stravinsky", correct: true }
+      - { text: "Claude Debussy" }
+      - { text: "Maurice Ravel" }
+      - { text: "Sergei Prokofiev" }
+      - { text: "Sergei Rachmaninoff" }
+      - { text: "Dmitri Shostakovich" }
   - slot: 8
     type: choice
     category: geography

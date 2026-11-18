@@ -59,14 +59,14 @@ questions:
   - slot: 7
     type: choice
     category: sport
-    text: "Which country is the home of sumo wrestling?"
+    text: "Which country hosted the 2010 FIFA World Cup?"
     options:
-      - { text: "Japan", correct: true }
-      - { text: "China" }
-      - { text: "South Korea" }
-      - { text: "Mongolia" }
-      - { text: "Thailand" }
-      - { text: "India" }
+      - { text: "South Africa", correct: true }
+      - { text: "Germany" }
+      - { text: "Brazil" }
+      - { text: "Russia" }
+      - { text: "Japan" }
+      - { text: "Qatar" }
   - slot: 8
     type: choice
     category: space

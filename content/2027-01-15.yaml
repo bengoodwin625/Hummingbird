@@ -59,14 +59,14 @@ questions:
   - slot: 7
     type: choice
     category: music
-    text: "Which instrument has keys, pedals and pipes?"
+    text: "Which Beatles album includes 'Lucy in the Sky with Diamonds'?"
     options:
-      - { text: "Organ", correct: true }
-      - { text: "Piano" }
-      - { text: "Harp" }
-      - { text: "Accordion" }
-      - { text: "Bagpipes" }
-      - { text: "Harpsichord" }
+      - { text: "Sgt. Pepper's Lonely Hearts Club Band", correct: true }
+      - { text: "Revolver" }
+      - { text: "Abbey Road" }
+      - { text: "Let It Be" }
+      - { text: "Rubber Soul" }
+      - { text: "The White Album" }
   - slot: 8
     type: choice
     category: science

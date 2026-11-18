@@ -58,15 +58,15 @@ questions:
       - { text: "Edmund" }
   - slot: 7
     type: choice
-    category: music
-    text: "Who sang 'All I Want for Christmas Is You'?"
+    category: christmas
+    text: "In which country did Christmas crackers begin?"
     options:
-      - { text: "Mariah Carey", correct: true }
-      - { text: "Whitney Houston" }
-      - { text: "Celine Dion" }
-      - { text: "Kylie Minogue" }
-      - { text: "Michael Bublé" }
-      - { text: "Ariana Grande" }
+      - { text: "England", correct: true }
+      - { text: "Germany" }
+      - { text: "France" }
+      - { text: "United States" }
+      - { text: "Italy" }
+      - { text: "Netherlands" }
   - slot: 8
     type: choice
     category: christmas

@@ -58,15 +58,15 @@ questions:
       - { text: "The Little Mermaid" }
   - slot: 7
     type: choice
-    category: music
-    text: "What is the highest female singing voice?"
+    category: science
+    text: "Which part of the brain mainly controls balance and coordination?"
     options:
-      - { text: "Soprano", correct: true }
-      - { text: "Alto" }
-      - { text: "Mezzo-soprano" }
-      - { text: "Contralto" }
-      - { text: "Tenor" }
-      - { text: "Baritone" }
+      - { text: "Cerebellum", correct: true }
+      - { text: "Cerebrum" }
+      - { text: "Medulla" }
+      - { text: "Hypothalamus" }
+      - { text: "Pituitary gland" }
+      - { text: "Frontal lobe" }
   - slot: 8
     type: choice
     category: science

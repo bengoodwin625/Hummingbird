@@ -58,15 +58,15 @@ questions:
       - { text: "Shepard Fairey" }
   - slot: 7
     type: choice
-    category: sport
-    text: "How many players does a hockey team have on the pitch?"
+    category: film
+    text: "Which film won the very first Academy Award for Best Picture?"
     options:
-      - { text: "11", correct: true }
-      - { text: "10" }
-      - { text: "9" }
-      - { text: "12" }
-      - { text: "7" }
-      - { text: "6" }
+      - { text: "Wings", correct: true }
+      - { text: "Sunrise" }
+      - { text: "The Jazz Singer" }
+      - { text: "Metropolis" }
+      - { text: "All Quiet on the Western Front" }
+      - { text: "Ben-Hur" }
   - slot: 8
     type: choice
     category: literature

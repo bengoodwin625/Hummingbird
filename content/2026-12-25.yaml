@@ -58,15 +58,15 @@ questions:
       - { text: "Eric Carle" }
   - slot: 7
     type: choice
-    category: music
-    text: "In which country was the carol 'Silent Night' first performed?"
+    category: christmas
+    text: "Which monarch and her husband made the Christmas tree popular in Britain?"
     options:
-      - { text: "Austria", correct: true }
-      - { text: "Germany" }
-      - { text: "Switzerland" }
-      - { text: "England" }
-      - { text: "France" }
-      - { text: "Italy" }
+      - { text: "Queen Victoria", correct: true }
+      - { text: "Elizabeth I" }
+      - { text: "Queen Anne" }
+      - { text: "Mary II" }
+      - { text: "Queen Charlotte" }
+      - { text: "Elizabeth II" }
   - slot: 8
     type: choice
     category: christmas

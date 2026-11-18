@@ -58,15 +58,15 @@ questions:
       - { text: "Hugh Jackman" }
   - slot: 7
     type: choice
-    category: music
-    text: "Which band sang 'Hey Jude'?"
+    category: food
+    text: "Which spirit is made from the agave plant?"
     options:
-      - { text: "The Beatles", correct: true }
-      - { text: "The Rolling Stones" }
-      - { text: "The Who" }
-      - { text: "The Kinks" }
-      - { text: "The Beach Boys" }
-      - { text: "Queen" }
+      - { text: "Tequila", correct: true }
+      - { text: "Rum" }
+      - { text: "Gin" }
+      - { text: "Vodka" }
+      - { text: "Whisky" }
+      - { text: "Brandy" }
   - slot: 8
     type: choice
     category: music

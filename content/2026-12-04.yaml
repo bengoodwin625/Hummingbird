@@ -58,15 +58,15 @@ questions:
       - { text: "Caravaggio" }
   - slot: 7
     type: choice
-    category: sport
-    text: "How many points is a try worth in rugby union?"
+    category: science
+    text: "What is the longest muscle in the human body?"
     options:
-      - { text: "5", correct: true }
-      - { text: "3" }
-      - { text: "4" }
-      - { text: "6" }
-      - { text: "7" }
-      - { text: "2" }
+      - { text: "Sartorius", correct: true }
+      - { text: "Quadriceps" }
+      - { text: "Hamstring" }
+      - { text: "Gluteus maximus" }
+      - { text: "Biceps" }
+      - { text: "Latissimus dorsi" }
   - slot: 8
     type: choice
     category: sport

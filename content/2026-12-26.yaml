@@ -58,15 +58,15 @@ questions:
       - { text: "Steve Martin" }
   - slot: 7
     type: choice
-    category: sport
-    text: "Which sport is played at Wimbledon?"
+    category: literature
+    text: "Who is traditionally credited with writing 'A Visit from St. Nicholas' ('The Night Before Christmas')?"
     options:
-      - { text: "Tennis", correct: true }
-      - { text: "Golf" }
-      - { text: "Cricket" }
-      - { text: "Rugby" }
-      - { text: "Snooker" }
-      - { text: "Badminton" }
+      - { text: "Clement Clarke Moore", correct: true }
+      - { text: "Charles Dickens" }
+      - { text: "Washington Irving" }
+      - { text: "Hans Christian Andersen" }
+      - { text: "Henry Wadsworth Longfellow" }
+      - { text: "L. Frank Baum" }
   - slot: 8
     type: choice
     category: sport

@@ -58,15 +58,15 @@ questions:
       - { text: "Camille Pissarro" }
   - slot: 7
     type: choice
-    category: music
-    text: "What does 'forte' mean in music?"
+    category: science
+    text: "Roughly what is absolute zero in degrees Celsius?"
     options:
-      - { text: "Loud", correct: true }
-      - { text: "Soft" }
-      - { text: "Fast" }
-      - { text: "Slow" }
-      - { text: "Smoothly" }
-      - { text: "Detached" }
+      - { text: "-273", correct: true }
+      - { text: "-100" }
+      - { text: "-459" }
+      - { text: "-173" }
+      - { text: "-373" }
+      - { text: "0" }
   - slot: 8
     type: choice
     category: history

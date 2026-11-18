@@ -58,15 +58,15 @@ questions:
       - { text: "Francis Bacon" }
   - slot: 7
     type: choice
-    category: sport
-    text: "In which sport would you see a slam dunk?"
+    category: film
+    text: "Who directed '2001: A Space Odyssey'?"
     options:
-      - { text: "Basketball", correct: true }
-      - { text: "Volleyball" }
-      - { text: "Tennis" }
-      - { text: "Netball" }
-      - { text: "Handball" }
-      - { text: "Rugby" }
+      - { text: "Stanley Kubrick", correct: true }
+      - { text: "Ridley Scott" }
+      - { text: "George Lucas" }
+      - { text: "Steven Spielberg" }
+      - { text: "Andrei Tarkovsky" }
+      - { text: "James Cameron" }
   - slot: 8
     type: choice
     category: space

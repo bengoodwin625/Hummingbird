@@ -58,15 +58,15 @@ questions:
       - { text: "David Hockney" }
   - slot: 7
     type: choice
-    category: music
-    text: "What is the title of the French national anthem?"
+    category: history
+    text: "Who was Prime Minister during the 1956 Suez Crisis?"
     options:
-      - { text: "La Marseillaise", correct: true }
-      - { text: "Ode to Joy" }
-      - { text: "La Vie en rose" }
-      - { text: "Le Chant du départ" }
-      - { text: "Frère Jacques" }
-      - { text: "Ça ira" }
+      - { text: "Anthony Eden", correct: true }
+      - { text: "Harold Macmillan" }
+      - { text: "Winston Churchill" }
+      - { text: "Clement Attlee" }
+      - { text: "Harold Wilson" }
+      - { text: "Alec Douglas-Home" }
   - slot: 8
     type: choice
     category: art

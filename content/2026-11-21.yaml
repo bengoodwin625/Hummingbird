@@ -58,15 +58,15 @@ questions:
       - { text: "Iceland" }
   - slot: 7
     type: choice
-    category: film
-    text: "Who played Jack in the 1997 film 'Titanic'?"
+    category: geography
+    text: "What is the capital of Australia's Northern Territory?"
     options:
-      - { text: "Leonardo DiCaprio", correct: true }
-      - { text: "Brad Pitt" }
-      - { text: "Matt Damon" }
-      - { text: "Johnny Depp" }
-      - { text: "Tom Cruise" }
-      - { text: "Ewan McGregor" }
+      - { text: "Darwin", correct: true }
+      - { text: "Alice Springs" }
+      - { text: "Katherine" }
+      - { text: "Cairns" }
+      - { text: "Broome" }
+      - { text: "Townsville" }
   - slot: 8
     type: choice
     category: geography

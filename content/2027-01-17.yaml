@@ -58,15 +58,15 @@ questions:
       - { text: "Game of Thrones" }
   - slot: 7
     type: choice
-    category: music
-    text: "Who sang 'Rocket Man'?"
+    category: film
+    text: "Who directed 'Psycho' (1960)?"
     options:
-      - { text: "Elton John", correct: true }
-      - { text: "David Bowie" }
-      - { text: "Rod Stewart" }
-      - { text: "Billy Joel" }
-      - { text: "Freddie Mercury" }
-      - { text: "Elvis Costello" }
+      - { text: "Alfred Hitchcock", correct: true }
+      - { text: "Orson Welles" }
+      - { text: "Billy Wilder" }
+      - { text: "John Ford" }
+      - { text: "Stanley Kubrick" }
+      - { text: "Roman Polanski" }
   - slot: 8
     type: choice
     category: history

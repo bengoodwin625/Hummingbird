@@ -58,15 +58,15 @@ questions:
       - { text: "Madonna" }
   - slot: 7
     type: choice
-    category: film
-    text: "Which film features a little clownfish called Nemo?"
+    category: history
+    text: "In which year did some women in the UK first win the right to vote?"
     options:
-      - { text: "Finding Nemo", correct: true }
-      - { text: "Shark Tale" }
-      - { text: "Moana" }
-      - { text: "The Little Mermaid" }
-      - { text: "Luca" }
-      - { text: "Ponyo" }
+      - { text: "1918", correct: true }
+      - { text: "1928" }
+      - { text: "1903" }
+      - { text: "1911" }
+      - { text: "1945" }
+      - { text: "1893" }
   - slot: 8
     type: choice
     category: history

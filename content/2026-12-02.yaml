@@ -58,15 +58,15 @@ questions:
       - { text: "Jurassic Park" }
   - slot: 7
     type: choice
-    category: sport
-    text: "Roughly how long is a marathon in miles?"
+    category: science
+    text: "After nitrogen and oxygen, which gas is most common in Earth's air?"
     options:
-      - { text: "26.2", correct: true }
-      - { text: "24.6" }
-      - { text: "25.0" }
-      - { text: "27.5" }
-      - { text: "30.0" }
-      - { text: "22.4" }
+      - { text: "Argon", correct: true }
+      - { text: "Carbon dioxide" }
+      - { text: "Neon" }
+      - { text: "Helium" }
+      - { text: "Hydrogen" }
+      - { text: "Methane" }
   - slot: 8
     type: choice
     category: science

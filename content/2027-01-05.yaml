@@ -58,15 +58,15 @@ questions:
       - { text: "Zazu" }
   - slot: 7
     type: choice
-    category: music
-    text: "Who composed the opera 'The Magic Flute'?"
+    category: literature
+    text: "Who wrote 'One Hundred Years of Solitude'?"
     options:
-      - { text: "Wolfgang Amadeus Mozart", correct: true }
-      - { text: "Ludwig van Beethoven" }
-      - { text: "Johann Sebastian Bach" }
-      - { text: "George Frideric Handel" }
-      - { text: "Joseph Haydn" }
-      - { text: "Giuseppe Verdi" }
+      - { text: "Gabriel García Márquez", correct: true }
+      - { text: "Isabel Allende" }
+      - { text: "Jorge Luis Borges" }
+      - { text: "Mario Vargas Llosa" }
+      - { text: "Pablo Neruda" }
+      - { text: "Octavio Paz" }
   - slot: 8
     type: choice
     category: sport

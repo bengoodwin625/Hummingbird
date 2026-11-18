@@ -58,15 +58,15 @@ questions:
       - { text: "Vienna" }
   - slot: 7
     type: choice
-    category: sport
-    text: "Which sport is played with a puck?"
+    category: literature
+    text: "Who wrote the 'Divine Comedy'?"
     options:
-      - { text: "Ice hockey", correct: true }
-      - { text: "Field hockey" }
-      - { text: "Lacrosse" }
-      - { text: "Polo" }
-      - { text: "Curling" }
-      - { text: "Cricket" }
+      - { text: "Dante Alighieri", correct: true }
+      - { text: "Petrarch" }
+      - { text: "Giovanni Boccaccio" }
+      - { text: "Virgil" }
+      - { text: "Homer" }
+      - { text: "Ovid" }
   - slot: 8
     type: choice
     category: history

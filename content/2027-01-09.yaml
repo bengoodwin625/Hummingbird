@@ -59,14 +59,14 @@ questions:
   - slot: 7
     type: choice
     category: music
-    text: "Which drum in a drum kit is played with a foot pedal?"
+    text: "Who composed the opera 'La traviata'?"
     options:
-      - { text: "Bass drum", correct: true }
-      - { text: "Snare drum" }
-      - { text: "Tambourine" }
-      - { text: "Tom-tom" }
-      - { text: "Triangle" }
-      - { text: "Xylophone" }
+      - { text: "Giuseppe Verdi", correct: true }
+      - { text: "Giacomo Puccini" }
+      - { text: "Gioachino Rossini" }
+      - { text: "Richard Wagner" }
+      - { text: "Wolfgang Amadeus Mozart" }
+      - { text: "Georges Bizet" }
   - slot: 8
     type: choice
     category: geography

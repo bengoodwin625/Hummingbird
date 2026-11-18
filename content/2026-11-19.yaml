@@ -58,15 +58,15 @@ questions:
       - { text: "Ireland" }
   - slot: 7
     type: choice
-    category: science
-    text: "Which organs do you use to breathe?"
+    category: geography
+    text: "What is the capital of the Canadian province of British Columbia?"
     options:
-      - { text: "Lungs", correct: true }
-      - { text: "Heart" }
-      - { text: "Liver" }
-      - { text: "Kidneys" }
-      - { text: "Stomach" }
-      - { text: "Brain" }
+      - { text: "Victoria", correct: true }
+      - { text: "Vancouver" }
+      - { text: "Kelowna" }
+      - { text: "Surrey" }
+      - { text: "Burnaby" }
+      - { text: "Kamloops" }
   - slot: 8
     type: choice
     category: space

@@ -58,15 +58,15 @@ questions:
       - { text: "Cairns" }
   - slot: 7
     type: choice
-    category: music
-    text: "Which Australian band released 'Highway to Hell'?"
+    category: sport
+    text: "How long is an Olympic swimming pool, in metres?"
     options:
-      - { text: "AC/DC", correct: true }
-      - { text: "INXS" }
-      - { text: "Midnight Oil" }
-      - { text: "Men at Work" }
-      - { text: "Crowded House" }
-      - { text: "The Bee Gees" }
+      - { text: "50", correct: true }
+      - { text: "25" }
+      - { text: "100" }
+      - { text: "33" }
+      - { text: "40" }
+      - { text: "75" }
   - slot: 8
     type: choice
     category: geography

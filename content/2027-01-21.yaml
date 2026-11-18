@@ -58,15 +58,15 @@ questions:
       - { text: "Merida" }
   - slot: 7
     type: choice
-    category: music
-    text: "What nationality was the composer Johann Sebastian Bach?"
+    category: sport
+    text: "Who has won the most women's Wimbledon singles titles?"
     options:
-      - { text: "German", correct: true }
-      - { text: "Austrian" }
-      - { text: "Italian" }
-      - { text: "French" }
-      - { text: "English" }
-      - { text: "Dutch" }
+      - { text: "Martina Navratilova", correct: true }
+      - { text: "Serena Williams" }
+      - { text: "Steffi Graf" }
+      - { text: "Billie Jean King" }
+      - { text: "Venus Williams" }
+      - { text: "Chris Evert" }
   - slot: 8
     type: choice
     category: geography

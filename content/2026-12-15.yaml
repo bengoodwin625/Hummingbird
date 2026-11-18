@@ -58,15 +58,15 @@ questions:
       - { text: "Kingsley Amis" }
   - slot: 7
     type: choice
-    category: music
-    text: "In which country did the tango originate?"
+    category: history
+    text: "Which English king was executed in 1649?"
     options:
-      - { text: "Argentina", correct: true }
-      - { text: "Spain" }
-      - { text: "Brazil" }
-      - { text: "Cuba" }
-      - { text: "Mexico" }
-      - { text: "Portugal" }
+      - { text: "Charles I", correct: true }
+      - { text: "Charles II" }
+      - { text: "James I" }
+      - { text: "James II" }
+      - { text: "Henry VI" }
+      - { text: "Richard III" }
   - slot: 8
     type: choice
     category: language

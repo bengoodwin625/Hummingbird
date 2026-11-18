@@ -1,6 +1,7 @@
 /** Minimal DOM helpers. Text always goes in through textContent, never innerHTML. */
 import { C, packedPalette } from "../art/palette";
 import { Raster } from "../art/raster";
+import { targetIcon } from "../art/icons";
 import { logo, sprite, type Band } from "../art/sprites";
 
 type Child = Node | string | null | undefined | false;
@@ -81,6 +82,10 @@ export function goldenHummingbird(scale = 2, className?: string): HTMLCanvasElem
 }
 
 /** The Hummingbird logo (the bird at a heliconia bloom), scaled by whole pixels. */
+export function targetCanvas(scale = 2, className?: string): HTMLCanvasElement {
+  return rasterCanvas(targetIcon(), scale, className);
+}
+
 export function logoIcon(scale = 2, className?: string): HTMLCanvasElement {
   return rasterCanvas(logo(), scale, className);
 }

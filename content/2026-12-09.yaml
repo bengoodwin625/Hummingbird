@@ -58,15 +58,15 @@ questions:
       - { text: "Ruth Rendell" }
   - slot: 7
     type: choice
-    category: music
-    text: "Which singer is widely known as the 'Queen of Pop'?"
+    category: science
+    text: "What is the SI unit of power?"
     options:
-      - { text: "Madonna", correct: true }
-      - { text: "Whitney Houston" }
-      - { text: "Kylie Minogue" }
-      - { text: "Britney Spears" }
-      - { text: "Cher" }
-      - { text: "Lady Gaga" }
+      - { text: "Watt", correct: true }
+      - { text: "Joule" }
+      - { text: "Newton" }
+      - { text: "Volt" }
+      - { text: "Ampere" }
+      - { text: "Pascal" }
   - slot: 8
     type: choice
     category: geography

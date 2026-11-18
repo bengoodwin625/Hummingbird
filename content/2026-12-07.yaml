@@ -58,15 +58,15 @@ questions:
       - { text: "El Greco" }
   - slot: 7
     type: choice
-    category: music
-    text: "How many lines are there on a musical stave?"
+    category: nature
+    text: "How many chambers does a cow's stomach have?"
     options:
-      - { text: "5", correct: true }
-      - { text: "4" }
-      - { text: "6" }
-      - { text: "7" }
-      - { text: "8" }
+      - { text: "4", correct: true }
+      - { text: "2" }
       - { text: "3" }
+      - { text: "5" }
+      - { text: "6" }
+      - { text: "1" }
   - slot: 8
     type: choice
     category: geography

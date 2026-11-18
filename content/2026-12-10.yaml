@@ -58,15 +58,15 @@ questions:
       - { text: "Hieronymus Bosch" }
   - slot: 7
     type: choice
-    category: sport
-    text: "How many holes are there on a standard golf course?"
+    category: science
+    text: "Which disease is caused by a lack of vitamin C?"
     options:
-      - { text: "18", correct: true }
-      - { text: "9" }
-      - { text: "12" }
-      - { text: "16" }
-      - { text: "21" }
-      - { text: "24" }
+      - { text: "Scurvy", correct: true }
+      - { text: "Rickets" }
+      - { text: "Beriberi" }
+      - { text: "Pellagra" }
+      - { text: "Anaemia" }
+      - { text: "Gout" }
   - slot: 8
     type: choice
     category: space

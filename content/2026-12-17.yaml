@@ -58,15 +58,15 @@ questions:
       - { text: "George Lazenby" }
   - slot: 7
     type: choice
-    category: music
-    text: "How many members did the Beatles have when they became famous?"
+    category: history
+    text: "Which pharaoh built the Great Pyramid of Giza?"
     options:
-      - { text: "4", correct: true }
-      - { text: "3" }
-      - { text: "5" }
-      - { text: "6" }
-      - { text: "7" }
-      - { text: "2" }
+      - { text: "Khufu", correct: true }
+      - { text: "Tutankhamun" }
+      - { text: "Ramesses II" }
+      - { text: "Khafre" }
+      - { text: "Menkaure" }
+      - { text: "Akhenaten" }
   - slot: 8
     type: choice
     category: science

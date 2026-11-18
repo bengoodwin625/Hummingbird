@@ -58,15 +58,15 @@ questions:
       - { text: "Thorin Oakenshield" }
   - slot: 7
     type: choice
-    category: sport
-    text: "Which country won the 2022 FIFA World Cup?"
+    category: art
+    text: "In which city is the Prado museum?"
     options:
-      - { text: "Argentina", correct: true }
-      - { text: "France" }
-      - { text: "Brazil" }
-      - { text: "Croatia" }
-      - { text: "Morocco" }
-      - { text: "Germany" }
+      - { text: "Madrid", correct: true }
+      - { text: "Barcelona" }
+      - { text: "Lisbon" }
+      - { text: "Seville" }
+      - { text: "Rome" }
+      - { text: "Paris" }
   - slot: 8
     type: choice
     category: science

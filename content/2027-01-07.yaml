@@ -59,14 +59,14 @@ questions:
   - slot: 7
     type: choice
     category: music
-    text: "Which British band released the song 'Yellow'?"
+    text: "Roger Waters and David Gilmour were members of which band?"
     options:
-      - { text: "Coldplay", correct: true }
-      - { text: "Oasis" }
-      - { text: "Blur" }
-      - { text: "Radiohead" }
-      - { text: "Keane" }
-      - { text: "Muse" }
+      - { text: "Pink Floyd", correct: true }
+      - { text: "Led Zeppelin" }
+      - { text: "The Who" }
+      - { text: "Genesis" }
+      - { text: "Yes" }
+      - { text: "Deep Purple" }
   - slot: 8
     type: choice
     category: music

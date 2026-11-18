@@ -12,7 +12,7 @@ import {
 } from "../api";
 import { BANDS, type Band } from "../art/sprites";
 import { Stage } from "../scene/stage";
-import { animalIcon, byId, h, icon, logoIcon } from "./dom";
+import { animalIcon, byId, h, icon, logoIcon, targetCanvas } from "./dom";
 import {
   BAND_INFO,
   TYPING_ALLOWANCE_S,
@@ -516,7 +516,7 @@ export class App {
   /** The How Close quiz card: five guesses a day, scored on closeness and speed. */
   private numbersCard(): HTMLElement {
     const t = this.numbersToday;
-    const art = h("span", { class: "mode-art mode-art--numbers", "aria-hidden": "true", text: "123" });
+    const art = h("span", { class: "mode-art", "aria-hidden": "true" }, targetCanvas(2));
     const desc = h("span", { class: "mode-desc", text: "Five obscure numbers. Guess close, guess fast." });
     if (!t || t.status === "no_quiz") {
       return h(

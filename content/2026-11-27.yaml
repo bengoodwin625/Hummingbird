@@ -58,15 +58,15 @@ questions:
       - { text: "Milan" }
   - slot: 7
     type: choice
-    category: music
-    text: "Which Beatle was the band's drummer?"
+    category: geography
+    text: "Which strait separates Asia from North America?"
     options:
-      - { text: "Ringo Starr", correct: true }
-      - { text: "John Lennon" }
-      - { text: "Paul McCartney" }
-      - { text: "George Harrison" }
-      - { text: "Pete Best" }
-      - { text: "Brian Epstein" }
+      - { text: "Bering Strait", correct: true }
+      - { text: "Davis Strait" }
+      - { text: "Hudson Strait" }
+      - { text: "Strait of Magellan" }
+      - { text: "Bass Strait" }
+      - { text: "Cook Strait" }
   - slot: 8
     type: choice
     category: space

@@ -58,15 +58,15 @@ questions:
       - { text: "Purple" }
   - slot: 7
     type: choice
-    category: music
-    text: "Who sang 'Shake It Off'?"
+    category: nature
+    text: "Which living bird lays the largest eggs?"
     options:
-      - { text: "Taylor Swift", correct: true }
-      - { text: "Katy Perry" }
-      - { text: "Ariana Grande" }
-      - { text: "Lady Gaga" }
-      - { text: "Selena Gomez" }
-      - { text: "Dua Lipa" }
+      - { text: "Ostrich", correct: true }
+      - { text: "Emu" }
+      - { text: "Albatross" }
+      - { text: "Cassowary" }
+      - { text: "Emperor penguin" }
+      - { text: "Kiwi" }
   - slot: 8
     type: choice
     category: science

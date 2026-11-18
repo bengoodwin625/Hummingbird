@@ -59,14 +59,14 @@ questions:
   - slot: 7
     type: choice
     category: music
-    text: "Which group sang 'Last Christmas'?"
+    text: "Which Christmas song was first published as 'One Horse Open Sleigh'?"
     options:
-      - { text: "Wham!", correct: true }
-      - { text: "Band Aid" }
-      - { text: "Slade" }
-      - { text: "Wizzard" }
-      - { text: "The Pogues" }
-      - { text: "Mud" }
+      - { text: "Jingle Bells", correct: true }
+      - { text: "Deck the Halls" }
+      - { text: "Silent Night" }
+      - { text: "Sleigh Ride" }
+      - { text: "Winter Wonderland" }
+      - { text: "We Wish You a Merry Christmas" }
   - slot: 8
     type: choice
     category: christmas

@@ -58,15 +58,15 @@ questions:
       - { text: "Rembrandt" }
   - slot: 7
     type: choice
-    category: sport
-    text: "In golf, what is a score of one under par on a hole called?"
+    category: geography
+    text: "What is the smallest US state by area?"
     options:
-      - { text: "Birdie", correct: true }
-      - { text: "Eagle" }
-      - { text: "Bogey" }
-      - { text: "Albatross" }
-      - { text: "Par" }
-      - { text: "Condor" }
+      - { text: "Rhode Island", correct: true }
+      - { text: "Delaware" }
+      - { text: "Connecticut" }
+      - { text: "Vermont" }
+      - { text: "New Jersey" }
+      - { text: "Hawaii" }
   - slot: 8
     type: choice
     category: history

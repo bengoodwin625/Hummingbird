@@ -58,15 +58,15 @@ questions:
       - { text: "Henry James" }
   - slot: 7
     type: choice
-    category: sport
-    text: "The Monza Formula 1 circuit is in which country?"
+    category: history
+    text: "Who is generally regarded as Britain's first Prime Minister?"
     options:
-      - { text: "Italy", correct: true }
-      - { text: "Monaco" }
-      - { text: "France" }
-      - { text: "Spain" }
-      - { text: "Belgium" }
-      - { text: "Austria" }
+      - { text: "Robert Walpole", correct: true }
+      - { text: "William Pitt the Younger" }
+      - { text: "Benjamin Disraeli" }
+      - { text: "William Gladstone" }
+      - { text: "Lord North" }
+      - { text: "Duke of Wellington" }
   - slot: 8
     type: choice
     category: science

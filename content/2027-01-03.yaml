@@ -58,15 +58,15 @@ questions:
       - { text: "Severus Snape" }
   - slot: 7
     type: choice
-    category: music
-    text: "Which brass instrument has a slide?"
+    category: art
+    text: "Who painted 'Guernica'?"
     options:
-      - { text: "Trombone", correct: true }
-      - { text: "Trumpet" }
-      - { text: "Tuba" }
-      - { text: "French horn" }
-      - { text: "Saxophone" }
-      - { text: "Clarinet" }
+      - { text: "Pablo Picasso", correct: true }
+      - { text: "Salvador Dalí" }
+      - { text: "Joan Miró" }
+      - { text: "Francisco Goya" }
+      - { text: "Henri Matisse" }
+      - { text: "Georges Braque" }
   - slot: 8
     type: choice
     category: history

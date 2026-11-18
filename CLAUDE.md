@@ -199,7 +199,9 @@ Answer checking happens on the server in `backend/app/checking.py`.
   text (questions, answers, labels, buttons, headlines) uses Atkinson Hyperlegible Next for
   legibility; the pixel face (Pixelify Sans) is kept for the wordmark
   and the big display numbers. All OFL and self-hosted.
-- **Logo**: the hummingbird sprite on its own (`logo()` in `frontend/src/art/sprites.ts`),
+- **Logo**: the hummingbird sprite on its own (`logo()` in `frontend/src/art/sprites.ts`; the
+  static `favicon.svg` is written from it by `scripts/make_favicon.ts`). The How Close quiz
+  card uses a pixel target with a dart (`targetIcon()` in `frontend/src/art/icons.ts`),
   used in the header, on the menu and as the favicon. **No countdown, timer bar or clock is shown while a question is live.**
   Answer options are large tap targets.
 - **Palette**: one fixed palette defined in `frontend/src/art/palette.ts`. All scene art and

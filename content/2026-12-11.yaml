@@ -58,15 +58,15 @@ questions:
       - { text: "Remus Lupin" }
   - slot: 7
     type: choice
-    category: music
-    text: "Which instrument is Yo-Yo Ma famous for playing?"
+    category: science
+    text: "Which element makes up most of the human body by mass?"
     options:
-      - { text: "Cello", correct: true }
-      - { text: "Violin" }
-      - { text: "Viola" }
-      - { text: "Double bass" }
-      - { text: "Piano" }
-      - { text: "Guitar" }
+      - { text: "Oxygen", correct: true }
+      - { text: "Carbon" }
+      - { text: "Hydrogen" }
+      - { text: "Nitrogen" }
+      - { text: "Calcium" }
+      - { text: "Iron" }
   - slot: 8
     type: choice
     category: literature

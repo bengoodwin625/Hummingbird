@@ -58,15 +58,15 @@ questions:
       - { text: "Charles Barry" }
   - slot: 7
     type: choice
-    category: sport
-    text: "How many rings are on the Olympic flag?"
+    category: history
+    text: "Who was the Roman god of war?"
     options:
-      - { text: "5", correct: true }
-      - { text: "4" }
-      - { text: "6" }
-      - { text: "7" }
-      - { text: "3" }
-      - { text: "8" }
+      - { text: "Mars", correct: true }
+      - { text: "Jupiter" }
+      - { text: "Neptune" }
+      - { text: "Mercury" }
+      - { text: "Apollo" }
+      - { text: "Vulcan" }
   - slot: 8
     type: choice
     category: science

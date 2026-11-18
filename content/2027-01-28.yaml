@@ -58,15 +58,15 @@ questions:
       - { text: "Yellow" }
   - slot: 7
     type: choice
-    category: sport
-    text: "Which sprinter was nicknamed 'Lightning Bolt'?"
+    category: nature
+    text: "What is a baby swan called?"
     options:
-      - { text: "Usain Bolt", correct: true }
-      - { text: "Mo Farah" }
-      - { text: "Carl Lewis" }
-      - { text: "Michael Johnson" }
-      - { text: "Yohan Blake" }
-      - { text: "Linford Christie" }
+      - { text: "Cygnet", correct: true }
+      - { text: "Gosling" }
+      - { text: "Eyas" }
+      - { text: "Poult" }
+      - { text: "Squab" }
+      - { text: "Fledgling" }
   - slot: 8
     type: choice
     category: geography

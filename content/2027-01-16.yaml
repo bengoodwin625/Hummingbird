@@ -58,15 +58,15 @@ questions:
       - { text: "Kenneth Grahame" }
   - slot: 7
     type: choice
-    category: sport
-    text: "Which country has won the most men's Rugby World Cups?"
+    category: literature
+    text: "Who wrote 'Les Misérables'?"
     options:
-      - { text: "South Africa", correct: true }
-      - { text: "New Zealand" }
-      - { text: "Australia" }
-      - { text: "England" }
-      - { text: "France" }
-      - { text: "Wales" }
+      - { text: "Victor Hugo", correct: true }
+      - { text: "Alexandre Dumas" }
+      - { text: "Émile Zola" }
+      - { text: "Gustave Flaubert" }
+      - { text: "Honoré de Balzac" }
+      - { text: "Jules Verne" }
   - slot: 8
     type: choice
     category: geography

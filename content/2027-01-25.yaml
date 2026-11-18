@@ -58,15 +58,15 @@ questions:
       - { text: "Bluebell" }
   - slot: 7
     type: choice
-    category: geography
-    text: "Loch Ness is in which country?"
+    category: sport
+    text: "In which sport do England and Scotland play for the Calcutta Cup?"
     options:
-      - { text: "Scotland", correct: true }
-      - { text: "Ireland" }
-      - { text: "Wales" }
-      - { text: "England" }
-      - { text: "Norway" }
-      - { text: "Iceland" }
+      - { text: "Rugby union", correct: true }
+      - { text: "Cricket" }
+      - { text: "Polo" }
+      - { text: "Golf" }
+      - { text: "Hockey" }
+      - { text: "Tennis" }
   - slot: 8
     type: choice
     category: history

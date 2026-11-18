@@ -58,15 +58,15 @@ questions:
       - { text: "H. G. Wells" }
   - slot: 7
     type: choice
-    category: music
-    text: "Which band released the album 'Abbey Road'?"
+    category: science
+    text: "What is the chemical symbol for tin?"
     options:
-      - { text: "The Beatles", correct: true }
-      - { text: "The Rolling Stones" }
-      - { text: "The Kinks" }
-      - { text: "The Who" }
-      - { text: "Pink Floyd" }
-      - { text: "The Beach Boys" }
+      - { text: "Sn", correct: true }
+      - { text: "Ti" }
+      - { text: "Tn" }
+      - { text: "T" }
+      - { text: "St" }
+      - { text: "Si" }
   - slot: 8
     type: choice
     category: literature

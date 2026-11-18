@@ -58,15 +58,15 @@ questions:
       - { text: "Santiago Calatrava" }
   - slot: 7
     type: choice
-    category: sport
-    text: "Which sport uses the terms 'love', 'deuce' and 'advantage'?"
+    category: history
+    text: "Who was the last monarch of the House of Stuart?"
     options:
-      - { text: "Tennis", correct: true }
-      - { text: "Badminton" }
-      - { text: "Squash" }
-      - { text: "Table tennis" }
-      - { text: "Volleyball" }
-      - { text: "Cricket" }
+      - { text: "Queen Anne", correct: true }
+      - { text: "James II" }
+      - { text: "William III" }
+      - { text: "Mary II" }
+      - { text: "George I" }
+      - { text: "Charles II" }
   - slot: 8
     type: choice
     category: art

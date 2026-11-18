@@ -58,15 +58,15 @@ questions:
       - { text: "John Keats" }
   - slot: 7
     type: choice
-    category: sport
-    text: "What colour jersey does the leader of the Tour de France wear?"
+    category: history
+    text: "Which empire did Suleiman the Magnificent rule?"
     options:
-      - { text: "Yellow", correct: true }
-      - { text: "Green" }
-      - { text: "Pink" }
-      - { text: "Red" }
-      - { text: "White" }
-      - { text: "Polka dot" }
+      - { text: "Ottoman", correct: true }
+      - { text: "Persian" }
+      - { text: "Mughal" }
+      - { text: "Byzantine" }
+      - { text: "Holy Roman" }
+      - { text: "Mongol" }
   - slot: 8
     type: choice
     category: space

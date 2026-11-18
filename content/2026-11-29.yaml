@@ -58,15 +58,15 @@ questions:
       - { text: "Cesar Romero" }
   - slot: 7
     type: choice
-    category: music
-    text: "Which instrument has 47 strings and 7 pedals?"
+    category: geography
+    text: "Tbilisi is the capital of which country?"
     options:
-      - { text: "Harp", correct: true }
-      - { text: "Piano" }
-      - { text: "Harpsichord" }
-      - { text: "Cello" }
-      - { text: "Zither" }
-      - { text: "Lute" }
+      - { text: "Georgia", correct: true }
+      - { text: "Armenia" }
+      - { text: "Azerbaijan" }
+      - { text: "Ukraine" }
+      - { text: "Moldova" }
+      - { text: "Kazakhstan" }
   - slot: 8
     type: choice
     category: geography

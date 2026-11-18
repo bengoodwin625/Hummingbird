@@ -58,15 +58,15 @@ questions:
       - { text: "Lewis Carroll" }
   - slot: 7
     type: choice
-    category: sport
-    text: "In which country were the first modern Olympic Games held, in 1896?"
+    category: literature
+    text: "Who wrote 'The Great Gatsby'?"
     options:
-      - { text: "Greece", correct: true }
-      - { text: "France" }
-      - { text: "United Kingdom" }
-      - { text: "United States" }
-      - { text: "Italy" }
-      - { text: "Germany" }
+      - { text: "F. Scott Fitzgerald", correct: true }
+      - { text: "Ernest Hemingway" }
+      - { text: "John Steinbeck" }
+      - { text: "William Faulkner" }
+      - { text: "J. D. Salinger" }
+      - { text: "Mark Twain" }
   - slot: 8
     type: choice
     category: science

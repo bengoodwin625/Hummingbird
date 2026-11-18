@@ -58,15 +58,15 @@ questions:
       - { text: "Soul" }
   - slot: 7
     type: choice
-    category: music
-    text: "How many musicians are in a quartet?"
+    category: film
+    text: "Who composed the music for the 'Star Wars' films?"
     options:
-      - { text: "4", correct: true }
-      - { text: "3" }
-      - { text: "5" }
-      - { text: "6" }
-      - { text: "8" }
-      - { text: "2" }
+      - { text: "John Williams", correct: true }
+      - { text: "Hans Zimmer" }
+      - { text: "Howard Shore" }
+      - { text: "Danny Elfman" }
+      - { text: "Ennio Morricone" }
+      - { text: "James Horner" }
   - slot: 8
     type: choice
     category: geography

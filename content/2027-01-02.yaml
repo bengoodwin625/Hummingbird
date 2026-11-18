@@ -58,15 +58,15 @@ questions:
       - { text: "Caravaggio" }
   - slot: 7
     type: choice
-    category: sport
-    text: "In which sport would you hit a shuttlecock?"
+    category: literature
+    text: "Who wrote 'The Prince' (1532)?"
     options:
-      - { text: "Badminton", correct: true }
-      - { text: "Tennis" }
-      - { text: "Squash" }
-      - { text: "Table tennis" }
-      - { text: "Volleyball" }
-      - { text: "Cricket" }
+      - { text: "Niccolò Machiavelli", correct: true }
+      - { text: "Thomas More" }
+      - { text: "Erasmus" }
+      - { text: "Dante Alighieri" }
+      - { text: "Petrarch" }
+      - { text: "Thomas Hobbes" }
   - slot: 8
     type: choice
     category: geography

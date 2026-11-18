@@ -59,14 +59,14 @@ questions:
   - slot: 7
     type: choice
     category: sport
-    text: "In which sport is the Stanley Cup awarded?"
+    text: "Which city hosted the 2000 Summer Olympics?"
     options:
-      - { text: "Ice hockey", correct: true }
-      - { text: "Baseball" }
-      - { text: "American football" }
-      - { text: "Basketball" }
-      - { text: "Golf" }
-      - { text: "Tennis" }
+      - { text: "Sydney", correct: true }
+      - { text: "Athens" }
+      - { text: "Atlanta" }
+      - { text: "Beijing" }
+      - { text: "Barcelona" }
+      - { text: "Melbourne" }
   - slot: 8
     type: choice
     category: science

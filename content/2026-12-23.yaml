@@ -58,15 +58,15 @@ questions:
       - { text: "Easter" }
   - slot: 7
     type: choice
-    category: music
-    text: "Which Christmas song begins \"I'm dreaming of a…\"?"
+    category: christmas
+    text: "In which country was the printed Advent calendar first made?"
     options:
-      - { text: "White Christmas", correct: true }
-      - { text: "Silent Night" }
-      - { text: "Jingle Bells" }
-      - { text: "Let It Snow!" }
-      - { text: "Winter Wonderland" }
-      - { text: "Blue Christmas" }
+      - { text: "Germany", correct: true }
+      - { text: "Denmark" }
+      - { text: "Austria" }
+      - { text: "Sweden" }
+      - { text: "Netherlands" }
+      - { text: "Switzerland" }
   - slot: 8
     type: choice
     category: music

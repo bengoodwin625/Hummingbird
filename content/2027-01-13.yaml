@@ -58,15 +58,15 @@ questions:
       - { text: "Evanna Lynch" }
   - slot: 7
     type: choice
-    category: music
-    text: "Which singer is nicknamed 'the Boss'?"
+    category: art
+    text: "In which city is Michelangelo's statue of David?"
     options:
-      - { text: "Bruce Springsteen", correct: true }
-      - { text: "Jon Bon Jovi" }
-      - { text: "Billy Joel" }
-      - { text: "Bob Dylan" }
-      - { text: "Rod Stewart" }
-      - { text: "Elton John" }
+      - { text: "Florence", correct: true }
+      - { text: "Rome" }
+      - { text: "Venice" }
+      - { text: "Milan" }
+      - { text: "Naples" }
+      - { text: "Pisa" }
   - slot: 8
     type: choice
     category: geography

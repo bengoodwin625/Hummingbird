@@ -58,15 +58,15 @@ questions:
       - { text: "Aardman" }
   - slot: 7
     type: choice
-    category: music
-    text: "Who released the album '21' in 2011?"
+    category: history
+    text: "The Treaty of Versailles was signed at the end of which war?"
     options:
-      - { text: "Adele", correct: true }
-      - { text: "Amy Winehouse" }
-      - { text: "Lady Gaga" }
-      - { text: "Rihanna" }
-      - { text: "Taylor Swift" }
-      - { text: "Duffy" }
+      - { text: "First World War", correct: true }
+      - { text: "Second World War" }
+      - { text: "Napoleonic Wars" }
+      - { text: "Crimean War" }
+      - { text: "Boer War" }
+      - { text: "Franco-Prussian War" }
   - slot: 8
     type: choice
     category: geography

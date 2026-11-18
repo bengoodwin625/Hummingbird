@@ -58,15 +58,15 @@ questions:
       - { text: "Gorillas in the Mist" }
   - slot: 7
     type: choice
-    category: music
-    text: "A 'Stradivarius' is a famous example of which instrument?"
+    category: nature
+    text: "Which of these animals has the longest pregnancy?"
     options:
-      - { text: "Violin", correct: true }
-      - { text: "Piano" }
-      - { text: "Guitar" }
-      - { text: "Flute" }
-      - { text: "Trumpet" }
-      - { text: "Harp" }
+      - { text: "African elephant", correct: true }
+      - { text: "Blue whale" }
+      - { text: "Giraffe" }
+      - { text: "Rhinoceros" }
+      - { text: "Walrus" }
+      - { text: "Orca" }
   - slot: 8
     type: choice
     category: science

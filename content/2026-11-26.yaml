@@ -58,15 +58,15 @@ questions:
       - { text: "The Matrix" }
   - slot: 7
     type: choice
-    category: sport
-    text: "How many players does a basketball team have on court?"
+    category: geography
+    text: "What is the constitutional capital of Bolivia?"
     options:
-      - { text: "5", correct: true }
-      - { text: "6" }
-      - { text: "7" }
-      - { text: "4" }
-      - { text: "9" }
-      - { text: "11" }
+      - { text: "Sucre", correct: true }
+      - { text: "La Paz" }
+      - { text: "Santa Cruz" }
+      - { text: "Cochabamba" }
+      - { text: "Potosí" }
+      - { text: "Quito" }
   - slot: 8
     type: choice
     category: geography

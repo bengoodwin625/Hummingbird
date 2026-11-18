@@ -58,15 +58,15 @@ questions:
       - { text: "Dadaism" }
   - slot: 7
     type: choice
-    category: music
-    text: "Who composed 'The Four Seasons'?"
+    category: geography
+    text: "What is the capital of Slovakia?"
     options:
-      - { text: "Antonio Vivaldi", correct: true }
-      - { text: "Johann Sebastian Bach" }
-      - { text: "George Frideric Handel" }
-      - { text: "Wolfgang Amadeus Mozart" }
-      - { text: "Joseph Haydn" }
-      - { text: "Claudio Monteverdi" }
+      - { text: "Bratislava", correct: true }
+      - { text: "Ljubljana" }
+      - { text: "Brno" }
+      - { text: "Košice" }
+      - { text: "Zagreb" }
+      - { text: "Budapest" }
   - slot: 8
     type: choice
     category: history

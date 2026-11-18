@@ -58,15 +58,15 @@ questions:
       - { text: "Antonio Canova" }
   - slot: 7
     type: choice
-    category: sport
-    text: "In which event would an athlete perform a 'Fosbury Flop'?"
+    category: geography
+    text: "Which is the largest of North America's Great Lakes?"
     options:
-      - { text: "High jump", correct: true }
-      - { text: "Pole vault" }
-      - { text: "Long jump" }
-      - { text: "Diving" }
-      - { text: "Gymnastics" }
-      - { text: "Triple jump" }
+      - { text: "Lake Superior", correct: true }
+      - { text: "Lake Michigan" }
+      - { text: "Lake Huron" }
+      - { text: "Lake Erie" }
+      - { text: "Lake Ontario" }
+      - { text: "Lake Winnipeg" }
   - slot: 8
     type: choice
     category: geography

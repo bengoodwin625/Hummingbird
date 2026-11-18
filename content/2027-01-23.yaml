@@ -58,15 +58,15 @@ questions:
       - { text: "Bambi" }
   - slot: 7
     type: choice
-    category: music
-    text: "What is the largest instrument in the string family of an orchestra?"
+    category: sport
+    text: "Which golfer has won the most men's major championships?"
     options:
-      - { text: "Double bass", correct: true }
-      - { text: "Cello" }
-      - { text: "Viola" }
-      - { text: "Violin" }
-      - { text: "Harp" }
-      - { text: "Guitar" }
+      - { text: "Jack Nicklaus", correct: true }
+      - { text: "Tiger Woods" }
+      - { text: "Walter Hagen" }
+      - { text: "Ben Hogan" }
+      - { text: "Gary Player" }
+      - { text: "Arnold Palmer" }
   - slot: 8
     type: choice
     category: history
