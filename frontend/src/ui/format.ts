@@ -48,12 +48,6 @@ export function formatOrdinal(n: number): string {
   return `${n}${ORDINAL_SUFFIX[ordinalRules.select(n)] ?? "th"}`;
 }
 
-/** Where a time sits on the results speed track, as a percentage (0 s to 5 s). */
-export const SPEED_TRACK_MAX_MS = 5000;
-export function speedTrackPercent(ms: number): number {
-  return Math.round((Math.min(Math.max(ms, 0), SPEED_TRACK_MAX_MS) / SPEED_TRACK_MAX_MS) * 1000) / 10;
-}
-
 const quizDateFormat = new Intl.DateTimeFormat("en-GB", {
   weekday: "long",
   day: "numeric",
@@ -107,4 +101,14 @@ export function bandForTime(ms: number): Band {
   if (ms <= 2500) return "toucan";
   if (ms <= 4500) return "tree_frog";
   return "sloth";
+}
+
+/** One plain line comparing your average answer with today's (null when nobody else has played). */
+export function speedGapLine(mine: number, everyone: number | null): string {
+  if (everyone === null) return "You're setting today's pace. Check back later to see how it compares.";
+  const gap = everyone - mine;
+  if (Math.abs(gap) < 100) return "Right on today's average speed.";
+  return gap > 0
+    ? `${formatSeconds(gap)} quicker than today's average.`
+    : `${formatSeconds(-gap)} slower than today's average.`;
 }

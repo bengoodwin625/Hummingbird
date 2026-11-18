@@ -8,13 +8,13 @@ import {
   TYPING_ALLOWANCE_S,
   bandForTime,
   categoryLabel,
+  speedGapLine,
   formatCountdown,
   formatPoints,
   formatQuizDate,
   formatSeconds,
   scorePercent,
   smoothDistribution,
-  speedTrackPercent,
 } from "./format";
 import { buildShareText } from "./share";
 
@@ -891,19 +891,6 @@ export class App {
     );
     this.renderProgress(null);
 
-    const row = h("div", { class: "animal-row", role: "img", "aria-label": this.rowLabel(results) });
-    for (const q of results.questions) {
-      row.append(
-        h(
-          "span",
-          { class: "animal-cell" },
-          ...(q.outcome === "correct" && q.band
-            ? [animalIcon(q.band, 1, "sprite-sm"), animalIcon(q.band, 2, "sprite-lg")]
-            : [icon("cross", "var(--ruby-text)")]),
-        ),
-      );
-    }
-
     const avg = results.avg_correct_elapsed_ms;
     const shareStatus = h("p", { class: "share-status", role: "status" });
     const shareButton = this.actionButton("Share your result", () => void this.share(results, shareStatus));
@@ -941,7 +928,6 @@ export class App {
         this.scoreCurve(results),
         this.speedCompare(results, avg),
         stats,
-        row,
       ),
     );
 
@@ -1129,84 +1115,69 @@ export class App {
   }
 
   /**
-   * Your speed: the animal your average answer matches, then all eight answers as bars
-   * (height = time, colour = the animal it earned), then how that compares with everyone.
+   * Your speed, told with the animals: your pace animal and average up top with one plain line
+   * against today's average, then your eight answers lined up as the animals they earned, each
+   * with its time, and the quickest one marked.
    */
   private speedCompare(results: Results, mine: number | null): HTMLElement {
     const section = h("section", { class: "speed", "aria-labelledby": "speed-title" });
     section.append(h("h2", { class: "section-title", id: "speed-title", text: "Your speed" }));
-    if (mine === null) {
-      section.append(h("p", { class: "speed-line", text: "No correct answers today, so there's no speed to show. Have another go tomorrow." }));
-      return section;
+    if (mine !== null) {
+      const pace = bandForTime(mine);
+      const hero = h(
+        "div",
+        { class: "pace" },
+        h("span", { class: "pace-sprite" }, animalIcon(pace, 3)),
+        h(
+          "div",
+          { class: "pace-text" },
+          h("p", { class: "pace-name", text: `${BAND_INFO[pace].name} pace` }),
+          h("p", { class: "pace-avg" }, h("strong", { text: formatSeconds(mine) }), " average answer"),
+        ),
+      );
+      hero.style.setProperty("--band-colour", `var(--band-${pace})`);
+      const others = results.speed.players > 1 ? results.speed.everyone_avg_ms : null;
+      section.append(hero, h("p", { class: "pace-compare", text: speedGapLine(mine, others) }));
+    } else {
+      section.append(h("p", { class: "pace-compare", text: "No correct answers today, so no pace to show. Tomorrow's another go." }));
     }
-    const pace = bandForTime(mine);
-    const paceEl = h(
-      "div",
-      { class: "pace" },
-      h("span", { class: "pace-sprite" }, animalIcon(pace, 2)),
-      h(
-        "p",
-        { class: "pace-text" },
-        h("strong", { class: "pace-time", text: formatSeconds(mine) }),
-        h("span", { class: "pace-label", text: `average answer · ${BAND_INFO[pace].name} pace` }),
-      ),
-    );
-    paceEl.style.setProperty("--band-colour", `var(--band-${pace})`);
-    section.append(paceEl, this.answerTimes(results), h("p", { class: "speed-line", text: this.speedLine(results) }));
+    section.append(this.lineUp(results));
     return section;
   }
 
-  /** Eight bars, one per question: taller is slower (5 s and over fills the bar). */
-  private answerTimes(results: Results): HTMLElement {
-    const labels: string[] = [];
-    const chart = h("div", { class: "times" });
+  /** The eight answers as a line-up of animals with their times; the quickest gets a tag. */
+  private lineUp(results: Results): HTMLElement {
+    const correctTimes = results.questions
+      .filter((q) => q.outcome === "correct" && q.elapsed_ms !== null)
+      .map((q) => q.elapsed_ms as number);
+    const best = correctTimes.length ? Math.min(...correctTimes) : null;
+    let bestTagged = false;
+    const list = h("ol", { class: "lineup", "aria-label": this.rowLabel(results) });
     for (const q of results.questions) {
       const correct = q.outcome === "correct" && q.band !== null;
-      const ms = q.elapsed_ms;
-      const bar = h("span", { class: `times-bar${correct ? "" : " times-bar--miss"}` });
-      bar.style.height = `${ms === null ? 100 : Math.max(4, speedTrackPercent(ms))}%`;
-      if (correct && q.band) bar.style.background = `var(--band-${q.band})`;
-      chart.append(
+      const isBest = correct && !bestTagged && q.elapsed_ms === best;
+      if (isBest) bestTagged = true;
+      list.append(
         h(
-          "span",
-          { class: "times-col" },
-          h("span", { class: "times-value", text: ms === null ? "–" : formatSeconds(ms).replace(" s", "") }),
-          h("span", { class: "times-track" }, bar),
-          h("span", { class: "times-slot", text: String(q.slot) }),
+          "li",
+          { class: `lap${correct ? "" : " lap--miss"}${isBest ? " lap--best" : ""}` },
+          isBest ? h("span", { class: "lap-tag", text: "Fastest" }) : null,
+          h(
+            "span",
+            { class: "lap-art", "aria-hidden": "true" },
+            ...(correct && q.band
+              ? [animalIcon(q.band, 1, "sprite-sm"), animalIcon(q.band, 2, "sprite-lg")]
+              : [icon("cross", "var(--ruby-text)")]),
+          ),
+          h("span", {
+            class: "lap-time",
+            text: q.outcome === "timeout" ? "Time" : q.elapsed_ms === null ? "–" : formatSeconds(q.elapsed_ms),
+          }),
+          h("span", { class: "lap-q", text: `Q${q.slot}` }),
         ),
       );
-      const what = correct && q.band ? BAND_INFO[q.band].name : q.outcome === "timeout" ? "out of time" : "missed";
-      labels.push(`Question ${q.slot}: ${ms === null ? "no time" : formatSeconds(ms)}, ${what}`);
     }
-    chart.setAttribute("role", "img");
-    chart.setAttribute("aria-label", labels.join(". "));
-    return h(
-      "figure",
-      { class: "times-figure" },
-      chart,
-      h("figcaption", { class: "times-caption", text: "Seconds per question, coloured by the animal you caught" }),
-    );
-  }
-
-  private speedLine(results: Results): string {
-    const { faster_than_percent: faster, players } = results.speed;
-    if (results.avg_correct_elapsed_ms === null) {
-      return "No correct answers today, so there's no speed to compare. Have another go tomorrow.";
-    }
-    if (faster === null || players <= 1) {
-      return "Check back later to see how your speed compares with everyone else.";
-    }
-    const everyone = results.speed.everyone_avg_ms;
-    if (faster === 0) {
-      // Nobody was slower: either a dead heat with the field, or everyone was quicker.
-      const level = everyone !== null && Math.abs(everyone - results.avg_correct_elapsed_ms) < 100;
-      return level
-        ? "Right on today's average speed. A few tenths quicker tomorrow takes you clear."
-        : "Everyone else was quicker on average today. Tomorrow's another chance.";
-    }
-    const gap = everyone !== null && results.avg_correct_elapsed_ms !== null ? everyone - results.avg_correct_elapsed_ms : 0;
-    const by = gap >= 100 ? ` You beat today's average by ${formatSeconds(gap)}.` : "";
-    return `Faster than ${faster}% of today's players.${by}`;
+    return list;
   }
 
   private async share(results: Results, status: HTMLElement): Promise<void> {

@@ -6,7 +6,6 @@ import {
   formatPoints,
   formatQuizDate,
   formatSeconds,
-  speedTrackPercent,
 } from "./format";
 
 describe("format", () => {
@@ -37,12 +36,6 @@ describe("format", () => {
     ]);
   });
 
-  it("places times on the speed track", () => {
-    expect(speedTrackPercent(0)).toBe(0);
-    expect(speedTrackPercent(1250)).toBe(25);
-    expect(speedTrackPercent(9000)).toBe(100);
-    expect(speedTrackPercent(-5)).toBe(0);
-  });
 
   it("formats the quiz date in British style", () => {
     expect(formatQuizDate("2026-11-17")).toBe("Tuesday 17 November");
@@ -50,7 +43,7 @@ describe("format", () => {
   });
 });
 
-import { bandForTime, categoryLabel, scorePercent, smoothDistribution } from "./format";
+import { bandForTime, categoryLabel, scorePercent, smoothDistribution, speedGapLine } from "./format";
 
 describe("smoothDistribution", () => {
   it("peaks at the busiest bucket and is scaled to 1", () => {
@@ -94,5 +87,14 @@ describe("bandForTime", () => {
     expect(bandForTime(2500)).toBe("toucan");
     expect(bandForTime(4500)).toBe("tree_frog");
     expect(bandForTime(4501)).toBe("sloth");
+  });
+});
+
+describe("speedGapLine", () => {
+  it("compares your average with today's in plain words", () => {
+    expect(speedGapLine(1400, 1800)).toBe("0.4 s quicker than today's average.");
+    expect(speedGapLine(2300, 1800)).toBe("0.5 s slower than today's average.");
+    expect(speedGapLine(1800, 1850)).toBe("Right on today's average speed.");
+    expect(speedGapLine(1800, null)).toContain("setting today's pace");
   });
 });
